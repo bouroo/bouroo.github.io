@@ -160,39 +160,49 @@ params:
     # title: "Custom Name"
     items:
       - job: "Senior System Engineer"
-        company: "COOPNIX Co., Ltd. · Full-time"
+        company: "COOPNIX Co., Ltd."
         companyUrl: "https://coopnix.co.th"
         date: "2016 - Present"
         featuredLink:
           enable: true
-          name: "View the project"
           url: "https://coopnix.co.th"
+        info:
+          enable: true
+          content: |
+            - Remote Working
+            - Full-time
         content: |
           - Maintain customer's servers & VMs.
           - Improve overall system performance & security.
 
       - job: "Chief Technology Officer"
-        company: "Zercle Tecnology · Self-employed"
+        company: "Zercle Tecnology"
         companyUrl: "https://zercle.tech"
         date: "2012 - Present"
         featuredLink:
           enable: true
           url: "https://zercle.tech"
         info:
-          enable: false
+          enable: true
+          content: |
+            - Hybrid Working
+            - Self-employed
         content: |
           - Design and provide system architecture/infrastructure.
           - Review & Improve back-end project's code.
 
       - job: "Computer Engineer"
-        company: "Provincial Waterworks Authority · Full-time"
+        company: "Provincial Waterworks Authority"
         companyUrl: "https://pwa.co.th"
         date: "Jan 2014 - Jul 2020"
-        info:
-          enable: false
         featuredLink:
           enable: true
           url: "https://pwa.co.th"
+        info:
+          enable: true
+          content: |
+            - On-Site Working
+            - Full-time
         content: |
           - Maintain & Improve networking stability, performance, security.
           - Maintain & Provide Servers, VMs.
