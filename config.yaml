@@ -160,7 +160,7 @@ params:
     # title: "Custom Name"
     items:
       - job: "Senior System Engineer"
-        company: "COOPNIX Co., Ltd."
+        company: "COOPNIX"
         companyUrl: "https://coopnix.co.th"
         date: "2016 - Present"
         featuredLink:
@@ -168,9 +168,7 @@ params:
           url: "https://coopnix.co.th"
         info:
           enable: true
-          content: |
-            - Remote Working
-            - Full-time
+          content: Full-time Remote Working
         content: |
           - Maintain customer's servers & VMs.
           - Improve overall system performance & security.
@@ -184,9 +182,7 @@ params:
           url: "https://zercle.tech"
         info:
           enable: true
-          content: |
-            - Hybrid Working
-            - Self-employed
+          content: Self-employed Hybrid Working
         content: |
           - Design and provide system architecture/infrastructure.
           - Review & Improve back-end project's code.
@@ -200,9 +196,7 @@ params:
           url: "https://pwa.co.th"
         info:
           enable: true
-          content: |
-            - On-Site Working
-            - Full-time
+          content: Full-time On-Site Working
         content: |
           - Maintain & Improve networking stability, performance, security.
           - Maintain & Provide Servers, VMs.
