@@ -248,7 +248,7 @@ params:
     items:
       - title: KKU DMS
         content: KhonKaen University's Document Mamange System.
-        image: /images/projects/profile.png
+        image: /images/projects/kku-dms.jpeg
         featured:
           name: Project
           link: https://dms.kku.ac.th/
@@ -262,7 +262,7 @@ params:
 
       - title: KKU Payment Hub
         content: KhonKaen University's Digital payment hub.
-        image: /images/projects/converter.jpg
+        image: /images/projects/kku-paymenthub.png
         featured:
           name: Project
           link: https://payment-web.kku.ac.th/
@@ -276,7 +276,7 @@ params:
 
       - title: COVID-19 vaccine reservation
         content: Khon Kaen's COVID-19 vaccine reservation.
-        image: /images/projects/profile2.jpg
+        image: /images/projects/kku-vaccine.jpeg
         featured:
           name: Project
           link: https://vaccine.kku.ac.th
@@ -290,7 +290,7 @@ params:
 
       - title: KKU Software License Reservation
         content: Khon Kaen University's Software license reservation.
-        image: /images/projects/profile2.jpg
+        image: /images/projects/kku-license.jpeg
         featured:
           name: Project
           link: https://app-reserve.kku.ac.th
@@ -304,7 +304,7 @@ params:
 
       - title: KMUTT Payment Hub
         content: King Mongkut's University of Technology Thonburi's Digital payment hub.
-        image: /images/projects/profile2.jpg
+        image: /images/projects/kmutt-paymenthub.jpeg
         featured:
           name: Project
           link: https://paymenthub.kmutt.ac.th/
@@ -318,7 +318,7 @@ params:
 
       - title: KMUTT Software License Reservation
         content: King Mongkut's University of Technology Thonburi's App license reservation.
-        image: /images/projects/profile2.jpg
+        image: /images/projects/kmutt-license.jpeg
         featured:
           name: Project
           link: https://license.kmutt.ac.th
