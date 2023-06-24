@@ -33,7 +33,7 @@ enableEmoji = true
 [author]
 name = "Kawin Viriyaprasopsook"
 email = "kawin.v@kkumail.com"
-link = ""
+link = "https://github.com/bouroo"
 
 # Menu config
 [menu]
@@ -66,18 +66,25 @@ url = "/categories/"
 title = ""
 
 [params]
-title = "Kawin's Pages"
-description = "Kawin's Pages"
+title = ""
+description = ""
 # site default theme ["auto", "light", "dark"]
 defaultTheme = "auto"
 # public git repo url only then enableGitInfo is true
 gitRepo = "https://github.com/bouroo/bouroo.github.io"
-
+[params.header]
+[params.header.title]
+name = "Kawin vir."
+[params.home]
+[params.home.profile]
+title = ""
+avatarURL = "https://avatars.githubusercontent.com/u/1217739"
+subtitle = "Just Backend dev & System admin"
 # Social config about the author
 [params.social]
-GitHub = "https://github.com/bouroo"
-Linkedin = "https://www.linkedin.com/in/kawin-viriyaprasopsook-5b0aa428"
-Twitter = "https://twitter.com/bouroo"
+GitHub = "bouroo"
+Linkedin = "kawin-viriyaprasopsook-5b0aa428"
+Twitter = "bouroo"
 RSS = true
 
 # Markup related configuration in Hugo
