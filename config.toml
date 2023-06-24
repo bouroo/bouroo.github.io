@@ -78,7 +78,7 @@ name = "Kawin vir."
 [params.home]
 [params.home.profile]
 title = ""
-avatarURL = "https://avatars.githubusercontent.com/u/1217739"
+avatarURL = "https://avatars.githubusercontent.com/u/1217739?size=192"
 subtitle = "Just Backend dev & System admin"
 # Social config about the author
 [params.social]
