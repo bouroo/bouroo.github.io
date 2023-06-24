@@ -1,14 +1,19 @@
 ---
 title: "เริ่มต้นเขียน Go"
+subtitle: ""
 date: 2023-01-01T00:00:00+07:00
+lastmod: 2023-06-24T22:30:15+07:00
 draft: true
-github_link: "https://github.com/bouroo"
-author: "kawin.vir"
-tags:
-  - Go
-image: /images/post.jpg
+author: "kawin.vir<kawin.v@kkumail.com>"
+authorLink: "https://github.com/bouroo"
 description: ""
-toc:
+images: []
+
+tags: ["Go"]
+categories: []
+
+featuredImage: ""
+featuredImagePreview: ""
 ---
 
 ## Paragraph
