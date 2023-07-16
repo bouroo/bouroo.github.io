@@ -6,18 +6,19 @@ theme = "LoveIt"
 # website title
 title = "Kawin's Pages"
 
+defaultContentLanguage = "th"
+
 # language code ["en", "zh-CN", "fr", "pl", ...]
 languageCode = "th"
 # language name ["English", "简体中文", "Français", "Polski", ...]
 languageName = "ภาษาไทย"
-
 # whether to include Chinese/Japanese/Korean
 hasCJKLanguage = false
 
 # default amount of posts in each pages
 paginate = 12
 # google analytics code [UA-XXXXXXXX-X]
-googleAnalytics = ""
+# googleAnalytics = ""
 # copyright description used only for seo schema
 copyright = ""
 
@@ -28,6 +29,31 @@ enableGitInfo = true
 # whether to use emoji code
 enableEmoji = true
 
+[params]
+title = "Kawin's Pages"
+description = ""
+# site default theme ["auto", "light", "dark"]
+defaultTheme = "auto"
+# public git repo url only then enableGitInfo is true
+gitRepo = "https://github.com/bouroo/bouroo.github.io"
+[params.header]
+[params.header.title]
+name = "Kawin vir."
+pre = "🧑‍💻 "
+[params.footer]
+license = 'CC BY-SA'
+[params.home]
+[params.home.profile]
+title = ""
+avatarURL = "https://avatars.githubusercontent.com/u/1217739?size=192"
+subtitle = '🌐 Remote Working lover.<br>🧑‍💻 Just a backend dev & system admin.<br>🎮 Love to play games.<br>🏡 Like watching Japanese anime.'
+disclaimer = ""
+# Social config about the author
+[params.social]
+GitHub = "bouroo"
+Linkedin = "kawin-vir"
+Twitter = "bouroo"
+RSS = true
 
 # Author config
 [author]
@@ -35,7 +61,13 @@ name = "Kawin Viriyaprasopsook"
 email = "kawin.v@kkumail.com"
 link = "https://kawin-vir.pages.dev"
 
-# Menu config
+# Markup related configuration in Hugo
+[markup]
+# Syntax Highlighting (https://gohugo.io/content-management/syntax-highlighting)
+[markup.highlight]
+# false is a necessary configuration (https://github.com/dillonzq/LoveIt/issues/158)
+noClasses = false
+
 [menu]
 [[menu.main]]
 weight = 1
@@ -65,35 +97,14 @@ name = "Categories"
 url = "/categories/"
 title = ""
 
-[params]
-title = "Kawin's Pages"
-description = ""
-# site default theme ["auto", "light", "dark"]
-defaultTheme = "auto"
-# public git repo url only then enableGitInfo is true
-gitRepo = "https://github.com/bouroo/bouroo.github.io"
-[params.header]
-[params.header.title]
-name = "Kawin vir."
-pre = "🧑‍💻 "
-[params.footer]
-license = 'CC BY-SA'
-[params.home]
-[params.home.profile]
-title = ""
-avatarURL = "https://avatars.githubusercontent.com/u/1217739?size=192"
-subtitle = '🌐 Remote Working lover.<br>🧑‍💻 Just a backend dev & system admin.<br>🎮 Love to play games.<br>🏡 Like watching Japanese anime.'
-disclaimer = ""
-# Social config about the author
-[params.social]
-GitHub = "bouroo"
-Linkedin = "kawin-vir"
-Twitter = "bouroo"
-RSS = true
+[languages]
 
-# Markup related configuration in Hugo
-[markup]
-# Syntax Highlighting (https://gohugo.io/content-management/syntax-highlighting)
-[markup.highlight]
-# false is a necessary configuration (https://github.com/dillonzq/LoveIt/issues/158)
-noClasses = false
+[languages.th]
+weight = 1
+languageCode = "th"
+languageName = "ภาษาไทย"
+
+[languages.en]
+weight = 2
+languageCode = "en"
+languageName = "English"

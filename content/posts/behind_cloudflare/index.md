@@ -7,14 +7,14 @@ author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin-vir.pages.dev"
 description: "บทความนี้จะแนะนำวิธีการซ่อนเว็บของเราไว้ข้างหลัง cloudflare อย่างมิดชิด"
 images: []
-resources:
-- name: "featured-image"
-  src: "featured-image.webp"
 
-tags: ["cloudflare"]
-categories: ["DevOpsSec"]
+tags: ["Cloudflare", "DevOps", "DevOpsSec"]
+categories: ["DevOps"]
 
-# lightgallery: true
+featuredImage: "website-with-cloudflare-3464878e.webp"
+featuredImagePreview: ""
+
+mermaid: true
 ---
 
 <!--more-->
@@ -32,29 +32,29 @@ Cloudflare อยู่ระหว่างคำขอและเซิร์
 
 ### ก่อนใช้งานผ่าน cloudflare proxy
 
-```mermaid
+{{< mermaid >}}
 flowchart LR
   user(Users)
   srv(Servers)
     user <-- http request --> srv
-```
+{{< /mermaid >}}
 
 ### หลังจากใช้งานผ่าน cloudflare proxy
 
-```mermaid
+{{< mermaid >}}
 flowchart LR
   user(Users)
   cf(Cloudflare)
   srv(Servers)
     user <-- http request --> cf
     cf <-- http request --> srv
-```
+{{< /mermaid >}}
 
 ## ซ่อนเว็บเซอร์วิสไว้ข้างหลัง Cloudflare อย่างจริงจัง
 
 จากภาพด้านบนเหมือนว่าเว็บเราจะปลอดภัยจากโลกภายนอกแล้วใช่ไหมครับ แต่เดี๋ยวก่อนถ้าหากสังเกตดี ๆ จะพบว่าถ้าก่อนหน้านี้มีคนรู้ IP ของเซิฟเวอร์เราไปแล้วละ เว็บเราก็ก็ยังโดนยิงเข้ามาได้ถูกไหมครับ เพราะฉะนั้นวิธีที่ง่ายที่สุดคือ เราก็เปิดให้เฉพาะ Cloudflare เข้าถึงเว็บเซอร์วิสของเราได้โดยตรงแต่เพิ่งผู้เดียวไปเลยสิ โดยเราจะอาศัยไฟร์วอลของระบบปฏิบัติการนี่แหละ
 
-```mermaid
+{{< mermaid >}}
 flowchart LR
   user(Users)
   cf(Cloudflare)
@@ -62,7 +62,7 @@ flowchart LR
     user <-- http request --> cf
     user -- http request --x srv
     cf <-- http request --> srv
-```
+{{< /mermaid >}}
 
 ## เปิดให้เฉพาะ Cloudflare เข้าถึงเว็บเรา
 
