@@ -1,4 +1,4 @@
-baseURL = "https://bouroo.pages.dev/"
+baseURL = "https://kawin-vir.pages.dev/"
 
 # Change the default theme to be use when building the site with Hugo
 theme = "LoveIt"
@@ -7,9 +7,9 @@ theme = "LoveIt"
 title = "Kawin's Pages"
 
 # language code ["en", "zh-CN", "fr", "pl", ...]
-languageCode = "en"
+languageCode = "th"
 # language name ["English", "简体中文", "Français", "Polski", ...]
-languageName = "English"
+languageName = "ภาษาไทย"
 
 # whether to include Chinese/Japanese/Korean
 hasCJKLanguage = false
@@ -33,7 +33,7 @@ enableEmoji = true
 [author]
 name = "Kawin Viriyaprasopsook"
 email = "kawin.v@kkumail.com"
-link = "https://github.com/bouroo"
+link = "https://kawin-vir.pages.dev"
 
 # Menu config
 [menu]
