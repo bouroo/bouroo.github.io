@@ -46,7 +46,7 @@ license = 'CC BY-SA'
 [params.home.profile]
 title = ""
 avatarURL = "https://avatars.githubusercontent.com/u/1217739?size=192"
-subtitle = '🌐 Remote Working lover.<br>🧑‍💻 Just a backend dev & system admin.<br>🎮 Love to play games.<br>🏡 Like watching Japanese anime.'
+subtitle = '🌐 Remote Working lover.<br>🧑‍💻 Backend Dev & System Admin.<br>🎮 Love to play games.<br>🏡 Like watching Japanese anime.'
 disclaimer = ""
 # Social config about the author
 [params.social]
