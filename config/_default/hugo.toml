@@ -31,7 +31,7 @@ enableEmoji = true
 
 [params]
 title = "Kawin's Pages"
-description = ""
+description = "Kawin's Pages & Blogs"
 # site default theme ["auto", "light", "dark"]
 defaultTheme = "auto"
 # public git repo url only then enableGitInfo is true
