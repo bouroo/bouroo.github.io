@@ -26,12 +26,12 @@ featuredImagePreview: ""
 
 {{< gist bouroo bc52ad58a6e75d44e5235b229e9ca988 60-sysctl.conf >}}
 
-## Sysctl เพิ่มเติมสำหรับ K3S, K8S `80-pve.conf`
+## Sysctl เพิ่มเติมสำหรับ Promox VE `80-pve.conf`
 > สามารถนำค่าไปไว้ที่ `/etc/sysctl.d/80-pve.conf`
 
 {{< gist bouroo bc52ad58a6e75d44e5235b229e9ca988 80-pve.conf >}}
 
-## Sysctl เพิ่มเติมสำหรับ Promox VE `90-k8s.conf`
+## Sysctl เพิ่มเติมสำหรับ K3S, K8S `90-k8s.conf`
 > สามารถนำค่าไปไว้ที่ `/etc/sysctl.d/90-k8s.conf`
 
 {{< gist bouroo bc52ad58a6e75d44e5235b229e9ca988 90-k8s.conf >}}
