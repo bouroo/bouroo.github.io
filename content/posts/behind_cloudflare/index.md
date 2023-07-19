@@ -7,12 +7,15 @@ author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin-vir.pages.dev"
 description: "บทความนี้จะแนะนำวิธีการซ่อนเว็บของเราไว้ข้างหลัง cloudflare อย่างมิดชิด"
 images: []
+resources:
+- name: "featured-image"
+  src: "featured-image.webp"
 
 tags: ["Cloudflare", "DevOps", "DevOpsSec"]
 categories: ["DevOps"]
 
-featuredImage: "website-with-cloudflare-3464878e.webp"
-featuredImagePreview: ""
+featuredImage: "featured-image.webp"
+featuredImagePreview: "featured-image"
 
 mermaid: true
 ---

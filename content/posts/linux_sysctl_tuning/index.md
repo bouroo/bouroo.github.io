@@ -9,12 +9,15 @@ authorLink: "https://kawin-vir.pages.dev"
 description: "ปรับตั้งค่าใน sysctl เพื่อให้ Linux server ทำงานได้ราบลื่นเมื่อมีโหลดมากขึ้น"
 license: ""
 images: []
+resources:
+- name: "featured-image"
+  src: "featured-image.webp"
 
 tags: ["Linux", "DevOps", "PVE", "K3S", "K8S"]
 categories: ["Linux", "DevOps"]
 
-featuredImage: "linux_tuning.webp"
-featuredImagePreview: ""
+featuredImage: "featured-image.webp"
+featuredImagePreview: "featured-image"
 ---
 
 เราสามารถปรับตั้งค่าใน sysctl เพื่อให้ Linux server ทำงานได้ราบลื่นเมื่อมีโหลดมากขึ้น โดยปกติแล้ว Linux ในแต่ละ Distro จะมีการตั้งค่า sysctl มาให้กลางอยู่แล้วเช่นสาย RHEL อาจจะปรับมาเพื่อให้บริการเป็นเครื่องแม่ข่ายเป็นพิเศษ DEB อาจจะปรับมาเพื่อให้ทำงานได้อย่างบาลานซ์ เป็นต้น ซึ่งในบทความนี้ผมจะมาแนะนำค่าที่ผมใช้งานอยู่ใน Production ของงานแต่ละประเภทดังนี้ครับ

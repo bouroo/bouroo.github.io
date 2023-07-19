@@ -9,12 +9,15 @@ authorLink: "https://kawin-vir.pages.dev"
 description: "บทความนี้จะแนะนำวิธีการนำเสนอเว็บเซอร์วิสของเราไปสู่โลกภายนอกด้วย K3S + Cloudflare Tunnel แบบไม่ต้องง้อ External Public IP"
 license: ""
 images: []
+resources:
+- name: "featured-image"
+  src: "featured-image.webp"
 
 tags: ["Cloudflare", "DevOps", "DevOpsSec"]
 categories: ["DevOps"]
 
-featuredImage: "argo-tunnel-diagram-2.webp"
-featuredImagePreview: ""
+featuredImage: "featured-image.webp"
+featuredImagePreview: "featured-image"
 ---
 
 <!--more-->

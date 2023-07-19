@@ -9,6 +9,9 @@ authorLink: "https://kawin-vir.pages.dev"
 description: ""
 license: ""
 images: []
+resources:
+- name: "featured-image"
+  src: "featured-image.webp"
 
 tags: []
 categories: []
