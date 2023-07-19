@@ -16,8 +16,8 @@ resources:
 tags: []
 categories: []
 
-featuredImage: ""
-featuredImagePreview: ""
+featuredImage: "featured-image.webp"
+featuredImagePreview: "featured-image"
 
 hiddenFromHomePage: false
 hiddenFromSearch: false
