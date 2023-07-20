@@ -48,7 +48,10 @@ Cloudflare tunnel ตามชื่อเลยคือการสร้า�
 สร้างไฟล์ `cloudflared-daemonset.yml` หน้าตาประมาณนี้ โดยเอาค่า tunnel token ไปแปลงเป็น base64 แล้วใส่ไว้ใน secret ชื่อ `cf_tunnel_token`
 {{< gist bouroo 624c6cd6d515c5e0af54904dba60f073 cloudflared-daemonset.yml >}}
 
-จากนั้น deploy ด้วย `kubectl apply -f cloudflared-daemonset.yml`
+จากนั้น deploy ด้วย
+```bash
+kubectl apply -f cloudflared-daemonset.yml
+```
 
 ## expose service สู่โลกภายนอก
 เช็คสถานะใน cloudflare one dashboard ว่า tunnel เราเชื่อมต่อได้แล้ว
