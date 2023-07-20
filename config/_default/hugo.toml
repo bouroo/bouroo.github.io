@@ -108,3 +108,9 @@ languageName = "ภาษาไทย"
 weight = 2
 languageCode = "en"
 languageName = "English"
+
+[frontmatter]
+  date = ['date', 'publishDate', 'lastmod']
+  expiryDate = ['expiryDate']
+  lastmod = [':git', 'lastmod', 'date', 'publishDate']
+  publishDate = ['publishDate', 'date']
