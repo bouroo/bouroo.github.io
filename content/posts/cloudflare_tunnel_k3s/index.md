@@ -57,7 +57,7 @@ kubectl apply -f cloudflared-daemonset.yml
 เช็คสถานะใน cloudflare one dashboard ว่า tunnel เราเชื่อมต่อได้แล้ว
 ![tunnel_config](img/tunnel_config.webp "tunnel_config")
 
-เสมือนว่าได้ kube-proxy กันเลยทีเดียว
+เสมือนว่าได้ kube-proxy + load balancer กันเลยทีเดียว
 ![kube_proxy](img/kube_proxy.webp "kube_proxy")
 
 แล้วเราก็สามารถทำ reverse proxy เข้าไปหา servic ใน cluster เราได้เลยในเช่น `service_name.namespace` เช่น `https` ไปที่ `rancher` บน namspace `cattle-system` จะได้ตามภาพ
