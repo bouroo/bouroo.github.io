@@ -69,10 +69,10 @@ volumes:
 หน้าตาของ Unix socket
 ![socket_files](img/socket_files.webp "socket_files")
 
-## redis
+## Redis
 เริ่มจาก database ที่เร็วและง่ายที่สุดในตัวอย่างกันก่อน โดยจะทดสอบ read, write
 
-### tcp
+### TCP/IP
 
 ```bash
 redis-benchmark -n 1000000 -t set,get -P 16 -q -h 127.0.0.1 -p 6379
@@ -81,7 +81,7 @@ redis-benchmark -n 1000000 -t set,get -P 16 -q -h 127.0.0.1 -p 6379
 ผลที่ได้
 ![redis_tcp](img/redis_tcp.webp "redis_tcp")
 
-### unix socket
+### UNIX socket
 
 ```bash
 redis-benchmark -n 1000000 -t set,get -P 16 -q -s tmp/run/redis.sock
@@ -90,16 +90,16 @@ redis-benchmark -n 1000000 -t set,get -P 16 -q -s tmp/run/redis.sock
 ผลที่ได้
 ![redis_socket](img/redis_socket.webp "redis_socket")
 
-## mariadb
+## MariaDB
 มาต่อด้วย database ยอดนิยมตัวนึง โดยจะทดสอบ read, write เหมือนเดิม
 
-### prepare ข้อมูลทำหรับทดสอบ
+### เตรียมข้อมูลทำหรับทดสอบ
 เริ่มจากการสร้าง database และ table สำหรับ sysbench
 ```bash
 sysbench oltp_read_write --db-driver=mysql --mysql-host=127.0.0.1 --mysql-user=root --mysql-db=sysbenchtest --threads=16 prepare
 ```
 
-### tcp
+### TCP/IP
 
 ```bash
 sysbench oltp_read_write --db-driver=mysql --mysql-host=127.0.0.1 --mysql-user=root --mysql-db=sysbenchtest --threads=16 run
@@ -108,7 +108,7 @@ sysbench oltp_read_write --db-driver=mysql --mysql-host=127.0.0.1 --mysql-user=r
 ผลที่ได้
 ![mariadb_tcp](img/mariadb_tcp.webp "mariadb_tcp")
 
-### unix socket
+### UNIX socket
 
 ```bash
 sysbench oltp_read_write --db-driver=mysql --mysql-socket=tmp/run/mysqld.sock --mysql-user=root --mysql-db=sysbenchtest --threads=16 run
@@ -121,10 +121,10 @@ sysbench oltp_read_write --db-driver=mysql --mysql-socket=tmp/run/mysqld.sock --
 
 |                    | **read (req/s)** | **write (req/s)** | **latency avg (ms)** |
 |--------------------|------------------|-------------------|----------------------|
-| redis TCP          | 475,511.19       | 443,655.72        | 1.519 / 1.639        |
-| redis UnixSocket   | 1,555,209.88     | 1,270,648.00      | 0.455 / 0.567        |
-| mariaDB TCP        | 75,432           | 21,540            | 29.76                |
-| mariaDB UnixSocket | 212,688          | 60,731            | 10.54                |
+| Redis TCP          | 475,511.19       | 443,655.72        | 1.519 / 1.639        |
+| Redis UnixSocket   | 1,555,209.88     | 1,270,648.00      | 0.455 / 0.567        |
+| MariaDB TCP        | 75,432           | 21,540            | 29.76                |
+| MariaDB UnixSocket | 212,688          | 60,731            | 10.54                |
 
 จะเห็นได้ว่าหากเราลด overhead ของ TCP ออกด้วยการใช้ Unix socket แทน จะทำให้เราไม่ต้องไป up scale ทรัพยากรของเราให้ใหญ่โต ก็สามารถรับโหลดได้เพิ่มมาขึ้นอีกเยอะเลย หรือในงานบน K8S ที่มีการทำ sidecar ก็สามารถใช้ Unix socket สื่อสารระหว่างกันแทน TCP/IP ได้นะครับ
 > ปล. ใช้ได้ใน node ที่ใช้งาน volume ร่วมกันนะจร๊ะ
