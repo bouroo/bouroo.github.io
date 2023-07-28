@@ -64,7 +64,7 @@ volumes:
   redis_data:
 ```
 
-หลังจาก `docker up -d` ก็จะได้ประมาณนี้
+หลังจาก `docker compose up -d` ก็จะได้ประมาณนี้
 ![compose_up](img/compose_up.webp "compose_up")
 หน้าตาของ Unix socket
 ![socket_files](img/socket_files.webp "socket_files")
