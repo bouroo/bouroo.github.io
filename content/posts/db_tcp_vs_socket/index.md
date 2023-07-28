@@ -1,12 +1,12 @@
 ---
-title: "ลองเทียบประสิทธิภาพของ Database ระหว่าง TCP กับ Unix socket"
+title: "ลองเทียบประสิทธิภาพของ Apps กับ Database ระหว่าง TCP กับ Unix socket"
 subtitle: ""
 date: 2023-07-28T19:52:51+07:00
 lastmod: 2023-07-28T19:52:51+07:00
 draft: fasle
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin-vir.pages.dev"
-description: "รู้หรือไม่ว่าเราสามารถได้ประสิทธิภาพเพิ่มขึ้นจาก DB ใน container ได้ด้วย Unix socket"
+description: "รู้หรือไม่ว่าเราสามารถได้ประสิทธิภาพเพิ่มขึ้นจาก Apps กับ DB ใน container ได้ด้วย Unix socket"
 license: ""
 images: []
 resources:
@@ -21,7 +21,7 @@ featuredImagePreview: "featured-image"
 
 lightgallery: true
 ---
-ปกติแล้วเวลาใช้งาน database ในระดับงานที่ไม่ใหญ่มาก ใน container เราก็มักจะเชื่อมต่อกันด้วย TCP/IP กันถูกไหมครับ แต่รู้หรือไม่ว่าเราสามารถเพิ่มประสิทธิภาพง่าย ๆ ด้วยการลด overhead ของ TCP ออกด้วยการใช้ Unix socket แทนผลจะเป็นยังไงลองมาดูกันครับ
+ปกติแล้วเวลาใช้งาน database ในระดับงานที่ไม่ใหญ่มาก ใน container เราก็มักจะเชื่อมต่อกันด้วย TCP/IP กันถูกไหมครับ แต่รู้หรือไม่ว่าเราสามารถเพิ่มประสิทธิภาพง่าย ๆ ด้วยการลด overhead ของ TCP ออกด้วยการใช้ Unix socket แทนผลจะเป็นยังไง ลองมาดูกันครับ
 
 <!--more-->
 
@@ -126,5 +126,5 @@ sysbench oltp_read_write --db-driver=mysql --mysql-socket=tmp/run/mysqld.sock --
 | mariaDB TCP        | 75,432           | 21,540            | 29.76                |
 | mariaDB UnixSocket | 212,688          | 60,731            | 10.54                |
 
-จะเห็นได้ว่าหากเราลด overhead ของ TCP ออกด้วยการใช้ Unix socket แทน จะทำให้เราไม่ต้องไป up scale ทรัพยากรของเราให้ใหญ่โต ก็สามารถรับโหลดได้เพิ่มมาขึ้นอีกเยอะเลย หรือในงานบน K8S ที่มีการทำ sidecar ก็สามารถใช้ Unix socket สือสารระหว่างกันแทน TCP/IP ได้นะครับ
+จะเห็นได้ว่าหากเราลด overhead ของ TCP ออกด้วยการใช้ Unix socket แทน จะทำให้เราไม่ต้องไป up scale ทรัพยากรของเราให้ใหญ่โต ก็สามารถรับโหลดได้เพิ่มมาขึ้นอีกเยอะเลย หรือในงานบน K8S ที่มีการทำ sidecar ก็สามารถใช้ Unix socket สื่อสารระหว่างกันแทน TCP/IP ได้นะครับ
 > ปล. ใช้ได้ใน node ที่ใช้งาน volume ร่วมกันนะจร๊ะ
