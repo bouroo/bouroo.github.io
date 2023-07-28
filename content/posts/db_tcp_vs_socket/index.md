@@ -13,8 +13,8 @@ resources:
 - name: "featured-image"
   src: "featured-image.webp"
 
-tags: []
-categories: []
+tags: ["DevOps", "Unix Socket", "TCP/IP", "DBA"]
+categories: ["DevOps", "Network"]
 
 featuredImage: "featured-image.webp"
 featuredImagePreview: "featured-image"
