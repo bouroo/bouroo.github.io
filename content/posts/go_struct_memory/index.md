@@ -98,7 +98,7 @@ type CustomerOptimized struct {
 custA := Customer{}
 fmt.Printf("custA size: %d bytes\n", unsafe.Sizeof(custA))
 
-ustB := CustomerOptimized{}
+custB := CustomerOptimized{}
 fmt.Printf("custB size: %d bytes\n", unsafe.Sizeof(custB))
 ```
 
@@ -144,4 +144,4 @@ go install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignme
 fieldalignment -fix ./...
 ```
 
-สุดท้ายนี้ก็อย่าลืมจัดเรียง GO struct เสมอนะครับ (จะใช้วิธีเพิ่ม fieldalignment ใน precommit ก็สะดวกนะเอ้อ)
+สุดท้ายนี้ก็อย่าลืมจัดเรียง GO struct และใช้ data type เท่าที่จำเป็นเสมอนะครับ (จะใช้วิธีเพิ่ม fieldalignment ใน precommit script ก็สะดวกนะเอ้อ)
