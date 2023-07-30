@@ -13,8 +13,8 @@ resources:
 - name: "featured-image"
   src: "featured-image.webp"
 
-tags: ["go", "SOLID", "programing"]
-categories: ["programing"]
+tags: ["GO", "SOLID", "Programing"]
+categories: ["Programing"]
 
 featuredImage: "featured-image.webp"
 featuredImagePreview: "featured-image"
