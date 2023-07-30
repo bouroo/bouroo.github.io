@@ -22,7 +22,7 @@ featuredImagePreview: "featured-image"
 lightgallery: true
 ---
 
-ตอนสมัยเรียนวิศวคอมพิวเตอร์มีคำถามนึงโผล่มาเสมอว่าวิชาอย่าง Computer Architecture กับ Data Structure เรียนไปทำไมกันนะ จนกระทั้งจบออกมาได้เขียนภาษา GO ถึงได้เอะใจว่า ทำไม GO ถึงได้มี data type แบบกำหนดขนาด เช่น `int8` `int16` `int32` `int64` และอื่น ๆ ทำไมถึงไม่เป็น `int` หรือ `number` เฉย ๆ ไปเลยแบบภาษาขี้เกียจอย่าง TypeScript กันนะ จนได้มานั่งอ่านเกี่ยวกับ [sizes in GO](https://go.dev/src/go/types/sizes.go) ถึงได้รู้ว่าเราสามารถใช้ความรู้ในวิชา Computer Architecture และ OS มาช่วยให้เราเขียน GO ออกมาได้ประสิทธิภาพอย่างที่ควรจะเป็น
+ตอนสมัยเรียนวิศวคอมพิวเตอร์มีคำถามนึงโผล่มาเสมอว่าวิชาอย่าง Computer Architecture กับ Data Structure เรียนไปทำไมกันนะ จนกระทั้งจบออกมาได้เขียนภาษา GO ถึงได้เอะใจว่า ทำไม GO ถึงได้มี data type แบบกำหนดขนาด เช่น `int8` `int16` `int32` `int64` และอื่น ๆ ทำไมถึงไม่เป็น `int` หรือ `number` เฉย ๆ ไปเลยแบบภาษาขี้เกียจอย่าง TypeScript กันนะ จนได้มานั่งอ่านเกี่ยวกับ [sizes in GO](https://go.dev/src/go/types/sizes.go) ถึงได้รู้ว่าเราสามารถใช้ความรู้ในวิชา Computer Architecture และ Data Structure มาช่วยให้เราเขียน GO ออกมาได้ประสิทธิภาพอย่างที่ควรจะเป็น
 
 <!--more-->
 
