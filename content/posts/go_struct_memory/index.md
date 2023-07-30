@@ -1,8 +1,8 @@
 ---
 title: "ออกแบบ GO struct ด้วยความรู้วิชา Computer Architecture และ OS"
 subtitle: ""
-date: 2023-07-30T11:01:50+07:00
-lastmod: 2023-07-30T11:01:50+07:00
+date: 2023-07-30T13:01:50+07:00
+lastmod: 2023-07-30T13:01:50+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin-vir.pages.dev"
@@ -11,12 +11,12 @@ license: ""
 images: []
 resources:
 - name: "featured-image"
-  src: "featured-image.webp"
+  src: "go-featured-image.webp"
 
 tags: ["GO", "Computer Architecture", "Programing"]
 categories: ["Programing"]
 
-featuredImage: "featured-image.webp"
+featuredImage: "go-featured-image.webp"
 featuredImagePreview: "featured-image"
 
 lightgallery: true
@@ -129,3 +129,19 @@ fmt.Printf("custB size: %d bytes\n", unsafe.Sizeof(custB))
 แล้วมาดูกันว่ามันจะแตกต่างกันขนาดไหน
 
 ![benchmark](img/benchmark.webp "benchmark")
+
+|                      | **iteration (round/5s)** | **exec time (ns/op)** |
+|----------------------|--------------------------|-----------------------|
+| **Normal struct**    | 7,383                    | 752,353               |
+| **Optimized struct** | 12,250                   | 486,464               |
+
+## fieldalignment
+แล้วงี้เราก็ต้องมานั่งเรียง struct ของเราเองเลยหรอ คำตอบคือใช่ แต่เรามี tools อำนวยความสะดวกไว้ให้เราใช้แล้วก็คือ [govet/fieldalignment](https://pkg.go.dev/golang.org/x/tools/go/analysis/passes/fieldalignment) นั่นเอง ซึ่งวิธีใช้งานก็
+
+```bash
+go install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@latest
+
+fieldalignment -fix ./...
+```
+
+สุดท้ายนี้ก็อย่าลืมจัดเรียง GO struct เสมอนะครับ (จะใช้วิธีเพิ่ม fieldalignment ใน precommit ก็สะดวกนะเอ้อ)
