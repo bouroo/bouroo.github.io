@@ -1,9 +1,9 @@
 ---
 title: "ออกแบบ GO struct ด้วยความรู้วิชา Computer Architecture และ OS"
 subtitle: ""
-date: 2023-07-30T10:01:50+07:00
-lastmod: 2023-07-30T10:01:50+07:00
-draft: true
+date: 2023-07-30T11:01:50+07:00
+lastmod: 2023-07-30T11:01:50+07:00
+draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin-vir.pages.dev"
 description: "เราสามารถ Optimize โปรแกรมภาษา GO ด้วยความรู้ Computer Architecture และ OS"
@@ -62,7 +62,10 @@ cusA = Customer{}
 fmt.Printf("custA size: %d bytes\n", unsafe.Sizeof(custA))
 ```
 
+![normal_struct](img/normal_struct.webp "normal_struct")
+
 ผลคือ 88 bytes ว้อททท เกิดอะไรขึ้นมาดูกัน
+
 | **word / byte** | **1**      | **2**      | **3**      | **4**      | **5**      | **6**      | **7**      | **8**      |
 |-----------------|------------|------------|------------|------------|------------|------------|------------|------------|
 | **word 1**      | Id         | Id         | Id         | Id         | Id         | Id         | Id         | Id         |
@@ -77,6 +80,7 @@ fmt.Printf("custA size: %d bytes\n", unsafe.Sizeof(custA))
 | **word 10**     | PassportId | PassportId | PassportId | PassportId | PassportId | PassportId | PassportId | PassportId |
 | **word 11**     | IsActive   |            |            |            |            |            |            |            |
 
+### optimized
 จะเห็นว่ามีช่อง padding ของในแต่ละ word ทีนี้เราก็สามารถ optimize ได้แบบนี้
 
 ```go
@@ -100,5 +104,28 @@ fmt.Printf("custB size: %d bytes\n", unsafe.Sizeof(custB))
 
 มาดูผลงานกันระหว่างก่อนและหลังกันนน
 
+![optimized_struct](img/optimized_struct.webp "optimized_struct")
 
 เรียบร้อยโรงเรียน KKU ได้ 64 bytes แล้ว ซึ่งหน้าตาใน memory ก็จะประมาณนี้
+
+| **word / byte** | **1**      | **2**      | **3**      | **4**      | **5**      | **6**      | **7**      | **8**      |
+|-----------------|------------|------------|------------|------------|------------|------------|------------|------------|
+| **word 1**      | Id         | Id         | Id         | Id         | Id         | Id         | Id         | Id         |
+| **word 2**      | Name       | Name       | Name       | Name       | Name       | Name       | Name       | Name       |
+| **word 3**      | Name       | Name       | Name       | Name       | Name       | Name       | Name       | Name       |
+| **word 4**      | Address    | Address    | Address    | Address    | Address    | Address    | Address    | Address    |
+| **word 5**      | Address    | Address    | Address    | Address    | Address    | Address    | Address    | Address    |
+| **word 6**      | PassportId | PassportId | PassportId | PassportId | PassportId | PassportId | PassportId | PassportId |
+| **word 7**      | PassportId | PassportId | PassportId | PassportId | PassportId | PassportId | PassportId | PassportId |
+| **word 8**      | FaceId     | FaceId     | FaceId     | FaceId     | PhoneId    | PhoneId    | Age        | IsActive   |
+| **word 9**      |            |            |            |            |            |            |            |            |
+| **word 10**     |            |            |            |            |            |            |            |            |
+| **word 11**     |            |            |            |            |            |            |            |            |
+
+ประหยัดกันไป 3 words กันเลยทีเดียว
+
+## benchmark
+
+แล้วมาดูกันว่ามันจะแตกต่างกันขนาดไหน
+
+![benchmark](img/benchmark.webp "benchmark")
