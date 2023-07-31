@@ -110,8 +110,8 @@ benchmark ดูหน่อย
 ## เมื่อไหร่ควรใช้ value
 - เมื่อไม่ตรงกับเงื่อนไขของ **เมื่อไหร่ควรใช้ pointer** **ถถถ** หยอก ๆ
 - พวก data type ทั่วไป เช่น `int`, `string`, `float` ฯลฯ
-- function return ที่ไม่ได้ใช้งานระดับ global เพราะถ้าใช้งานระดับ local มันจะเป็นการใช้ค่าจาก stack ซึ่งก็จะเร็วตามที่ได้ benchmark ไปด้านบนละนะ
-- ค่าที่ส่งเข้า function เพราะถึงแม้ว่าการใช้ pointer จะเร็วกว่า แต่ข้อเสียหลักเลยคือ มันไม่ concurrent safe ยกตัวอย่างถ้าเราส่ง pointer เข้าไปทำงานใน function แล้วดันมีอีก Go routine นึงมาเขียนข้อมูลทับไป (race condition) result ที่ได้ก็คงยิ้มไม่ออก
+- function return ที่ไม่ได้ใช้งานระดับ global variable เพราะถ้าใช้งานระดับ local variable มันจะเป็นการใช้ค่าจาก stack ซึ่งก็จะเร็วตามที่ได้ benchmark ไปด้านบนละนะ
+- ค่าที่ส่งเข้า function เพราะถึงแม้ว่าการใช้ pointer จะเร็วกว่า แต่ข้อเสียหลักเลยคือ มันไม่ concurrent safe ยกตัวอย่างถ้าเราส่ง pointer เข้าไปทำงานใน function แล้วดันมีอีก Go routine นึงมาเขียนข้อมูลทับ pointer เดียวกันไป (race condition) result ที่ได้ก็คงยิ้มไม่ออก
 - อื่น ๆ ที่ไม่แน่ใจ (ก็เพราะ Go เป็นภาษาที่ copy by default ละนะ)
 
 ## เคสพิเศษ
