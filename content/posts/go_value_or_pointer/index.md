@@ -36,11 +36,11 @@ Go เป็นภาษาที่ copy by default เพราะฉะนั
 คือ โครงสร้างข้อมูลแบบเรียงซ้อนต่อกันซึ่งเวลาทำงานมันก็ทำงานแบบ **มาทีหลัง ออกไปก่อน** (มันถึงได้ชื่อ stack แหละ)
 
 ### heap
-คือ โครงสร้างข้อมูลแบบลำดับตามความสำคัญซึ่งมีคุณสมบัติของ binary tree ทำให้สามารถเพิ่มลด เรียกใช้งานได้ยืดหยุนกว่า stack (แต่ก็แลกมาด้วย access time ละนะ)
+คือ โครงสร้างข้อมูลแบบลำดับตามความสำคัญซึ่งมีคุณสมบัติของ binary tree ทำให้สามารถเพิ่มลด เรียกใช้งานได้ยืดหยุ่นกว่า stack (แต่ก็แลกมาด้วย access time ละนะ)
 
 ### สรุป
-stack เร็วแต่จะใช้ข้อมูลได้จากล่าสุดก่อน
-้heap ช้ากว่าแต่จะเรียกใช้ข้อมูลไหนก็ได้
+stack เร็วแต่จะใช้ข้อมูลได้จากที่เพิ่มเข้าไปล่าสุดก่อน
+้heap ช้ากว่าแต่ก็จะเรียกใช้ข้อมูลที่เก็บไว้ตอนไหนก็ได้
 
 ## Go copy by default
 จาก [stack_or_heap](https://go.dev/doc/faq#stack_or_heap) ในเว็บหลักของ Go ระบุไว้แบบนี้
@@ -80,10 +80,10 @@ func ReturnByPointer() *SomeStruct {
 ```
 benchmark ดูหน่อย
 ![benchmark_return_from_func](img/benchmark_return_from_func.webp "benchmark_return_from_func")
-อันนี้ ชัดเจนเลยว่าใช้เวลาต่อ operation ต่างกันมาก แถมยังมีการจอง memory อีก ก็ตามที่ recap ไปด้านบนเลยว่าค่าที่ return กลับมาแบบ local จะใช้ stack ซึ่งเร็วกว่า heap และไม่ต้องจอง memory ด้วย
+อันนี้ ชัดเจนเลยว่า return pointer ใช้เวลาต่อ operation ต่างกันมาก แถมยังมีการจอง memory อีก ก็ตามที่ recap ไปด้านบนเลยว่าค่าที่ return กลับมาแบบ local จะใช้ stack ซึ่งเร็วกว่า heap และไม่ต้องจอง memory ด้วย
 
 ### method receiver
-ท่านี้จะเจอในท่ากำหนด function ให้ type ซึ่งก็สามารถตั้ง receiver ได้ทั้ง 2 แบบอีก
+ท่านี้จะเจอในเวลาที่กำหนด function ให้ type ซึ่งก็สามารถตั้ง receiver ได้ทั้ง 2 แบบอีก
 ```go
 func (s SomeStruct) ReceiveByValue() SomeStruct {
   return s
@@ -94,9 +94,9 @@ func (s *SomeStruct) ReceiveByPointer() {
 ```
 benchmark ดูหน่อย
 ![benchmark_pass_to_func](img/benchmark_pass_to_func.webp "benchmark_pass_to_func")
-อันนี้ value เสียเวลาไปกับการ copy ก่อนถึงจะเรียกใช้ method แต่ pointer เรียกใช้ method ได้เลยจากการอ้าง memory address
+อันนี้ receiver แบบ value เสียเวลาไปกับการ copy ก่อนถึงจะเรียกใช้ method แต่ receiver แบบ pointer เรียกใช้ method ได้เลยจากการอ้าง memory address
 
-### เมื่อไหร่ควรใช้ pointer
+## เมื่อไหร่ควรใช้ pointer
 - method receiver ก็ตามชื่อเลยเหตุก็เพราะว่า [Choosing a value or pointer receiver
 ](https://go.dev/tour/methods/8)
   - pointer ทำให้ method สามารถแก้ไขค่าใน receiver ได้
@@ -107,11 +107,13 @@ benchmark ดูหน่อย
 
 ![cpu_cache](img/cpu_cache.webp "cpu_cache")
 
-### เมื่อไหร่ควรใช้ value
+## เมื่อไหร่ควรใช้ value
 - เมื่อไม่ตรงกับเงื่อนไขของ `เมื่อไหร่ควรใช้ pointer` **ถถถ** หยอก ๆ
 - พวก data type ทั่วไป เช่น `int`, `string`, `float` ฯลฯ
 - function return ที่ไม่ได้ใช้งานระดับ global เพราะถ้าใช้งานระดับ local มันจะเป็นการใช้ค่าจาก stack ซึ่งก็จะเร็วตามที่ได้ benchmark ไปด้านบนละนะ
 - อื่น ๆ ที่ไม่แน่ใจ (ก็เพราะ Go เป็นภาษาที่ copy by default ละนะ)
 
-### เคสพิเศษ
+## เคสพิเศษ
 - `map` `slice` `func` `chan` `interface` พวกนี้จะเป็น value ที่อ้างอิงไป pointer ในตัวอยู่แล้ว เวลาใช้ก็ใช้เป็น value ได้เลย
+
+จริง ๆ ยังมีรายละเอียดในการเขียน Go ที่เจอมาอีกเยอะ จริง ๆ แนะนำว่าควรอ่าน Doc ของภาษาที่ใช้ (ไม่เฉพาะ Go นะ) อย่างน้อยก็ในส่วนที่เป็น Effective guides ของแต่ละภาษา เพราะถ้าเราเขียนออกมาดีตาม guideline นอกจากจะไม่เข้าสู่ anti pattern แล้ว ยังทำให้ได้ perfomance ของแอปออกมาดี ไม่ต้องเปลืองค่า resources ที่เอาแอปเราไป deploy โดยใช่เหตุอีกด้วย (ไม่ใช่เอะอะก็โทษ resources ไม่พอต้อง scale up อย่างเดียว กลับมาดูตัวเราเองด้วยว่า เขียนดีแล้วหรือยัง)
