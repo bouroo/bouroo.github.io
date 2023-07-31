@@ -93,7 +93,7 @@ func (s *SomeStruct) ReceiveByPointer() {
 }
 ```
 benchmark ดูหน่อย
-![benchmark_pass_to_func](img/benchmark_pass_to_func.webp "benchmark_pass_to_func")
+![benchmark_receiver](img/benchmark_receiver.webp "benchmark_receiver")
 อันนี้ receiver แบบ value เสียเวลาไปกับการ copy ก่อนถึงจะเรียกใช้ method แต่ receiver แบบ pointer เรียกใช้ method ได้เลยจากการอ้าง memory address
 
 ## เมื่อไหร่ควรใช้ pointer
