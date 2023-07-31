@@ -100,7 +100,7 @@ benchmark ดูหน่อย
 - method receiver ก็ตามชื่อเลยเหตุก็เพราะว่า [Choosing a value or pointer receiver
 ](https://go.dev/tour/methods/8)
   - pointer ทำให้ method สามารถแก้ไขค่าใน receiver ได้
-  - เป็นหลีกเลี่ยงการ copy struct ทุกครั้งที่มีการเรียก method
+  - เป็นการหลีกเลี่ยงการ copy struct ทุกครั้งที่มีการเรียก method
 - struct ที่ใช้ `sync.Mutex` เพราะเหตุที่ต้องการใช้งานก็เพื่อให้มีการ Lock ในระหว่างที่ใช้งานอยู่ ป้องกันการซ้อนทับของข้อมูลระหว่าง go routine
 - struct ขนาดใหญ่ ส่วนเท่าไหร่ที่เรียกว่าใหญ่นั้น ก็เทียบขนาดกับ L2 cache ของ CPU ถ้าเกินก็ถือว่าใหญ่ (จริง ๆ พยายามให้ variable ที่ส่งระหว่างกันอยู่ในขนาดของ L1 ได้จะเร็วส์มาก)
   - ดูขนาด L cache ได้จาก `sudo lscpu | grep cache` ตัวอย่างจากเครื่องผมคือ L2 cache ขนาด 512 KiB * 8 CPU Cores = 4MiB เพราะฉะนั้น struct ที่เกิน 512KiB ก็ใช้เป็น pointer ไป (สำหรับเครื่องผมนะ)
