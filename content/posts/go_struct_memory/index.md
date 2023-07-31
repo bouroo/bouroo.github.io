@@ -1,19 +1,19 @@
 ---
-title: "ออกแบบ GO struct ด้วยความรู้วิชา Computer Architecture และ Data Structure"
+title: "ออกแบบ Go struct ด้วยความรู้วิชา Computer Architecture และ Data Structure"
 subtitle: ""
 date: 2023-07-30T13:01:50+07:00
 lastmod: 2023-07-30T13:01:50+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin-vir.pages.dev"
-description: "เราสามารถ Optimize โปรแกรมภาษา GO ด้วยความรู้ Computer Architecture และ Data Structure"
+description: "เราสามารถ Optimize โปรแกรมภาษา Go ด้วยความรู้ Computer Architecture และ Data Structure"
 license: ""
 images: []
 resources:
 - name: "featured-image"
   src: "go-featured-image.webp"
 
-tags: ["GO", "Computer Architecture", "Data Structure", "Programing"]
+tags: ["Go", "Computer Architecture", "Data Structure", "Programing"]
 categories: ["Programing"]
 
 featuredImage: "go-featured-image.webp"
@@ -22,7 +22,7 @@ featuredImagePreview: "featured-image"
 lightgallery: true
 ---
 
-ตอนสมัยเรียนวิศวคอมพิวเตอร์มีคำถามนึงโผล่มาเสมอว่าวิชาอย่าง Computer Architecture กับ Data Structure เรียนไปทำไมกันนะ จนกระทั้งจบออกมาได้เขียนภาษา GO ถึงได้เอะใจว่า ทำไม GO ถึงได้มี data type แบบกำหนดขนาด เช่น `int8` `int16` `int32` `int64` และอื่น ๆ ทำไมถึงไม่เป็น `int` หรือ `number` เฉย ๆ ไปเลยแบบภาษาขี้เกียจอย่าง TypeScript กันนะ จนได้มานั่งอ่านเกี่ยวกับ [sizes in GO](https://go.dev/src/go/types/sizes.go) ถึงได้รู้ว่าเราสามารถใช้ความรู้ในวิชา Computer Architecture และ Data Structure มาช่วยให้เราเขียน GO ออกมาได้ประสิทธิภาพอย่างที่ควรจะเป็น
+ตอนสมัยเรียนวิศวคอมพิวเตอร์มีคำถามนึงโผล่มาเสมอว่าวิชาอย่าง Computer Architecture กับ Data Structure เรียนไปทำไมกันนะ จนกระทั้งจบออกมาได้เขียนภาษา Go ถึงได้เอะใจว่า ทำไม Go ถึงได้มี data type แบบกำหนดขนาด เช่น `int8` `int16` `int32` `int64` และอื่น ๆ ทำไมถึงไม่เป็น `int` หรือ `number` เฉย ๆ ไปเลยแบบภาษาขี้เกียจอย่าง TypeScript กันนะ จนได้มานั่งอ่านเกี่ยวกับ [sizes in Go](https://go.dev/src/go/types/sizes.go) ถึงได้รู้ว่าเราสามารถใช้ความรู้ในวิชา Computer Architecture และ Data Structure มาช่วยให้เราเขียน Go ออกมาได้ประสิทธิภาพอย่างที่ควรจะเป็น
 
 <!--more-->
 
@@ -36,11 +36,11 @@ word size คือ ปริมาณของข้อมูลที่ regis
 ### Memory allocation
 Memory allocation คือ การจองพื้นที่ในหน่วยความจำนั่นเอง ซึ่งจะเป็นการจองพื้นที่ใช้งานจริง + พื้นที่ส่วนเพิ่มเพื่อให้เต็ม word size
 
-### Sizes ของ Data Type ใน GO
-ใน GO แต่ละ data type จะมีขนาดที่ใช้หน่วยความจำแตกต่างกัน [sizes in GO](https://go.dev/src/go/types/sizes.go) ซึ่งเราสามารถดูได้จาก `unsafe.Sizeof()`
+### Sizes ของ Data Type ใน Go
+ใน Go แต่ละ data type จะมีขนาดที่ใช้หน่วยความจำแตกต่างกัน [sizes in Go](https://go.dev/src/go/types/sizes.go) ซึ่งเราสามารถดูได้จาก `unsafe.Sizeof()`
 
-## GO struct
-GO struct คือการสร้าง structure ของ data ใน GO เช่น
+## Go struct
+Go struct คือการสร้าง structure ของ data ใน Go เช่น
 
 ```go
 type Customer struct {
@@ -144,4 +144,4 @@ go install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignme
 fieldalignment -fix ./...
 ```
 
-สุดท้ายนี้ก็อย่าลืมจัดเรียง GO struct และใช้ data type เท่าที่จำเป็นเสมอนะครับ (จะใช้วิธีเพิ่ม fieldalignment ใน precommit script ก็สะดวกนะเอ้อ)
+สุดท้ายนี้ก็อย่าลืมจัดเรียง Go struct และใช้ data type เท่าที่จำเป็นเสมอนะครับ (จะใช้วิธีเพิ่ม fieldalignment ใน precommit script ก็สะดวกนะเอ้อ)
