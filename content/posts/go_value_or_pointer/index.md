@@ -43,7 +43,7 @@ stack เร็วแต่จะใช้ข้อมูลได้จาก�
 ้heap ช้ากว่าแต่จะเรียกใช้ข้อมูลไหนก็ได้
 
 ## Go copy by default
-จาก [stack_or_heap](https://go.dev/doc/faq#stack_or_heap) ในเว็บหลังของ Go ระบุไว้แบบนี้
+จาก [stack_or_heap](https://go.dev/doc/faq#stack_or_heap) ในเว็บหลักของ Go ระบุไว้แบบนี้
 > From a correctness standpoint, you don't need to know. Each variable in Go exists as long as there are references to it. The storage location chosen by the implementation is irrelevant to the semantics of the language.
 > 
 > The storage location does have an effect on writing efficient programs. When possible, the Go compilers will allocate variables that are local to a function in that function's stack frame. However, if the compiler cannot prove that the variable is not referenced after the function returns, then the compiler must allocate the variable on the garbage-collected heap to avoid dangling pointer errors. Also, if a local variable is very large, it might make more sense to store it on the heap rather than the stack.
