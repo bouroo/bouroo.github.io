@@ -100,7 +100,7 @@ benchmark ดูหน่อย
 - method receiver ก็ตามชื่อเลยเหตุก็เพราะว่า [Choosing a value or pointer receiver
 ](https://go.dev/tour/methods/8)
   - pointer ทำให้ method สามารถแก้ไขค่าใน receiver ได้
-  - เป็นการหลีกเลี่ยงการ copy struct ทุกครั้งที่มีการเรียก method
+  - เป็นการหลีกเลี่ยงการ copy value ทุกครั้งที่มีการเรียก method
 - struct ที่ใช้ `sync.Mutex` เพราะเหตุที่ต้องการใช้งานก็เพื่อให้มีการ Lock ในระหว่างที่ใช้งานอยู่ ป้องกันการซ้อนทับของข้อมูลระหว่าง go routine
 - struct ขนาดใหญ่ ส่วนเท่าไหร่ที่เรียกว่าใหญ่นั้น ก็เทียบขนาดกับ L2 cache ของ CPU ถ้าเกินก็ถือว่าใหญ่ (จริง ๆ พยายามให้ variable ที่ส่งระหว่างกันอยู่ในขนาดของ L1 ได้จะเร็วส์มาก)
   - ดูขนาด L cache ได้จาก `sudo lscpu | grep cache` ตัวอย่างจากเครื่องผมคือ L2 cache ขนาด 512 KiB * 8 CPU Cores = 4MiB เพราะฉะนั้น struct ที่เกิน 512KiB ก็ใช้เป็น pointer ไป (สำหรับเครื่องผมนะ)
@@ -108,9 +108,10 @@ benchmark ดูหน่อย
 ![cpu_cache](img/cpu_cache.webp "cpu_cache")
 
 ## เมื่อไหร่ควรใช้ value
-- เมื่อไม่ตรงกับเงื่อนไขของ `เมื่อไหร่ควรใช้ pointer` **ถถถ** หยอก ๆ
+- เมื่อไม่ตรงกับเงื่อนไขของ **เมื่อไหร่ควรใช้ pointer** **ถถถ** หยอก ๆ
 - พวก data type ทั่วไป เช่น `int`, `string`, `float` ฯลฯ
 - function return ที่ไม่ได้ใช้งานระดับ global เพราะถ้าใช้งานระดับ local มันจะเป็นการใช้ค่าจาก stack ซึ่งก็จะเร็วตามที่ได้ benchmark ไปด้านบนละนะ
+- ค่าที่ส่งเข้า function เพราะถึงแม้ว่าการใช้ pointer จะเร็วกว่า แต่ข้อเสียหลักเลยคือ มันไม่ concurrent safe ยกตัวอย่างถ้าเราส่ง pointer เข้าไปทำงานใน function แล้วดันมีอีก Go routine นึงมาเขียนข้อมูลทับไป (race condition) result ที่ได้ก็คงยิ้มไม่ออก
 - อื่น ๆ ที่ไม่แน่ใจ (ก็เพราะ Go เป็นภาษาที่ copy by default ละนะ)
 
 ## เคสพิเศษ
