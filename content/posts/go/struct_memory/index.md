@@ -7,6 +7,8 @@ draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin-vir.pages.dev"
 description: "เราสามารถ Optimize โปรแกรมภาษา Go ด้วยความรู้ Computer Architecture และ Data Structure"
+aliases:
+- /posts/go_struct_memory/
 license: ""
 images: []
 resources:

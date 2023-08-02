@@ -7,6 +7,8 @@ draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin-vir.pages.dev"
 description: "เรามาดูกันว่าเราจะเขียน Go ตามแนวทาง SOLID ได้ยังไงกันนะ"
+aliases:
+- /posts/go_solid/
 license: ""
 images: []
 resources:

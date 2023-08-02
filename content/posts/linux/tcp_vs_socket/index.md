@@ -7,6 +7,8 @@ draft: fasle
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin-vir.pages.dev"
 description: "รู้หรือไม่ว่าเราสามารถได้ประสิทธิภาพเพิ่มขึ้นจาก Apps กับ DB ใน container ได้ด้วย Unix socket"
+aliases:
+- /posts/db_tcp_vs_socket/
 license: ""
 images: []
 resources:

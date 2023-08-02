@@ -7,6 +7,8 @@ draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin-vir.pages.dev"
 description: "บทความนี้จะแนะนำวิธีการนำเสนอเว็บเซอร์วิสของเราไปสู่โลกภายนอกด้วย K3S + Cloudflare Tunnel แบบไม่ต้องง้อ External Public IP"
+aliases:
+- /posts/behind_cloudflare/
 license: ""
 images: []
 resources:

@@ -7,6 +7,8 @@ draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin-vir.pages.dev"
 description: "ปรับตั้งค่าใน sysctl เพื่อให้ Linux server ทำงานได้ราบลื่นเมื่อมีโหลดมากขึ้น"
+aliases:
+- /posts/linux_sysctl_tuning/
 license: ""
 images: []
 resources:

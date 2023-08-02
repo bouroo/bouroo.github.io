@@ -7,6 +7,8 @@ draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin-vir.pages.dev"
 description: "ในเวลาที่เขียนภาษา Go มักจะมีคำถามนึงโผล่มาเสมอ คือตกลง func นี้จะใช้ Value หรือ Pointer ดีนะ เดี๋ยวเรามาดูความแตกต่างกัน"
+aliases:
+- /posts/go_value_or_pointer/
 license: ""
 images: []
 resources:
@@ -44,11 +46,13 @@ Go เป็นภาษาที่ copy by default เพราะฉะนั
 
 ## Go copy by default
 จาก [stack_or_heap](https://go.dev/doc/faq#stack_or_heap) ในเว็บหลักของ Go ระบุไว้แบบนี้
-> From a correctness standpoint, you don't need to know. Each variable in Go exists as long as there are references to it. The storage location chosen by the implementation is irrelevant to the semantics of the language.
-> 
-> The storage location does have an effect on writing efficient programs. When possible, the Go compilers will allocate variables that are local to a function in that function's stack frame. However, if the compiler cannot prove that the variable is not referenced after the function returns, then the compiler must allocate the variable on the garbage-collected heap to avoid dangling pointer errors. Also, if a local variable is very large, it might make more sense to store it on the heap rather than the stack.
-> 
-> In the current compilers, if a variable has its address taken, that variable is a candidate for allocation on the heap. However, a basic escape analysis recognizes some cases when such variables will not live past the return from the function and can reside on the stack.
+{{< admonition note "Note" >}}
+From a correctness standpoint, you don't need to know. Each variable in Go exists as long as there are references to it. The storage location chosen by the implementation is irrelevant to the semantics of the language.
+
+The storage location does have an effect on writing efficient programs. When possible, the Go compilers will allocate variables that are local to a function in that function's stack frame. However, if the compiler cannot prove that the variable is not referenced after the function returns, then the compiler must allocate the variable on the garbage-collected heap to avoid dangling pointer errors. Also, if a local variable is very large, it might make more sense to store it on the heap rather than the stack.
+
+In the current compilers, if a variable has its address taken, that variable is a candidate for allocation on the heap. However, a basic escape analysis recognizes some cases when such variables will not live past the return from the function and can reside on the stack.
+{{< /admonition >}}
 
 สรุปคือ Go compiler จะใช้ **stack** สำหรับ `local variable` ก่อน ส่วน variable ไหนที่ระบุไม่ได้ว่ามาจากไหนหรือเป็น `pointer` จะอยู่ใน **heap**
 
@@ -101,8 +105,8 @@ benchmark ดูหน่อย
 ](https://go.dev/tour/methods/8)
   - pointer ทำให้ method สามารถแก้ไขค่าใน receiver ได้
   - เป็นการหลีกเลี่ยงการ copy value ทุกครั้งที่มีการเรียก method
-- struct ที่ใช้ `sync.Mutex` เพราะเหตุที่ต้องการใช้งานก็เพื่อให้มีการ Lock ในระหว่างที่ใช้งานอยู่ ป้องกันการซ้อนทับของข้อมูลระหว่าง go routine
-- struct ขนาดใหญ่ ([วิธีคำนวนขนาด struct]({{< ref "/go_struct_memory" >}} "วิธีคำนวนขนาด struct")  ) ส่วนเท่าไหร่ที่เรียกว่าใหญ่นั้น ก็เทียบขนาดกับ L2 cache ของ CPU ถ้าเกินก็ถือว่าใหญ่ (จริง ๆ พยายามให้ variable ที่ส่งระหว่างกันอยู่ในขนาดของ L1 ได้จะเร็วส์มาก)
+- struct ที่ใช้ `sync.Mutex` เพราะเหตุที่ต้องการใช้งานก็เพื่อให้มีการ Lock ในระหว่างที่ใช้งานอยู่ ป้องกันการซ้อนทับของข้อมูลระหว่าง goroutine
+- struct ขนาดใหญ่ ([วิธีคำนวนขนาด struct]({{< ref "/posts/go/struct_memory" >}} "วิธีคำนวนขนาด struct")  ) ส่วนเท่าไหร่ที่เรียกว่าใหญ่นั้น ก็เทียบขนาดกับ L2 cache ของ CPU ถ้าเกินก็ถือว่าใหญ่ (จริง ๆ พยายามให้ variable ที่ส่งระหว่างกันอยู่ในขนาดของ L1 ได้จะเร็วส์มาก)
   - ดูขนาด L cache ได้จาก `sudo lscpu | grep cache` ตัวอย่างจากเครื่องผมคือ L2 cache ขนาด 512 KiB * 8 CPU Cores = 4MiB เพราะฉะนั้น struct ที่เกิน 512KiB ก็ใช้เป็น pointer ไป (สำหรับเครื่องผมนะ)
 
 ![cpu_cache](img/cpu_cache.webp "cpu_cache")
@@ -111,7 +115,7 @@ benchmark ดูหน่อย
 - เมื่อไม่ตรงกับเงื่อนไขของ **[เมื่อไหร่ควรใช้ pointer]({{<ref "#เมื่อไหร่ควรใช้ pointer" >}} "เมื่อไหร่ควรใช้ pointer" )** **ถถถ** หยอก ๆ
 - พวก data type ทั่วไป เช่น `int`, `string`, `float` ฯลฯ
 - function return ที่ไม่ได้ใช้งานระดับ global variable เพราะถ้าใช้งานระดับ local variable มันจะเป็นการใช้ค่าจาก stack ซึ่งก็จะเร็วตามที่ได้ benchmark ไปด้านบนละนะ
-- ค่าที่ส่งเข้า function เพราะถึงแม้ว่าการใช้ pointer จะเร็วกว่า แต่ข้อเสียหลักเลยคือ มันไม่ concurrent safe ยกตัวอย่างถ้าเราส่ง pointer เข้าไปทำงานใน function แล้วดันมีอีก Go routine นึงมาเขียนข้อมูลทับ pointer เดียวกันไป (race condition) result ที่ได้ก็คงยิ้มไม่ออก
+- ค่าที่ส่งเข้า function เพราะถึงแม้ว่าการใช้ pointer จะเร็วกว่า แต่ข้อเสียหลักเลยคือ มันไม่ concurrent safe ยกตัวอย่างถ้าเราส่ง pointer เข้าไปทำงานใน function แล้วดันมีอีก goroutine นึงมาเขียนข้อมูลทับ pointer เดียวกันไป (race condition) result ที่ได้ก็คงยิ้มไม่ออก
 - อื่น ๆ ที่ไม่แน่ใจ (ก็เพราะ Go เป็นภาษาที่ copy by default ละนะ)
 
 ## เคสพิเศษ

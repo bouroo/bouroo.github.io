@@ -6,6 +6,8 @@ draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin-vir.pages.dev"
 description: "บทความนี้จะแนะนำวิธีการซ่อนเว็บของเราไว้ข้างหลัง cloudflare อย่างมิดชิด"
+aliases:
+- /posts/go_solid/
 images: []
 resources:
 - name: "featured-image"
