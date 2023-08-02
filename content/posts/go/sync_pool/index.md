@@ -135,11 +135,11 @@ func DoSomethingWithPoolDefer() {
 ```
 เปรียบเทียบผลงาน ผ่านการใช้ `(*testing.B).RunParallel` เพื่อทดสอบแบบเป็น Parallel
 ![Basic sync.Pool{}](img/basic_pool.webp "Basic sync.Pool{}")
-จะเห็นได้ว่า เวลาที่ใช้ต่อ operation และหน่วยความจำที่ใช้ต่อ operation รวมถึงการ allocate ต่อ operation ก็ต่างกันให้เห็นชัด ๆ เลย ส่วนท่าขี้เกียจ play safe ด้วย defer จะใช้เวลามากกว่าเล็กน้อยเพราะว่าต้องรอจบ function ก่อนถึงจะ reset กับ put buffer คืน pool
+จะเห็นได้ว่า เวลาที่ใช้ต่อ operation และหน่วยความจำที่ใช้ต่อ operation รวมถึงการ allocate ต่อ operation ก็ต่างกัน ครึ่ง ๆ เลย ส่วนท่าขี้เกียจ play safe ด้วย defer จะใช้เวลามากกว่า แบบ put เองเล็กน้อยเพราะว่าต้องรอจบ function ก่อนถึงจะ reset กับ put buffer คืน pool
 
 ## ข้อดี
-- concurrent safe สามารถใช้งานใน goroutine ได้แบบพร้อม ๆ กัน
-- ประหยัดการ allocate memory
+- concurrent safe ทำให้สามารถใช้งานใน goroutine ได้แบบพร้อม ๆ กัน
+- ประหยัดการ allocate memory จากการยืม cache ใน pool มาใช้
 
 ## ข้อควรระวัง
 - ข้อมูลใน pool หายไปตามรอบของ GC (ไม่ได้อยู่ตลอดไปนะ)
@@ -147,5 +147,5 @@ func DoSomethingWithPoolDefer() {
 
 ## แล้วควรใช้ sync.Pool{} ตอนไหนดี
 - ตามปกติของ pkg sync เลย นั้นก็คือใช้ใน goroutine ที่มีการใช้งาน method เดิม ๆ ซ้ำ ๆ จะได้ไม่ต้องเปลือง allocate memory ทุกครั้งที่วนรอบการทำงาน
-- ใช้กับงานที่มีค่าใช้จ่ายในการ initialize เยอะ และใช้บ่อย ๆ เช่น `parser` `reader` `writer` `buffer` `network connection` ฯลฯ (ประมาณว่าค่าปั้นตัวมันแพง ขอยืมมาใช้งานละกัน จบงานก็ส่งคืน อะไรแบบนี้)
+- ใช้กับงานที่มีค่าใช้จ่ายในการ initialize เยอะ และใช้ซ้ำบ่อย ๆ เช่น `parser` `reader` `writer` `buffer` `network connection` ฯลฯ (ประมาณว่าค่าปั้นตัวมันแพง ขอยืมมาใช้งานละกัน จบงานก็ส่งคืน อะไรแบบนี้)
   - ตัวอย่าง เช่น [ParserPool ของ valyala/fastjson](https://pkg.go.dev/github.com/valyala/fastjson#ParserPool)
