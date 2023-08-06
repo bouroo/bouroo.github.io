@@ -105,6 +105,7 @@ benchmark ดูหน่อย
 ](https://go.dev/tour/methods/8)
   - pointer ทำให้ method สามารถแก้ไขค่าใน receiver ได้
   - เป็นการหลีกเลี่ยงการ copy value ทุกครั้งที่มีการเรียก method
+- function ที่ต้องใช้และแก้ค่าที่ origin value
 - struct ที่ใช้ `sync.Mutex` เพราะเหตุที่ต้องการใช้งานก็เพื่อให้มีการ Lock ในระหว่างที่ใช้งานอยู่ ป้องกันการซ้อนทับของข้อมูลระหว่าง goroutine
 - struct ขนาดใหญ่ ([วิธีคำนวนขนาด struct]({{< ref "/posts/go/struct_memory" >}} "วิธีคำนวนขนาด struct")  ) ส่วนเท่าไหร่ที่เรียกว่าใหญ่นั้น ก็เทียบขนาดกับ L2 cache ของ CPU ถ้าเกินก็ถือว่าใหญ่ (จริง ๆ พยายามให้ variable ที่ส่งระหว่างกันอยู่ในขนาดของ L1 ได้จะเร็วส์มาก)
   - ดูขนาด L cache ได้จาก `sudo lscpu | grep cache` ตัวอย่างจากเครื่องผมคือ L2 cache ขนาด 512 KiB * 8 CPU Cores = 4MiB เพราะฉะนั้น struct ที่เกิน 512KiB ก็ใช้เป็น pointer ไป (สำหรับเครื่องผมนะ)
