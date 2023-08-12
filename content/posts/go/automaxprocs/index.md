@@ -11,13 +11,12 @@ license: ""
 images: []
 resources:
 - name: "featured-image"
-  src: "featured-image.webp"
+  src: "go-featured-image.png"
+- name: "featured-image-preview"
+  src: "go-featured-image.webp"
 
 tags: ["Go", "Programing"]
 categories: ["Programing"]
-
-featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image"
 
 hiddenFromHomePage: false
 hiddenFromSearch: false

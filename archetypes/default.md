@@ -11,13 +11,12 @@ license: ""
 images: []
 resources:
 - name: "featured-image"
+  src: "featured-image.png"
+- name: "featured-image-preview"
   src: "featured-image.webp"
 
 tags: []
 categories: []
-
-featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image"
 
 hiddenFromHomePage: false
 hiddenFromSearch: false

@@ -13,13 +13,12 @@ license: ""
 images: []
 resources:
 - name: "featured-image"
+  src: "go-featured-image.png"
+- name: "featured-image-preview"
   src: "go-featured-image.webp"
 
 tags: ["Go", "Computer Architecture", "Data Structure", "Programing"]
 categories: ["Programing"]
-
-featuredImage: "go-featured-image.webp"
-featuredImagePreview: "featured-image"
 
 lightgallery: true
 
