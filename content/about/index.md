@@ -22,8 +22,6 @@ featuredImagePreview: "featured-image"
 lightgallery: true
 ---
 
-<!--more-->
-
 🌐 Remote Working lover.
 
 🧑‍💻 Backend (Go) Dev & System Admin.
@@ -32,6 +30,7 @@ lightgallery: true
 
 🏡 Like watching Japanese anime.
 
+<!--more-->
 
 ## 🌐 Socials:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/kawin-vir) [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/bouroo) 
