@@ -96,6 +96,22 @@ post = ""
 name = "Categories"
 url = "/categories/"
 title = ""
+[[menu.main]]
+weight = 4
+identifier = "about"
+pre = ""
+post = ""
+name = "About"
+url = "/about/"
+title = ""
+[[menu.main]]
+weight = 9
+identifier = "github"
+pre = "<i class='fab fa-github fa-fw' aria-hidden='true'></i>"
+post = ""
+name = "GitHub"
+url = "https://github.com/bouroo"
+title = "GitHub"
 
 [languages]
 
@@ -110,7 +126,7 @@ languageCode = "en"
 languageName = "English"
 
 [frontmatter]
-  date = ['date', 'publishDate', 'lastmod']
-  expiryDate = ['expiryDate']
-  lastmod = [':git', 'lastmod', 'date', 'publishDate']
-  publishDate = ['publishDate', 'date']
+date = ['date', 'publishDate', 'lastmod']
+expiryDate = ['expiryDate']
+lastmod = [':git', 'lastmod', 'date', 'publishDate']
+publishDate = ['publishDate', 'date']
