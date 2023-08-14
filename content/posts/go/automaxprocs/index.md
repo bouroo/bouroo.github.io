@@ -11,7 +11,7 @@ license: ""
 images: []
 resources:
 - name: "featured-image"
-  src: "go-featured-image.png"
+  src: "go-featured-image.webp"
 - name: "featured-image-preview"
   src: "go-featured-image.webp"
 
