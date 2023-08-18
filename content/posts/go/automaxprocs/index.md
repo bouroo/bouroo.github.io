@@ -28,6 +28,7 @@ GOMAXPROCS sets the maximum number of CPUs that can be executing simultaneously 
 <!--more-->
 
 ## ลองใช้งานดู
+![concurrency_vs_parallelism](img/concurrency_vs_parallelism.webp "concurrency vs parallelism")
 ซึ่งก็เหมือนจะดูดีที่กำหมดมาให้ว่าสามารถทำงานแบบ `Parallelism` (คนละอันกับ `Concurrency` นะ Concurrency คือ จัดการกับงานหลายอย่างในช่วงเวลาเดียวกัน**แต่ไม่จำเป็นต้องพร้อมกัน** Parallelism คือ **ทำงาน งานเดียวหรือหลายงาน พร้อมกัน**) ได้ตามจำนวน `logical CPU` แต่ปัญหาจะเกิดเมื่อแอปไม่ได้ทำงานอยู่บนสภาพแวดล้อมที่เป็น `Container` แล้วกำหนด `CPU quota` ไว้ (ซึ่งก็ปกติ Ops จะกำหนดไว้อยู่แล้วเพื่อไม่ให้ไปเบียดกับ services อื่น ๆ) แอปเรามันดันไม่ได้กำหนดค่า GOMAXPROCS ด้วย CPU quota ที่กำหนดมาจาก container นี่สิ ดูได้จากตัวอย่าง ลองสร้าง Go fiber ขึ้มมาแอปนึง ที่เป็นแบบ [Prefork](https://github.com/gofiber/fiber/issues/180)
 
 ```go
