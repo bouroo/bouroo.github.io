@@ -67,6 +67,10 @@ volumes:
 
 ต่อด้วย compose สำหรับ Dragonfly
 
+{{< admonition note "Note" >}}
+ปกติ Dragonfly จะใช้ Ram ขั้นต่ำต่อ Logical CPU อยู่ที่ 256MB นะครับ
+{{< /admonition >}}
+
 ```yaml
 services:
   dragonfly:
