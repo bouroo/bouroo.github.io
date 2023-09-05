@@ -32,7 +32,7 @@ Keys, Indexes ต้องสามารถเรียงลำดับกั
 ใช้ primary keys เป็นคีย์หลักแยกข้อมูลในแถวเสมอ อ้อ อย่าไปมักง่ายใช้ **auto_increment** นะ เพราะถ้าได้สเกลขึ้นไปใช้ distributed database ชีวิตจะลำบากเอา ไปใช้พวก ULID, Snowflake IDs, KSUID, UUIDv7 เถิด
 
 ## Field Length and Data Type
-ใช้ประเภทของข้อมูลและขนาดของข้อมูลให้เหมาะ / พอดีกับข้อมูลที่ใช้งาน เช่น Index ให้ดีก็อย่าให้ยาวเกิน 64 ตัว, ถ้าใช้ JSON ก็[ทำ Index จากฟิลล์ ใน JSON](https://www.postgresql.org/docs/current/datatype-json.html#JSON-INDEXING) ที่จะเอาไปใช้ใน WHERE clause ด้วยจะได้ไม่ต้อง WHERE LIKE ใน JSON อะไรแบบนี้
+ใช้ประเภทของข้อมูลและขนาดของข้อมูลให้เหมาะ / พอดีกับข้อมูลที่ใช้งาน เช่น Index ให้ดีก็อย่าให้ยาวเกิน 64 ตัว, ไม่ใช่เอะอะก็ varchar(255), ถ้าใช้ JSON ก็[ทำ Index จากฟิลล์ ใน JSON](https://www.postgresql.org/docs/current/datatype-json.html#JSON-INDEXING) ที่จะเอาไปใช้ใน WHERE clause ด้วยจะได้ไม่ต้อง WHERE LIKE ใน JSON อะไรแบบนี้
 
 ## Data Quantity and Retention
 เลือก access / query เฉพาะ ข้อมูลที่ต้องการใช้งานเท่านั้น ไม่ใช่กวาดไปทั้งตาราง ทั้ง ๆ ที่ใช้อยู่ไม่กี่สิบฟิลล์
@@ -43,7 +43,7 @@ Keys, Indexes ต้องสามารถเรียงลำดับกั
   - Inequality operators (<, <=, >, >=): ตัวดำเนินการแนวเปรียบเทียบ เช่น `WHERE indexed_column > value`
   - BETWEEN: เปรียบเทียบช่วงระหว่าง เช่น `WHERE indexed_column BETWEEN low_value AND high_value`
   - LIKE (เฉพาะ `prefix%` นะ): เช่น `WHERE indexed_column LIKE 'prefix%'` ส่วน `%suffix` ไม่ใช่นะ
-  - IS NULL กับ IS NOT NULL: ที่เป็นดำเนินการ เช่น `WHERE indexed_column IS NULL` ส่วน `ISNULL()` ไม่ใช่นะ
+  - IS NULL กับ IS NOT NULL: ที่เป็นดำเนินการ เช่น `WHERE indexed_column IS NULL` ส่วน `ISNULL(column)` ที่เป็น fn อันนี้ไม่ใช่นะ
   - DISTINCT: ใช้กับ **unique** indexed_column values เสมอนะ
   - EXISTS กับ NOT EXISTS: ใช้กับ indexed_column values เสมอนะ
   - CASE: ถ้าใช้กับการเปรียบเทียบตรง ๆ เช่น `CASE WHEN indexed_column = value THEN result END` เป็นใช้ได้
