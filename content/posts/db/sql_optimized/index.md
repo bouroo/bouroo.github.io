@@ -38,16 +38,16 @@ Keys, Indexes ต้องสามารถเรียงลำดับกั
 เลือก access / query เฉพาะ ข้อมูลที่ต้องการใช้งานเท่านั้น ไม่ใช่กวาดไปทั้งตาราง ทั้ง ๆ ที่ใช้อยู่ไม่กี่สิบฟิลล์
 
 ## Searchable Arguments (SARGable Queries)
-ใช้ Searchable arguments (SARGable) ใน query เสมอ แล้ว SARGable มันคืออัลไล ง่าย ๆ ก็คือตัวดำเนินการ (operators) ที่สามารถใช้งาน Indexes ได้ ซึ่งจะช่วยใน query เราเร็วขึ้น (เพราะมันไม่ต้องไล่กวาดข้อมูลทั้งตารางมาเช็คอะ) ยกตัวอย่าง
-  - Equals (=): ก็เท่ากับนั่นแหละแหละ เช่น `WHERE indexed_column = value`
-  - Inequality operators (<, <=, >, >=): ตัวดำเนินการแนวเปรียบเทียบ เช่น `WHERE indexed_column > value`
+ใช้ Searchable arguments (SARGable) ใน query เสมอ แล้ว SARGable มันคืออัลไล ง่าย ๆ ก็คือตัวดำเนินการ (operators) ที่สามารถใช้งาน Indexes ได้ ซึ่งจะช่วยใน query เราเร็วขึ้น (เพราะมันไม่ต้องไล่กวาดข้อมูลทั้งตารางมาเช็คอะ) ดำเนินการที่ใช้ประโยชน์จาก B+Tree index ได้ดี ยกตัวอย่าง
+  - Equals, IN (=): ก็เท่ากับนั่นแหละแหละ เช่น `WHERE indexed_column = value`
+  - Inequality operators (<, <=, >, >=): ตัวดำเนินการแนวเปรียบเทียบ เช่น `WHERE indexed_column > value` ไม่รวม **<>, !=** นะ
   - BETWEEN: เปรียบเทียบช่วงระหว่าง เช่น `WHERE indexed_column BETWEEN low_value AND high_value`
   - LIKE (เฉพาะ `prefix%` นะ): เช่น `WHERE indexed_column LIKE 'prefix%'` ส่วน `%suffix` ไม่ใช่นะ
   - IS NULL กับ IS NOT NULL: ที่เป็นดำเนินการ เช่น `WHERE indexed_column IS NULL` ส่วน `ISNULL(column)` ที่เป็น fn อันนี้ไม่ใช่นะ
   - DISTINCT: ใช้กับ **unique** indexed_column values เสมอนะ
   - EXISTS กับ NOT EXISTS: ใช้กับ indexed_column values เสมอนะ
   - CASE: ถ้าใช้กับการเปรียบเทียบตรง ๆ เช่น `CASE WHEN indexed_column = value THEN result END` เป็นใช้ได้
-  - หลีกเลี่ยงการใช้ฟังก์ชันที่ไม่ใช่ MATH fn ใน WHERE clause เช่น `WHERE YEAR(column) BETWEEN low_value AND high_value` หรือ `WHERE LEFT(column, 1) = 'K'`
+  - หลีกเลี่ยงการใช้ฟังก์ชันที่ไม่ใช่ **MATH fn** ใน WHERE clause เช่น `WHERE YEAR(column) BETWEEN low_value AND high_value` หรือ `WHERE LEFT(column, 1) = 'K'`
   - JOIN ON, USING: ด้วยเงื่อนไขที่ว่ามาข้างต้นเสมอ
 
 ## Concurrent Activities
