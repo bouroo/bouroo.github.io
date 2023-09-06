@@ -42,7 +42,7 @@ Keys, Indexes ต้องสามารถเรียงลำดับกั
   - Equals, IN (=): ก็เท่ากับนั่นแหละแหละ เช่น `WHERE indexed_column = value`
   - Inequality operators (<, <=, >, >=): ตัวดำเนินการแนวเปรียบเทียบ เช่น `WHERE indexed_column > value` ไม่รวม **<>, !=** นะ
   - BETWEEN: เปรียบเทียบช่วงระหว่าง เช่น `WHERE indexed_column BETWEEN low_value AND high_value`
-  - LIKE (เฉพาะ `prefix%` นะ): เช่น `WHERE indexed_column LIKE 'prefix%'` ส่วน `%suffix` ไม่ใช่นะ
+  - LIKE (เฉพาะ `prefix%` นะ): เช่น `WHERE indexed_column LIKE 'prefix%'` ส่วน `%suffix` ไม่ใช่นะ ถ้าจะใช้ `LIKE '%key word%'` ก็ควรย้ายไปใช้พวก database สำหรับ full text search ไป
   - IS NULL กับ IS NOT NULL: ที่เป็นดำเนินการ เช่น `WHERE indexed_column IS NULL` ส่วน `ISNULL(column)` ที่เป็น fn อันนี้ไม่ใช่นะ
   - DISTINCT: ใช้กับ **unique** indexed_column values เสมอนะ
   - EXISTS กับ NOT EXISTS: ใช้กับ indexed_column values เสมอนะ
@@ -55,3 +55,6 @@ Keys, Indexes ต้องสามารถเรียงลำดับกั
 
 ## Data Staging
 ถ้ามี query ที่ใหญ่เบิ้มจน query time out การแบ่งซอย query ใหญ่ ๆ ให้เล็กลงมาแล้วค่อยเอามารวมกัน ในบางกรณีนอกจากจะอ่านเข้าใจง่ายแล้วยังช่วยให้ได้ประสิทธิภาพเพิ่มขึ้นด้วยนะเอ้อ แต่จริง ๆ ถ้า query มันดูแล้วเหมือนจะเป็น code program แสดงว่ามันไม่ใช่แล้วอะ เอาออกมาทำเป็น program เถอะ
+
+## Flexible Column
+ถ้าข้อมูลที่มีการปรับเปลี่ยนโครงสร้างตารางบ่อย ๆ ก็ย้ายไปใช้ **NoSQL** จะเหมาะกว่า
