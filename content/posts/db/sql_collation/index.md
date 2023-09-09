@@ -61,5 +61,7 @@ seo:
   # ...
 ---
 
+เวลาสร้าง Database หรือ Table เราจะกำหนด CHARACTER SET และ COLLATE เช่น `utf8mb4_unicode_ci`
+
 <!--more-->
 

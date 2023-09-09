@@ -14,14 +14,53 @@ images: []
 resources:
 - name: "featured-image"
   src: "featured-image.webp"
+- name: "featured-image-preview"
+  src: "featured-image.webp"
 
 tags: ["Cloudflare", "DevOps", "K3S", "K8S"]
 categories: ["DevOps"]
 
-featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image"
-
+hiddenFromHomePage: false
+hiddenFromSearch: false
+twemoji: false
 lightgallery: true
+ruby: true
+fraction: true
+fontawesome: true
+linkToMarkdown: true
+rssFullText: false
+
+toc:
+  enable: true
+  auto: true
+code:
+  copy: true
+  maxShownLines: 50
+math:
+  enable: false
+  # ...
+mapbox:
+  # ...
+share:
+  enable: true
+  # ...
+comment:
+  enable: true
+  # ...
+library:
+  css:
+    # someCSS = "some.css"
+    # located in "assets/"
+    # Or
+    # someCSS = "https://cdn.example.com/some.css"
+  js:
+    # someJS = "some.js"
+    # located in "assets/"
+    # Or
+    # someJS = "https://cdn.example.com/some.js"
+seo:
+  images: []
+  # ...
 ---
 
 หากเรามี home lab หรือ service ที่อยู่ใน k3s/k8s อยากเปิดให้ชาวโลกได้เข้ามาใช้งาน แต่ไม่มี public IP จะทำอย่างไรได้นะ ยิ่งในโลกที่ทุกวันนี้ ISP แจก IP แบบ Carrier-grade NAT หรือเรียกติดปากกันว่า large-scale NAT (LSN) ทำให้จะใช้ DDNS ก็ลำบากอัปเดต IP กันอีก จึงเป็นที่มาของพระเอกในบทความนี้ครับ
