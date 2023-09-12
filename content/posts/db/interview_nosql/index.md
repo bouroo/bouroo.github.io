@@ -15,8 +15,8 @@ resources:
 - name: "featured-image-preview"
   src: "featured-image.webp"
 
-tags: []
-categories: []
+tags: ["Database", "NoSQL"]
+categories: ["NoSQL"]
 
 hiddenFromHomePage: false
 hiddenFromSearch: false
