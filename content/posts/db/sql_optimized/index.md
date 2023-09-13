@@ -18,47 +18,7 @@ resources:
 tags: ["Database", "SQL"]
 categories: ["SQL"]
 
-hiddenFromHomePage: false
-hiddenFromSearch: false
-twemoji: false
 lightgallery: true
-ruby: true
-fraction: true
-fontawesome: true
-linkToMarkdown: true
-rssFullText: false
-
-toc:
-  enable: true
-  auto: true
-code:
-  copy: true
-  maxShownLines: 50
-math:
-  enable: false
-  # ...
-mapbox:
-  # ...
-share:
-  enable: true
-  # ...
-comment:
-  enable: true
-  # ...
-library:
-  css:
-    # someCSS = "some.css"
-    # located in "assets/"
-    # Or
-    # someCSS = "https://cdn.example.com/some.css"
-  js:
-    # someJS = "some.js"
-    # located in "assets/"
-    # Or
-    # someJS = "https://cdn.example.com/some.js"
-seo:
-  images: []
-  # ...
 ---
 
 เมื่อเราต้องทำงานกับ Relational database (RDBMS) สิ่งที่พบบ่อย ๆ เลยคือเมื่อข้อมูลมาก ขึ้นทำไมมันถึงได้ช้าลง ทำไมมันถึงไม่เร็วเหมือนตอน Dev กันนะ วันนี้มาดูวิธีออกแบบ Query และ Table ให้สามารถ Access ได้เร็วอย่างที่ควรจะเป็นกัน
