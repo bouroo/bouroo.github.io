@@ -43,7 +43,7 @@ lightgallery: true
 
 ## Zercle Technology Co., Ltd.
 ### Technical co-founder
-2012 - Present
+2012 - 2023
 - Research and drive development best practices.
 - Development of (Go) Backend.
 - Define/implement CI/CD for Dev teams.
@@ -57,7 +57,7 @@ Feb 2014 - Jul 2020
 
 ## COOP NIX Co., Ltd.
 ### Senior System Engineer
-2016 - Present
+2016 - 2023
 - Develop a Hyper-converged infrastructure system.
 - Maintain a customer's private server.
 - Provide computer server/computer network maintenance services.
