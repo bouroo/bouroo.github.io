@@ -24,6 +24,7 @@ lightgallery: true
 <!--more-->
 
 ## Offset / Limit
+เริ่มจากท่า classic ที่ทุกคนน่าจะเคยใช้กันอยู่แล้วคือ Offset / Limit นั่นเอง
 ```sql
 SELECT
   *
@@ -36,6 +37,7 @@ LIMIT
 ```
 
 ## Cursor
+ต่อมาคือการใช้ Index Cursor
 ```sql
 SELECT
   *
@@ -50,6 +52,7 @@ LIMIT
 ```
 
 ## Offset / Limit + Deferred Joins
+เนื่องจาก Offset / Limit ใช้งานสะดวกแต่ก็แลกมาด้วยความเปลือง เราสามารถลดความเปลืองลงได้ด้วยการลดขนาดการโยนข้อมูลทิ้งได้ด้วยการใช้ Deferred Joins นั่นเอง
 ```sql
 SELECT
   *
