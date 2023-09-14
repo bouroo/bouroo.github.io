@@ -113,10 +113,18 @@ WHERE
 }
 ```
 
-สิ่งนี้เรียกว่า index obscure ก็คือ database มองว่า where จาก ผลของ fn(column) ทำให้ต้องไล่ LOWER() ไปจนสุดตาราง ซึ่งถ้าในตอนที่เราสร้างตาราง/คอลัมน์ เป็นแบบ case insensitive อยู่แล้วเราก็สามารถใช้ `=` ได้เลย
+สิ่งนี้เรียกว่า **index obscure** ก็คือ database มองว่า where จาก ผลของ fn(column) ทำให้ต้อง**ไล่ LOWER() ไปจนสุดตาราง** ซึ่งถ้าในตอนที่เราสร้างตาราง/คอลัมน์ เป็นแบบ case insensitive อยู่แล้วเราก็สามารถใช้ `=` ได้เลย
 
 ```sql
-SELECT users.id FROM users WHERE users.first_name = 'kawin'
+EXPLAIN FORMAT=JSON
+SELECT
+  users._id,
+  users.first_name,
+  users.last_name
+FROM
+  users
+WHERE
+  users.first_name = 'kawin';
 ```
 
 ซึง EXPLAIN ออกมาจะได้ตามนี้ อ่านไปแค่ 3 rows แทนที่จะอ่านจากทั้งตาราง ซึ่งก็ได้ผลออกมาเหมือนกับใช้ LOWER() ครอบเลย
@@ -147,5 +155,5 @@ SELECT users.id FROM users WHERE users.first_name = 'kawin'
 ```
 
 {{< admonition warning >}}
-เนื่องจากจะตัวเล็กจะตัวใหญ่ มีค่าเท่ากันต้องระวังในการใช้ unique เพราะ database จะมองว่า Kawin ซ้ำกับ kawin ได้นั่นเอง
+เนื่องจากจะตัวเล็กจะตัวใหญ่ มีค่าเท่ากันต้องระวังในการใช้ unique เพราะ database จะมองว่า Kawin ซ้ำกับ kawin นั่นเอง
 {{< /admonition >}}
