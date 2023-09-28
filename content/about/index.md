@@ -43,7 +43,7 @@ lightgallery: true
 
 ## Zercle Technology Co., Ltd.
 ### Technical co-founder
-2012 - 2023
+Jan 2012
 - Research and drive development best practices.
 - Development of (Go) Backend.
 - Define/implement CI/CD for Dev teams.
@@ -57,13 +57,13 @@ Feb 2014 - Jul 2020
 
 ## COOP NIX Co., Ltd.
 ### Senior System Engineer
-2016 - 2023
+Jan 2016
 - Develop a Hyper-converged infrastructure system.
 - Maintain a customer's private server.
 - Provide computer server/computer network maintenance services.
 
 ## Tomato Ideas Co., Ltd.
 ### Technical Lead
-May 2023 - Sep 2023
+May 2023
 - Define/setup application monitoring to ensure best customer experience.
 - Troubleshoot technical issues and provide long term solutions and implementation.
