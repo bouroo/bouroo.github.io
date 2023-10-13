@@ -49,6 +49,12 @@ May 2023 - Sep 2023
 - Troubleshoot technical issues and provide long term solutions and implementation.
 - Tuning infrastructure for large concurrent request.
 
+## Canghan Coffee
+### Coffee Roaster co-founder
+Nov 2019
+- create a coffee/drinking recipe.
+- roast coffee beans.
+
 ## COOP NIX Co., Ltd.
 ### Senior System Engineer
 Jan 2016
