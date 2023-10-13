@@ -9,9 +9,6 @@ authorLink: "https://kawin-vir.pages.dev"
 description: ""
 license: ""
 images: []
-resources:
-- name: "featured-image"
-  src: "featured-image.webp"
 
 tags: []
 categories: []
@@ -41,19 +38,16 @@ lightgallery: true
 ---
 # Works
 
-## Zercle Technology Co., Ltd.
-### Technical co-founder
-Jan 2012
-- Research and drive development best practices.
-- Development of (Go) Backend.
-- Define/implement CI/CD for Dev teams.
-- Define/implement infrastructure for stability and scale-ability.
+## Extend IT Resource Co., Ltd.
+### Senior Software Developer
+Oct 2023
 
-## Provincial Waterworks Authority
-### Computer Engineer
-Feb 2014 - Jul 2020
-- Maintain computer/server infrastructure.
-- Provide a reliable and stable computer network for all PWA 6's branches.
+## Tomato Ideas Co., Ltd.
+### Technical Lead
+May 2023 - Sep 2023
+- Define/setup application monitoring to ensure best customer experience.
+- Troubleshoot technical issues and provide long term solutions and implementation.
+- Tuning infrastructure for large concurrent request.
 
 ## COOP NIX Co., Ltd.
 ### Senior System Engineer
@@ -62,8 +56,16 @@ Jan 2016
 - Maintain a customer's private server.
 - Provide computer server/computer network maintenance services.
 
-## Tomato Ideas Co., Ltd.
-### Technical Lead
-May 2023
-- Define/setup application monitoring to ensure best customer experience.
-- Troubleshoot technical issues and provide long term solutions and implementation.
+## Provincial Waterworks Authority
+### Computer Engineer
+Feb 2014 - Jul 2020
+- Maintain computer/server infrastructure.
+- Provide a reliable and stable computer network for all PWA 6's branches.
+
+## Zercle Technology Co., Ltd.
+### Technical co-founder
+Jan 2012
+- Research and drive development best practices.
+- Development of (Go) Backend.
+- Define/implement CI/CD for Dev teams.
+- Define/implement infrastructure for stability and scale-ability.
