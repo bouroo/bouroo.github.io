@@ -36,6 +36,8 @@ description = "Kawin's Pages & Blogs"
 defaultTheme = "auto"
 # public git repo url only then enableGitInfo is true
 gitRepo = "https://github.com/bouroo/bouroo.github.io"
+# website images for Open Graph and Twitter Cards
+images = ["https://avatars.githubusercontent.com/u/1217739"]
 [params.header]
 [params.header.title]
 name = "Kawin vir."
