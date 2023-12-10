@@ -5,7 +5,7 @@ date: 2023-07-19T23:56:31+07:00
 lastmod: 2023-07-19T23:56:31+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
-authorLink: "https://kawin-vir.pages.dev"
+authorLink: "https://kawin.dev"
 description: "ปรับตั้งค่าใน sysctl เพื่อให้ Linux server ทำงานได้ราบลื่นเมื่อมีโหลดมากขึ้น"
 aliases:
 - /posts/linux_sysctl_tuning/

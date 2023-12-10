@@ -5,7 +5,7 @@ date: 2023-07-20T19:49:54+07:00
 lastmod: 2023-07-20T19:49:54+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
-authorLink: "https://kawin-vir.pages.dev"
+authorLink: "https://kawin.dev"
 description: "บทความนี้จะแนะนำวิธีการนำเสนอเว็บเซอร์วิสของเราไปสู่โลกภายนอกด้วย K3S + Cloudflare Tunnel แบบไม่ต้องง้อ External Public IP"
 aliases:
 - /posts/behind_cloudflare/

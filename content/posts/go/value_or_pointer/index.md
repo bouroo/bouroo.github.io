@@ -5,7 +5,7 @@ date: 2023-07-31T18:33:40+07:00
 lastmod: 2023-07-31T21:33:40+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
-authorLink: "https://kawin-vir.pages.dev"
+authorLink: "https://kawin.dev"
 description: "ในเวลาที่เขียนภาษา Go มักจะมีคำถามนึงโผล่มาเสมอ คือตกลง func นี้จะใช้ Value หรือ Pointer ดีนะ เดี๋ยวเรามาดูความแตกต่างกัน"
 aliases:
 - /posts/go_value_or_pointer/

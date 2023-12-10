@@ -5,7 +5,7 @@ date: 2023-09-12T20:15:55+07:00
 lastmod: 2023-09-12T20:15:55+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
-authorLink: "https://kawin-vir.pages.dev"
+authorLink: "https://kawin.dev"
 description: "NoSQL คืออะไร มีอะไรบ้าง แล้วเหมาะกับอะไรบ้างนะ"
 license: ""
 images: []

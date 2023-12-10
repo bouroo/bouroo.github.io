@@ -5,7 +5,7 @@ date: 2023-07-29T09:16:31+07:00
 lastmod: 2023-07-29T09:16:31+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
-authorLink: "https://kawin-vir.pages.dev"
+authorLink: "https://kawin.dev"
 description: "เรามาดูกันว่าเราจะเขียน Go ตามแนวทาง SOLID ได้ยังไงกันนะ"
 aliases:
 - /posts/go_solid/

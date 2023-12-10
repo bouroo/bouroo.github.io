@@ -5,7 +5,7 @@ date: 2023-08-13T00:19:58+07:00
 lastmod: 2023-08-13T00:19:58+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
-authorLink: "https://kawin-vir.pages.dev"
+authorLink: "https://kawin.dev"
 description: "ตั้งค่า GOMAXPROCS ให้เข้ากับสภาพแวดล้อมกันเถิด"
 license: ""
 images: []

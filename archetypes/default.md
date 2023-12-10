@@ -5,7 +5,7 @@ date: {{ .Date }}
 lastmod: {{ .Date }}
 draft: true
 author: "Kawin Viriyaprasopsook"
-authorLink: "https://kawin-vir.pages.dev"
+authorLink: "https://kawin.dev"
 description: ""
 license: ""
 images: []

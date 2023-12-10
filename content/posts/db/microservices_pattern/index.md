@@ -5,7 +5,7 @@ date: 2023-09-28T23:45:41+07:00
 lastmod: 2023-09-28T23:45:41+07:00
 draft: true
 author: "Kawin Viriyaprasopsook"
-authorLink: "https://kawin-vir.pages.dev"
+authorLink: "https://kawin.dev"
 description: ""
 license: ""
 images: []

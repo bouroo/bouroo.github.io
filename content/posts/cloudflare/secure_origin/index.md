@@ -4,7 +4,7 @@ date: 2023-07-15T21:57:40+07:00
 lastmod: 2023-07-16T14:45:40+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
-authorLink: "https://kawin-vir.pages.dev"
+authorLink: "https://kawin.dev"
 description: "บทความนี้จะแนะนำวิธีการซ่อนเว็บของเราไว้ข้างหลัง cloudflare อย่างมิดชิด"
 aliases:
 - /posts/go_solid/

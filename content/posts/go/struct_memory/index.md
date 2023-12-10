@@ -5,7 +5,7 @@ date: 2023-07-30T13:01:50+07:00
 lastmod: 2023-07-30T13:01:50+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
-authorLink: "https://kawin-vir.pages.dev"
+authorLink: "https://kawin.dev"
 description: "เราสามารถ Optimize โปรแกรมภาษา Go ด้วยความรู้ Computer Architecture และ Data Structure"
 aliases:
 - /posts/go_struct_memory/

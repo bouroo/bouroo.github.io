@@ -5,7 +5,7 @@ date: 2023-08-01T20:31:34+07:00
 lastmod: 2023-08-02T20:31:34+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
-authorLink: "https://kawin-vir.pages.dev"
+authorLink: "https://kawin.dev"
 description: "ลดการจอง memory ใน Go ด้วยการ re-use memory ผ่าน sync.Pool"
 aliases:
 - /posts/go_sync_pool/

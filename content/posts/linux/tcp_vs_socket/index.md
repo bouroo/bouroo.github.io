@@ -5,7 +5,7 @@ date: 2023-07-28T19:52:51+07:00
 lastmod: 2023-07-28T19:52:51+07:00
 draft: fasle
 author: "Kawin Viriyaprasopsook"
-authorLink: "https://kawin-vir.pages.dev"
+authorLink: "https://kawin.dev"
 description: "รู้หรือไม่ว่าเราสามารถได้ประสิทธิภาพเพิ่มขึ้นจาก Apps กับ DB ใน container ได้ด้วย Unix socket"
 aliases:
 - /posts/db_tcp_vs_socket/
