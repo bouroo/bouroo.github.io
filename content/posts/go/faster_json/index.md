@@ -47,7 +47,7 @@ import (
 	goccy "github.com/goccy/go-json"
 )
 
-func |BenchmarkGoSTDUnmarshal(b *testing.B) {
+func BenchmarkGoSTDUnmarshal(b *testing.B) {
 
 	b.ReportAllocs()
 	b.RunParallel(func(pb *testing.PB) {
@@ -59,7 +59,7 @@ func |BenchmarkGoSTDUnmarshal(b *testing.B) {
 	})
 }
 
-func |BenchmarkGoCcyUnmarshal(b *testing.B) {
+func BenchmarkGoCcyUnmarshal(b *testing.B) {
 
 	b.ReportAllocs()
 	b.RunParallel(func(pb *testing.PB) {
@@ -71,7 +71,7 @@ func |BenchmarkGoCcyUnmarshal(b *testing.B) {
 	})
 }
 
-func |BenchmarkGoSTDDecoder(b *testing.B) {
+func BenchmarkGoSTDDecoder(b *testing.B) {
 
 	b.ReportAllocs()
 	b.RunParallel(func(pb *testing.PB) {
@@ -84,7 +84,7 @@ func |BenchmarkGoSTDDecoder(b *testing.B) {
 	})
 }
 
-func |BenchmarkGoCcyDecoder(b *testing.B) {
+func BenchmarkGoCcyDecoder(b *testing.B) {
 
 	b.ReportAllocs()
 	b.RunParallel(func(pb *testing.PB) {
