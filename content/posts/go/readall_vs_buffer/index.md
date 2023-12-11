@@ -79,12 +79,14 @@ func BenchmarkCopy(b *testing.B) {
 
 ### ผลการทดสอบ
 ผลการทดสอบอ่านไฟล์ small 10KB, medium 2.9MB, large 26MB
-```console
-BenchmarkReadAllSmall-8            45658             24383 ns/op           46296 B/op         14 allocs/op
-BenchmarkCopySmall-8               64654             16235 ns/op           30938 B/op         11 allocs/op
-BenchmarkReadAllMedium-8            1510            734884 ns/op        16792061 B/op         37 allocs/op
-BenchmarkCopyMedium-8               3433            333917 ns/op         8388372 B/op         20 allocs/op
-BenchmarkReadAllLarge-8              171           6335655 ns/op        160741794 B/op        46 allocs/op
-BenchmarkCopyLarge-8                 237           7064719 ns/op        67108578 B/op         22 allocs/op
-```
+
+|Name|Loops Executed|Time Taken per Iteration|Bytes Allocated per Operation|Allocations per Operation|
+|---|---|---|---|---|
+|BenchmarkReadAllSmall-8|            45658|             24383 ns/op|           46296 B/op|         14 allocs/op|
+|BenchmarkCopySmall-8|               64654|             16235 ns/op|           30938 B/op|         11 allocs/op|
+|BenchmarkReadAllMedium-8|            1510|            734884 ns/op|        16792061 B/op|         37 allocs/op|
+|BenchmarkCopyMedium-8|               3433|            333917 ns/op|         8388372 B/op|         20 allocs/op|
+|BenchmarkReadAllLarge-8|              171|           6335655 ns/op|        160741794 B/op|        46 allocs/op|
+|BenchmarkCopyLarge-8|                 237|           7064719 ns/op|        67108578 B/op|         22 allocs/op|
+
 จะพบว่า `io.Copy` จะประสิทธิภาพดีกว่า `io.ReadAll` เฉลี่ยที่ 40% เลยทีเดียว แต่ก็แลกมากับการที่ต้องเขียนโค้ดเพิ่ม Buffer มารับข้อมูล ซึ่งอาจจะไม่ถูกจริตสายขี้เกียจสักเท่าไหร่ 🤣🤣🤣
