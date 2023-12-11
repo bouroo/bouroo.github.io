@@ -49,14 +49,20 @@ bodyBytes := bytesBuff.Bytes()
 ## เปรียบเทียบการทำงาน
 
 ### เขียนการทดสอบ
-โดยจะทดสอบด้วยการทำ Benchmark เทียบการอ่านไฟล์
+โดยจะทดสอบด้วยการทำ Benchmark เทียบการอ่านไฟล์ JSON
 ```go
+import (
+	"os"
+	"bytes"
+	"testing"
+)
+
 func BenchmarkReadAll(b *testing.B) {
 
 	b.ReportAllocs()
 	b.RunParallel(func(pb *testing.PB) {
 		for pb.Next() {
-			file, _ := os.OpenFile("file.json", os.O_RDONLY, 0664)
+			file, _ := os.Open("file.json")
 			defer file.Close()
 			io.ReadAll(file)
 		}
@@ -68,7 +74,7 @@ func BenchmarkCopy(b *testing.B) {
 	b.ReportAllocs()
 	b.RunParallel(func(pb *testing.PB) {
 		for pb.Next() {
-			file, _ := os.OpenFile("file.json", os.O_RDONLY, 0664)
+			file, _ := os.Open("file.json")
 			defer file.Close()
 			bytesBuff := new(bytes.Buffer)
 			io.Copy(bytesBuff, file)
