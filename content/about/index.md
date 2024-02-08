@@ -41,6 +41,11 @@ lightgallery: true
 ## Extend IT Resource Co., Ltd.
 ### Senior Software Developer
 Oct 2023
+- Lead BackEnd team
+- Research and drive development best practices.
+- Development of (Go) Backend.
+- Define/implement CI/CD for Dev teams.
+- Define/implement infrastructure for stability and scale-ability.
 
 ## Tomato Ideas Co., Ltd.
 ### Technical Lead
