@@ -43,7 +43,7 @@ Interpreting the actual data can only be done with information obtained from oth
 {{< /admonition >}}
 ที่มา [Table Row Layout](https://www.postgresql.org/docs/current/storage-page-layout.html#STORAGE-TUPLE-LAYOUT)
 
-จากข้อความที่เน้นไว้จะพบว่าการเรียง column ให้ดี ตอนที่สร้างตารางไม่ได้มีผลแค่ storage เท่านั้นยังมีผลต่อ memory กับ cpu ที่ใช้งานคารางนั้นด้วย
+จากข้อความที่เน้นไว้จะพบว่าการเรียง column ให้ดี ตอนที่สร้างตารางไม่ได้มีผลแค่ storage เท่านั้นยังมีผลต่อ memory กับ cpu ที่ใช้งานตารางนั้นด้วย
 
 ## ว่าด้วยเรื่อง Padding
 หลังจากอ่าน Docs แล้วยัง งง กันอยู่เรามาลองดูว่าพอใช้งานจริง ๆ มันจะเป็นยังไงนะ
@@ -107,7 +107,7 @@ select pg_column_size(tb_continuous.*) - 24 as row_size from tb_continuous limit
 
 อ้าวเห้ย ทำไมไม่เท่ากันละ ถถถ
 
-มาถึงตรงนี้ถ้าสังเกตจาก `typlen` คนที่เคยอ่าน ([ออกแบบ Go struct ด้วยความรู้วิชา Computer Architecture และ Data Structure]({{< ref "/posts/go/struct_memory" >}} "ออกแบบ Go struct ด้วยความรู้วิชา Computer Architecture และ Data Structure")) ก็จะพบว่ามันคล้าย ๆ กัยเลยนะ ใช่ครับมันคือสิ่งเดียวกันเลย สิ่งที่เกิดขึ้นคือ padding ระหว่าง filed ที่ออกมานั่นเองครับ
+มาถึงตรงนี้ถ้าสังเกตจาก `typlen` คนที่เคยอ่าน ([ออกแบบ Go struct ด้วยความรู้วิชา Computer Architecture และ Data Structure]({{< ref "/posts/go/struct_memory" >}} "ออกแบบ Go struct ด้วยความรู้วิชา Computer Architecture และ Data Structure")) ก็จะพบว่ามันคล้าย ๆ กันเลยนะ ใช่ครับมันคือสิ่งเดียวกันเลย สิ่งที่เกิดขึ้นคือ padding ระหว่าง filed ที่ออกมานั่นเองครับ
 
 ซึ่งเราสามารถใช้ extension `pageinspect` เพื่ออธิบายสิ่งที่เกิดขึ้นได้ตามนี้
 
