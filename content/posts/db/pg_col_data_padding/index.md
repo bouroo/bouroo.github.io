@@ -84,14 +84,12 @@ WHERE c.relname = 'tb_continuous' AND a.attnum >= 0;
 (4 rows)
 ```
 
-ก็คือ
+จากที่เห็นก็คือ
 - `BIGINT` ใช้ 8 bytes
 - `INT` ใช้ 4 bytes
 - `SMALLINT` ใช้ 2 bytes
-- 
-ก็จะคำนวณออกมาได้ว่าทั้ง 2 ตารางใช้ก็น่าจะใช้ 22 bytes ต่อหนึ่ง row
 
-แล้วเรามาดูความเป็นจริง
+เราคำนวณออกมาได้ว่าทั้ง 2 ตารางใช้ก็น่าจะใช้ 22 bytes ต่อหนึ่ง row แต่แล้วเรามาดูความเป็นจริง
 
 ```sql
 select pg_column_size(tb_fragment.*) - 24 as row_size from tb_fragment limit 1;
