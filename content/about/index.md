@@ -40,7 +40,7 @@ lightgallery: true
 
 ## Extend IT Resource Co., Ltd.
 ### Senior Software Developer
-Oct 2023
+2024 - present
 - Lead BackEnd team
 - Research and drive development best practices.
 - Development of (Go) Backend.
