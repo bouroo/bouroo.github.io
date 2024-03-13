@@ -24,12 +24,14 @@ lightgallery: true
 ## Recap
 จาก [Go runtime](https://pkg.go.dev/runtime) ได้อธิบายไว้ว่า
 
+### GOMEMLIMIT (Go 1.19+)
 {{< admonition note "Note" >}}
 The `GOMEMLIMIT` variable sets a soft memory limit for the runtime. This memory limit includes the Go heap and all other memory managed by the runtime, and excludes external memory sources such as mappings of the binary itself, memory managed in other languages, and memory held by the operating system on behalf of the Go program. `GOMEMLIMIT` is a numeric value in bytes with an optional unit suffix. The supported suffixes include B, KiB, MiB, GiB, and TiB. These suffixes represent quantities of bytes as defined by the IEC 80000-13 standard. That is, they are based on powers of two: KiB means 2^10 bytes, MiB means 2^20 bytes, and so on. The default setting is [math.MaxInt64](https://pkg.go.dev/runtime/internal/math#MaxInt64), which effectively disables the memory limit. [runtime/debug.SetMemoryLimit](https://pkg.go.dev/runtime/debug#SetMemoryLimit) allows changing this limit at run time.
 {{< /admonition >}}
 
 ซึ่งก็คือค่าที่บอก Go runtime ว่าเรามี memory ให้ใช้งานเท่าไหร่ ซึ่งค่า default จะเป็นไม่เปิดใช้ memory limit นั่นเอง
 
+### GOMAXPROCS
 {{< admonition note "Note" >}}
 The `GOMAXPROCS` variable limits the number of operating system threads that can execute user-level Go code simultaneously. There is no limit to the number of threads that can be blocked in system calls on behalf of Go code; those do not count against the `GOMAXPROCS` limit. This package's [GOMAXPROCS](https://pkg.go.dev/runtime#GOMAXPROCS) function queries and changes the limit.
 {{< /admonition >}}
