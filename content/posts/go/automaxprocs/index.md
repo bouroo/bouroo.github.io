@@ -11,12 +11,12 @@ license: ""
 images: []
 resources:
 - name: "featured-image"
-  src: "go-featured-image.webp"
+  src: "go-featured-image.png"
 - name: "featured-image-preview"
   src: "go-featured-image.webp"
 
 tags: ["Go", "Programing", "DevOps"]
-categories: ["Programing"]
+categories: ["Go"]
 
 lightgallery: true
 ---

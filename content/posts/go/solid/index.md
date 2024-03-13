@@ -16,7 +16,7 @@ resources:
   src: "featured-image.webp"
 
 tags: ["Go", "SOLID", "Programing"]
-categories: ["Programing"]
+categories: ["Go"]
 
 featuredImage: "featured-image.webp"
 featuredImagePreview: "featured-image"

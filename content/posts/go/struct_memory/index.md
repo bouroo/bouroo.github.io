@@ -18,7 +18,7 @@ resources:
   src: "go-featured-image.webp"
 
 tags: ["Go", "Computer Architecture", "Data Structure", "Programing"]
-categories: ["Programing"]
+categories: ["Go"]
 
 lightgallery: true
 ---

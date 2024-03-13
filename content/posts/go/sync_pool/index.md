@@ -18,7 +18,7 @@ resources:
   src: "go-featured-image.webp"
 
 tags: ["Go", "Memory Pooling"]
-categories: ["Programing"]
+categories: ["Go"]
 
 lightgallery: true
 ---

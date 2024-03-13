@@ -15,8 +15,8 @@ resources:
 - name: "featured-image-preview"
   src: "go-featured-image.webp"
 
-tags: ["Go"]
-categories: ["Programing"]
+tags: ["Go", "JSON"]
+categories: ["Go"]
 
 lightgallery: true
 
