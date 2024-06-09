@@ -19,6 +19,14 @@ featuredImagePreview: "featured-image"
 lightgallery: true
 ---
 
+{{< figure height="25%" width="25%" src="https://avatars.githubusercontent.com/u/1217739">}}
+
+## Experience Describe
+
+Skilled and experienced more than 10 years of combined experience in system backend development (Go) and Linux (DEB) administration. Proven ability to design, develop, and maintain robust and scalable backend systems while ensuring efficient and secure operations. Passionate about building high-quality software and maintaining a reliable IT infrastructure.
+
+## Personal Characteristics
+
 🌐 Remote Working lover.
 
 🧑‍💻 Backend (Go) Dev & System Admin.

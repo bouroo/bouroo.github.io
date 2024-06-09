@@ -11,11 +11,8 @@ aliases:
 - /posts/go_sync_pool/
 license: ""
 images: []
-resources:
-- name: "featured-image"
-  src: "go-featured-image.webp"
-- name: "featured-image-preview"
-  src: "go-featured-image.webp"
+featuredImage: "/img/go-featured-image.webp"
+featuredImagePreview: "/img/go-featured-image.webp"
 
 tags: ["Go", "Memory Pooling"]
 categories: ["Go"]

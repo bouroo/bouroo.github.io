@@ -1,8 +1,8 @@
 ---
-title: "{{ replace .TranslationBaseName "-" " " | title }}"
+title: "Index"
 subtitle: ""
-date: {{ .Date }}
-lastmod: {{ .Date }}
+date: 2024-06-09T11:01:28+07:00
+lastmod: 2024-06-09T11:01:28+07:00
 draft: true
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
