@@ -9,11 +9,8 @@ description: "บทความนี้จะแนะนำวิธีกา
 aliases:
 - /posts/go_solid/
 images: []
-resources:
-- name: "featured-image"
-  src: "featured-image.webp"
-- name: "featured-image-preview"
-  src: "featured-image.webp"
+featuredImage: "featured-image.webp"
+featuredImagePreview: "featured-image.webp"
 
 tags: ["Cloudflare", "DevOps", "DevOpsSec"]
 categories: ["DevOps"]

@@ -11,15 +11,12 @@ aliases:
 - /posts/db_tcp_vs_socket/
 license: ""
 images: []
-resources:
-- name: "featured-image"
-  src: "featured-image.webp"
 
 tags: ["DevOps", "Unix Socket", "TCP/IP", "DBA"]
 categories: ["DevOps", "Network"]
 
 featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image"
+featuredImagePreview: "featured-image.webp"
 
 lightgallery: true
 ---

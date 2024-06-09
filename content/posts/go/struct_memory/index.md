@@ -11,8 +11,8 @@ aliases:
 - /posts/go_struct_memory/
 license: ""
 images: []
-featuredImage: "/img/go-featured-image.webp"
-featuredImagePreview: "/img/go-featured-image.webp"
+featuredImage: "featured-image.webp"
+featuredImagePreview: "featured-image.webp"
 
 tags: ["Go", "Computer Architecture", "Data Structure", "Programing"]
 categories: ["Go"]

@@ -11,15 +11,12 @@ aliases:
 - /posts/go_solid/
 license: ""
 images: []
-resources:
-- name: "featured-image"
-  src: "featured-image.webp"
 
 tags: ["Go", "SOLID", "Programing"]
 categories: ["Go"]
 
 featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image"
+featuredImagePreview: "featured-image.webp"
 
 lightgallery: true
 ---

@@ -13,8 +13,8 @@ images: []
 tags: ["Go", "kubernetes", "DevOps"]
 categories: ["Go"]
 
-featuredImage: "/img/go-featured-image.webp"
-featuredImagePreview: "/img/go-featured-image.webp"
+featuredImage: "featured-image.webp"
+featuredImagePreview: "featured-image.webp"
 
 lightgallery: true
 ---

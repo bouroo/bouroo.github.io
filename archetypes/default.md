@@ -13,8 +13,8 @@ images: []
 tags: []
 categories: []
 
-featuredImage: "/img/go-featured-image.webp"
-featuredImagePreview: "/img/go-featured-image.webp"
+featuredImage: "/img/featured-image.webp"
+featuredImagePreview: "/img/featured-image.webp"
 
 lightgallery: true
 ---

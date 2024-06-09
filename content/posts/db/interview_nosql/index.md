@@ -9,11 +9,8 @@ authorLink: "https://kawin.dev"
 description: "NoSQL คืออะไร มีอะไรบ้าง แล้วเหมาะกับอะไรบ้างนะ"
 license: ""
 images: []
-resources:
-- name: "featured-image"
-  src: "featured-image.webp"
-- name: "featured-image-preview"
-  src: "featured-image.webp"
+featuredImage: "featured-image.webp"
+featuredImagePreview: "featured-image.webp"
 
 tags: ["Database", "NoSQL"]
 categories: ["NoSQL"]

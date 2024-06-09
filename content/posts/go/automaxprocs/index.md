@@ -9,8 +9,8 @@ authorLink: "https://kawin.dev"
 description: "ตั้งค่า GOMAXPROCS ให้เข้ากับสภาพแวดล้อมกันเถิด"
 license: ""
 images: []
-featuredImage: "/img/go-featured-image.webp"
-featuredImagePreview: "/img/go-featured-image.webp"
+featuredImage: "featured-image.webp"
+featuredImagePreview: "featured-image.webp"
 
 tags: ["Go", "Programing", "DevOps"]
 categories: ["Go"]

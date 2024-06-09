@@ -9,8 +9,8 @@ authorLink: "https://kawin.dev"
 description: ""
 license: ""
 images: []
-featuredImage: "/img/go-featured-image.webp"
-featuredImagePreview: "/img/go-featured-image.webp"
+featuredImage: "/img/featured-image.webp"
+featuredImagePreview: "/img/featured-image.webp"
 
 tags: ["Go", "JSON"]
 categories: ["Go"]

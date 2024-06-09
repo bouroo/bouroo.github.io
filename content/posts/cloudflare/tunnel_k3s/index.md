@@ -11,11 +11,8 @@ aliases:
 - /posts/behind_cloudflare/
 license: ""
 images: []
-resources:
-- name: "featured-image"
-  src: "featured-image.webp"
-- name: "featured-image-preview"
-  src: "featured-image.webp"
+featuredImage: "featured-image.webp"
+featuredImagePreview: "featured-image.webp"
 
 tags: ["Cloudflare", "DevOps", "K3S", "K8S"]
 categories: ["DevOps"]
