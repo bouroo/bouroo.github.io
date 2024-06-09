@@ -32,19 +32,19 @@ func main() {
                     switch v.Cat {
                         case "food":
                             rwMutex.Lock()
-                            total["price"] += v.Amount + v.AddedAmount
+                            receipt["price"] += v.Amount + v.AddedAmount
                             rwMutex.Unlock()
                         case "drink":
                             rwMutex.Lock()
-                            total["price"] += v.Amount + v.AddedAmount
+                            receipt["price"] += v.Amount + v.AddedAmount
                             rwMutex.Unlock()
                         case "alcohol":
                             rwMutex.Lock()
-                            total["price"] += v.Amount + v.Tax
+                            receipt["price"] += v.Amount + receipt["tax"]
                             rwMutex.Unlock()
                         default:
                             rwMutex.Lock()
-                            total["price"] += v.Amount
+                            receipt["price"] += v.Amount
                             rwMutex.Unlock()
                     }
                 }
@@ -96,7 +96,7 @@ func main() {
                 rwMutex.Unlock()
             case "alcohol":
                 rwMutex.Lock()
-                receipt["price"] += v.Amount + v.Tax
+                receipt["price"] += v.Amount + receipt["tax"]
                 rwMutex.Unlock()
             default:
                 rwMutex.Lock()
