@@ -218,24 +218,24 @@ func main() {
     }
 
     receiptMutex.Lock()
-    receipt["totalPrice"] := SumProductPrice(products, receipt["tax"])
+    receipt["totalPrice"] := SumProductPrice(orderProducts, receipt["tax"])
     receiptMutex.Unlock()
 
-    p(products, totalPrice)
+    PrintReceipt(orderProducts, totalPrice)
     ...
 }
 
-func SumProductPrice(products []Product, tax float64) total float64 {
-    for _, product := range products {
-        switch product.Category {
+func SumProductPrice(orderProducts []Product, tax float64) total float64 {
+    for _, orderItem := range orderProducts {
+        switch orderItem.Category {
             case "food":
-                total += product.Price + product.GasPrice
+                total += orderItem.Price + orderItem.GasPrice
             case "drink":
-                total += product.Price + product.PackagePrice
+                total += orderItem.Price + orderItem.PackagePrice
             case "alcohol":
-                total += product.Price + tax
+                total += orderItem.Price + tax
             default:
-                total += product.Price
+                total += orderItem.Price
         }
     }
 }
