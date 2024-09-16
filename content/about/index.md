@@ -80,8 +80,11 @@ February 2014 - July 2020
 - Ensure a reliable and stable computer network for all branches of PWA 6.
 
 ## Zercle Technology Co., Ltd.
+### Consultant Co-Founder
+2024 - Present
+- Techical consultant
 ### Technical Co-Founder
-January 2012
+January 2012 - 2024
 - Research and implement development best practices.
 - Develop backend systems using Go.
 - Define and implement CI/CD processes for development teams.
