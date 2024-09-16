@@ -19,21 +19,18 @@ featuredImagePreview: "featured-image"
 lightgallery: true
 ---
 
-{{< figure height="25%" width="25%" src="https://avatars.githubusercontent.com/u/1217739">}}
+{{< figure height="260" width="260" src="https://avatars.githubusercontent.com/u/1217739">}}
 
-## Experience Describe
+## Professional Experience
 
-Skilled and experienced more than 10 years of combined experience in system backend development (Go) and Linux (DEB) administration. Proven ability to design, develop, and maintain robust and scalable backend systems while ensuring efficient and secure operations. Passionate about building high-quality software and maintaining a reliable IT infrastructure.
+With over ten years of combined experience in system backend development (Go) and Linux (DEB) administration, I possess a proven ability to design, develop, and maintain robust and scalable backend systems while ensuring efficient and secure operations. I am passionate about building high-quality software and maintaining a reliable IT infrastructure.
 
 ## Personal Characteristics
 
-🌐 Remote Working lover.
-
-🧑‍💻 Backend (Go) Dev & System Admin.
-
-🎮 Love to play games.
-
-🏡 Like watching Japanese anime.
+- 🌐 **Remote Work Enthusiast**: I thrive in remote working environments.
+- 🧑‍💻 **Backend Developer and Systems Administrator**: Specialized in Go programming.
+- 🎮 **Gaming Enthusiast**: I enjoy playing video games.
+- 🏡 **Anime Aficionado**: I have a keen interest in watching Japanese anime.
 
 <!--more-->
 
@@ -44,47 +41,47 @@ Skilled and experienced more than 10 years of combined experience in system back
 ![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white) ![Rust](https://img.shields.io/badge/rust-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white) ![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=Cloudflare&logoColor=white) ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white) ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white) ![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white) 	![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white) ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) ![LINUX](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Rancher](https://img.shields.io/badge/rancher-%230075A8.svg?style=for-the-badge&logo=rancher&logoColor=white)
 
 ---
-# Works
+# Professional Experience
 
 ## Extend IT Resource Co., Ltd.
 ### Senior Software Developer
-2024 - present
-- Lead BackEnd team
-- Research and drive development best practices.
-- Development of (Go) Backend.
-- Define/implement CI/CD for Dev teams.
-- Define/implement infrastructure for stability and scale-ability.
+2024 - Present
+- Lead the backend development team.
+- Research and implement development best practices.
+- Develop backend systems using Go.
+- Define and implement CI/CD processes for development teams.
+- Establish and maintain infrastructure for stability and scalability.
 
 ## Tomato Ideas Co., Ltd.
 ### Technical Lead
-May 2023 - Sep 2023
-- Define/setup application monitoring to ensure best customer experience.
-- Troubleshoot technical issues and provide long term solutions and implementation.
-- Tuning infrastructure for large concurrent request.
+May 2023 - September 2023
+- Define and set up application monitoring to ensure optimal customer experience.
+- Troubleshoot technical issues and provide long-term solutions and implementations.
+- Optimize infrastructure for handling large volumes of concurrent requests.
 
 ## Canghan Coffee
-### Coffee Roaster co-founder
-Nov 2019
-- create a coffee/drinking recipe.
-- roast coffee beans.
+### Co-Founder, Coffee Roaster
+November 2019
+- Develop coffee and beverage recipes.
+- Roast coffee beans.
 
 ## COOP NIX Co., Ltd.
 ### Senior System Engineer
-Jan 2016
-- Develop a Hyper-converged infrastructure system.
-- Maintain a customer's private server.
-- Provide computer server/computer network maintenance services.
+January 2016
+- Develop a hyper-converged infrastructure system.
+- Maintain customer private servers.
+- Provide maintenance services for computer servers and networks.
 
 ## Provincial Waterworks Authority
 ### Computer Engineer
-Feb 2014 - Jul 2020
-- Maintain computer/server infrastructure.
-- Provide a reliable and stable computer network for all PWA 6's branches.
+February 2014 - July 2020
+- Maintain computer and server infrastructure.
+- Ensure a reliable and stable computer network for all branches of PWA 6.
 
 ## Zercle Technology Co., Ltd.
-### Technical co-founder
-Jan 2012
-- Research and drive development best practices.
-- Development of (Go) Backend.
-- Define/implement CI/CD for Dev teams.
-- Define/implement infrastructure for stability and scale-ability.
+### Technical Co-Founder
+January 2012
+- Research and implement development best practices.
+- Develop backend systems using Go.
+- Define and implement CI/CD processes for development teams.
+- Establish and maintain infrastructure for stability and scalability.
