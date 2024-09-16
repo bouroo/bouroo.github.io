@@ -19,10 +19,7 @@ featuredImagePreview: "featured-image"
 lightgallery: true
 ---
 
-{{ $avataImage := "https://avatars.githubusercontent.com/u/1217739" }}
-{{ with resources.GetRemote $avataImage }}
-  <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}">
-{{ end }}
+![profilePic](https://avatars.githubusercontent.com/u/1217739)
 <!-- {{< figure height="260" width="260" src="https://avatars.githubusercontent.com/u/1217739">}} -->
 
 ## Professional Experience
