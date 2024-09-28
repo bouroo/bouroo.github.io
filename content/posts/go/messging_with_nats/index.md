@@ -91,7 +91,7 @@ func main() {
 
 	fmt.Println("Press Ctrl+C to exit...")
 
-    // Publish messages every 5 seconds
+    // Publish messages every 5 seconds until terminate signal
     for {
         select {
             case <-ticker.C:
