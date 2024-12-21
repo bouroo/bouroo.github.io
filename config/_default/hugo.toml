@@ -1,7 +1,7 @@
 baseURL = "https://kawin.dev/"
 
 # Change the default theme to be use when building the site with Hugo
-theme = "LoveIt"
+theme = "KeepIt"
 
 # website title
 title = "Kawin's Pages"
@@ -16,7 +16,8 @@ languageName = "ภาษาไทย"
 hasCJKLanguage = false
 
 # default amount of posts in each pages
-paginate = 12
+[pagination]
+pagerSize = 12
 # google analytics code [UA-XXXXXXXX-X]
 # googleAnalytics = ""
 # copyright description used only for seo schema
@@ -58,7 +59,7 @@ Twitter = "bouroo"
 RSS = true
 
 # Author config
-[author]
+[params.author]
 name = "Kawin Viriyaprasopsook"
 email = "kawin.v@kkumail.com"
 link = "https://kawin.dev"
