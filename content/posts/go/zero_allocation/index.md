@@ -192,7 +192,7 @@ func processData() Data {
 
 func processStackPointer(d *Data) err {
     // ใช้งานจาก pointer เดิมบน stack
-    d := &Data{value: 42}
+    d = &Data{value: 42}
     return nill
 }
 
