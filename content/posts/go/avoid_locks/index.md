@@ -195,3 +195,5 @@ func main() {
 ## สรุป
 
 การหลีกเลี่ยงการใช้ Mutex Lock ในภาษา Go สามารถทำได้หลายวิธี เช่น การใช้ Channel, Data Structures ที่ไม่ต้อง Lock, Atomic Operations และ Read/Write Mutex การเลือกใช้วิธีการที่เหมาะสมจะช่วยเพิ่มประสิทธิภาพและลดความซับซ้อนในการเขียนโปรแกรม ซึ่งจะทำให้โปรแกรมทำงานได้อย่างราบรื่นและปลอดภัยจากการเข้าถึงข้อมูลพร้อมกัน
+
+เพิ่มเติม: [How To Avoid Locks (Mutex) In Your Golang Programs?](https://youtu.be/Ya5KRFrwPug?si=_DaVJYNj3uJGq7nz)
