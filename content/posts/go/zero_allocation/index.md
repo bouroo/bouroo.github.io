@@ -176,7 +176,7 @@ func main() {
 - การเตรียมพื้นที่ล่วงหน้าของ Builder ช่วยหลีกเลี่ยงการจองหน่วยความจำใหม่ที่ไม่จำเป็น
 
 ### 5. ใช้การส่งค่ากลับใน Stack เมื่อเป็นไปได้
-หนึ่งในการเพิ่มประสิทธิภาพที่มีประสิทธิภาพที่สุดของ Go คือ[การวิเคราะห์โดยคอมไพเลอร์](https://go.dev/doc/faq#stack_or_heap)ที่กำหนดว่าตัวแปรใดสามารถส่งกลับได้ใน stack หรือจำเป็นต้องฝากไว้ที่ heap
+หนึ่งในการเพิ่มประสิทธิภาพที่มีประสิทธิภาพที่สุดของ Go คือ[การวิเคราะห์โดยคอมไพเลอร์](https://go.dev/doc/faq#stack_or_heap)ที่กำหนดว่าตัวแปรใดสามารถส่งกลับได้ใน stack หรือจำเป็นต้องฝากไว้ที่ heap แนะนำดู [Understanding Allocations: the Stack and the Heap - GopherCon SG 2019](https://youtu.be/ZMZpH4yT7M0?si=S6ECgkU8mDkGhNFD) เพิ่มเติมเพื่อให้เข้าใจมาขึ้นครับ
 
 {{< admonition example >}}
 ```go
@@ -188,6 +188,12 @@ func processData() Data {
     d := Data{value: 42}
     // ส่งค่ากลับทาง stack
     return d
+}
+
+func processStackPointer(d *Data) err {
+    // ใช้งานจาก pointer เดิมบน stack
+    d := Data{value: 42}
+    return nill
 }
 
 func processPointer() *Data {
