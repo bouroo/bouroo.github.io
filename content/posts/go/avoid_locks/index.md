@@ -1,5 +1,5 @@
 ---
-title: "เขียน Go เรียกใช้ resource เดียวกันแต่ไม่อยากใช้ mutex lock มีทางไหนบ้าง 🤔"
+title: "เขียน Go เรียกใช้ resource เดียวกันแต่ไม่อยากใช้ Exclusive Lock มีทางไหนบ้าง 🤔"
 subtitle: ""
 date: 2024-12-21T18:07:21+07:00
 lastmod: 2024-12-21T18:07:21+07:00
@@ -23,14 +23,14 @@ lightgallery: true
 
 <!--more-->
 
-## เหตุผลที่ควรหลีกเลี่ยง Mutex Lock
+## เหตุผลที่ควรหลีกเลี่ยง Exclusive Lock
 - Deadlock: เกิดขึ้นเมื่อ goroutine สองตัวขึ้นไป รอให้กันและกันปลดล็อก mutex ที่วางผิดที่ผิดทางจะทำให้โปรแกรมติด lock แล้วหยุดทำงาน
 - Livelock: เกิดขึ้นเมื่อ goroutine สองตัวขึ้นไปสลับกันปลดล็อกและล็อก mutex ซ้ำๆ ทำให้ไม่มี goroutine ใดสามารถดำเนินการต่อได้
 - Overhead: การล็อกและปลดล็อก mutex มีค่าใช้จ่ายในระหว่าง context switch และการจัดการสถานะของ mutex ซึ่งอาจส่งผลต่อประสิทธิภาพของโปรแกรมโดยเฉพาะอย่างยิ่งในกรณีที่มีการ contention สูง
 - ซับซ้อน: การจัดการ mutex ในโปรแกรมที่ซับซ้อนอาจทำให้โค้ดอ่านยากและเข้าใจยากขึ้น
 - เพิ่มเติม: [Dmitry Vyukov — Go scheduler: Implementing language with lightweight concurrency](https://youtu.be/-K11rY57K7k?si=t8vKOjBWpcJ7YwJA)
 
-## วิธีหลีกเลี่ยง Mutex Lock (เท่าที่ผมรู้)
+## วิธีหลีกเลี่ยง Exclusive Lock (เท่าที่ผมรู้)
 ### 1. ใช้ Channel แทน Mutex
 
 Channel เป็นเครื่องมือหลักในการสื่อสารระหว่าง Goroutine ใน Go และสามารถใช้แทน Mutex เพื่อจัดการการเข้าถึงข้อมูลได้อย่างปลอดภัย
