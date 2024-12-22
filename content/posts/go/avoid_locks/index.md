@@ -1,5 +1,5 @@
 ---
-title: "เขียน Go แต่ไม่อยากใช้ mutex lock มีทางไหนบ้าง 🤔"
+title: "เขียน Go เรียกใช้ resource เดียวกันแต่ไม่อยากใช้ mutex lock มีทางไหนบ้าง 🤔"
 subtitle: ""
 date: 2024-12-21T18:07:21+07:00
 lastmod: 2024-12-21T18:07:21+07:00
@@ -19,23 +19,23 @@ featuredImagePreview: "/img/featured-image.webp"
 lightgallery: true
 ---
 
-ในภาษา Go การใช้ Mutex (Mutual Exclusion) เป็นวิธีการหนึ่งในการจัดการกับการเข้าถึงข้อมูลที่ใช้ร่วมกันในหลายๆ โค้ดหรือ Goroutine เพื่อป้องกันการเกิด Race Condition ซึ่งอาจทำให้ข้อมูลเสียหายได้ แต่ในบางครั้งการใช้ Mutex ก็อาจทำให้เกิดปัญหาด้านประสิทธิภาพและความซับซ้อนของโปรแกรม และเสีย performance ดังนั้นการหลีกเลี่ยง Mutex Lock สามารถทำได้โดยใช้แนวทางต่างๆ ที่มีประสิทธิภาพมากกว่า
+ในภาษา Go การใช้ Mutex (Mutual Exclusion) เป็นวิธีการหนึ่งในการจัดการกับการเข้าถึงข้อมูลที่ใช้ร่วมกันในหลายๆ โค้ดหรือ Goroutine เพื่อป้องกันการเกิด Race Condition ซึ่งอาจทำให้ข้อมูลเสียหายได้ แต่ในบางครั้งการใช้ Mutex ก็อาจทำให้เกิดปัญหาด้านประสิทธิภาพและความซับซ้อนของโปรแกรม และเสีย performance ดังนั้นเราลองมาเขียนโดยการหลีกเลี่ยง Mutex Lock โดยไม่จำเป็นกันดูว่าทำยังไงบ้าง
 
 <!--more-->
 
 ## เหตุผลที่ควรหลีกเลี่ยง Mutex Lock
-- Deadlock: เกิดขึ้นเมื่อ goroutine สองตัวขึ้นไปรอให้กันและกันปลดล็อก mutex ทำให้โปรแกรมหยุดทำงาน
+- Deadlock: เกิดขึ้นเมื่อ goroutine สองตัวขึ้นไป รอให้กันและกันปลดล็อก mutex ที่วางผิดที่ผิดทางจะทำให้โปรแกรมติด lock แล้วหยุดทำงาน
 - Livelock: เกิดขึ้นเมื่อ goroutine สองตัวขึ้นไปสลับกันปลดล็อกและล็อก mutex ซ้ำๆ ทำให้ไม่มี goroutine ใดสามารถดำเนินการต่อได้
 - Overhead: การล็อกและปลดล็อก mutex มีค่าใช้จ่ายในระหว่าง context switch และการจัดการสถานะของ mutex ซึ่งอาจส่งผลต่อประสิทธิภาพของโปรแกรมโดยเฉพาะอย่างยิ่งในกรณีที่มีการ contention สูง
 - ซับซ้อน: การจัดการ mutex ในโปรแกรมที่ซับซ้อนอาจทำให้โค้ดอ่านยากและเข้าใจยากขึ้น
 - เพิ่มเติม: [Dmitry Vyukov — Go scheduler: Implementing language with lightweight concurrency](https://youtu.be/-K11rY57K7k?si=t8vKOjBWpcJ7YwJA)
 
-## 1. ใช้ Channel แทน Mutex
+## วิธีหลีกเลี่ยง Mutex Lock (เท่าที่ผมรู้)
+### 1. ใช้ Channel แทน Mutex
 
 Channel เป็นเครื่องมือหลักในการสื่อสารระหว่าง Goroutine ใน Go และสามารถใช้แทน Mutex เพื่อจัดการการเข้าถึงข้อมูลได้อย่างปลอดภัย
 
-### ตัวอย่าง
-
+{{< admonition example >}}
 ```go
 package main
 
@@ -68,13 +68,13 @@ func consumer(ch <-chan int) {
 	}
 }
 ```
+{{< /admonition >}}
 
-## 2. ใช้ Data Structure ที่ไม่ต้อง Lock
+### 2. ใช้ Data Structure ที่ไม่ต้อง Lock
 
 การใช้ Data Structure ที่ออกแบบมาเพื่อหลีกเลี่ยงการใช้ Mutex เช่น `sync.Map` ช่วยให้เข้าถึงข้อมูลได้อย่างปลอดภัยโดยไม่ต้องใช้ Mutex
 
-### ตัวอย่าง
-
+{{< admonition example >}}
 ```go
 package main
 
@@ -97,13 +97,13 @@ func main() {
 	})
 }
 ```
+{{< /admonition >}}
 
-## 3. ใช้ Atomic Operations
+### 3. ใช้ Atomic Operations
 
 Go มีแพคเกจ `sync/atomic` ที่ให้ฟังก์ชันสำหรับการดำเนินการเชิงอะตอมิก ซึ่งช่วยให้สามารถทำการเพิ่มหรือลดค่าของตัวแปรในลักษณะที่ปลอดภัยจากการเข้าถึงพร้อมกัน
 
-### ตัวอย่าง
-
+{{< admonition example >}}
 ```go
 package main
 
@@ -129,13 +129,13 @@ func main() {
 	fmt.Println("Final Counter:", counter)
 }
 ```
+{{< /admonition >}}
 
-## 4. ใช้ Read/Write Mutex
+### 4. ใช้ Read/Write Mutex
 
 หากต้องการให้มีการอ่านข้อมูลได้หลายๆ Goroutine แต่ต้องการให้เขียนข้อมูลได้เพียง Goroutine เดียว และมีความจำเป็นต้องใช้ mutex เราสามารถใช้ `sync.RWMutex` ซึ่งช่วยให้การอ่านสามารถทำได้พร้อมๆ กันโดยไม่ต้องรอการเขียน
 
-### ตัวอย่าง
-
+{{< admonition example >}}
 ```go
 package main
 
@@ -191,9 +191,14 @@ func main() {
 	wg.Wait() // รอให้ Goroutine ทุกตัวทำงานเสร็จ
 }
 ```
+{{< /admonition >}}
 
 ## สรุป
 
 การหลีกเลี่ยงการใช้ Mutex Lock ในภาษา Go สามารถทำได้หลายวิธี เช่น การใช้ Channel, Data Structures ที่ไม่ต้อง Lock, Atomic Operations และ Read/Write Mutex การเลือกใช้วิธีการที่เหมาะสมจะช่วยเพิ่มประสิทธิภาพและลดความซับซ้อนในการเขียนโปรแกรม ซึ่งจะทำให้โปรแกรมทำงานได้อย่างราบรื่นและปลอดภัยจากการเข้าถึงข้อมูลพร้อมกัน
+
+{{< admonition type=quote title="Andrew Gerrand" >}}
+Do not communicate by sharing memory; instead, share memory by communicating.
+{{< /admonition >}}
 
 เพิ่มเติม: [How To Avoid Locks (Mutex) In Your Golang Programs?](https://youtu.be/Ya5KRFrwPug?si=_DaVJYNj3uJGq7nz)
