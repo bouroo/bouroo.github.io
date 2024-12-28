@@ -47,7 +47,7 @@ import (
 
 func main() {
 	const (
-		totalItems      = 5
+		items      		= int[]{1, 2, 3, 4, 5, 6, 7}
 		producerSleep   = 100 * time.Millisecond
 		consumerSleep   = 150 * time.Millisecond
 		channelBuffer   = 2 // ขนาดของ channel buffer สำหรับ producer กับ consumer
@@ -58,18 +58,25 @@ func main() {
 
 	wg.Add(2) // สร้างคิวรอ 2 goroutine
 
-	go producer(dataChannel, totalItems, producerSleep, &wg)
+	go producer(dataChannel, items, producerSleep, &wg)
 	go consumer(dataChannel, consumerSleep, &wg)
 
 	wg.Wait() // รอจนกว่า goroutine ทั้ง 2 จะทำงานเสร็จ
 }
 
-func producer(ch chan<- int, total int, sleepDuration time.Duration, wg *sync.WaitGroup) {
+func veryLongTask(input int, sleepDuration time.Duration) (output int, err error) {
+	output = input * 2
+	time.Sleep(sleepDuration, sleepDuration)
+	return
+}
+
+func producer(ch chan<- int, items int[], sleepDuration time.Duration, wg *sync.WaitGroup) {
 	defer wg.Done()
-	for i := 0; i < total; i++ {
-		ch <- i // ส่งข้อมูลหมดเข้า channel
+	for item := range items {
+		// ส่งไปทำงาน
+		output, _ := veryLongTask(item, sleepDuration)
+		ch <- output // ทำงานเสร็จส่งข้อมูลเข้า channel
 		fmt.Println("Produced:", i)
-		time.Sleep(sleepDuration)
 	}
 	close(ch) // ส่งข้อมูลหมดแล้วก็ปิด channel
 }
@@ -77,7 +84,8 @@ func producer(ch chan<- int, total int, sleepDuration time.Duration, wg *sync.Wa
 func consumer(ch <-chan int, sleepDuration time.Duration, wg *sync.WaitGroup) {
 	defer wg.Done()
 	for data := range ch {
-		fmt.Println("Consumed:", data) // รับข้อมูลจาก channel
+		// รับข้อมูลจาก channel
+		fmt.Println("Consumed:", data)
 		time.Sleep(sleepDuration)
 	}
 }
