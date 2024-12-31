@@ -1,6 +1,6 @@
 ---
-title: "Index"
-subtitle: "ลองสร้างระบบลงคะแนนเลือกตั้งด้วย Go และ Svelte"
+title: "ลองสร้างระบบลงคะแนนเลือกตั้งด้วย Go และ Svelte"
+subtitle: ""
 date: 2025-01-01T00:00:00+07:00
 lastmod: 2025-01-01T00:00:00+07:00
 draft: false
