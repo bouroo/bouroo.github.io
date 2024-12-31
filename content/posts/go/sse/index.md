@@ -320,6 +320,6 @@ function setupSSE() {
 
 ![example](img/example.gif "example")
 
-### สรุป
+## สรุป
 
 เราสามารถเอา SSE มาประยุกต์ใช้งานกับการแสดงผลแบบ Real-time แบบง่าย เช่นการอัปเดตผลคะแนนด้วยการอาศัย Push ข้อมูลใหม่มาจากฝั่ง Server ทำให้ไม่ต้องวน Refresh ข้อมูลใหม่มาจากฝั่ง Client และไม่ต้องเปิด Websocket ด้วย สามารถดูโค้ด ตัวอย่าง เต็ม ๆ ได้ที่ [bouroo/sse-voting-app](https://github.com/bouroo/sse-voting-app)
