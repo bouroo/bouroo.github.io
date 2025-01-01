@@ -30,11 +30,12 @@ lightgallery: true
 {{< mermaid >}}
 graph TD;
     A[Client] -->|HTTP Request| B[Server]
+    B -->|HTTP Header| F[Content-Type: text/event-stream]
+    F -->|HTTP Response| A
     B -->|Sends Events| C[Event Stream]
     C -->|Updates| A
     A -->|Handles Events| D[JavaScript Event Listener]
     D -->|Processes Data| E[Update UI]
-    B -->|HTTP Response| F[Content-Type: text/event-stream]
 {{< /mermaid >}}
 
 ### หลักการทำงานของ SSE
