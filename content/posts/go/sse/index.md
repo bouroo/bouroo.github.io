@@ -23,6 +23,26 @@ lightgallery: true
 
 <!--more-->
 
+## Server-Sent Events
+
+ตามปกติแล้ว หน้าเว็บจะต้องส่งคำขอไปยัง Server เพื่อรับข้อมูลใหม่ นั่นคือ หน้าเว็บจะขอข้อมูลจาก Server แต่ด้วย Server-Sent Events (SSE) ช่วยให้ Server สามารถส่งข้อมูลไปยัง Client แบบ Real-Time ผ่านโปรโตคอล HTTP (PUSH) โดยไม่ต้องมีการร้องขอข้อมูลในทุกครั้งจาก Client ซึ่งแตกต่างจาก WebSocket ที่เปิดการเชื่อมต่อแบบสองทาง (full-duplex) SSE จะส่งข้อมูลจาก Server ไปยัง Client เพียงทางเดียว (one-way)
+
+{{< mermaid >}}
+graph TD;
+    A[Client] -->|HTTP Request| B[Server]
+    B -->|Sends Events| C[Event Stream]
+    C -->|Updates| A
+    A -->|Handles Events| D[JavaScript Event Listener]
+    D -->|Processes Data| E[Update UI]
+    B -->|HTTP Response| F[Content-Type: text/event-stream]
+{{< /mermaid >}}
+
+### หลักการทำงานของ SSE
+1. การสร้างการเชื่อมต่อ: เมื่อ Client ต้องการรับข้อมูลจาก Server ก็จะส่งคำขอ HTTP แบบ GET ไปยัง Server
+2. การส่งข้อมูล: Server จะตอบสนองด้วยการส่งข้อมูลในรูปแบบของ event stream โดยใช้ header `Content-Type: text/event-stream`
+3. การอัปเดตข้อมูล: Server จะส่งข้อมูล (events) ไปยัง Client อย่างต่อเนื่อง เมื่อมีข้อมูลใหม่เกิดขึ้น
+4. การจัดการข้อมูลที่ได้รับ: Client จะใช้ JavaScript ในการรอรับ event (event listener) และทำการประมวลผลข้อมูลที่ได้รับ เพื่อนำไปอัปเดต UI หรือทำงานอื่น ๆ ต่อไป
+
 ## อธิบายฟังก์ชันใน Go
 
 ### 1. `NewVoteManager()`
@@ -262,7 +282,7 @@ async function fetchResults() {
 
 ---
 
-### 2. `vote(candidate)`
+### 2. `vote()`
 
 ฟังก์ชันนี้จะถูกเรียกเมื่อผู้ใช้คลิกปุ่มลงคะแนนเสียง
 
