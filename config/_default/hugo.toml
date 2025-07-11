@@ -108,6 +108,14 @@ name = "About"
 url = "/about/"
 title = ""
 [[menu.main]]
+weight = 5
+identifier = "portfolio"
+pre = ""
+post = ""
+name = "Portfolio"
+url = "/portfolio/"
+title = ""
+[[menu.main]]
 weight = 9
 identifier = "github"
 pre = "<i class='fab fa-github fa-fw' aria-hidden='true'></i>"
