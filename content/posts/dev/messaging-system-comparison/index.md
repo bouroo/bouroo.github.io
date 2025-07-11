@@ -24,15 +24,25 @@ featuredImagePreview: "featured-image"
 Kafka นี่มันคือแพลตฟอร์มสตรีมมิ่งข้อมูลขนาดใหญ่ยักษ์เลยนะ ออกแบบมาเพื่อรองรับข้อมูลแบบเรียลไทม์ที่ไหลเข้ามามหาศาล คิดภาพเหมือนท่อส่งข้อมูลขนาดใหญ่ที่ทั้งเร็ว ทนทาน แล้วก็ขยายระบบได้ง่าย
 
 {{< mermaid >}}
-graph LR
-    Producer --> Kafka[Kafka Broker]
-    Kafka --> Consumer
-    subgraph Kafka Broker
-        Topic1[Topic 1]
-        Topic2[Topic 2]
-    end
-    Producer -- Writes to --> Topic1
-    Consumer -- Reads from --> Topic1
+flowchart LR
+  %% Define Producer & Consumer
+  subgraph Clients
+    direction TB
+    P[Producer]
+    C[Consumer]
+  end
+
+  %% Define Kafka Broker & Topics
+  subgraph "Kafka Broker"
+    direction TB
+    T1[Topic 1]
+    T2[Topic 2]
+  end
+
+  %% Wire them up with labeled links
+  P -- "write → Topic 1" --> T1
+  C -- "read ← Topic 1" --> T1
+
 {{< /mermaid >}}
 
 ### แล้วจะใช้ตอนไหนดี?
@@ -60,17 +70,33 @@ graph LR
 Valkey หรือที่เรารู้จักกันในนาม Redis นั่นแหละ (Valkey เป็น fork ที่ community ช่วยกันดูแล) มันเป็นฐานข้อมูลในหน่วยความจำที่เร็วปรื๊ด คนเลยนิยมเอามาทำเป็น cache หรือ message broker แบบง่ายๆ โดยใช้ data structure อย่าง list มาทำเป็นคิว
 
 {{< mermaid >}}
-graph LR
-    Producer --> Redis[Valkey (Redis)]
-    Redis --> Consumer
-    subgraph Valkey (Redis)
-        List[List (Queue)] 
-        PubSub[Pub/Sub Channel]
-    end
-    Producer -- LPUSH --> List
-    Consumer -- BRPOP --> List
-    Publisher -- PUBLISH --> PubSub
-    Subscriber -- SUBSCRIBE --> PubSub
+flowchart LR
+  %% subgraph for Redis/Valkey
+  subgraph valkey
+    direction TB
+    Q["List (LPUSH/BRPOP Queue)"]
+    C[Pub/Sub Channel]
+  end
+
+  %% Producers & Consumers
+  subgraph Producers
+    direction TB
+    Prod[Producer]
+    Pub[Publisher]
+  end
+
+  subgraph Consumers
+    direction TB
+    Cons[Consumer]
+    Sub[Subscriber]
+  end
+
+  %% Connections
+  Prod -->|LPUSH| Q
+  Cons -->|BRPOP| Q
+
+  Pub -->|PUBLISH| C
+  Sub -->|SUBSCRIBE| C
 {{< /mermaid >}}
 
 ### แล้วจะใช้ตอนไหนดี?
@@ -98,22 +124,29 @@ graph LR
 RabbitMQ นี่เป็น Message Broker รุ่นใหญ่ที่เก๋าเกมมาก ใช้โปรโตคอล AMQP เป็นหลัก ขึ้นชื่อเรื่องความสามารถในการส่งข้อความที่ครบเครื่อง, การ routing ที่ยืดหยุ่น และความน่าเชื่อถือ
 
 {{< mermaid >}}
-graph LR
-    Producer --> Exchange[Exchange]
-    Exchange --> Queue1[Queue 1]
-    Exchange --> Queue2[Queue 2]
-    Queue1 --> Consumer1
-    Queue2 --> Consumer2
-    subgraph RabbitMQ Broker
-        Exchange
-        Queue1
-        Queue2
-    end
-    Producer -- Publishes to --> Exchange
-    Exchange -- Routes to --> Queue1
-    Exchange -- Routes to --> Queue2
-    Consumer1 -- Consumes from --> Queue1
-    Consumer2 -- Consumes from --> Queue2
+flowchart LR
+  %% Clients
+  subgraph Clients
+    direction TB
+    P[Producer]
+    C1[Consumer 1]
+    C2[Consumer 2]
+  end
+
+  %% Broker
+  subgraph "RabbitMQ Broker"
+    direction TB
+    EX[Exchange]
+    Q1[Queue 1]
+    Q2[Queue 2]
+  end
+
+  %% Message flow
+  P -- "publishes → Exchange" --> EX
+  EX -- "routes → Q1" --> Q1
+  EX -- "routes → Q2" --> Q2
+  Q1 -- "delivers → Consumer 1" --> C1
+  Q2 -- "delivers → Consumer 2" --> C2
 {{< /mermaid >}}
 
 ### แล้วจะใช้ตอนไหนดี?
@@ -141,15 +174,24 @@ graph LR
 NATS เป็นระบบ Messaging ที่เกิดมาเพื่อยุค Cloud-Native, IoT, และ Microservices เลย จุดเด่นคือความเร็วสูงและเบามาก เน้นความเรียบง่ายเป็นหลัก
 
 {{< mermaid >}}
-graph LR
-    Producer --> NATS[NATS Server]
-    NATS --> Consumer
-    subgraph NATS Server
-        TopicA[Topic A]
-        TopicB[Topic B]
-    end
-    Producer -- Publishes to --> TopicA
-    Consumer -- Subscribes to --> TopicA
+flowchart LR
+  %% Clients
+  subgraph Clients
+    direction TB
+    Producer
+    Consumer
+  end
+
+  %% NATS Server with Topics
+  subgraph "NATS Server"
+    direction TB
+    TopicA["Topic A"]
+    TopicB["Topic B"]
+  end
+
+  %% Connections
+  Producer -- "publishes → Topic A" --> TopicA
+  Consumer -- "subscribes ← Topic A" --> TopicA
 {{< /mermaid >}}
 
 ### แล้วจะใช้ตอนไหนดี?

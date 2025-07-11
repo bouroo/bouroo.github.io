@@ -24,15 +24,25 @@ When building highly communicative distributed systems, one common headache is c
 Kafka is a massive data streaming platform designed to handle huge volumes of real-time data. Think of it as a large data pipeline that's fast, durable, and easily scalable.
 
 {{< mermaid >}}
-graph LR
-    Producer --> Kafka[Kafka Broker]
-    Kafka --> Consumer
-    subgraph Kafka Broker
-        Topic1[Topic 1]
-        Topic2[Topic 2]
-    end
-    Producer -- Writes to --> Topic1
-    Consumer -- Reads from --> Topic1
+flowchart LR
+  %% Define Producer & Consumer
+  subgraph Clients
+    direction TB
+    P[Producer]
+    C[Consumer]
+  end
+
+  %% Define Kafka Broker & Topics
+  subgraph "Kafka Broker"
+    direction TB
+    T1[Topic 1]
+    T2[Topic 2]
+  end
+
+  %% Wire them up with labeled links
+  P -- "write → Topic 1" --> T1
+  C -- "read ← Topic 1" --> T1
+
 {{< /mermaid >}}
 
 ### When should you use it?
@@ -60,17 +70,33 @@ graph LR
 Valkey, also known as Redis (Valkey is a community-driven fork), is an incredibly fast in-memory database. People often use it as a cache or a simple message broker, utilizing data structures like lists for queues.
 
 {{< mermaid >}}
-graph LR
-    Producer --> Redis[Valkey (Redis)]
-    Redis --> Consumer
-    subgraph Valkey (Redis)
-        List[List (Queue)]
-        PubSub[Pub/Sub Channel]
-    end
-    Producer -- LPUSH --> List
-    Consumer -- BRPOP --> List
-    Publisher -- PUBLISH --> PubSub
-    Subscriber -- SUBSCRIBE --> PubSub
+flowchart LR
+  %% subgraph for Redis/Valkey
+  subgraph valkey
+    direction TB
+    Q["List (LPUSH/BRPOP Queue)"]
+    C[Pub/Sub Channel]
+  end
+
+  %% Producers & Consumers
+  subgraph Producers
+    direction TB
+    Prod[Producer]
+    Pub[Publisher]
+  end
+
+  subgraph Consumers
+    direction TB
+    Cons[Consumer]
+    Sub[Subscriber]
+  end
+
+  %% Connections
+  Prod -->|LPUSH| Q
+  Cons -->|BRPOP| Q
+
+  Pub -->|PUBLISH| C
+  Sub -->|SUBSCRIBE| C
 {{< /mermaid >}}
 
 ### When should you use it?
@@ -98,22 +124,29 @@ graph LR
 RabbitMQ is a mature and robust message broker, primarily using the AMQP protocol. It's known for its comprehensive messaging capabilities, flexible routing, and reliability.
 
 {{< mermaid >}}
-graph LR
-    Producer --> Exchange[Exchange]
-    Exchange --> Queue1[Queue 1]
-    Exchange --> Queue2[Queue 2]
-    Queue1 --> Consumer1
-    Queue2 --> Consumer2
-    subgraph RabbitMQ Broker
-        Exchange
-        Queue1
-        Queue2
-    end
-    Producer -- Publishes to --> Exchange
-    Exchange -- Routes to --> Queue1
-    Exchange -- Routes to --> Queue2
-    Consumer1 -- Consumes from --> Queue1
-    Consumer2 -- Consumes from --> Queue2
+flowchart LR
+  %% Clients
+  subgraph Clients
+    direction TB
+    P[Producer]
+    C1[Consumer 1]
+    C2[Consumer 2]
+  end
+
+  %% Broker
+  subgraph "RabbitMQ Broker"
+    direction TB
+    EX[Exchange]
+    Q1[Queue 1]
+    Q2[Queue 2]
+  end
+
+  %% Message flow
+  P -- "publishes → Exchange" --> EX
+  EX -- "routes → Q1" --> Q1
+  EX -- "routes → Q2" --> Q2
+  Q1 -- "delivers → Consumer 1" --> C1
+  Q2 -- "delivers → Consumer 2" --> C2
 {{< /mermaid >}}
 
 ### When should you use it?
@@ -141,15 +174,24 @@ graph LR
 NATS is a messaging system built for the Cloud-Native, IoT, and Microservices era. Its key strengths are high speed and being extremely lightweight, focusing on simplicity.
 
 {{< mermaid >}}
-graph LR
-    Producer --> NATS[NATS Server]
-    NATS --> Consumer
-    subgraph NATS Server
-        TopicA[Topic A]
-        TopicB[Topic B]
-    end
-    Producer -- Publishes to --> TopicA
-    Consumer -- Subscribes to --> TopicA
+flowchart LR
+  %% Clients
+  subgraph Clients
+    direction TB
+    Producer
+    Consumer
+  end
+
+  %% NATS Server with Topics
+  subgraph "NATS Server"
+    direction TB
+    TopicA["Topic A"]
+    TopicB["Topic B"]
+  end
+
+  %% Connections
+  Producer -- "publishes → Topic A" --> TopicA
+  Consumer -- "subscribes ← Topic A" --> TopicA
 {{< /mermaid >}}
 
 ### When should you use it?
