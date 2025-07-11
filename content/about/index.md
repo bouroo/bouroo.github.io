@@ -24,12 +24,13 @@ lightgallery: true
 
 ## Professional Experience
 
-With over ten years of combined experience in system backend development (Go) and Linux (DEB) administration, I possess a proven ability to design, develop, and maintain robust and scalable backend systems while ensuring efficient and secure operations. I am passionate about building high-quality software and maintaining a reliable IT infrastructure.
+Veteran Backend Engineer with 10+ years of progressive experience in designing, leading, and scaling complex backend systems. Focus on Go, Kubernetes, and cloud-native architectures, specializing in distributed systems, high-availability infrastructure (Ceph/ProxmoxVE), and Linux environments. Proven ability to drive technical strategy, foster remote-first collaboration, and implement DevOps best practices, delivering significant business impact across Fintech, SaaS, and infrastructure domains.
+Open to remote opportunities from Khon Kaen and hybrids in Bangkok.
 
 ## Personal Characteristics
 
 - 🌐 **Remote Work Enthusiast**: I thrive in remote working environments.
-- 🧑‍💻 **Backend Developer and Systems Administrator**: Specialized in Go programming.
+- 🧑‍💻 **Backend Developer and Systems Administrator**: Specialized in Go/JS programming.
 - 🎮 **Gaming Enthusiast**: I enjoy playing video games.
 - 🏡 **Anime Aficionado**: I have a keen interest in watching Japanese anime.
 
@@ -44,21 +45,26 @@ With over ten years of combined experience in system backend development (Go) an
 ---
 # Professional Experience
 
+## LINE Pay (Thailand)
+### Senior Software Engineer
+Jun 2025 - present
+- Build reliable, scalable systems.
+- Work with cross-functional teams to deliver user-friendly and efficient tools.
+- Use modern tech stacks to support growing services.
+
 ## Extend IT Resource Co., Ltd.
-### Senior Software Developer
-2024 - Present
-- Lead the backend development team.
-- Research and implement development best practices.
-- Develop backend systems using Go.
-- Define and implement CI/CD processes for development teams.
-- Establish and maintain infrastructure for stability and scalability.
+### Assistant Manager (Backend Lead)
+2024 - May 2025
+- Led and mentored Go/JavaScript backend teams in end-to-end design, development, and deployment of highly scalable, high-performance distributed systems.
+- Drove adoption of advanced development best practices , resulting in an increase in team velocity and reduction in critical production bugs.
+- Architected and implemented robust, cloud-native infrastructure solutions, enhancing system stability and scalability to support large amounts of transactions.
 
 ## Tomato Ideas Co., Ltd.
 ### Technical Lead
 May 2023 - September 2023
-- Define and set up application monitoring to ensure optimal customer experience.
-- Troubleshoot technical issues and provide long-term solutions and implementations.
-- Optimize infrastructure for handling large volumes of concurrent requests.
+- Designed and implemented comprehensive application monitoring systems, to improve system uptime and customer experience.
+- Led root cause analysis and implemented strategic, long-term solutions for critical production issues.
+- Optimized Kubernetes (K8s) and K3S cluster configurations, significantly improving storage reliability and reducing network latency.
 
 ## Canghan Coffee
 ### Co-Founder, Coffee Roaster
@@ -69,23 +75,23 @@ November 2019
 ## COOP NIX Co., Ltd.
 ### Senior System Engineer
 January 2016
-- Develop a hyper-converged infrastructure system.
-- Maintain customer private servers.
-- Provide maintenance services for computer servers and networks.
+- Architected and led implementation of a highly available and fault-tolerant Hyper-converged Infrastructure (HCI) system using ProxmoxVE and Ceph, achieving reliable uptime.
+- Managed and optimized private server environments supporting clients, ensuring high availability and performance.
+- Developed and deployed Infrastructure as a Service (IaaS) web management solutions using ProxmoxVE API, Go, and JavaScript.
 
 ## Provincial Waterworks Authority
 ### Computer Engineer
 February 2014 - July 2020
-- Maintain computer and server infrastructure.
-- Ensure a reliable and stable computer network for all branches of PWA 6.
+- Managed and maintained critical computer and server infrastructure across 22 branches, ensuring operational continuity for hundreds of users.
+- Designed and implemented a robust network environment, improving connectivity and reducing downtime.
+- Led strategic migration of Windows Server systems to Linux, achieving significant annual licensing cost savings.
 
 ## Zercle Technology Co., Ltd.
-### Consultant Co-Founder
+### Technical Consultant
 2024 - Present
 - Technical consultant
 ### Technical Co-Founder
 January 2012 - 2024
-- Research and implement development best practices.
-- Develop backend systems using Go.
-- Define and implement CI/CD processes for development teams.
-- Establish and maintain infrastructure for stability and scalability.
+- Established and championed foundational development best practices and agile workflows, accelerating initial team productivity.
+- Led the initial Go/JavaScript backend team in architectural design and development of core scalable systems, supporting rapid user growth.
+- Defined and implemented initial cloud-native infrastructure solutions, ensuring system stability and scalability during startup phase.
