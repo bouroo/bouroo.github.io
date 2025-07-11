@@ -3,7 +3,7 @@ title: "Which Messaging System to Choose? Kafka, Valkey, RabbitMQ, NATS... Oh, S
 date: 2025-07-11T10:00:00+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
-authorLink: "[https://kawin.dev](https://kawin.dev)"
+authorLink: "https://kawin.dev"
 tags: ["messaging", "kafka", "valkey", "redis", "rabbitmq", "nats"]
 categories: ["devops", "programming"]
 resources:
