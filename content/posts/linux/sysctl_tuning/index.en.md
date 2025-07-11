@@ -13,12 +13,12 @@ license: ""
 images: []
 resources:
 - name: "featured-image"
-  src: "featured-image.webp"
+  src: "featured-image.jpg"
 
 tags: ["Linux", "DevOps", "PVE", "K3S", "K8S"]
 categories: ["Linux", "DevOps"]
 
-featuredImage: "featured-image.webp"
+featuredImage: "featured-image.jpg"
 featuredImagePreview: "featured-image"
 ---
 

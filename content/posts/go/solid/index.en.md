@@ -15,8 +15,8 @@ images: []
 tags: ["Go", "SOLID", "Programming"]
 categories: ["Go"]
 
-featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image.webp"
+featuredImage: "featured-image.jpg"
+featuredImagePreview: "featured-image.jpg"
 
 lightgallery: true
 ---
