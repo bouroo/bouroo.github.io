@@ -32,7 +32,7 @@ lightgallery: true
     *   [paymenthub.kmutt.ac.th](https://paymenthub.kmutt.ac.th/): ระบบอำนวยความสะดวกในการชำระเงิน
     *   [license.kmutt.ac.th](https://license.kmutt.ac.th/): ระบบจองสิทธิ์การใช้งาน Adobe
 
-*   **แพลตฟอร์มฟินเทคและประกัน**: ผมได้มีส่วนร่วมในการพัฒนาแพลตฟอร์มทางการเงินและประกันที่มีผู้ใช้งานจำนวนมาก โดยใช้ **Go, NodeJS, Redis, PostgreSQL, และ GKE**
+*   **แพลตฟอร์มฟินเทคและประกัน**: ผมได้มีส่วนร่วมในการพัฒนาแพลตฟอร์มทางการเงินและประกันที่มีผู้ใช้งานจำนวนมาก โดยใช้ **Go, NodeJS, Redis, PostgreSQL, NATs, และ GKE**
     *   **[goodmoneybygsb.com](https://goodmoneybygsb.com/)**: แพลตฟอร์มสินเชื่อดิจิทัลร่วมกับธนาคารออมสิน
     *   **[insurverse.co.th](https://insurverse.co.th/)**: แพลตฟอร์มประกันออนไลน์ที่มีฟีเจอร์อย่างการกรอกข้อมูลด้วย OCR และการติดตามเคลม 24 ชั่วโมง
 

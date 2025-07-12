@@ -32,7 +32,7 @@ lightgallery: true
     *   [paymenthub.kmutt.ac.th](https://paymenthub.kmutt.ac.th/): Payment Facilitator system.
     *   [license.kmutt.ac.th](https://license.kmutt.ac.th/): Adobe licensing reservation system.
 
-*   **Fintech & Insurtech Platforms**: I contributed to the development of high-traffic financial and insurance platforms using **Go, NodeJS, Redis, PostgreSQL, and GKE**.
+*   **Fintech & Insurtech Platforms**: I contributed to the development of high-traffic financial and insurance platforms using **Go, NodeJS, Redis, PostgreSQL, NATs, and GKE**.
     *   **[goodmoneybygsb.com](https://goodmoneybygsb.com/)**: A digital lending platform in partnership with GSB (Government Savings Bank).
     *   **[insurverse.co.th](https://insurverse.co.th/)**: An online insurance platform with features like OCR data entry and 24-hour claim tracking.
 
