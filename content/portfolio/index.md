@@ -1,10 +1,10 @@
 ---
-title: "Portfolio | กวิน วิริยประสงค์สุข"
+title: "Portfolio | กวิน วิริยะประสพสุข"
 subtitle: ""
 date: 2025-07-12T02:29:14Z
 lastmod: 2025-07-12T02:29:14Z
 draft: false
-author: "กวิน วิริยประสงค์สุข"
+author: "กวิน วิริยะประสพสุข"
 authorLink: "https://kawin.dev"
 description: ""
 license: ""
