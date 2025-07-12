@@ -1,8 +1,25 @@
 ---
-title: "Portfolio"
-date: 2025-07-12T12:00:00+07:00
-draft: false
+title: "Index"
+subtitle: ""
+date: 2025-07-12T02:29:14Z
+lastmod: 2025-07-12T02:29:14Z
+draft: true
+author: "Kawin Viriyaprasopsook"
+authorLink: "https://kawin.dev"
+description: ""
+license: ""
+images: []
+
+tags: []
+categories: []
+
+featuredImage: "/img/featured-image.webp"
+featuredImagePreview: "/img/featured-image.webp"
+
+lightgallery: true
 ---
+
+<!--more-->
 
 Here are some of the projects I've worked on:
 
