@@ -1,10 +1,10 @@
 ---
-title: "Portfolio | Kawin Viriyaprasopsook"
+title: "Portfolio | กวิน วิริยประสงค์สุข"
 subtitle: ""
 date: 2025-07-12T02:29:14Z
 lastmod: 2025-07-12T02:29:14Z
 draft: false
-author: "Kawin Viriyaprasopsook"
+author: "กวิน วิริยประสงค์สุข"
 authorLink: "https://kawin.dev"
 description: ""
 license: ""
@@ -20,28 +20,20 @@ lightgallery: true
 ---
 
 <!--more-->
-## Portfolio | Kawin Viriyaprasopsook
+## นี่คือโปรเจคบางส่วนที่ผมเคยทำครับ:
 
-Here are some of the projects I've worked on:
+*   **ระบบบริหารจัดการมหาวิทยาลัย (มข. & มจธ.)**: ผมได้พัฒนาและดูแลระบบหลังบ้านและโครงสร้างพื้นฐานหลายๆ ตัว ให้กับมหาวิทยาลัยขอนแก่นและมหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี ระบบเหล่านี้สร้างด้วย **Go, Redis, MySQL, Docker, และ Angular** ประกอบไปด้วย:
+    *   [dms.kku.ac.th](https://dms.kku.ac.th/): ระบบจัดการเอกสาร
+    *   [payment-web.kku.ac.th](https://payment-web.kku.ac.th/): ระบบอำนวยความสะดวกในการชำระเงิน
+    *   [validation.kku.ac.th](https://validation.kku.ac.th/): ระบบตรวจสอบข้อมูลและใบรับรอง
+    *   [donation.kku.ac.th](https://donation.kku.ac.th/): แพลตฟอร์มบริจาคเงินอิเล็กทรอนิกส์แบบเรียลไทม์
+    *   [vaccine.kku.ac.th](https://vaccine.kku.ac.th/): พอร์ทัลลงทะเบียนฉีดวัคซีน
+    *   [app-reserve.kku.ac.th](https://app-reserve.kku.ac.th/): ระบบจองสิทธิ์การใช้งาน Adobe และ Zoom
+    *   [paymenthub.kmutt.ac.th](https://paymenthub.kmutt.ac.th/): ระบบอำนวยความสะดวกในการชำระเงิน
+    *   [license.kmutt.ac.th](https://license.kmutt.ac.th/): ระบบจองสิทธิ์การใช้งาน Adobe
 
-*   **https://dms.kku.ac.th/**: This appears to be a Document Management System for Khon Kaen University, likely used for managing and storing official documents.
+*   **แพลตฟอร์มฟินเทคและประกัน**: ผมได้มีส่วนร่วมในการพัฒนาแพลตฟอร์มทางการเงินและประกันที่มีผู้ใช้งานจำนวนมาก โดยใช้ **Go, Redis, PostgreSQL, และ GKE**
+    *   **[goodmoneybygsb.com](https://goodmoneybygsb.com/)**: แพลตฟอร์มสินเชื่อดิจิทัลร่วมกับธนาคารออมสิน
+    *   **[insurverse.co.th](https://insurverse.co.th/)**: แพลตฟอร์มประกันออนไลน์ที่มีฟีเจอร์อย่างการกรอกข้อมูลด้วย OCR และการติดตามเคลม 24 ชั่วโมง
 
-*   **https://payment-web.kku.ac.th/**: A web-based payment system for Khon Kaen University, probably for tuition fees, services, or other university-related payments.
-
-*   **https://validation.kku.ac.th/**: A validation system for Khon Kaen University, which could be used for verifying student data, certificates, or other official information.
-
-*   **https://donation.kku.ac.th/**: A donation platform for Khon Kaen University, enabling individuals to contribute financially to the university's initiatives or causes.
-
-*   **https://vaccine.kku.ac.th/**: A vaccination registration or information portal for Khon Kaen University, likely related to health services or public health campaigns.
-
-*   **https://app-reserve.kku.ac.th/**: An application reservation system for Khon Kaen University, possibly for booking facilities, appointments, or resources.
-
-*   **https://paymenthub.kmutt.ac.th/**: A payment hub for King Mongkut's University of Technology Thonburi, centralizing various payment services for the university.
-
-*   **https://license.kmutt.ac.th/**: A licensing system for King Mongkut's University of Technology Thonburi, potentially for software licenses, academic licenses, or other official permits.
-
-*   **https://goodmoneybygsb.com/**: A digital lending platform financial service created by Money DD Co., Ltd., and it's partnered with GSB (Government Savings Bank)
-
-*   **https://insurverse.co.th/**: An online insurance platform operating under Tip Group Holdings, offering various insurance products like motor, travel, accident, and home insurance. It features user-friendly online policy management, flexible coverage, OCR data entry, and 24-hour online claim notification and tracking.
-
-*   **SCB nextgen lending**: Transform SCB's new lending platform
+*   **SCB NextGen Lending**: ผมได้ทำงานในการปรับปรุงแพลตฟอร์มสินเชื่อใหม่ของ SCB โดยเน้นที่การรวมและพัฒนาเวิร์กโฟลว์โดยใช้ **Zoral** ซึ่งเป็น workflow engine ที่ทำงานบน JavaScript
