@@ -43,8 +43,6 @@ Open to remote opportunities from Khon Kaen and hybrids in Bangkok.
 ![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white) ![Rust](https://img.shields.io/badge/rust-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white) ![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=Cloudflare&logoColor=white) ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white) ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white) ![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white) 	![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white) ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) ![LINUX](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Rancher](https://img.shields.io/badge/rancher-%230075A8.svg?style=for-the-badge&logo=rancher&logoColor=white)
 
 ---
-# Professional Experience
-
 ## LINE Pay (Thailand)
 ### Senior Software Engineer
 Jun 2025 - present
@@ -54,7 +52,7 @@ Jun 2025 - present
 
 ## Extend IT Resource Co., Ltd.
 ### Assistant Manager (Backend Lead)
-October 2024 - May 2025
+October 2023 - May 2025
 - Led Go/JS backend teams, delivering scalable fintech microservices. 
 - Architected/deployed K8s cloud infra for insurance and loan systems, improving reliability. 
 - Optimized CI/CD, monitoring, and logging, and enhanced storage durability & reduced latency.
@@ -66,18 +64,18 @@ May 2023 - September 2023
 - Architected/deployed K8s cloud infra for e-commerce, improving reliability. 
 - Optimized CI/CD, monitoring, and logging, and enhanced storage durability & reduced latency.
 
-## Canghan Coffee
-### Co-Founder, Coffee Roaster
-November 2019
-- Develop coffee and beverage recipes.
-- Roast coffee beans.
-
 ## COOP NIX Co., Ltd.
 ### Senior System Engineer
-August 2020 - January 2016
+August 2020 - April 2023
 - Built Proxmox/Ceph HCI for private cloud. 
 - Developed Go IaaS tools, automating VM provisioning & reducing overhead. 
 - Optimized cloud for performance, security, scalability.
+
+## Canghan Coffee
+### Co-Founder, Coffee Roaster
+November 2019 - present
+- Develop coffee and beverage recipes.
+- Roast coffee beans.
 
 ## Provincial Waterworks Authority
 ### Computer Engineer

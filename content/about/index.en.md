@@ -54,7 +54,7 @@ Jun 2025 - present
 
 ## Extend IT Resource Co., Ltd.
 ### Assistant Manager (Backend Lead)
-October 2024 - May 2025
+October 2023 - May 2025
 - Led Go/JS backend teams, delivering scalable fintech microservices. 
 - Architected/deployed K8s cloud infra for insurance and loan systems, improving reliability. 
 - Optimized CI/CD, monitoring, and logging, and enhanced storage durability & reduced latency.
@@ -66,18 +66,18 @@ May 2023 - September 2023
 - Architected/deployed K8s cloud infra for e-commerce, improving reliability. 
 - Optimized CI/CD, monitoring, and logging, and enhanced storage durability & reduced latency.
 
-## Canghan Coffee
-### Co-Founder, Coffee Roaster
-November 2019
-- Develop coffee and beverage recipes.
-- Roast coffee beans.
-
 ## COOP NIX Co., Ltd.
 ### Senior System Engineer
-August 2020 - January 2016
+August 2020 - April 2023
 - Built Proxmox/Ceph HCI for private cloud. 
 - Developed Go IaaS tools, automating VM provisioning & reducing overhead. 
 - Optimized cloud for performance, security, scalability.
+
+## Canghan Coffee
+### Co-Founder, Coffee Roaster
+November 2019 - present
+- Develop coffee and beverage recipes.
+- Roast coffee beans.
 
 ## Provincial Waterworks Authority
 ### Computer Engineer
