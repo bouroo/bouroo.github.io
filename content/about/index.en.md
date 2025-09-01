@@ -48,23 +48,23 @@ Open to remote opportunities from Khon Kaen and hybrids in Bangkok.
 ## LINE Pay (Thailand)
 ### Senior Software Engineer
 Jun 2025 - present
-- Build reliable, scalable systems.
-- Work with cross-functional teams to deliver user-friendly and efficient tools.
-- Use modern tech stacks to support growing services.
+- Responsible for building reliable, scalable systems. 
+- Collaborating with cross-functional teams to deliver user-friendly tools. 
+- Utilizing modern tech stacks to support growing services.
 
 ## Extend IT Resource Co., Ltd.
 ### Assistant Manager (Backend Lead)
-2024 - May 2025
-- Led and mentored Go/JavaScript backend teams in end-to-end design, development, and deployment of highly scalable, high-performance distributed systems.
-- Drove adoption of advanced development best practices , resulting in an increase in team velocity and reduction in critical production bugs.
-- Architected and implemented robust, cloud-native infrastructure solutions, enhancing system stability and scalability to support large amounts of transactions.
+October 2024 - May 2025
+- Led Go/JS backend teams, delivering scalable fintech microservices. 
+- Architected/deployed K8s cloud infra for insurance and loan systems, improving reliability. 
+- Optimized CI/CD, monitoring, and logging, and enhanced storage durability & reduced latency.
 
 ## Tomato Ideas Co., Ltd.
 ### Technical Lead
 May 2023 - September 2023
-- Designed and implemented comprehensive application monitoring systems, to improve system uptime and customer experience.
-- Led root cause analysis and implemented strategic, long-term solutions for critical production issues.
-- Optimized Kubernetes (K8s) and K3S cluster configurations, significantly improving storage reliability and reducing network latency.
+- Led Go/JS backend teams, delivering scalable fintech microservices. 
+- Architected/deployed K8s cloud infra for e-commerce, improving reliability. 
+- Optimized CI/CD, monitoring, and logging, and enhanced storage durability & reduced latency.
 
 ## Canghan Coffee
 ### Co-Founder, Coffee Roaster
@@ -74,24 +74,21 @@ November 2019
 
 ## COOP NIX Co., Ltd.
 ### Senior System Engineer
-January 2016
-- Architected and led implementation of a highly available and fault-tolerant Hyper-converged Infrastructure (HCI) system using ProxmoxVE and Ceph, achieving reliable uptime.
-- Managed and optimized private server environments supporting clients, ensuring high availability and performance.
-- Developed and deployed Infrastructure as a Service (IaaS) web management solutions using ProxmoxVE API, Go, and JavaScript.
+August 2020 - January 2016
+- Built Proxmox/Ceph HCI for private cloud. 
+- Developed Go IaaS tools, automating VM provisioning & reducing overhead. 
+- Optimized cloud for performance, security, scalability.
 
 ## Provincial Waterworks Authority
 ### Computer Engineer
 February 2014 - July 2020
-- Managed and maintained critical computer and server infrastructure across 22 branches, ensuring operational continuity for hundreds of users.
-- Designed and implemented a robust network environment, improving connectivity and reducing downtime.
-- Led strategic migration of Windows Server systems to Linux, achieving significant annual licensing cost savings.
+- Managed 22-branch server/network infrastructure, ensuring high availability. 
+- Led Windows to Linux migration, saving costs & boosting security. 
+- Designed robust network, minimizing downtime.
 
 ## Zercle Technology Co., Ltd.
-### Technical Consultant
-2024 - Present
-- Technical consultant
 ### Technical Co-Founder
-January 2012 - 2024
-- Established and championed foundational development best practices and agile workflows, accelerating initial team productivity.
-- Led the initial Go/JavaScript backend team in architectural design and development of core scalable systems, supporting rapid user growth.
-- Defined and implemented initial cloud-native infrastructure solutions, ensuring system stability and scalability during startup phase.
+January 2012 - January 2014
+- Led Go/JS backend development & tech vision. 
+- Designed/deployed Linux/virtualization infrastructure. 
+- Instituted Agile/DevOps, fostering engineering excellence and rapid iteration.
