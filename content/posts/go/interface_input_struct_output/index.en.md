@@ -15,8 +15,8 @@ images: []
 tags: ["Go", "Interfaces", "Structs", "Design Patterns"]
 categories: ["Go"]
 
-featuredImage: "go-interface-struct-featured-image.webp"
-featuredImagePreview: "go-interface-struct-featured-image.webp"
+featuredImage: "featured-image.png"
+featuredImagePreview: "featured-image.png"
 
 lightgallery: true
 ---
