@@ -1,12 +1,12 @@
 ---
-title: "Go Functions: Interface as Input, Struct as Output"
+title: "Accept interfaces, return structs"
 subtitle: ""
 date: 2025-11-08T12:00:00+07:00
 lastmod: 2025-11-08T12:00:00+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: "Exploring the benefits of designing Go functions with interfaces for input and structs for output."
+description: "Exploring the benefits of designing Go functions with interfaces for input and structs for output. This approach enhances testability, promotes loose coupling, and makes your code more adaptable to change."
 aliases:
 - /posts/go_interface_struct/
 license: ""
