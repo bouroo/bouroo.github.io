@@ -1,12 +1,12 @@
 ---
-title: "Accept interfaces, return structs"
+title: "รับ interface แล้วคืนค่า struct"
 subtitle: ""
 date: 2025-11-08T12:00:00+07:00
 lastmod: 2025-11-08T12:00:00+07:00
 draft: false
-author: "Kawin Viriyaprasopsook"
+author: "กวิน วิริยะประสพสุข"
 authorLink: "https://kawin.dev"
-description: "Exploring the benefits of designing Go functions with interfaces for input and structs for output. This approach enhances testability, promotes loose coupling, and makes your code more adaptable to change."
+description: "ชวนคุยแนวคิดออกแบบฟังก์ชันใน Go แบบรับ interface เป็น input แล้วคืนค่า struct เป็น output ช่วยให้เทสง่าย ลดการผูกติดกันของโค้ด และรองรับการเปลี่ยนแปลงได้ดีขึ้น"
 aliases:
 - /posts/go_interface_struct/
 license: ""
@@ -21,18 +21,23 @@ featuredImagePreview: "featured-image.png"
 lightgallery: true
 ---
 
-In the world of Go programming, designing flexible and maintainable functions is key to building robust applications. One powerful pattern involves using interfaces as function inputs and structs as function outputs. This approach enhances testability, promotes loose coupling, and makes your code more adaptable to change.
+ในโลกของการเขียนโปรแกรมด้วย Go การออกแบบฟังก์ชันให้ยืดหยุ่นและดูแลง่ายคือกุญแจสำคัญของการสร้างแอปที่แข็งแรง หนึ่งในแพทเทิร์นที่ทรงพลังมากคือ
+
+> รับค่าเป็น **interface** แล้วคืนค่าเป็น **struct**
+
+แนวคิดนี้ช่วยให้เทสง่ายขึ้น ลดการผูกติด (coupling) ระหว่างส่วนต่าง ๆ ในระบบ และทำให้โค้ดของเราปรับตัวตาม requirement ที่เปลี่ยนไปได้ดีขึ้นมาก
 
 <!--more-->
 
-## Why Interface as Input?
+## ทำไมควรใช้ Interface เป็น Input?
 
-When a function accepts an interface as an input parameter, it means the function can operate on any type that implements that interface.
-{{< admonition note "Design Principles" >}}
-This adheres to the **Dependency Inversion Principle** and **Open-Closed Principle**, allowing for greater flexibility and extensibility.
+เวลาเราทำให้ฟังก์ชัน “รับ interface” เป็นพารามิเตอร์ หมายความว่าฟังก์ชันนั้นสามารถทำงานกับ type อะไรก็ได้ที่ “implements interface นั้น” อยู่
+
+{{< admonition note "หลักการออกแบบที่เกี่ยวข้อง" >}}
+แนวคิดนี้สอดคล้องกับ **Dependency Inversion Principle** และ **Open-Closed Principle** ช่วยให้ระบบยืดหยุ่นและขยายได้ง่ายขึ้น
 {{< /admonition >}}
 
-Consider a scenario where you need to process different types of documents. Instead of writing separate functions for each document type, you can define an interface.
+ลองนึกภาพเคสที่เราต้องประมวลผลเอกสารหลายประเภท ปกติอาจเผลอไปเขียนฟังก์ชันแยกเป็น `ProcessPDF()`, `ProcessWord()` ฯลฯ แต่จริง ๆ แล้วเราสามารถนิยาม interface กลางขึ้นมาชุดเดียวแล้วใช้ร่วมกันได้
 
 {{< admonition example >}}
 ```go
@@ -40,13 +45,13 @@ package main
 
 import "fmt"
 
-// DocumentProcessor defines the contract for processing documents.
+// DocumentProcessor กำหนดสัญญา (contract) สำหรับตัวที่เอาไว้ประมวลผลเอกสาร
 type DocumentProcessor interface {
 	Process() string
 	GetContent() string
 }
 
-// PDFDocument implements DocumentProcessor for PDF files.
+// PDFDocument implements DocumentProcessor สำหรับไฟล์ PDF
 type PDFDocument struct {
 	Content string
 }
@@ -59,7 +64,7 @@ func (p PDFDocument) GetContent() string {
 	return p.Content
 }
 
-// WordDocument implements DocumentProcessor for Word files.
+// WordDocument implements DocumentProcessor สำหรับไฟล์ Word
 type WordDocument struct {
 	Text string
 }
@@ -72,7 +77,7 @@ func (w WordDocument) GetContent() string {
 	return w.Text
 }
 
-// HandleDocument accepts any type that implements the DocumentProcessor interface.
+// HandleDocument รับค่าอะไรก็ได้ที่ implements DocumentProcessor
 func HandleDocument(processor DocumentProcessor) {
 	fmt.Println(processor.Process())
 }
@@ -87,16 +92,17 @@ func main() {
 ```
 {{< /admonition >}}
 
-In this example, `HandleDocument` doesn't care whether it's dealing with a `PDFDocument` or a `WordDocument`. It only cares that the input implements the `DocumentProcessor` interface, which guarantees the `Process()` method is available.
-{{< admonition tip "Benefit of Interfaces" >}}
-This makes `HandleDocument` highly reusable and easy to test with mock implementations of `DocumentProcessor`.
+ในตัวอย่างนี้ `HandleDocument` ไม่สนใจเลยว่ากำลังทำงานกับ `PDFDocument` หรือ `WordDocument` สิ่งเดียวที่มันสนใจคือ object ที่ส่งเข้ามา “ต้อง” implements `DocumentProcessor` ซึ่งการันตีว่าอย่างน้อยมีเมธอด `Process()` ให้เรียกแน่นอน
+
+{{< admonition tip "ข้อดีของการใช้ Interface" >}}
+ทำให้ `HandleDocument` นำกลับมาใช้ซ้ำได้สูง และเทสง่ายมาก เพราะเราสามารถสร้าง mock ที่ implements `DocumentProcessor` ขึ้นมาทดแทนของจริงได้เลย
 {{< /admonition >}}
 
-## Why Struct as Output?
+## ทำไมควรใช้ Struct เป็น Output?
 
-Returning a struct as output provides a clear and organized way to convey multiple pieces of information from a function. Unlike returning multiple bare values, a struct gives semantic meaning to the grouped data and makes the function signature easier to understand and maintain.
+การคืนค่าเป็น struct ทำให้เราสื่อสาร “หลาย ๆ ข้อมูล” ออกจากฟังก์ชันได้อย่างมีความหมาย ชัดเจน และเป็นระบบมากกว่าแค่คืนค่าหลาย ๆ ตัวแบบกระจัดกระจาย เพราะ struct จะบอก semantic ของข้อมูลแต่ละฟิลด์ได้ชัดเจนกว่า และทำให้ signature ของฟังก์ชันอ่านง่าย ดูแลต่อได้ไม่ปวดหัว
 
-Let's extend our document processing example to return structured results.
+ลองขยายตัวอย่างการประมวลผลเอกสารให้คืนค่าแบบมีโครงสร้างมากขึ้น
 
 {{< admonition example >}}
 ```go
@@ -104,13 +110,13 @@ package main
 
 import "fmt"
 
-// DocumentProcessor defines the contract for processing documents.
+// DocumentProcessor กำหนดสัญญา (contract) สำหรับตัวที่เอาไว้ประมวลผลเอกสาร
 type DocumentProcessor interface {
 	Process() (ProcessResult, error)
 	GetContent() string
 }
 
-// ProcessResult represents the structured output of a document processing operation.
+// ProcessResult แทนผลลัพธ์แบบมีโครงสร้างของการประมวลผลเอกสาร
 type ProcessResult struct {
 	DocumentType string
 	Status       string
@@ -118,13 +124,13 @@ type ProcessResult struct {
 	ProcessedBy  string
 }
 
-// PDFDocument implements DocumentProcessor for PDF files.
+// PDFDocument implements DocumentProcessor สำหรับไฟล์ PDF
 type PDFDocument struct {
 	Content string
 }
 
 func (p PDFDocument) Process() (ProcessResult, error) {
-	// Simulate some processing logic
+	// สมมติว่ามี logic การประมวลผลบางอย่าง
 	result := ProcessResult{
 		DocumentType: "PDF",
 		Status:       "Success",
@@ -138,13 +144,13 @@ func (p PDFDocument) GetContent() string {
 	return p.Content
 }
 
-// WordDocument implements DocumentProcessor for Word files.
+// WordDocument implements DocumentProcessor สำหรับไฟล์ Word
 type WordDocument struct {
 	Text string
 }
 
 func (w WordDocument) Process() (ProcessResult, error) {
-	// Simulate some processing logic
+	// สมมติว่ามี logic การประมวลผลบางอย่าง
 	result := ProcessResult{
 		DocumentType: "Word",
 		Status:       "Success",
@@ -158,7 +164,7 @@ func (w WordDocument) GetContent() string {
 	return w.Text
 }
 
-// HandleDocument processes a document and returns a structured result.
+// HandleDocument ประมวลผลเอกสารแล้วคืนผลลัพธ์แบบมีโครงสร้าง
 func HandleDocument(processor DocumentProcessor) (ProcessResult, error) {
 	return processor.Process()
 }
@@ -184,13 +190,15 @@ func main() {
 ```
 {{< /admonition >}}
 
-By returning `ProcessResult`, we encapsulate all relevant information about the processing operation.
-{{< admonition tip "Structured Output Benefits" >}}
-This makes the return value self-describing and easy to extend if more information needs to be added in the future without changing the function signature (`HandleDocument`'s return type remains `(ProcessResult, error)`).
+พอเราใช้ `ProcessResult` เป็น struct สำหรับผลลัพธ์ เราก็ห่อข้อมูลทุกอย่างที่เกี่ยวกับการประมวลผลใส่เข้าไปในที่เดียว
+
+{{< admonition tip "ข้อดีของการคืนค่าแบบ Struct" >}}
+ค่าที่คืนออกมาจะ “อธิบายตัวเอง” ได้ดี (self-describing) และขยายเพิ่มฟิลด์ใหม่ในอนาคตได้ง่าย โดยไม่ต้องไปแก้ function signature ของ `HandleDocument` (ยังคงเป็น `(ProcessResult, error)` เหมือนเดิม)
 {{< /admonition >}}
 
-## Conclusion
+## สรุป
 
 {{< admonition summary "Key Takeaway" >}}
-Combining interfaces for function inputs and structs for function outputs is a highly effective design pattern in Go. It promotes a modular, testable, and maintainable codebase, allowing your applications to evolve gracefully as requirements change. By focusing on contracts (interfaces) for what a function needs and structured data (structs) for what it provides, you can write Go code that is both powerful and elegant.
+การใช้ interface เป็น input และ struct เป็น output เป็นแพทเทิร์นที่เวิร์กมากใน Go  
+มันช่วยให้โค้ดแยกส่วนกันดี (modular), เทสง่าย, และดูแลรักษาในระยะยาวได้สบายขึ้น พอเราโฟกัสที่ “สัญญา” (interface) ว่าฟังก์ชันต้องการอะไร และใช้ “ข้อมูลแบบมีโครงสร้าง” (struct) บอกสิ่งที่ฟังก์ชันส่งกลับ โค้ดที่ได้จะทั้งยืดหยุดและอ่านง่ายในเวลาเดียวกัน
 {{< /admonition >}}
