@@ -6,7 +6,7 @@ lastmod: 2023-09-28T23:45:41+07:00
 draft: true
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "Introduces four must-know database patterns for building microservices: database-per-service, shared database, API composition, and CQRS with event sourcing — and the trade-offs of each."
 license: ""
 images: []
 
@@ -31,28 +31,28 @@ Here are 4 must-know patterns for building microservices:
 
 ![db_pattern](img/db_pattern.gif "DB patterns for building microservices")
 
-✅ Database per service
+- Database per service
 
 - In this pattern, each microservice manages its own data.
 - This means that no other service can access that data directly.
 - Communication or exchange of data can only happen through the owner service.
 - The success of this pattern depends on how well you’ve defined the bounded context of your application.
 
-✅ Shared Database
+- Shared Database
 
 - Avoid this pattern as much as possible
 - But sometimes, it’s the only viable option to incrementally move to a microservice architecture.
 - This approach is lenient in the sense that multiple services use a shared database.
 - However, it creates a bigger impact surface and chances of run-time issues.
 
-✅ API Composition
+- API Composition
 
 - This pattern tries to solve the problem of implementing complex queries in a microservices architecture.
 - An API Composer invokes other services in the required order.
 - After fetching the results, it performs an in-memory join of the data before returning it to the caller.
 - This is an inefficient approach due to in-memory joins on potentially large datasets.
 
-✅ CQRS + Event Sourcing
+- CQRS + Event Sourcing
 
 - Next, we have CQRS
 - It can help get around the issues with the API Composition Pattern.

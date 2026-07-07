@@ -1,12 +1,12 @@
 ---
-title: "How to Write Go Code That Accesses Shared Resources Without Using Exclusive Locks 🤔"
+title: "How to Write Go Code That Accesses Shared Resources Without Using Exclusive Locks"
 subtitle: ""
 date: 2024-12-21T18:07:21+07:00
 lastmod: 2024-12-21T18:07:21+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "Explains why to avoid exclusive mutex locks in Go and shows four lock-free alternatives: channels, sync.Map, atomic operations, and sync.RWMutex."
 license: ""
 images: []
 

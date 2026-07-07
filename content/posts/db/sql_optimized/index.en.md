@@ -6,7 +6,7 @@ lastmod: 2023-09-05T22:10:43+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "Shares practical query and table design techniques to keep RDBMS performance from degrading as data grows."
 license: ""
 images: []
 featuredImage: "featured-image.webp"

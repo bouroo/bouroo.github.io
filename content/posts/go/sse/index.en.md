@@ -6,7 +6,7 @@ lastmod: 2025-01-01T00:00:00+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "A walkthrough of building a simple real-time online voting system with Go on the backend and Svelte on the frontend, using Server-Sent Events (SSE) to push score updates from server to client."
 license: ""
 images: []
 

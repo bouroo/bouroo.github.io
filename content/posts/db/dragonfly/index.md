@@ -6,7 +6,7 @@ lastmod: 2023-08-22T08:35:53+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "เปรียบเทียบประสิทธิภาพระหว่าง DragonflyDB และ Redis 7 ด้วย memtier_benchmark ผ่าน TCP และ Unix socket พร้อมข้อมูลลิขสิทธิ์ 2024-2025"
 license: ""
 images: []
 featuredImage: "featured-image.webp"
@@ -161,5 +161,15 @@ docker compose -f docker-compose.dragonfly.yml up dragonfly_sock
 | Waits     | 0.00       | ---        | ---           | ---          | ---         | ---         | ---          | ---      |
 | Totals    | 254250.88  | 0.00       | 231114.05     | 0.78783      | 0.27900     | 7.42300     | 12.79900     | 10784.83 |
 
+## ภาพรวมลิขสิทธิ์ (2024-2025)
+
+วงการ in-memory database มีการเปลี่ยนแปลงลิขสิทธิ์ครั้งใหญ่หลังจากที่เขียน benchmark นี้:
+
+- **Redis** — ในเดือนมีนาคม 2024 Redis Ltd. เปลี่ยนจาก BSD เป็น dual license SSPL/RSALv2 และใน Redis 8.0 (2025) เพิ่ม AGPLv3 เป็นตัวเลือกที่สาม การเปลี่ยนแปลงนี้เป็นสาเหตุที่ทำให้เกิด community fork ด้านล่าง
+- **Valkey** — เป็น fork ของ Redis 7.2.4 ภายใต้ลิขสิทธิ์ BSD สร้างโดย Linux Foundation (มีนาคม 2024) โดยมี AWS, Google Cloud และ Oracle สนับสนุน Valkey 8.1 (มีนาคม 2025) มี throughput สูงขึ้นประมาณ 8%, P99 latency ต่ำลง 22% และใช้ memory น้อยลง 20% เมื่อเทียบกับ Redis OSS
+- **Dragonfly** — ใช้ Business Source License (BSL 1.1) มาตั้งแต่แรก BSL เป็น source-available และใช้งานได้ฟรีสำหรับ self-hosting โดยจะเปลี่ยนเป็น Apache 2.0 หลังจาก change date (ปกติประมาณสี่ปี) Dragonfly ไม่ใช่ open source ที่ผ่านการรับรองโดย OSI แต่ไม่มีข้อจำกัดเหมือน SSPL ของ Redis สำหรับผู้ให้บริการ managed service
+
+ถ้าลิขสิทธิ์สำคัญสำหรับการใช้งานของคุณ (เช่น ต้องการให้บริการ managed service) Valkey (BSD) จะเป็นตัวเลือกที่เปิดกว้างที่สุด BSL ของ Dragonfly มีข้อจำกัดมากกว่า BSD แต่ไม่ซับซ้อนเท่า SSPL ของ Redis สำหรับ self-hosted benchmark ทั้งสามตัวใช้งานได้ฟรี
+
 ## สรุป
-ด้วยพลังแห่ง Multi-thread ทำให้ผลที่ออกมา Dragonfly ดูดีเลยทีเดียว (ยิ่งผ่าน UNIX socket ยิ่งเห็นความต่างจาก TCP/IP) แต่ก็มีข้อสังเกตุคือ ตอนนี้ Dragonfly ไม่ได้รองรับ Redis API แบบ 100% นะครับ ถ้ามีการใช้ท่ายากท่าพิเศษ จะต้องเช็คกันก่อนว่าสามารถเอามาใช้งานแทนได้เลยหรือไม่ ที่ [command-reference](https://www.dragonflydb.io/docs/command-reference/compatibility) ซึ่งจากการทดลองใช้งานดูแล้ว ถ้าโดยปกติใช้งาน Redis แค่ Instance เดียว ไม่ได้ใช้งาน ด้าน `Graph`, `Geo location` โดยใช้แค่ หลัก ๆ เป็น `Set` `Get` และใช้ `PubSub` `Stream` นิดหน่อย ก็สามารถแทนด้วย Dragonfly ได้เลย โดยโค้ดและการเชื่อมต่อยังใช้ตามเดิม
+ด้วยพลังแห่ง Multi-thread ทำให้ผลที่ออกมา Dragonfly ดูดีเลยทีเดียว (ยิ่งผ่าน UNIX socket ยิ่งเห็นความต่างจาก TCP/IP) แต่ก็มีข้อสังเกตุคือ ตอนนี้ Dragonfly ไม่ได้รองรับ Redis API แบบ 100% นะครับ ซึ่ง ณ ปี 2025 ความเข้ากันได้ของ Redis API บน Dragonfly ดีขึ้นอย่างมาก แต่บางคำสั่ง edge-case อาจยังมีพฤติกรรมต่างกัน — ควรเช็ค [compatibility reference](https://www.dragonflydb.io/docs/command-reference/compatibility) สำหรับ use case ของคุณเสมอ ถ้ามีการใช้ท่ายากท่าพิเศษ จะต้องเช็คกันก่อนว่าสามารถเอามาใช้งานแทนได้เลยหรือไม่ ที่ [command-reference](https://www.dragonflydb.io/docs/command-reference/compatibility) ซึ่งจากการทดลองใช้งานดูแล้ว ถ้าโดยปกติใช้งาน Redis แค่ Instance เดียว ไม่ได้ใช้งาน ด้าน `Graph`, `Geo location` โดยใช้แค่ หลัก ๆ เป็น `Set` `Get` และใช้ `PubSub` `Stream` นิดหน่อย ก็สามารถแทนด้วย Dragonfly ได้เลย โดยโค้ดและการเชื่อมต่อยังใช้ตามเดิม

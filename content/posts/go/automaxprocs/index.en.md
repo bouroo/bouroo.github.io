@@ -104,5 +104,5 @@ func main() {
 }
 ```
 
-The result will be as set in the CPU quota. Now our app will not spawn processes beyond the container's CPU quota, and our app will run smoothly without unintentional CPU throttling 🤣.
+The result will be as set in the CPU quota. Now our app will not spawn processes beyond the container's CPU quota, and our app will run smoothly without unintentional CPU throttling.
 ![docker_from_auto](img/docker_from_auto.webp "Running on a Container with a CPU quota")

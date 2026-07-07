@@ -6,7 +6,7 @@ lastmod: 2023-12-10T21:33:40+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "Compares io.ReadAll and io.Copy in Go, with benchmarks across small, medium, and large JSON files showing io.Copy is roughly 40% faster on average."
 license: ""
 images: []
 featuredImage: "featured-image.webp"
@@ -92,4 +92,4 @@ Test results for reading small 10KB, medium 2.9MB, and large 26MB files.
 |BenchmarkReadAllLarge-8|              171|           6335655 ns/op|        160741794 B/op|        46 allocs/op|
 |BenchmarkCopyLarge-8|                 237|           7064719 ns/op|        67108578 B/op|         22 allocs/op|
 
-We can see that `io.Copy` is, on average, about 40% more performant than `io.ReadAll`. However, this comes at the cost of writing more code to create a buffer to receive the data, which might not appeal to the lazy programmer 🤣🤣🤣
+We can see that `io.Copy` is, on average, about 40% more performant than `io.ReadAll`. However, this comes at the cost of writing more code to create a buffer to receive the data, which might not appeal to the lazy programmer.

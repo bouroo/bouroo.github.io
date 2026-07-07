@@ -6,7 +6,7 @@ lastmod: 2025-07-12T02:29:14Z
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "A selection of backend projects I've worked on — university management systems for KKU and KMUTT, fintech and insurtech platforms (goodmoneybygsb, insurverse), and SCB's next-gen lending workflow."
 license: ""
 images: []
 

@@ -6,7 +6,7 @@ lastmod: 2024-02-15T19:41:41+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "Explains how column ordering in PostgreSQL affects tuple alignment and the on-disk row storage size through data padding."
 license: ""
 images: []
 
@@ -105,7 +105,7 @@ select pg_column_size(tb_continuous.*) - 24 as row_size from tb_continuous limit
 (1 row)
 ```
 
-Oh, why are they not the same? Lol.
+You might wonder why the results differ.
 
 At this point, if you look at `typlen`, those who have read ([Designing Go structs with knowledge of Computer Architecture and Data Structures]({{< ref "/posts/go/struct_memory" >}} "Designing Go structs with knowledge of Computer Architecture and Data Structures")) will find that it's similar. Yes, it's the same thing. What happened is the padding between fields.
 

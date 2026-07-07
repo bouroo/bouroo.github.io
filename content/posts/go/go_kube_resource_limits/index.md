@@ -6,7 +6,7 @@ lastmod: 2024-03-13T00:45:21+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "วิธีที่ GOMAXPROCS (พร้อม automaxprocs) และ GOMEMLIMIT ของ Go ทำงานร่วมกับขีดจำกัด CPU และ memory ของ Kubernetes เพื่อให้ runtime อยู่ในกรอบของ resource"
 license: ""
 images: []
 
@@ -67,4 +67,4 @@ GOMAXPROCS: 1
 GOMEMLIMIT: 536870912
 ```
 ซึ่งค่าที่ตั้งเข้าไปจะถูกนำไปใช้กับ Go runtime ให้เอง โดย Go runtime จะใช้ค่า `0` 
-(zero value) เป็น default เมื่อไม่ได้มีการส่งค่าเข้าไป ทำให้ถึงเราจะไม่ได้ตั้ง resources limit ให้กับ Pod ไว้ Go runtime ก็จะ fallback ไปใช้ค่า default ให้เอง เราก็ไม่ต้องกลัวว่า service จะรันไม่ขึ้น ถถถ
+(zero value) เป็น default เมื่อไม่ได้มีการส่งค่าเข้าไป ทำให้ถึงเราจะไม่ได้ตั้ง resources limit ให้กับ Pod ไว้ Go runtime ก็จะ fallback ไปใช้ค่า default ให้เอง เราก็ไม่ต้องกลัวว่า service จะรันไม่ขึ้น

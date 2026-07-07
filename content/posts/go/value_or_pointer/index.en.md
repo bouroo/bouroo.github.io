@@ -108,7 +108,7 @@ Here, a value receiver wastes time copying before calling the method, but a poin
 ![cpu_cache](img/cpu_cache.webp "cpu_cache")
 
 ## When should you use a value?
-- When it doesn't meet the conditions for **[When should you use a pointer?]({{<ref "#when-should-you-use-a-pointer" >}} "When should you use a pointer?" )** **lol** just kidding.
+- When none of the conditions for **[When should you use a pointer?]({{<ref "#when-should-you-use-a-pointer" >}} "When should you use a pointer?" )}}** apply.
 - For general data types like `int`, `string`, `float`, etc.
 - For a function return that is not used as a global variable, because if it's used as a local variable, it will use the value from the stack, which will be fast as benchmarked above.
 - For a value passed to a function, because even though using a pointer is faster, the main drawback is that it's not concurrently safe. For example, if we pass a pointer to a function and another goroutine writes to the same pointer (race condition), the result will not be pretty.

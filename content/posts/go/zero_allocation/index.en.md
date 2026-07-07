@@ -6,7 +6,7 @@ lastmod: 2024-12-21T11:47:24+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "Techniques for reducing heap allocations in Go to ease the garbage collector's workload, using arrays, sync.Pool, slice capacity management, strings.Builder, and stack-based returns."
 license: ""
 images: []
 

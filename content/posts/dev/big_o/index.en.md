@@ -6,7 +6,7 @@ lastmod: 2024-08-07T23:13:16+07:00
 draft: true
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "A practical, beginner-friendly introduction to Big O notation covering O(1), O(n), O(log n), O(n²), O(n log n), and O(2ⁿ) with short Go examples for each."
 license: ""
 images: []
 
@@ -20,7 +20,7 @@ lightgallery: true
 ---
 ## Why should we care about Big O Notation?
 
-Think of Big O Notation as a "fuel gauge" for your code's performance. It tells us how the performance of a program will change as the size of the data increases 📈. This is crucial for building applications that run smoothly, even when dealing with massive amounts of data.
+Think of Big O Notation as a "fuel gauge" for your code's performance. It tells us how the performance of a program will change as the size of the data increases. This is crucial for building applications that run smoothly, even when dealing with massive amounts of data.
 
 <!--more-->
 

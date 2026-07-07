@@ -6,7 +6,7 @@ lastmod: 2023-08-22T08:35:53+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "Benchmarking DragonflyDB against Redis 7 using memtier_benchmark over TCP and Unix sockets, with notes on the 2024-2025 licensing landscape."
 license: ""
 images: []
 featuredImage: "featured-image.webp"
@@ -161,5 +161,15 @@ docker compose -f docker-compose.dragonfly.yml up dragonfly_sock
 | Waits     | 0.00       | ---        | ---           | ---          | ---         | ---         | ---          | ---      |
 | Totals    | 254250.88  | 0.00       | 231114.05     | 0.78783      | 0.27900     | 7.42300     | 12.79900     | 10784.83 |
 
+## Licensing landscape (2024-2025)
+
+The in-memory database licensing landscape shifted significantly after this benchmark was written:
+
+- **Redis** — In March 2024, Redis Ltd. moved from BSD to a dual SSPL/RSALv2 license. Redis 8.0 (2025) added AGPLv3 as a third option. This triggered the community fork below.
+- **Valkey** — A BSD-licensed fork of Redis 7.2.4, created under the Linux Foundation (March 2024), backed by AWS, Google Cloud, and Oracle. Valkey 8.1 (March 2025) delivers roughly 8% higher throughput, 22% lower P99 latency, and 20% less memory than Redis OSS.
+- **Dragonfly** — Has used the Business Source License (BSL 1.1) from the start. BSL is source-available and free for self-hosting; it transitions to Apache 2.0 after a change date (typically four years). Dragonfly is not OSI-certified open source, but it avoids the restrictions that Redis's SSPL imposes on managed-service providers.
+
+If licensing matters for your use case (e.g., offering a managed service), Valkey (BSD) is the most permissive option. Dragonfly's BSL is more restrictive than BSD but less contentious than Redis's SSPL. For pure self-hosted benchmarks, all three are free to use.
+
 ## Conclusion
-With the power of multi-threading, Dragonfly performs very well (especially through UNIX sockets, where the difference from TCP/IP is noticeable). However, it's worth noting that Dragonfly doesn't currently support 100% of the Redis API. If you're using advanced or special features, you'll need to check if it can be used as a direct replacement. You can find more information in the [command-reference](https://www.dragonflydb.io/docs/command-reference/compatibility). From my testing, if you normally use Redis with only a single instance, and don't use `Graph` or `Geo location` features, primarily using `Set`, `Get`, and occasionally `PubSub` or `Stream`, you can replace it with Dragonfly. The code and connection methods remain the same.
+With the power of multi-threading, Dragonfly performs very well (especially through UNIX sockets, where the difference from TCP/IP is noticeable). However, it's worth noting that Dragonfly doesn't currently support 100% of the Redis API. As of 2025, Dragonfly's Redis API compatibility has improved significantly, though some edge-case commands may still differ — always check the [compatibility reference](https://www.dragonflydb.io/docs/command-reference/compatibility) for your specific use case. If you're using advanced or special features, you'll need to check if it can be used as a direct replacement. You can find more information in the [command-reference](https://www.dragonflydb.io/docs/command-reference/compatibility). From my testing, if you normally use Redis with only a single instance, and don't use `Graph` or `Geo location` features, primarily using `Set`, `Get`, and occasionally `PubSub` or `Stream`, you can replace it with Dragonfly. The code and connection methods remain the same.

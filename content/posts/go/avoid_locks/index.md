@@ -1,12 +1,12 @@
 ---
-title: "เขียน Go เรียกใช้ resource เดียวกันแต่ไม่อยากใช้ Exclusive Lock มีทางไหนบ้าง 🤔"
+title: "เขียน Go เรียกใช้ resource เดียวกันแต่ไม่อยากใช้ Exclusive Lock มีทางไหนบ้าง"
 subtitle: ""
 date: 2024-12-21T18:07:21+07:00
 lastmod: 2024-12-21T18:07:21+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "อธิบายเหตุผลที่ควรหลีกเลี่ยง exclusive mutex lock ใน Go และแนะนำ 4 ทางเลือก: channel, sync.Map, atomic operations และ sync.RWMutex พร้อมตัวอย่างใช้งานจริง"
 license: ""
 images: []
 

@@ -104,5 +104,5 @@ func main() {
 }
 ```
 
-ก็จะได้ผลออกมาตามที่กำหนดไว้ใน CPU quota เลย ทีนี้แอปของเราก็จะงอก process ไม่เกิน CPU quota ของ container แอปเราก็จะทำงานได้โดยสะดวกแล้ว แบบไม่ต้องโดน CPU throttling แบบไม่ตั้งใจ 🤣
+ก็จะได้ผลออกมาตามที่กำหนดไว้ใน CPU quota เลย ทีนี้แอปของเราก็จะงอก process ไม่เกิน CPU quota ของ container แอปเราก็จะทำงานได้โดยสะดวกแล้ว แบบไม่ต้องโดน CPU throttling แบบไม่ตั้งใจ
 ![docker_from_auto](img/docker_from_auto.webp "รันบน Container ที่กำหนด CPU quota")

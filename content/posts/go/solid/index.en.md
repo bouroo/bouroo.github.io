@@ -23,7 +23,7 @@ lightgallery: true
 
 In modern software development, focusing on getting things done quickly for initial use and then going back to clean up the details later (which is often never fully completed) usually results in difficulties when trying to add new features. This is because the code might be too tightly coupled, or if the demand for use increases, the system might not be able to scale as needed due to a lack of clear planning or structure in the software development process.
 
-Today, we will introduce a set of guidelines for software development that helps create high-quality, easy-to-maintain, and scalable code. A popular and easy-to-understand set of guidelines is SOLID. In today's examples, we will be using the Go language (because I'm comfortable with Go, haha).
+Today, we will introduce a set of guidelines for software development that helps create high-quality, easy-to-maintain, and scalable code. A popular and easy-to-understand set of guidelines is SOLID. In today's examples, we will be using the Go language (because Go is my strongest language).
 
 <!--more-->
 
@@ -272,4 +272,4 @@ As you can see, with this approach, no matter how the internal structure of `Tea
 
 ## Conclusion
 
-SOLID is one of the guidelines for software development to prevent us from getting lost in the cycle of technical debt. There are also other widely used guidelines. If you are interested, you can follow the next article. Thank you. 🙏
+SOLID is one of the guidelines for software development to prevent us from getting lost in the cycle of technical debt. There are also other widely used guidelines. If you are interested, you can follow the next article. Thank you.

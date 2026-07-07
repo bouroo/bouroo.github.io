@@ -6,7 +6,7 @@ lastmod: 2024-01-27T21:49:01+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "เปรียบเทียบ Domain-Driven Design (DDD), Test-Driven Development (TDD) และ Behavior-Driven Development (BDD) พร้อมหลักการ แนวปฏิบัติ กรณีที่เหมาะสม และข้อจำกัดของแต่ละแนวทาง"
 license: ""
 images: []
 

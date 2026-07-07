@@ -6,7 +6,7 @@ lastmod: 2023-09-08T10:26:39+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "เปรียบเทียบกลยุทธ์การทำ pagination ใน SQL ทั้ง Offset/Limit, keyset cursor และ deferred joins พร้อมอธิบายว่าแต่ละแบบเหมาะกับสถานการณ์ใด"
 license: ""
 images: []
 featuredImage: "featured-image.webp"

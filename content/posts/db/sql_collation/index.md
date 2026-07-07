@@ -6,7 +6,7 @@ lastmod: 2023-09-08T10:24:29+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "อธิบายว่า COLLATE ในฐานข้อมูลคืออะไร และส่งผลต่อการเรียงลำดับและการเปรียบเทียบ string อย่างไร รวมถึงเรื่อง case และอักษรพิเศษ"
 license: ""
 images: []
 featuredImage: "featured-image.webp"

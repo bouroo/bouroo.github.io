@@ -6,7 +6,7 @@ lastmod: 2025-01-01T00:00:00+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "แนวทางการสร้างระบบลงคะแนนเสียงออนไลน์แบบเรียลไทม์อย่างง่ายด้วย Go สำหรับ backend และ Svelte สำหรับ frontend โดยใช้ Server-Sent Events (SSE) ส่งคะแนนอัปเดตจาก server ไปยัง client"
 license: ""
 images: []
 

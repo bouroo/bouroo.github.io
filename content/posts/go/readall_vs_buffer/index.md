@@ -6,7 +6,7 @@ lastmod: 2023-12-10T21:33:40+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "เปรียบเทียบ io.ReadAll กับ io.Copy ใน Go พร้อมผล benchmark ไฟล์ JSON ขนาดเล็ก กลาง ใหญ่ พบว่า io.Copy เร็วกว่าเฉลี่ยราว 40%"
 license: ""
 images: []
 featuredImage: "featured-image.webp"
@@ -92,4 +92,4 @@ func BenchmarkCopy(b *testing.B) {
 |BenchmarkReadAllLarge-8|              171|           6335655 ns/op|        160741794 B/op|        46 allocs/op|
 |BenchmarkCopyLarge-8|                 237|           7064719 ns/op|        67108578 B/op|         22 allocs/op|
 
-จะพบว่า `io.Copy` จะประสิทธิภาพดีกว่า `io.ReadAll` เฉลี่ยที่ 40% เลยทีเดียว แต่ก็แลกมากับการที่ต้องเขียนโค้ดเพิ่ม Buffer มารับข้อมูล ซึ่งอาจจะไม่ถูกจริตสายขี้เกียจสักเท่าไหร่ 🤣🤣🤣
+จะพบว่า `io.Copy` จะประสิทธิภาพดีกว่า `io.ReadAll` เฉลี่ยที่ 40% เลยทีเดียว แต่ก็แลกมากับการที่ต้องเขียนโค้ดเพิ่ม Buffer มารับข้อมูล ซึ่งอาจจะไม่ถูกจริตสายขี้เกียจสักเท่าไหร่

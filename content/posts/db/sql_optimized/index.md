@@ -6,7 +6,7 @@ lastmod: 2023-09-05T22:10:43+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "แชร์เทคนิคการออกแบบ query และ table เพื่อรักษาประสิทธิภาพของ RDBMS ให้ไม่ช้าลงเมื่อข้อมูลเติบโตขึ้น"
 license: ""
 images: []
 featuredImage: "featured-image.webp"

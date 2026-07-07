@@ -6,7 +6,7 @@ lastmod: 2024-03-13T00:45:21+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "How Go's GOMAXPROCS (with automaxprocs) and GOMEMLIMIT align with Kubernetes CPU and memory limits so the runtime stays within resource boundaries."
 license: ""
 images: []
 
@@ -66,4 +66,4 @@ In this example, the values will be calculated and put into the `GOMAXPROCS` and
 GOMAXPROCS: 1
 GOMEMLIMIT: 536870912
 ```
-These set values will be used by the Go runtime automatically. The Go runtime uses a `0` (zero value) as the default when no value is passed. This means that even if we don't set resource limits for the Pod, the Go runtime will fall back to its default values, so we don't have to worry about the service failing to run lol.
+These set values will be used by the Go runtime automatically. The Go runtime uses a `0` (zero value) as the default when no value is passed. This means that even if we don't set resource limits for the Pod, the Go runtime will fall back to its default values, so we don't have to worry about the service failing to run.

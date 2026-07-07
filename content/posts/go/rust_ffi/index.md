@@ -6,7 +6,7 @@ lastmod: 2023-10-13T15:38:13+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: "Go ❤️ Rust"
+description: "เรียกใช้ Rust จาก Go ผ่าน FFI"
 license: ""
 images: []
 

@@ -6,7 +6,7 @@ lastmod: 2023-12-11T10:00:40+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "ทำ benchmark เทียบ goccy/go-json กับ encoding/json ของ standard library พบว่าเร็วขึ้นราว 10 เท่า พร้อมอัปเดตสถานการณ์ 2025-2026 ของ bytedance/sonic และ encoding/json/v2 ที่ยังเป็น experimental"
 license: ""
 images: []
 featuredImage: "/img/featured-image.webp"
@@ -19,7 +19,7 @@ lightgallery: true
 
 ---
 
-สิ่งที่ต้องเจอบ่อย ๆ เวลาทำงานกับ REST API นั่นคือการแปลง JSON ไปมาระหว่าง services โดบปกติแล้วก็จะใช้ `encoding/json` กันซึ่งเป็นไลบรารีมาตรฐานที่มีให้ใน Go แต่ตอนนี้มีของจะมาแนะนำให้ลองกัน นั่นคือ `goccy/go-json` ที่จะทำให้ services เราเร็วส์ขึ้นแบบไม่ต้องจ่ายตังเพิ่ม
+สิ่งที่ต้องเจอบ่อย ๆ เวลาทำงานกับ REST API นั่นคือการแปลง JSON ไปมาระหว่าง services โดบปกติแล้วก็จะใช้ `encoding/json` กันซึ่งเป็นไลบรารีมาตรฐานที่มีให้ใน Go แต่ตอนนี้มีของจะมาแนะนำให้ลองกัน นั่นคือ `goccy/go-json` ที่จะทำให้ services เราเร็วขึ้นโดยไม่ต้องจ่ายตังเพิ่ม
 
 <!--more-->
 
@@ -27,7 +27,7 @@ lightgallery: true
 `encoding/json` เป็นไลบรารีมาตรฐานที่มีให้ใน Go ที่สามารถใช้ในการแปลงข้อมูลระหว่างโครงสร้างข้อมูล Go (structs, slices, maps) กับ JSON ที่เราคุ้นเคยกันดี
 
 ## goccy/go-json
-[goccy/go-json](https://github.com/goccy/go-json) เป็นไลบรารีที่ถูกพัฒนาขึ้นเพื่อให้ความเร็วและประสิทธิภาพสูงในการจัดการ JSON ใน Go โดยเฉพาะ มีความสามารถในการจัดการกับข้อมูลที่ใหญ่มากขึ้น และมีการ [Optimize เพื่อเพิ่มประสิทธิภาพในการแปลงข้อมูลแบบเร็วส์ติดไอพ่น](https://github.com/goccy/go-json#how-it-works) โดยที่ยัง complatible กับ `encoding/json` อยู่
+[goccy/go-json](https://github.com/goccy/go-json) เป็นไลบรารีที่ถูกพัฒนาขึ้นเพื่อให้ความเร็วและประสิทธิภาพสูงในการจัดการ JSON ใน Go โดยเฉพาะ มีความสามารถในการจัดการกับข้อมูลที่ใหญ่มากขึ้น และมีการ [Optimize เพื่อเพิ่มประสิทธิภาพในการแปลงข้อมูลให้เร็วขึ้นอย่างมาก](https://github.com/goccy/go-json#how-it-works) โดยที่ยัง complatible กับ `encoding/json` อยู่
 
 ### เขียนการทดสอบ
 โดยจะทดสอบด้วยการทำ Benchmark เทียบการอ่านไฟล์ JSON (กดขยายดูได้นะว่าทดสอบไรมั้ง)
@@ -124,4 +124,14 @@ func BenchmarkGoCcyDecoder(b *testing.B) {
 |BenchmarkGoSTDDecoder-8|               16|          63935862 ns/op|        67107820 B/op|         33 allocs/op|
 |BenchmarkGoCcyDecoder-8|          1200399|               877.8 ns/op|           863 B/op|          9 allocs/op|
 
-จะพบว่า `goccy/go-json` จะประสิทธิภาพดีกว่า `encoding/json` เฉลี่ยที่ 10X++ เลยทีเดียว โดยเฉพาะการใช้ `Encoder/Decoder` แทนการใช้ `Marshal/Unmarshal` ที่สามารถเรียกได้ว่าเทียบกันกันไม่ติดเลย 🤣🤣🤣
+## สถานการณ์ปัจจุบัน (2025-2026)
+
+วงการ JSON library เคลื่อนไหวต่อเนื่องตั้งแต่ที่เขียน benchmark นี้:
+
+- **[bytedance/sonic](https://github.com/bytedance/sonic)** — ตอนนี้เร็วที่สุดโดยทั่วไปสำหรับ payload ขนาดใหญ่ ใช้ SIMD instructions (ได้แรงบันดาลใจจาก simdjson) เป็น drop-in replacement ของ `encoding/json`
+- **[goccy/go-json](https://github.com/goccy/go-json)** — ยังเป็นตัวเลือก drop-in ที่ดี ใช้ง่าย benchmark ด้านบนยังเป็นตัวแทนที่เชื่อถือได้
+- **[encoding/json/v2](https://github.com/golang/go/issues/71707)** — การเขียนใหม่ของ Go เอง ออกมาเป็นตัว **experimental** ใน Go 1.25 (เปิดด้วย `GOEXPERIMENT=jsonv2`) และยังไม่ stable ใน Go 1.26 เมื่อเสร็จสมบูรณ์จะช่วยลดช่องว่างกับ library ของ third-party จากภายใน standard library เลย
+
+เลือกตามลักษณะงาน: `sonic` สำหรับ path ที่เร็วที่สุดบน payload ขนาดใหญ่, `goccy/go-json` สำหรับ speed up แบบ zero-config และติดตาม `encoding/json/v2` เพื่อจะได้ถอด dependency ออกได้เลยเมื่อมัน stable
+
+จะพบว่า `goccy/go-json` จะประสิทธิภาพดีกว่า `encoding/json` เฉลี่ยที่ 10X++ เลยทีเดียว โดยเฉพาะการใช้ `Encoder/Decoder` แทนการใช้ `Marshal/Unmarshal` ที่สามารถเรียกได้ว่าเทียบกันกันไม่ติดเลย

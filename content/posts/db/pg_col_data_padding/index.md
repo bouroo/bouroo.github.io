@@ -6,7 +6,7 @@ lastmod: 2024-02-15T19:41:41+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "อธิบายว่าการเรียงลำดับ column ใน PostgreSQL มีผลต่อการจัดเรียงข้อมูลและขนาด storage ของ row ผ่าน data padding อย่างไร"
 license: ""
 images: []
 
@@ -105,7 +105,7 @@ select pg_column_size(tb_continuous.*) - 24 as row_size from tb_continuous limit
 (1 row)
 ```
 
-อ้าวเห้ย ทำไมไม่เท่ากันละ ถถถ
+อาจสงสัยว่าทำไมผลลัพธ์ถึงไม่เท่ากัน
 
 มาถึงตรงนี้ถ้าสังเกตจาก `typlen` คนที่เคยอ่าน ([ออกแบบ Go struct ด้วยความรู้วิชา Computer Architecture และ Data Structure]({{< ref "/posts/go/struct_memory" >}} "ออกแบบ Go struct ด้วยความรู้วิชา Computer Architecture และ Data Structure")) ก็จะพบว่ามันคล้าย ๆ กันเลยนะ ใช่ครับมันคือสิ่งเดียวกันเลย สิ่งที่เกิดขึ้นคือ padding ระหว่าง filed ที่ออกมานั่นเองครับ
 

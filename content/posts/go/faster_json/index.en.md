@@ -6,7 +6,7 @@ lastmod: 2023-12-11T10:00:40+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "Benchmarks goccy/go-json against Go's standard encoding/json and shows roughly 10x speedups, with a 2025-2026 update on bytedance/sonic and the experimental encoding/json/v2."
 license: ""
 images: []
 featuredImage: "/img/featured-image.webp"
@@ -124,4 +124,14 @@ Test results for reading a large 26MB file.
 |BenchmarkGoSTDDecoder-8|               16|          63935862 ns/op|        67107820 B/op|         33 allocs/op|
 |BenchmarkGoCcyDecoder-8|          1200399|               877.8 ns/op|           863 B/op|          9 allocs/op|
 
-You will find that `goccy/go-json` is on average 10X++ more performant than `encoding/json`, especially when using `Encoder/Decoder` instead of `Marshal/Unmarshal`, which is not even comparable 🤣🤣🤣
+## Current landscape (2025-2026)
+
+The JSON library landscape has kept moving since this benchmark was written:
+
+- **[bytedance/sonic](https://github.com/bytedance/sonic)** — now generally the fastest option for large payloads. It uses SIMD instructions (inspired by simdjson) and is a drop-in replacement for `encoding/json`.
+- **[goccy/go-json](https://github.com/goccy/go-json)** — still a solid, easy drop-in; the benchmarks above remain representative.
+- **[encoding/json/v2](https://github.com/golang/go/issues/71707)** — Go's own rewrite. It shipped as an **experimental** preview in Go 1.25 (enable with `GOEXPERIMENT=jsonv2`) and is still not stable in Go 1.26. Once finalized it will narrow the gap with the third-party libraries from inside the standard library.
+
+Pick by workload: `sonic` for the absolute fastest large-payload path, `goccy/go-json` for a zero-config speedup, and keep an eye on `encoding/json/v2` so you can drop the dependency entirely once it stabilizes.
+
+You will find that `goccy/go-json` is on average 10X++ more performant than `encoding/json`, especially when using `Encoder/Decoder` instead of `Marshal/Unmarshal`, which is not even comparable.

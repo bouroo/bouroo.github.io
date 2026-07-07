@@ -6,7 +6,7 @@ lastmod: 2024-06-09T11:01:28+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "Shares simple, team-friendly tricks for writing more readable Go code: flattening nested ifs, extracting complex logic into functions, removing duplication, and using names everyone understands."
 license: ""
 images: []
 
@@ -18,7 +18,7 @@ featuredImagePreview: "featured-image.webp"
 
 lightgallery: true
 ---
-When writing code as a team, a common headache is **"Who wrote this code?! 🤬"** To minimize friction, it's essential to have shared principles or team agreements on how to write code. Here are some simple tips that can make our lives better; please consider them.
+When writing code as a team, a common headache is **"Who wrote this code?!"** To minimize friction, it's essential to have shared principles or team agreements on how to write code. Here are some simple tips that can make our lives better; please consider them.
 <!--more-->
 ## The Problematic Code
 Let's start with the problematic code that resulted from a patchwork, "it works" approach.

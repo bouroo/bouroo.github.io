@@ -6,7 +6,7 @@ lastmod: 2024-12-21T11:47:24+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "เทคนิคการลด heap allocation ใน Go เพื่อช่วยลดภาระของ garbage collector ด้วยการใช้ array, sync.Pool, การจัดการความจุของ slice, strings.Builder และการคืนค่าผ่าน stack"
 license: ""
 images: []
 

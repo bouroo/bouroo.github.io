@@ -6,7 +6,7 @@ lastmod: 2024-09-28T10:55:17+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "พาทำ publisher และ subscriber แบบง่าย ๆ ด้วย Go + NATS ตั้งแต่ติดตั้ง NATS ผ่าน Docker, graceful shutdown ด้วย OS signals ไปจนถึงทิ้งท้ายเรื่อง JetStream สำหรับความคงทนถาวร"
 license: ""
 images: []
 
@@ -19,7 +19,7 @@ featuredImagePreview: "featured-image.jpg"
 lightgallery: true
 ---
 
-ระหว่างที่รอเพื่อนร่วมทางที่ร้านกาแฟ พอมีเวลาว่างเลยนึกขึ้นได้ว่าเราเดินทางกับแบบ asynchronous task เลยนี่หว่า ใครออกมาก่อนทำก่อนถึงก่อน ในระหว่างที่คนอื่นก็เดินทางของตัวเองไป แล้วสุดท้ายมาเจอกันปลายทาง ก็เลยลองเขียน Go + NATS ทำ Pub/Sub ง่อย ๆ บันทึกไว้ว่ามันทำยังไง
+ระหว่างที่รอเพื่อนร่วมทางที่ร้านกาแฟ พอมีเวลาว่างเลยนึกขึ้นได้ว่าเราเดินทางกับแบบ asynchronous task เลยนี่หว่า ใครออกมาก่อนทำก่อนถึงก่อน ในระหว่างที่คนอื่นก็เดินทางของตัวเองไป แล้วสุดท้ายมาเจอกันปลายทาง ก็เลยลองเขียน Go + NATS ทำ Pub/Sub แบบง่าย ๆ บันทึกไว้ว่ามันทำยังไง
 <!--more-->
 
 # ของที่ต้องมีก่อนจะเริ่ม
@@ -175,3 +175,14 @@ go run subscriber.go
 
 ###
 จบรอดูผลงานผ่าน console ทุก ๆ 5 วินาทีจนกว่าจะสั่ง terminate
+
+## ทิ้งท้ายเรื่องความคงทนถาวร
+
+ตัวอย่างด้านบนใช้ **NATS Core** ซึ่งส่งข้อความแบบ at-most-once ไม่มีการเก็บข้อความ — ถ้าตอนที่ publish ไม่มี subscriber อยู่ ข้อความจะหายไป เมื่อต้องการความคงทนถาวร (replay, acknowledgment, exactly-once) ให้เปิดใช้ **JetStream** ที่ฝังมาใน `nats-server` โดยตรง:
+
+```go
+js, err := nc.JetStream()
+// สร้าง stream แล้ว publish/subscribe ผ่าน js แทน nc
+```
+
+JetStream ยังมี Key-Value store และ Object store อยู่บน persistence layer ตัวเดียวกันด้วย ส่วน NATS Streaming (STAN) ตัวเก่าเลิกพัฒนาแล้ว งานใหม่ให้ใช้ JetStream

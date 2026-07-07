@@ -75,7 +75,7 @@ Wide-column DB จะมี table คล้าย ๆ กับ relational table
 เป็น DB ที่เก็บข้อข้อมูลกราฟสร้างแผนที่ความสัมพันธ์ระหว่างข้อมูล
 - เหมาะสำหรับ
   - ข้อมูลความสัมพันธ์ทางสังคม
-  - ข้อมูลที่ใช้ทำเครื่องมือแนะนำ (Ads นะแหละ ถถถ)
+  - ข้อมูลที่ใช้ทำเครื่องมือแนะนำ (เช่น ระบบโฆษณา)
 - ตัวอย่าง
   - [Dgraph](https://github.com/dgraph-io/dgraph)
   - [Neo4j](https://github.com/neo4j/neo4j)
@@ -100,12 +100,15 @@ Immutable DB เป็น DB ที่จัดเก็บการเปลี
   - [Dolt](https://github.com/dolthub/dolt)
 
 ### Vector DB
-ขอแปะไว้ก่อนนะ ไว้ลองเล่นแล้วจะมาเพิ่มให้
-- (น่าจะ) เหมาะสำหรับ
-  - ระบบรู้จำภาพ
-  - Natural Language Processing (NLP)
-  - เครื่องมือแนะนำ (Ads นะแหละ ถถถ)
-- ตัวอย่าง
-  - [Milvus](https://github.com/milvus-io/milvus)
-  - [Chroma](https://github.com/chroma-core/chroma)
-  - [Weaviate](https://github.com/weaviate/weaviate) 
+Vector database เก็บข้อมูลในรูปแบบเวกเตอร์หลายมิติ (embeddings) และดึงข้อมูลโดยเรียงตามความคล้ายคลึงแทนการ match แบบตรงตัว ทำให้เป็นแกนหลักของงาน AI สมัยใหม่ที่ค้นหาด้วยความหมายไม่ใช่คีย์เวิร์ด
+- เหมาะกับ:
+  - Retrieval-Augmented Generation (RAG) สำหรับ LLM
+  - การค้นหาแบบ semantic และ similarity บนข้อความ รูปภาพ หรือเสียง
+  - ระบบ recommendation
+  - AI agent ที่ต้องการความจำระยะยาว
+- ตัวอย่าง:
+  - [Milvus](https://github.com/milvus-io/milvus) — cloud-native ออกแบบมาสำหรับสเกลใหญ่มาก
+  - [Qdrant](https://github.com/qdrant/qdrant) — เขียนด้วย Rust latency ต่ำ กรองข้อมูลได้ดี
+  - [Weaviate](https://github.com/weaviate/weaviate) — มี GraphQL API พร้อม modular vectorizer
+  - [pgvector](https://github.com/pgvector/pgvector) — extension ของ PostgreSQL เหมาะมากถ้ามี Postgres อยู่แล้ว
+  - [Chroma](https://github.com/chroma-core/chroma) — เบา นิยมใช้ตอนทำ prototype

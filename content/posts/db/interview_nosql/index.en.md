@@ -75,7 +75,7 @@ Wide-column DBs have tables similar to relational tables, but they are better be
 This is a database that stores graph data to map relationships between data.
 - Suitable for:
   - Social relationship data
-  - Data used for recommendation engines (i.e., Ads, lol)
+  - Data used for recommendation engines (e.g., advertising)
 - Examples:
   - [Dgraph](https://github.com/dgraph-io/dgraph)
   - [Neo4j](https://github.com/neo4j/neo4j)
@@ -100,12 +100,15 @@ Immutable DBs store data changes used to verify data integrity, similar to Block
   - [Dolt](https://github.com/dolthub/dolt)
 
 ### Vector DB
-I'll leave this one for now. I'll add more once I've had a chance to play with it.
-- (Probably) suitable for:
-  - Image recognition systems
-  - Natural Language Processing (NLP)
-  - Recommendation engines (i.e., Ads, lol)
+A vector database stores data as high-dimensional numerical vectors (embeddings) and retrieves items by similarity rather than exact match. This makes them the backbone of modern AI workloads where you search by meaning, not by keyword.
+- Suitable for:
+  - Retrieval-Augmented Generation (RAG) for LLMs
+  - Semantic and similarity search over text, images, or audio
+  - Recommendation engines
+  - AI agents that need long-term memory
 - Examples:
-  - [Milvus](https://github.com/milvus-io/milvus)
-  - [Chroma](https://github.com/chroma-core/chroma)
-  - [Weaviate](https://github.com/weaviate/weaviate)
+  - [Milvus](https://github.com/milvus-io/milvus) — cloud-native, built for very large scale
+  - [Qdrant](https://github.com/qdrant/qdrant) — Rust-based, low latency, strong filtering
+  - [Weaviate](https://github.com/weaviate/weaviate) — GraphQL API with modular vectorizer integrations
+  - [pgvector](https://github.com/pgvector/pgvector) — PostgreSQL extension, ideal when you already run Postgres
+  - [Chroma](https://github.com/chroma-core/chroma) — lightweight, popular for prototyping

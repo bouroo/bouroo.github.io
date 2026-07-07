@@ -62,12 +62,13 @@ flowchart LR
 * Installation and maintenance can be quite complex.
 * Consumes more system resources than others.
 * Not ideal for simple queueing tasks where workers just pick up one job and finish.
+* If the JVM and ZooKeeper footprint is a concern, Redpanda is a C++, Kafka-API-compatible alternative with a thread-per-core architecture and no external dependencies.
 
 ## Valkey (Redis)
 
 ### What is it?
 
-Valkey, also known as Redis (Valkey is a community-driven fork), is an incredibly fast in-memory database. People often use it as a cache or a simple message broker, utilizing data structures like lists for queues.
+Valkey, also known as Redis (Valkey is a community-driven fork), is an incredibly fast in-memory database. People often use it as a cache or a simple message broker, utilizing data structures like lists for queues. Valkey was created in March 2024 under the Linux Foundation as a BSD-licensed fork of Redis 7.2.4, after Redis Ltd. changed its license to SSPL/RSALv2. It is backed by AWS, Google Cloud, and Oracle. Valkey 8.1 (March 2025) delivers roughly 8% higher throughput, 22% lower P99 latency, and 20% less memory than Redis OSS.
 
 {{< mermaid >}}
 flowchart LR
@@ -208,7 +209,7 @@ flowchart LR
 
 ### What I don't like as much
 
-* No built-in message persistence (requires NATS Streaming/JetStream).
+* Core NATS has no built-in message persistence, but JetStream — now built directly into nats-server — adds persistence, message replay, acknowledgments, deduplication, a Key-Value store, and an Object store. (The older NATS Streaming/STAN is deprecated; use JetStream for any durability needs.)
 * Routing features are not as sophisticated as RabbitMQ.
 * Not designed for long-term message storage like Kafka.
 

@@ -6,7 +6,7 @@ lastmod: 2023-09-08T10:24:29+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: ""
+description: "Explains what COLLATE is in a database and how it controls string sorting and comparison, including case and accent sensitivity."
 license: ""
 images: []
 featuredImage: "featured-image.webp"

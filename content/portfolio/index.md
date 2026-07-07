@@ -6,7 +6,7 @@ lastmod: 2025-07-12T02:29:14Z
 draft: false
 author: "กวิน วิริยะประสพสุข"
 authorLink: "https://kawin.dev"
-description: ""
+description: "รวมโปรเจค backend ที่ผมเคยทำ ตั้งแต่ระบบบริหารจัดการมหาวิทยาลัย (มข. และ มจธ.), แพลตฟอร์มฟินเทค/ประกันภัย (goodmoneybygsb, insurverse) ไปจนถึง workflow สินเชื่อ next-gen ของ SCB"
 license: ""
 images: []
 
