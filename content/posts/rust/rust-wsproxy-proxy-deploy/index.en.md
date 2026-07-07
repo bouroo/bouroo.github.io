@@ -18,7 +18,7 @@ lightgallery: true
 
 # Building wsProxy — Proxy Core & Deployment
 
-The final chapter! From that Facebook post by [rayrag.com](https://rayrag.com/) showing RO playable in a browser, to learning Rust over 7 parts, to building the CLI, config, and server — we now complete the proxy's heart: the TCP connection logic and bidirectional data pump that bridges WebSocket and TCP streams. We'll also cover TLS encryption, testing, and production deployment with Docker and Kubernetes.
+The final chapter! From that Facebook post by [rayrag.com](https://rayrag.com/) showing RO playable in a browser, to revisiting Rust over 7 parts, to building the CLI, config, and server — we now complete the proxy's heart: the TCP connection logic and bidirectional data pump that bridges WebSocket and TCP streams. We'll also cover TLS encryption, testing, and production deployment with Docker and Kubernetes.
 
 <!--more-->
 
@@ -757,7 +757,7 @@ We've covered the complete stack:
 
 The wsProxy project demonstrates how Rust's zero-cost abstractions, memory safety, and excellent async ecosystem enable building high-performance network services that rival C/C++ implementations while providing superior developer productivity and safety.
 
-Looking back, it all started with a simple Facebook post from [rayrag.com](https://rayrag.com/) showing RO running in a browser. That single moment of curiosity led to learning Rust from scratch and building a production-ready proxy. That's the beauty of programming — curiosity leads to learning, and learning leads to creation.
+Looking back, it all started with a simple Facebook post from [rayrag.com](https://rayrag.com/) showing RO running in a browser. That single moment of curiosity led to revisiting Rust and building a production-ready proxy. That's the beauty of programming — curiosity leads to learning, and learning leads to creation.
 
 The complete source code is available at [https://github.com/bouroo/rs-wsProxy](https://github.com/bouroo/rs-wsProxy). Thank you for following along this journey — happy coding!
 

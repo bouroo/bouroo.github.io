@@ -18,11 +18,11 @@ lightgallery: true
 
 # Getting Started with Rust
 
-This series started when I saw a Facebook post from [rayrag.com](https://rayrag.com/) showing that you can play **Ragnarok Online (RO)** right in your web browser — connecting through WebSocket to an emulator game server. That got me curious about how it works under the hood, and I wanted to build my own WebSocket-to-TCP proxy using a language that's fast and safe. That's how I started learning Rust from scratch and created the [rs-wsProxy](https://github.com/bouroo/rs-wsProxy) project.
+This series started when I saw a Facebook post from [rayrag.com](https://rayrag.com/) showing that you can play **Ragnarok Online (RO)** right in your web browser — connecting through WebSocket to an emulator game server. That got me curious about how it works under the hood, and I wanted to build my own WebSocket-to-TCP proxy using a language that's fast and safe. That's how I came back to revisit Rust and created the [rs-wsProxy](https://github.com/bouroo/rs-wsProxy) project.
 
 <!--more-->
 
-Welcome to the first part of our 8-part series "Learning Rust — From Zero to WebSocket-to-TCP Proxy". In this series, we'll go from zero Rust knowledge to building a production-ready WebSocket-to-TCP proxy that works with [roBrowser](https://github.com/vthibault/roBrowser).
+Welcome to the first part of our 8-part series "Learning Rust — Building a WebSocket-to-TCP Proxy". In this series, we'll revisit Rust fundamentals and build a production-ready WebSocket-to-TCP proxy that works with [roBrowser](https://github.com/vthibault/roBrowser).
 
 ## Why Rust?
 
