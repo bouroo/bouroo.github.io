@@ -18,7 +18,7 @@ lightgallery: true
 
 <!--more-->
 
-Time to build the real project! wsProxy is a WebSocket-to-TCP proxy for roBrowser. In Part 6 we designed the architecture; now we implement it with real Rust code using Axum, Tokio, and Clap. Source code is available at [https://github.com/bouroo/rs-wsProxy](https://github.com/bouroo/rs-wsProxy).
+Time to build the real project! After seeing that Facebook post from [rayrag.com](https://rayrag.com/) showing RO playable in a browser via WebSocket, I wanted to build my own proxy. Now, after 6 parts of learning Rust fundamentals, we finally put it all together. wsProxy is a WebSocket-to-TCP proxy for [roBrowser](https://github.com/vthibault/roBrowser) — it bridges browser WebSocket clients to plain TCP game servers. Source code is available at [https://github.com/bouroo/rs-wsProxy](https://github.com/bouroo/rs-wsProxy).
 
 ## Project Structure
 

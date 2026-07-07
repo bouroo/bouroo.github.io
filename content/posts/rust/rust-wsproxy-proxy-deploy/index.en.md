@@ -16,11 +16,13 @@ featuredImagePreview: "/img/featured-image.webp"
 lightgallery: true
 ---
 
+# Building wsProxy — Proxy Core & Deployment
+
+The final chapter! From that Facebook post by [rayrag.com](https://rayrag.com/) showing RO playable in a browser, to learning Rust over 7 parts, to building the CLI, config, and server — we now complete the proxy's heart: the TCP connection logic and bidirectional data pump that bridges WebSocket and TCP streams. We'll also cover TLS encryption, testing, and production deployment with Docker and Kubernetes.
+
 <!--more-->
 
-Welcome to the final installment of our wsProxy series! In [Part 7](/posts/rust/rust-wsproxy-server/), we built the HTTP server, WebSocket upgrade handler, and configuration system. Now we'll complete the proxy's core: the TCP connection logic and bidirectional data pump that bridges WebSocket and TCP streams. We'll also cover TLS encryption, comprehensive testing strategies, and production deployment with Docker and Kubernetes.
-
-Source: [https://github.com/bouroo/rs-wsProxy](https://github.com/bouroo/rs-wsProxy)
+In [Part 7](/posts/rust/rust-wsproxy-server/), we built the HTTP server, WebSocket upgrade handler, and configuration system. Source: [https://github.com/bouroo/rs-wsProxy](https://github.com/bouroo/rs-wsProxy)
 
 ## TCP Connection (proxy.rs)
 
@@ -755,7 +757,9 @@ We've covered the complete stack:
 
 The wsProxy project demonstrates how Rust's zero-cost abstractions, memory safety, and excellent async ecosystem enable building high-performance network services that rival C/C++ implementations while providing superior developer productivity and safety.
 
-The complete source code is available at [https://github.com/bouroo/rs-wsProxy](https://github.com/bouroo/rs-wsProxy). Thank you for following along this journey - happy coding!
+Looking back, it all started with a simple Facebook post from [rayrag.com](https://rayrag.com/) showing RO running in a browser. That single moment of curiosity led to learning Rust from scratch and building a production-ready proxy. That's the beauty of programming — curiosity leads to learning, and learning leads to creation.
+
+The complete source code is available at [https://github.com/bouroo/rs-wsProxy](https://github.com/bouroo/rs-wsProxy). Thank you for following along this journey — happy coding!
 
 [← Previous: Building wsProxy — CLI, Config & Server](/posts/rust/rust-wsproxy-server/)
 Source: https://github.com/bouroo/rs-wsProxy
