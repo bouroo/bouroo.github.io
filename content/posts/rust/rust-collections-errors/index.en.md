@@ -18,6 +18,8 @@ lightgallery: true
 
 Collections store multiple values, iterators process them, and error handling keeps code safe. These three concepts form the backbone of practical Rust programming. In Part 3 of our Rust series, we covered structs, enums, and pattern matching. Now we'll build on that foundation to explore how to work with collections of data, process them efficiently with iterators, and handle errors gracefully using Rust's `Result` type and the `?` operator. These concepts are used extensively in real-world Rust code, including in our `rs-wsProxy` project where we see patterns like iterator chains for building allowlists, HashMaps for redirect maps, and `Result` types for network operations.
 
+<!--more-->
+
 ## Vec<T>: Growable Arrays
 
 The `Vec<T>` type is Rust's growable array type. It stores elements of type `T` contiguously on the heap, making it efficient for iteration and indexed access. Unlike arrays, vectors can grow and shrink in size at runtime.

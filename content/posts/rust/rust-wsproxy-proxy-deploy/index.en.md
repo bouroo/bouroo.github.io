@@ -737,14 +737,14 @@ The CI pipeline ensures code quality through formatting checks, linting, and tes
 
 Over eight articles, we've journeyed from Rust fundamentals to a production-ready WebSocket proxy:
 
-1. **[Part 1: Rust Basics and Project Setup](/posts/rust/rust-wsproxy-intro/)** - Language fundamentals, project structure, and initial "Hello, World!"
-2. **[Part 2: Asynchronous Programming with Tokio](/posts/rust/rust-wsproxy-tokio/)** - Futures, tasks, timers, and Tokio's runtime
-3. **[Part 3: WebSocket Handling with Tungstenite](/posts/rust/rust-wsproxy-websocket/)** - WebSocket protocol, frame handling, and Tungstenite integration
-4. **[Part 4: Configuration System](/posts/rust/rust-wsproxy-config/)** - Type-safe configuration with environment variable overrides
-5. **[Part 5: HTTP Server Framework](/posts/rust/rust-wsproxy-http/)** - Request routing, middleware, and handler patterns
-6. **[Part 6: WebSocket Server Implementation](/posts/rust/rust-wsproxy-wsserver/)** - WebSocket upgrade handling and connection management
-7. **[Part 7: HTTP Server, WebSocket Upgrade & Configuration](/posts/rust/rust-wsproxy-server/)** - Bringing HTTP and WebSocket together with graceful shutdown
-8. **[Part 8: Proxy Core & Deployment (This Article)]** - TCP connection handling, bidirectional pumping, TLS, testing, and production deployment
+1. **[Part 1: Getting Started with Rust](/posts/rust/rust-getting-started/)** — Installation, Cargo, variables, data types, functions, control flow
+2. **[Part 2: Ownership, Borrowing & Lifetimes](/posts/rust/rust-ownership-borrowing/)** — The ownership model, references, slices, lifetimes
+3. **[Part 3: Structs, Enums & Pattern Matching](/posts/rust/rust-structs-enums/)** — Custom types, Option, match, Result intro
+4. **[Part 4: Collections, Iterators & Error Handling](/posts/rust/rust-collections-errors/)** — Vec, HashMap, iterator adaptors, the `?` operator
+5. **[Part 5: Traits & Generics](/posts/rust/rust-traits-generics/)** — Trait definitions, trait bounds, trait objects, standard traits
+6. **[Part 6: Async Rust with Tokio](/posts/rust/rust-async-tokio/)** — async/await, runtime, tasks, channels, async I/O, `select!`
+7. **[Part 7: Building wsProxy — CLI, Config & Server](/posts/rust/rust-wsproxy-server/)** — clap, axum router, WebSocket upgrade, verify pipeline
+8. **Part 8: Proxy Core & Deployment (This Article)** — TCP connection, bidirectional pump, TLS, testing, Docker/K8s
 
 We've covered the complete stack:
 - **Networking**: TCP/UDP, DNS resolution, TLS encryption
