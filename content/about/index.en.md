@@ -24,8 +24,9 @@ lightgallery: true
 
 ## Professional Experience
 
-Veteran Backend Engineer with 10+ years of progressive experience in designing, leading, and scaling complex backend systems. Focus on Go, Kubernetes, and cloud-native architectures, specializing in distributed systems, high-availability infrastructure (Ceph/ProxmoxVE), and Linux environments. Proven ability to drive technical strategy, foster remote-first collaboration, and implement DevOps best practices, delivering significant business impact across Fintech, SaaS, and infrastructure domains.
-Open to remote opportunities from Khon Kaen and hybrids in Bangkok.
+Senior Backend Engineer possessing over a decade of experience in architecting and deploying distributed systems, Go microservices, and cloud-native infrastructure. Demonstrates proven expertise in integrating development and operations (DevOps) to ensure the delivery of scalable, fault-tolerant platforms within the Fintech and E-commerce sectors. Experienced in technical team leadership and mentoring engineers on principles of clean architecture and implementation of best practices.
+
+Open to permanent remote opportunities from Khon Kaen or hybrid arrangements in Bangkok
 
 ## Personal Characteristics
 
@@ -45,33 +46,39 @@ Open to remote opportunities from Khon Kaen and hybrids in Bangkok.
 ---
 # Professional Experience
 
+## Arise By Infinitas Co., Ltd.
+### Senior Associate Back-end Engineer
+Nov 2025 - present
+- Architected high-performance Go microservices handling heavy daily API traffic.
+- Mentored junior engineers on Go best practices, microservices patterns, and Clean Architecture.
+- Collaborated with cross-functional teams to deliver major features on schedule.
+
 ## LINE Pay (Thailand)
 ### Senior Software Engineer
-Jun 2025 - present
-- Responsible for building reliable, scalable systems. 
-- Collaborating with cross-functional teams to deliver user-friendly tools. 
-- Utilizing modern tech stacks to support growing services.
+Jun 2025 - Nov 2025
+- Built payment processing microservices supporting high-volume financial transactions.
+- Optimized database queries and caching strategies, reducing API response time.
+- Collaborated with product and QA teams to deliver user-friendly payment tools.
 
 ## Extend IT Resource Co., Ltd.
 ### Assistant Manager (Backend Lead)
 October 2023 - May 2025
-- Led Go/JS backend teams, delivering scalable fintech microservices. 
-- Architected/deployed K8s cloud infra for insurance and loan systems, improving reliability. 
-- Optimized CI/CD, monitoring, and logging, and enhanced storage durability & reduced latency.
+- Led Go/JS backend teams delivering scalable fintech microservices for insurance and loan systems.
+- Architected and deployed K8s cloud infrastructure, improving reliability and storage durability.
+- Optimized CI/CD, monitoring, and logging to reduce latency.
 
 ## Tomato Ideas Co., Ltd.
 ### Technical Lead
 May 2023 - September 2023
-- Led Go/JS backend teams, delivering scalable fintech microservices. 
-- Architected/deployed K8s cloud infra for e-commerce, improving reliability. 
-- Optimized CI/CD, monitoring, and logging, and enhanced storage durability & reduced latency.
+- Guided backend teams in developing scalable fintech and e-commerce microservices.
+- Managed the architecture and deployment of K8s cloud infrastructure.
 
 ## COOP NIX Co., Ltd.
 ### Senior System Engineer
 August 2020 - April 2023
-- Built Proxmox/Ceph HCI for private cloud. 
-- Developed Go IaaS tools, automating VM provisioning & reducing overhead. 
-- Optimized cloud for performance, security, scalability.
+- Built Proxmox/Ceph HCI clusters supporting a large-scale VM environment.
+- Managed private cloud infrastructure with zero unplanned downtime.
+- Optimized performance, security, and horizontal scalability.
 
 ## Canghan Coffee
 ### Co-Founder, Coffee Roaster
@@ -82,13 +89,13 @@ November 2019 - present
 ## Provincial Waterworks Authority
 ### Computer Engineer
 February 2014 - July 2020
-- Managed 22-branch server/network infrastructure, ensuring high availability. 
-- Led Windows to Linux migration, saving costs & boosting security. 
-- Designed robust network, minimizing downtime.
+- Managed server and network infrastructure across 22 regional branches.
+- Led a Windows-to-Linux migration project, saving significantly on licensing and maintenance costs.
+- Designed robust network architectures to minimize unplanned downtime.
 
 ## Zercle Technology Co., Ltd.
 ### Technical Co-Founder
 January 2012 - January 2014
-- Led Go/JS backend development & tech vision. 
-- Designed/deployed Linux/virtualization infrastructure. 
-- Instituted Agile/DevOps, fostering engineering excellence and rapid iteration.
+- Led engineering teams in building Go/JavaScript web applications.
+- Established Agile/DevOps practices to reduce time-to-market.
+- Managed the full technical stack from infrastructure to application deployment.
