@@ -11,8 +11,8 @@ license: ""
 images: []
 tags: ["Rust", "Tutorial"]
 categories: ["Rust"]
-featuredImage: "/img/featured-image.webp"
-featuredImagePreview: "/img/featured-image.webp"
+featuredImage: "featured-image.jpeg"
+featuredImagePreview: "featured-image.jpeg"
 lightgallery: true
 ---
 
