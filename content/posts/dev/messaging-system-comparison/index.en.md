@@ -1,0 +1,225 @@
+---
+title: "Which Messaging System to Choose? Kafka, Valkey, RabbitMQ, NATS... Oh, So Many!"
+date: 2025-07-11T10:00:00+07:00
+draft: false
+author: "Kawin Viriyaprasopsook"
+authorLink: "https://kawin.dev"
+tags: ["messaging", "kafka", "valkey", "redis", "rabbitmq", "nats"]
+categories: ["devops", "programming"]
+resources:
+- name: "featured-image"
+  src: "featured-image.jpg"
+featuredImage: "featured-image.jpg"
+featuredImagePreview: "featured-image"
+---
+
+When building highly communicative distributed systems, one common headache is choosing the right messaging system. There are so many options available: Kafka, Valkey (born from Redis), RabbitMQ, and NATS. Each has its pros and cons. So, in this post, I'll jot down some notes to compare them for myself, figuring out which one suits which task.
+
+<!--more-->
+
+## Kafka
+
+### What is it?
+
+Kafka is a massive data streaming platform designed to handle huge volumes of real-time data. Think of it as a large data pipeline that's fast, durable, and easily scalable.
+
+{{< mermaid >}}
+flowchart LR
+  %% Define Producer & Consumer
+  subgraph Clients
+    direction TB
+    P[Producer]
+    C[Consumer]
+  end
+
+  %% Define Kafka Broker & Topics
+  subgraph "Kafka Broker"
+    direction TB
+    T1[Topic 1]
+    T2[Topic 2]
+  end
+
+  %% Wire them up with labeled links
+  P -- "write → Topic 1" --> T1
+  C -- "read ← Topic 1" --> T1
+
+{{< /mermaid >}}
+
+### When should you use it?
+
+* **For real-time data analytics:** When you need to process continuously flowing data to get immediate results.
+* **For centralized log collection:** Gathering logs from multiple services into one place.
+* **For Event Sourcing:** Using every event in the system as the primary data source.
+
+### What I like
+
+* Very high throughput and low latency.
+* Scalable and fault-tolerant.
+* Durable message storage.
+
+### What I don't like as much
+
+* Installation and maintenance can be quite complex.
+* Consumes more system resources than others.
+* Not ideal for simple queueing tasks where workers just pick up one job and finish.
+* If the JVM and ZooKeeper footprint is a concern, Redpanda is a C++, Kafka-API-compatible alternative with a thread-per-core architecture and no external dependencies.
+
+## Valkey (Redis)
+
+### What is it?
+
+Valkey, also known as Redis (Valkey is a community-driven fork), is an incredibly fast in-memory database. People often use it as a cache or a simple message broker, utilizing data structures like lists for queues. Valkey was created in March 2024 under the Linux Foundation as a BSD-licensed fork of Redis 7.2.4, after Redis Ltd. changed its license to SSPL/RSALv2. It is backed by AWS, Google Cloud, and Oracle. Valkey 8.1 (March 2025) delivers roughly 8% higher throughput, 22% lower P99 latency, and 20% less memory than Redis OSS.
+
+{{< mermaid >}}
+flowchart LR
+  %% subgraph for Redis/Valkey
+  subgraph valkey
+    direction TB
+    Q["List (LPUSH/BRPOP Queue)"]
+    C[Pub/Sub Channel]
+  end
+
+  %% Producers & Consumers
+  subgraph Producers
+    direction TB
+    Prod[Producer]
+    Pub[Publisher]
+  end
+
+  subgraph Consumers
+    direction TB
+    Cons[Consumer]
+    Sub[Subscriber]
+  end
+
+  %% Connections
+  Prod -->|LPUSH| Q
+  Cons -->|BRPOP| Q
+
+  Pub -->|PUBLISH| C
+  Sub -->|SUBSCRIBE| C
+{{< /mermaid >}}
+
+### When should you use it?
+
+* **For basic queues:** Tasks that don't require advanced features, just a simple queue.
+* **For Pub/Sub:** Suitable for chat applications or real-time notifications.
+* **For Caching:** This is its specialty.
+
+### What I like
+
+* Extremely fast due to in-memory operation.
+* Easy to use and install, not complex.
+* Versatile with various data structures available.
+
+### What I don't like as much
+
+* If not configured properly, data can be lost during a power outage (not durable by default).
+* Not suitable for storing very large messages.
+* Not designed for heavy data streaming or complex message routing.
+
+## RabbitMQ
+
+### What is it?
+
+RabbitMQ is a mature and robust message broker, primarily using the AMQP protocol. It's known for its comprehensive messaging capabilities, flexible routing, and reliability.
+
+{{< mermaid >}}
+flowchart LR
+  %% Clients
+  subgraph Clients
+    direction TB
+    P[Producer]
+    C1[Consumer 1]
+    C2[Consumer 2]
+  end
+
+  %% Broker
+  subgraph "RabbitMQ Broker"
+    direction TB
+    EX[Exchange]
+    Q1[Queue 1]
+    Q2[Queue 2]
+  end
+
+  %% Message flow
+  P -- "publishes → Exchange" --> EX
+  EX -- "routes → Q1" --> Q1
+  EX -- "routes → Q2" --> Q2
+  Q1 -- "delivers → Consumer 1" --> C1
+  Q2 -- "delivers → Consumer 2" --> C2
+{{< /mermaid >}}
+
+### When should you use it?
+
+* **For asynchronous tasks:** Offloading heavy tasks to be processed in the background, so users don't have to wait.
+* **For work queues:** When you have a pile of tasks and want multiple workers to process them collaboratively.
+* **For conditional message delivery:** When you want to send messages to specific consumers based on various conditions.
+
+### What I like
+
+* Rich in features, a veteran in the field.
+* Extremely flexible message routing.
+* Supports various messaging patterns (fanout, direct, topic).
+
+### What I don't like as much
+
+* May not match Kafka's throughput.
+* Requires careful configuration for high availability.
+* Messages are typically read and then deleted; not designed for long-term storage.
+
+## NATS
+
+### What is it?
+
+NATS is a messaging system built for the Cloud-Native, IoT, and Microservices era. Its key strengths are high speed and being extremely lightweight, focusing on simplicity.
+
+{{< mermaid >}}
+flowchart LR
+  %% Clients
+  subgraph Clients
+    direction TB
+    Producer
+    Consumer
+  end
+
+  %% NATS Server with Topics
+  subgraph "NATS Server"
+    direction TB
+    TopicA["Topic A"]
+    TopicB["Topic B"]
+  end
+
+  %% Connections
+  Producer -- "publishes → Topic A" --> TopicA
+  Consumer -- "subscribes ← Topic A" --> TopicA
+{{< /mermaid >}}
+
+### When should you use it?
+
+* **For Microservice communication:** Fast and reliable communication between services.
+* **For IoT device data:** Suitable for receiving a massive number of small messages from various devices.
+* **For command and control systems:** Sending commands to control distributed systems.
+
+### What I like
+
+* Truly fast and lightweight.
+* Easy to install and manage.
+* Supports both Pub/Sub and Request/Reply.
+
+### What I don't like as much
+
+* Core NATS has no built-in message persistence, but JetStream — now built directly into nats-server — adds persistence, message replay, acknowledgments, deduplication, a Key-Value store, and an Object store. (The older NATS Streaming/STAN is deprecated; use JetStream for any durability needs.)
+* Routing features are not as sophisticated as RabbitMQ.
+* Not designed for long-term message storage like Kafka.
+
+## So, which one should you choose?
+
+Ultimately, the choice depends on what you want to achieve:
+
+* **If you need a massive, durable, and scalable data pipeline:** Go with **Kafka**. You won't be disappointed.
+* **If you need fast, simple queues or want to do Pub/Sub or Caching:** **Valkey (Redis)** is the answer.
+* **If you need a mature message broker with complex and reliable routing:** It has to be **RabbitMQ**.
+* **If you need a fast, lightweight messaging system suitable for Microservices:** **NATS** is a very interesting option.
+
+Before making your decision, ask yourself what kind of throughput your task requires, how long you need to store data, whether message delivery is complex, and how much effort you can put into maintaining it.
