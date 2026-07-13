@@ -1,8 +1,8 @@
 # Deploy Hugo site to Pages
 #
-# Triggered by push to `main` (and manual dispatch). The `build` job compiles
-# Hugo and uploads the Pages artifact; `deploy` publishes it. Pages must be
-# configured to deploy from "GitHub Actions" in repo settings.
+# On `main`, `test` validates the Hugo build, `promote` mirrors HEAD to `gh-pages`,
+# `build` produces the Pages artifact, and `deploy` publishes it.
+# The pipeline stays in one workflow run and requires no PAT.
 name: Deploy Hugo site to Pages
 
 on:
@@ -11,11 +11,10 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
-# One concurrent run per (workflow, ref); cancel in-flight runs on new pushes.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -25,9 +24,52 @@ defaults:
     shell: bash
 
 jobs:
-  # Compile Hugo and upload the Pages artifact. Gates `deploy`.
+  test:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.145.0
+    steps:
+      - name: Install Hugo CLI
+        run: |
+          wget -O "${{ runner.temp }}/hugo.deb" "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb" \
+          && sudo dpkg -i "${{ runner.temp }}/hugo.deb"
+      - name: Install Dart Sass Embedded
+        run: sudo snap install dart-sass-embedded
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+      - name: Install Node.js dependencies
+        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+      - name: Build with Hugo
+        env:
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+        run: |
+          hugo \
+            --minify \
+            --baseURL "https://kawin.dev/" \
+            --destination /tmp/hugo-public
+
+  promote:
+    if: github.ref == 'refs/heads/main'
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Push main to gh-pages
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git push origin HEAD:gh-pages --force-with-lease
+
   build:
     if: github.ref == 'refs/heads/main'
+    needs: promote
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.145.0
@@ -60,8 +102,8 @@ jobs:
         with:
           path: ./public
 
-  # Publish the artifact produced by `build` to GitHub Pages.
   deploy:
+    if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     environment:
