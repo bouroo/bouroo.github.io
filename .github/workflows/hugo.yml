@@ -1,28 +1,21 @@
 # Deploy Hugo site to Pages
 #
-# Triggered by push to either `main` or `gh-pages`, and by manual dispatch.
-# On `main`:    ci job validates the Hugo build, then promote mirrors `main`
-#               onto `gh-pages` using the repo secret `PAGES_DEPLOY_TOKEN`
-#               (a fine-grained PAT with Contents: read+write). The PAT is
-#               required because the default GITHUB_TOKEN cannot trigger a
-#               downstream workflow run, which is needed for the deploy.
-# On `gh-pages`: build + deploy publish the site artifact to GitHub Pages.
-# Pages must be configured to deploy from "GitHub Actions" in repo settings.
+# Triggered by push to `main` (and manual dispatch). The `build` job compiles
+# Hugo and uploads the Pages artifact; `deploy` publishes it. Pages must be
+# configured to deploy from "GitHub Actions" in repo settings.
 name: Deploy Hugo site to Pages
 
 on:
   push:
-    branches: ["main", "gh-pages"]
+    branches: ["main"]
   workflow_dispatch:
 
-# `contents: write` is required for the `promote` job to push to `gh-pages`.
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
-# One concurrent run per (workflow, ref) so a `main` push and a `gh-pages`
-# push do not cancel each other.
+# One concurrent run per (workflow, ref); cancel in-flight runs on new pushes.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -32,63 +25,9 @@ defaults:
     shell: bash
 
 jobs:
-  # Validate the Hugo build on every push to `main`. This is the gate that
-  # decides whether `promote` is allowed to mirror `main` to `gh-pages`.
-  ci:
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    env:
-      HUGO_VERSION: 0.145.0
-    steps:
-      - name: Install Hugo CLI
-        run: |
-          wget -O "${{ runner.temp }}/hugo.deb" "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb" \
-          && sudo dpkg -i "${{ runner.temp }}/hugo.deb"
-      - name: Install Dart Sass Embedded
-        run: sudo snap install dart-sass-embedded
-      - name: Checkout
-        uses: actions/checkout@v7
-        with:
-          submodules: recursive
-      - name: Install Node.js dependencies
-        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
-      - name: Build with Hugo
-        env:
-          HUGO_ENVIRONMENT: production
-          HUGO_ENV: production
-        run: |
-          hugo \
-            --minify \
-            --baseURL "https://kawin.dev/" \
-            --destination /tmp/hugo-public
-
-  # Mirror `main` HEAD onto `gh-pages` so the downstream build+deploy run is
-  # triggered. Uses a PAT (not GITHUB_TOKEN) because GITHUB_TOKEN deliberately
-  # cannot start another workflow run from a push event, which would break the
-  # chain that gets changes deployed.
-  promote:
-    if: github.ref == 'refs/heads/main'
-    needs: ci
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-      - name: Push main to gh-pages
-        env:
-          PAGES_DEPLOY_TOKEN: ${{ secrets.PAGES_DEPLOY_TOKEN }}
-        run: |
-          : "${PAGES_DEPLOY_TOKEN:?PAGES_DEPLOY_TOKEN secret is required for promote}"
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin "https://x-access-token:${PAGES_DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git push origin HEAD:gh-pages --force-with-lease
-
-  # Build the site for deployment. Runs on pushes to `gh-pages`, which is the
-  # branch that `promote` mirrors from `main`.
+  # Compile Hugo and upload the Pages artifact. Gates `deploy`.
   build:
-    if: github.ref == 'refs/heads/gh-pages'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.145.0
@@ -123,7 +62,6 @@ jobs:
 
   # Publish the artifact produced by `build` to GitHub Pages.
   deploy:
-    if: github.ref == 'refs/heads/gh-pages'
     needs: build
     runs-on: ubuntu-latest
     environment:
