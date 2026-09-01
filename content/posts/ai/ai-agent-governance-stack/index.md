@@ -6,7 +6,7 @@ lastmod: 2026-09-01T09:00:00+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: "หลังจากใช้ AI coding agent มาสักพัก ผมเจอปัญหาเดิมๆ คือโค้ดมาเร็วแต่รีวิวไม่ทัน พอไปเจอสามบทความนี้เข้า ทุกอย่างก็เชื่อมกันเป็นระบบเดียว SPDD, Fable gates และ minimum harness"
+description: "หลังจากใช้ AI coding agent มาสักพัก ผมเจอปัญหาเดิมๆ คือโค้ดมาเร็วแต่รีวิวไม่ทัน พอไปเจอสามบทความนี้เข้า ทุกอย่างก็เชื่อมกันเป็นระบบเดียว นั่นคือ SPDD, Fable gates และ minimum harness"
 license: ""
 images: []
 featuredImage: "featured-image.jpeg"
@@ -122,7 +122,31 @@ flowchart TD
 - Canvas ทำให้ intent gate เขียนง่าย เพราะ spec มีอยู่แล้ว agent แค่เปิดอ่าน ไม่ต้องเดา
 - Gate ทำให้ canvas น่าเชื่อ เพราะ prompt↔โค้ด sync กันจริง ไม่ใช่แค่คำสัญญา
 - Harness ทำให้ทั้งคู่ audit ได้ เพราะมี trace และ eval ให้ judge pass รันซ้ำ ถ้าไม่มีส่วนนี้ "VERIFIED" ก็แค่ละคร
-- และ Kirby effect คุมทั้งสามชั้น gate กับ canvas ก็ควรโดนทบทวนทุกครั้งที่โมเดลรุ่นใหม่ออกเหมือนกัน ไม่ใช่แค่ harness
+- และ Kirby effect คุมทั้งสามชั้น: gate กับ canvas ก็ควรโดนทบทวนทุกครั้งที่โมเดลรุ่นใหม่ออกเหมือนกัน ไม่ใช่แค่ harness
+
+## ตัวอย่างสั้นๆ: โจทย์เล็กๆ หนึ่งงานผ่านทั้งสามชั้น
+
+โจทย์: "เพิ่ม retry แบบ exponential backoff ให้ตัวส่ง webhook" ฟังดูต้องจุดโต้งใช่ไหม? จริงๆ จบในจอเดียว
+
+**ชั้นที่ 1 — REASONS Canvas (SPDD)** เจ็ดบรรทัดสั้นๆ ก่อนเขียนโค้ดแม้แต่บรรทัดเดียว:
+
+| REASONS | งานนี้ |
+|---|---|
+| **R**equirements | webhook ที่ส่งไม่สำเร็จ retry สูงสุด 5 ครั้ง backoff 1s→16s เสร็จเมื่อ: บังคับ fail แล้ว retry จนเข้า dead-letter ได้ |
+| **E**ntities | `WebhookDelivery` เพิ่ม `attempt_count`, `next_retry_at` |
+| **A**pproach | เกิด retry ที่ delivery worker ไม่ใช่ผู้เรียก ยอมรับ trade-off: queue ช้าลง แต่ API ไม่ช้า |
+| **S**tructure | แก้แค่ `internal/webhook/delivery.go` |
+| **O**perations | `func (w *Worker) deliverWithRetry(d *Delivery) error` |
+| **N**orms | เทสแบบ table-driven ใช้ logger เดิม |
+| **S**afeguards | ห้าม retry 4xx ยกเว้น 429 และ delay รวมห้ามเกิน 1 นาที |
+
+**ชั้นที่ 2 — gate (Fable)**: agent เปิดงานด้วย `INTENT: โค้ดเพิ่ม retry, TestDeliveryRetry คาดหวัง 5 attempts, canvas หัวข้อ R ว่าตรงกัน` — สามอย่างตรงกัน แก้ได้ ต่อมามันอยาก push branch: คุณไม่เคยพูดไว้ มันจึงเขียน `PENDING: push awaiting approval` แล้วหยุด
+
+**ชั้นที่ 3 — harness (O'Reilly)**: การรันทิ้งร่องรอยที่ replay ได้ เท่านั้นแหละ — เวอร์ชัน prompt, tool call, output ของเทส ไม่ต้องมีอะไรแพงกว่านั้น
+
+**Judge pass**: `go test ./internal/webhook/ -run TestDeliveryRetry` → ผ่าน 3 เคส แต่เคส 429 จำลองเท่านั้น → คำตัดสิน: **VERIFIED WITH CAVEATS** (ยังไม่เคยเทสกับ 429 จริง)
+
+ทั้ง stack จบแค่นี้เอง รีวิวเลิกเป็นงานขุดดิน: อ่านจอเดียวก็รู้ทันทีว่าเกิดอะไรขึ้น และอะไรยังพิสูจน์ไม่ได้
 
 ## สิ่งที่ผมกำลังจะลองทำ
 

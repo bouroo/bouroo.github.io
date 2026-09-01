@@ -6,7 +6,7 @@ lastmod: 2026-09-01T09:00:00+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: "After months with AI coding agents, the same problems kept showing up: code arrives fast, review can't keep up, and intent dies in chat history. Then three articles from three different angles clicked into one picture SPDD, Fable gates, and the minimum harness."
+description: "After months with AI coding agents, the same problems kept showing up: code arrives fast, review can't keep up, and intent dies in chat history. Then three articles from three different angles clicked into one picture: SPDD, Fable gates, and the minimum harness."
 license: ""
 images: []
 featuredImage: "featured-image.jpeg"
@@ -93,7 +93,7 @@ Their framing is two axes:
 - **Action complexity** how many tools and decisions must the agent coordinate?
 - **Context complexity** how much must it gather and retain?
 
-A support agent that finishes in 1–5 turns sits low on both routing, bounded tools, guardrails, and human handoffs are enough. No memory, no compaction. Coding and deep-research agents with big contexts are where reduce / offload / isolate conversations start.
+A support agent that finishes in 1–5 turns sits low on both: routing, bounded tools, guardrails, and human handoffs are enough. No memory, no compaction. Coding and deep-research agents with big contexts are where reduce / offload / isolate conversations start.
 
 For perspective: a working coding agent can be ~131 lines of Python.
 
@@ -123,6 +123,30 @@ Once you see it as a stack, each layer pays for the others:
 - The gates make the canvas trustworthy prompt↔code sync is real, not a promise.
 - The harness makes both auditable traces and evals are what the judge pass re-runs. Without this layer, "VERIFIED" is theater.
 - And the Kirby effect disciplines all three gates and canvas sections should be re-reviewed on every model generation too, not just harness features.
+
+## A concise example: one small task through the whole stack
+
+Task: "add retry with exponential backoff to the webhook sender." Sounds like it needs a pile of ceremony? It fits on one screen.
+
+**Layer 1 — REASONS Canvas (SPDD)**, seven short lines before any code:
+
+| REASONS | This task |
+|---|---|
+| **R**equirements | Failed webhooks retry up to 5 times, backoff 1s→16s. Done when: a forced failure retries, then dead-letters. |
+| **E**ntities | `WebhookDelivery` gains `attempt_count`, `next_retry_at`. |
+| **A**pproach | Retry in the delivery worker, not the caller. Accepted trade-off: slower queue, not slower API. |
+| **S**tructure | `internal/webhook/delivery.go` only. |
+| **O**perations | `func (w *Worker) deliverWithRetry(d *Delivery) error`. |
+| **N**orms | Table-driven tests; existing logger interface. |
+| **S**afeguards | Never retry 4xx except 429; total delay capped at 1 minute. |
+
+**Layer 2 — gates (Fable)**: the agent opens with `INTENT: code adds retries, TestDeliveryRetry expects 5 attempts, canvas section R says the same` — all three agree, so it may edit. Later it wants to push the branch: you never said so, so it writes `PENDING: push awaiting approval` and stops.
+
+**Layer 3 — harness (O'Reilly)**: the run leaves a replayable trail — prompt version, tool calls, test output. Nothing fancier than that.
+
+**Judge pass**: `go test ./internal/webhook/ -run TestDeliveryRetry` → 3 passed, but the 429 path was only simulated → verdict: **VERIFIED WITH CAVEATS** (untested against a live 429).
+
+That's the whole stack. Review stops being archaeology — you read one screen and know exactly what happened and what's still unproven.
 
 ## What I'm going to try
 

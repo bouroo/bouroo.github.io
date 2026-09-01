@@ -1,0 +1,12 @@
+{{- /* Project override of the theme partial: bookkeeping lives in the page
+       Store, not Scratch, because Scratch writes done while rendering .Content
+       are lost when Hugo caches content from a render outside the page's own
+       render pass (init.html resets "this" first). The diagram source also
+       stays inside the div as a self-contained fallback, matching upstream. */ -}}
+{{- $count := (.Page.Store.Get "mermaid").count | default 1 -}}
+{{- $id := printf "id-%d" $count -}}
+{{- .Page.Store.SetInMap "mermaid" "count" (add $count 1) -}}
+{{- .Page.Store.SetInMap "mermaid" "data" (merge ((.Page.Store.Get "mermaid").data | default dict) (dict $id .Content)) -}}
+{{- .Page.Store.SetInMap "mermaid" "enabled" true -}}
+<div class="mermaid" id="{{ $id }}">{{ .Content }}</div>
+{{- .Page.Scratch.SetInMap "this" "mermaid" true -}}
