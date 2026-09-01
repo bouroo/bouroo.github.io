@@ -128,9 +128,9 @@ func BenchmarkGoCcyDecoder(b *testing.B) {
 
 วงการ JSON library เคลื่อนไหวต่อเนื่องตั้งแต่ที่เขียน benchmark นี้:
 
-- **[bytedance/sonic](https://github.com/bytedance/sonic)** — ตอนนี้เร็วที่สุดโดยทั่วไปสำหรับ payload ขนาดใหญ่ ใช้ SIMD instructions (ได้แรงบันดาลใจจาก simdjson) เป็น drop-in replacement ของ `encoding/json`
-- **[goccy/go-json](https://github.com/goccy/go-json)** — ยังเป็นตัวเลือก drop-in ที่ดี ใช้ง่าย benchmark ด้านบนยังเป็นตัวแทนที่เชื่อถือได้
-- **[encoding/json/v2](https://github.com/golang/go/issues/71707)** — การเขียนใหม่ของ Go เอง ออกมาเป็นตัว **experimental** ใน Go 1.25 (เปิดด้วย `GOEXPERIMENT=jsonv2`) และยังไม่ stable ใน Go 1.26 เมื่อเสร็จสมบูรณ์จะช่วยลดช่องว่างกับ library ของ third-party จากภายใน standard library เลย
+- **[bytedance/sonic](https://github.com/bytedance/sonic)** ตอนนี้เร็วที่สุดโดยทั่วไปสำหรับ payload ขนาดใหญ่ ใช้ SIMD instructions (ได้แรงบันดาลใจจาก simdjson) เป็น drop-in replacement ของ `encoding/json`
+- **[goccy/go-json](https://github.com/goccy/go-json)** ยังเป็นตัวเลือก drop-in ที่ดี ใช้ง่าย benchmark ด้านบนยังเป็นตัวแทนที่เชื่อถือได้
+- **[encoding/json/v2](https://github.com/golang/go/issues/71707)** การเขียนใหม่ของ Go เอง ออกมาเป็นตัว **experimental** ใน Go 1.25 (เปิดด้วย `GOEXPERIMENT=jsonv2`) และยังไม่ stable ใน Go 1.26 เมื่อเสร็จสมบูรณ์จะช่วยลดช่องว่างกับ library ของ third-party จากภายใน standard library เลย
 
 เลือกตามลักษณะงาน: `sonic` สำหรับ path ที่เร็วที่สุดบน payload ขนาดใหญ่, `goccy/go-json` สำหรับ speed up แบบ zero-config และติดตาม `encoding/json/v2` เพื่อจะได้ถอด dependency ออกได้เลยเมื่อมัน stable
 

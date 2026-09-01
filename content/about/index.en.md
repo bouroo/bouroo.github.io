@@ -6,7 +6,7 @@ lastmod: 2023-08-12T15:32:50+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: "About Kawin Viriyaprasopsook — a senior backend engineer with 10+ years of experience in Go microservices, cloud-native infrastructure, and remote work, based out of Khon Kaen, Thailand."
+description: "About Kawin Viriyaprasopsook a senior backend engineer with 10+ years of experience in Go microservices, cloud-native infrastructure, and remote work, based out of Khon Kaen, Thailand."
 license: ""
 images: []
 

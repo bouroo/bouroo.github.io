@@ -28,7 +28,7 @@ lightgallery: true
 - Livelock: เกิดขึ้นเมื่อ goroutine สองตัวขึ้นไปสลับกันปลดล็อกและล็อก mutex ซ้ำๆ ทำให้ไม่มี goroutine ใดสามารถดำเนินการต่อได้
 - Overhead: การล็อกและปลดล็อก mutex มีค่าใช้จ่ายในระหว่าง context switch และการจัดการสถานะของ mutex ซึ่งอาจส่งผลต่อประสิทธิภาพของโปรแกรมโดยเฉพาะอย่างยิ่งในกรณีที่มีการ contention สูง
 - ซับซ้อน: การจัดการ mutex ในโปรแกรมที่ซับซ้อนอาจทำให้โค้ดอ่านยากและเข้าใจยากขึ้น
-- เพิ่มเติม: [Dmitry Vyukov — Go scheduler: Implementing language with lightweight concurrency](https://youtu.be/-K11rY57K7k?si=t8vKOjBWpcJ7YwJA)
+- เพิ่มเติม: [Dmitry Vyukov Go scheduler: Implementing language with lightweight concurrency](https://youtu.be/-K11rY57K7k?si=t8vKOjBWpcJ7YwJA)
 
 ## วิธีหลีกเลี่ยง Exclusive Lock (เท่าที่ผมรู้)
 ### 1. ใช้ Channel แทน Mutex

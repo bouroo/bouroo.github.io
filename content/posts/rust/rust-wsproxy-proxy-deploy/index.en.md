@@ -1,5 +1,5 @@
 ---
-title: "Building wsProxy — Proxy Core & Deployment"
+title: "Building wsProxy Proxy Core & Deployment"
 subtitle: ""
 date: 2026-07-14T09:00:00+07:00
 lastmod: 2026-07-14T09:00:00+07:00
@@ -16,9 +16,9 @@ featuredImagePreview: "featured-image.jpeg"
 lightgallery: true
 ---
 
-# Building wsProxy — Proxy Core & Deployment
+# Building wsProxy Proxy Core & Deployment
 
-The final chapter! From that Facebook post by [rayrag.com](https://rayrag.com/) showing RO playable in a browser, to revisiting Rust over 7 parts, to building the CLI, config, and server — we now complete the proxy's heart: the TCP connection logic and bidirectional data pump that bridges WebSocket and TCP streams. We'll also cover TLS encryption, testing, and production deployment with Docker and Kubernetes.
+The final chapter! From that Facebook post by [rayrag.com](https://rayrag.com/) showing RO playable in a browser, to revisiting Rust over 7 parts, to building the CLI, config, and server we now complete the proxy's heart: the TCP connection logic and bidirectional data pump that bridges WebSocket and TCP streams. We'll also cover TLS encryption, testing, and production deployment with Docker and Kubernetes.
 
 <!--more-->
 
@@ -84,7 +84,7 @@ pub async fn connect_tcp(addr: &str) -> Result<TcpStream, String> {
 
 **Error Propagation**: Throughout the function, we convert low-level IO errors into descriptive String errors that include context about what operation failed and the target address. This makes debugging connection issues much simpler in production environments.
 
-## Bidirectional Pump — The Concept
+## Bidirectional Pump The Concept
 
 With a TCP connection established, we need to move data bidirectionally between the WebSocket and TCP streams. Unlike unidirectional data flow, a proxy must handle simultaneous data movement in both directions:
 
@@ -739,14 +739,14 @@ The CI pipeline ensures code quality through formatting checks, linting, and tes
 
 Over eight articles, we've journeyed from Rust fundamentals to a production-ready WebSocket proxy:
 
-1. **[Part 1: Getting Started with Rust](/posts/rust/rust-getting-started/)** — Installation, Cargo, variables, data types, functions, control flow
-2. **[Part 2: Ownership, Borrowing & Lifetimes](/posts/rust/rust-ownership-borrowing/)** — The ownership model, references, slices, lifetimes
-3. **[Part 3: Structs, Enums & Pattern Matching](/posts/rust/rust-structs-enums/)** — Custom types, Option, match, Result intro
-4. **[Part 4: Collections, Iterators & Error Handling](/posts/rust/rust-collections-errors/)** — Vec, HashMap, iterator adaptors, the `?` operator
-5. **[Part 5: Traits & Generics](/posts/rust/rust-traits-generics/)** — Trait definitions, trait bounds, trait objects, standard traits
-6. **[Part 6: Async Rust with Tokio](/posts/rust/rust-async-tokio/)** — async/await, runtime, tasks, channels, async I/O, `select!`
-7. **[Part 7: Building wsProxy — CLI, Config & Server](/posts/rust/rust-wsproxy-server/)** — clap, axum router, WebSocket upgrade, verify pipeline
-8. **Part 8: Proxy Core & Deployment (This Article)** — TCP connection, bidirectional pump, TLS, testing, Docker/K8s
+1. **[Part 1: Getting Started with Rust](/posts/rust/rust-getting-started/)** Installation, Cargo, variables, data types, functions, control flow
+2. **[Part 2: Ownership, Borrowing & Lifetimes](/posts/rust/rust-ownership-borrowing/)** The ownership model, references, slices, lifetimes
+3. **[Part 3: Structs, Enums & Pattern Matching](/posts/rust/rust-structs-enums/)** Custom types, Option, match, Result intro
+4. **[Part 4: Collections, Iterators & Error Handling](/posts/rust/rust-collections-errors/)** Vec, HashMap, iterator adaptors, the `?` operator
+5. **[Part 5: Traits & Generics](/posts/rust/rust-traits-generics/)** Trait definitions, trait bounds, trait objects, standard traits
+6. **[Part 6: Async Rust with Tokio](/posts/rust/rust-async-tokio/)** async/await, runtime, tasks, channels, async I/O, `select!`
+7. **[Part 7: Building wsProxy CLI, Config & Server](/posts/rust/rust-wsproxy-server/)** clap, axum router, WebSocket upgrade, verify pipeline
+8. **Part 8: Proxy Core & Deployment (This Article)** TCP connection, bidirectional pump, TLS, testing, Docker/K8s
 
 We've covered the complete stack:
 - **Networking**: TCP/UDP, DNS resolution, TLS encryption
@@ -757,9 +757,9 @@ We've covered the complete stack:
 
 The wsProxy project demonstrates how Rust's zero-cost abstractions, memory safety, and excellent async ecosystem enable building high-performance network services that rival C/C++ implementations while providing superior developer productivity and safety.
 
-Looking back, it all started with a simple Facebook post from [rayrag.com](https://rayrag.com/) showing RO running in a browser. That single moment of curiosity led to revisiting Rust and building a production-ready proxy. That's the beauty of programming — curiosity leads to learning, and learning leads to creation.
+Looking back, it all started with a simple Facebook post from [rayrag.com](https://rayrag.com/) showing RO running in a browser. That single moment of curiosity led to revisiting Rust and building a production-ready proxy. That's the beauty of programming curiosity leads to learning, and learning leads to creation.
 
-The complete source code is available at [https://github.com/bouroo/rs-wsProxy](https://github.com/bouroo/rs-wsProxy). Thank you for following along this journey — happy coding!
+The complete source code is available at [https://github.com/bouroo/rs-wsProxy](https://github.com/bouroo/rs-wsProxy). Thank you for following along this journey happy coding!
 
-[← Previous: Building wsProxy — CLI, Config & Server](/posts/rust/rust-wsproxy-server/)
+[← Previous: Building wsProxy CLI, Config & Server](/posts/rust/rust-wsproxy-server/)
 Source: https://github.com/bouroo/rs-wsProxy

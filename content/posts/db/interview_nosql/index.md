@@ -107,8 +107,8 @@ Vector database เก็บข้อมูลในรูปแบบเวก�
   - ระบบ recommendation
   - AI agent ที่ต้องการความจำระยะยาว
 - ตัวอย่าง:
-  - [Milvus](https://github.com/milvus-io/milvus) — cloud-native ออกแบบมาสำหรับสเกลใหญ่มาก
-  - [Qdrant](https://github.com/qdrant/qdrant) — เขียนด้วย Rust latency ต่ำ กรองข้อมูลได้ดี
-  - [Weaviate](https://github.com/weaviate/weaviate) — มี GraphQL API พร้อม modular vectorizer
-  - [pgvector](https://github.com/pgvector/pgvector) — extension ของ PostgreSQL เหมาะมากถ้ามี Postgres อยู่แล้ว
-  - [Chroma](https://github.com/chroma-core/chroma) — เบา นิยมใช้ตอนทำ prototype
+  - [Milvus](https://github.com/milvus-io/milvus) cloud-native ออกแบบมาสำหรับสเกลใหญ่มาก
+  - [Qdrant](https://github.com/qdrant/qdrant) เขียนด้วย Rust latency ต่ำ กรองข้อมูลได้ดี
+  - [Weaviate](https://github.com/weaviate/weaviate) มี GraphQL API พร้อม modular vectorizer
+  - [pgvector](https://github.com/pgvector/pgvector) extension ของ PostgreSQL เหมาะมากถ้ามี Postgres อยู่แล้ว
+  - [Chroma](https://github.com/chroma-core/chroma) เบา นิยมใช้ตอนทำ prototype

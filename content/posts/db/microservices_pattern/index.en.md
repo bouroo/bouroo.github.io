@@ -6,7 +6,7 @@ lastmod: 2023-09-28T23:45:41+07:00
 draft: true
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: "Introduces four must-know database patterns for building microservices: database-per-service, shared database, API composition, and CQRS with event sourcing — and the trade-offs of each."
+description: "Introduces four must-know database patterns for building microservices: database-per-service, shared database, API composition, and CQRS with event sourcing and the trade-offs of each."
 license: ""
 images: []
 

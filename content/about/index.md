@@ -6,7 +6,7 @@ lastmod: 2023-08-12T15:32:50+07:00
 draft: false
 author: "กวิน วิริยะประสพสุข"
 authorLink: "https://kawin.dev"
-description: "เกี่ยวกับกวิน วิริยะประสพสุข — Senior Backend Engineer ที่มีประสบการณ์กว่า 10 ปี เชี่ยวชาญ Go microservices, cloud-native infrastructure และการทำงานแบบ remote"
+description: "เกี่ยวกับกวิน วิริยะประสพสุข Senior Backend Engineer ที่มีประสบการณ์กว่า 10 ปี เชี่ยวชาญ Go microservices, cloud-native infrastructure และการทำงานแบบ remote"
 license: ""
 images: []
 

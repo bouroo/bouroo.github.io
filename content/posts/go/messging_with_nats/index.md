@@ -178,7 +178,7 @@ go run subscriber.go
 
 ## ทิ้งท้ายเรื่องความคงทนถาวร
 
-ตัวอย่างด้านบนใช้ **NATS Core** ซึ่งส่งข้อความแบบ at-most-once ไม่มีการเก็บข้อความ — ถ้าตอนที่ publish ไม่มี subscriber อยู่ ข้อความจะหายไป เมื่อต้องการความคงทนถาวร (replay, acknowledgment, exactly-once) ให้เปิดใช้ **JetStream** ที่ฝังมาใน `nats-server` โดยตรง:
+ตัวอย่างด้านบนใช้ **NATS Core** ซึ่งส่งข้อความแบบ at-most-once ไม่มีการเก็บข้อความ ถ้าตอนที่ publish ไม่มี subscriber อยู่ ข้อความจะหายไป เมื่อต้องการความคงทนถาวร (replay, acknowledgment, exactly-once) ให้เปิดใช้ **JetStream** ที่ฝังมาใน `nats-server` โดยตรง:
 
 ```go
 js, err := nc.JetStream()

@@ -28,7 +28,7 @@ In Go, using a Mutex (Mutual Exclusion) is one way to manage access to shared da
 - Livelock: Occurs when two or more goroutines repeatedly release and lock a mutex, preventing any goroutine from making progress.
 - Overhead: Locking and unlocking a mutex has a cost in terms of context switching and managing the state of the mutex, which can affect program performance, especially in cases of high contention.
 - Complexity: Managing mutexes in complex programs can make the code harder to read and understand.
-- Additional: [Dmitry Vyukov — Go scheduler: Implementing language with lightweight concurrency](https://youtu.be/-K11rY57K7k?si=t8vKOjBWpcJ7YwJA)
+- Additional: [Dmitry Vyukov Go scheduler: Implementing language with lightweight concurrency](https://youtu.be/-K11rY57K7k?si=t8vKOjBWpcJ7YwJA)
 
 ## Ways to Avoid Exclusive Locks (as far as I know)
 ### 1. Use Channels Instead of Mutexes

@@ -560,4 +560,4 @@ Asynchronous programming with Tokio enables building high-performance network ap
 These concepts form the foundation for building efficient, scalable network services in Rust. The ws-proxy project demonstrates how to combine these techniques to create a production-ready WebSocket to TCP proxy that can handle thousands of concurrent connections with minimal resource overhead.
 
 ← Previous: [Traits & Generics](/posts/rust/rust-traits-generics/)
-Next: [Building wsProxy — CLI, Config & Server](/posts/rust/rust-wsproxy-server/)
+Next: [Building wsProxy CLI, Config & Server](/posts/rust/rust-wsproxy-server/)

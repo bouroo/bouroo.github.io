@@ -107,8 +107,8 @@ A vector database stores data as high-dimensional numerical vectors (embeddings)
   - Recommendation engines
   - AI agents that need long-term memory
 - Examples:
-  - [Milvus](https://github.com/milvus-io/milvus) — cloud-native, built for very large scale
-  - [Qdrant](https://github.com/qdrant/qdrant) — Rust-based, low latency, strong filtering
-  - [Weaviate](https://github.com/weaviate/weaviate) — GraphQL API with modular vectorizer integrations
-  - [pgvector](https://github.com/pgvector/pgvector) — PostgreSQL extension, ideal when you already run Postgres
-  - [Chroma](https://github.com/chroma-core/chroma) — lightweight, popular for prototyping
+  - [Milvus](https://github.com/milvus-io/milvus) cloud-native, built for very large scale
+  - [Qdrant](https://github.com/qdrant/qdrant) Rust-based, low latency, strong filtering
+  - [Weaviate](https://github.com/weaviate/weaviate) GraphQL API with modular vectorizer integrations
+  - [pgvector](https://github.com/pgvector/pgvector) PostgreSQL extension, ideal when you already run Postgres
+  - [Chroma](https://github.com/chroma-core/chroma) lightweight, popular for prototyping

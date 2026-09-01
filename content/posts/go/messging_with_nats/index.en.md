@@ -6,7 +6,7 @@ lastmod: 2024-09-28T10:55:17+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: "Walks through building a simple Go publisher and subscriber with NATS — Docker setup, graceful shutdown with OS signals, and a note on enabling JetStream for durability."
+description: "Walks through building a simple Go publisher and subscriber with NATS Docker setup, graceful shutdown with OS signals, and a note on enabling JetStream for durability."
 license: ""
 images: []
 
@@ -178,7 +178,7 @@ Now, just watch the console for the results every 5 seconds until you terminate 
 
 ## A note on durability
 
-The example above uses **NATS Core**, which delivers messages at-most-once with no persistence — if no subscriber is connected when a message is published, it is lost. When you need durability (replay, acknowledgments, exactly-once), enable **JetStream**, which is built directly into `nats-server`:
+The example above uses **NATS Core**, which delivers messages at-most-once with no persistence if no subscriber is connected when a message is published, it is lost. When you need durability (replay, acknowledgments, exactly-once), enable **JetStream**, which is built directly into `nats-server`:
 
 ```go
 js, err := nc.JetStream()

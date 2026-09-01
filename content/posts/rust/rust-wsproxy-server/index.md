@@ -1,12 +1,12 @@
 ---
-title: "สร้าง wsProxy ตอนที่ 1 — CLI, Config และ Server"
+title: "สร้าง wsProxy ตอนที่ 1 CLI, Config และ Server"
 subtitle: ""
 date: 2026-07-13T09:00:00+07:00
 lastmod: 2026-07-13T09:00:00+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: "เริ่มสร้าง WebSocket-to-TCP Proxy ด้วย clap, axum และ tokio — CLI args, config, logging และ HTTP/WS server"
+description: "เริ่มสร้าง WebSocket-to-TCP Proxy ด้วย clap, axum และ tokio CLI args, config, logging และ HTTP/WS server"
 license: ""
 images: []
 tags: ["Rust", "Tutorial", "WebSocket", "Axum", "Tokio"]
@@ -16,7 +16,7 @@ featuredImagePreview: "featured-image.jpeg"
 lightgallery: true
 ---
 
-# สร้าง wsProxy ตอนที่ 1 — CLI, Config และ Server
+# สร้าง wsProxy ตอนที่ 1 CLI, Config และ Server
 
 สวัสดีครับ! ในบทความนี้เราจะเริ่มสร้างโปรเจกต์จริง ๆ ชื่อว่า **rs-wsProxy** ซึ่งเป็น WebSocket-to-TCP Proxy ที่ออกแบบมาสำหรับใช้งานร่วมกับ [roBrowser](https://github.com/vthibault/roBrowser) (โปรเจกต์จำลอง Ragnarok Online บนเว็บ) เพื่อให้สามารถเชื่อมต่อจากเว็บเบราว์เซอร์ไปยังเซิร์ฟเวอร์เกมได้โดยตรงผ่าน WebSocket
 
@@ -24,7 +24,7 @@ lightgallery: true
 
 บทความนี้เป็น Part 1 ของซีรีส์สองส่วน โดยเราจะเน้นไปที่การตั้งค่าโครงสร้างโปรเจกต์ การตั้งค่า CLI ด้วย `clap` การจัดการการตั้งค่า (configuration) ระบบ logging ด้วย `tracing` และการตั้งค่าเซิร์ฟเวอร์ HTTP/WebSocket ด้วย `axum` และ `tokio`
 
-ใน Part 2 (ซึ่งจะตามมาในบทความถัดไป) เราจะเจาะลึกเข้าไปในส่วนของ proxy core — กลไกการเชื่อมต่อ TCP และการส่งต่อข้อมูลระหว่าง WebSocket และ TCP socket รวมถึงการจัดการการเชื่อมต่อแบบพร้อมกันหลาย ๆ รายการ (concurrent connections) และการจัดการข้อผิดพลาด
+ใน Part 2 (ซึ่งจะตามมาในบทความถัดไป) เราจะเจาะลึกเข้าไปในส่วนของ proxy core กลไกการเชื่อมต่อ TCP และการส่งต่อข้อมูลระหว่าง WebSocket และ TCP socket รวมถึงการจัดการการเชื่อมต่อแบบพร้อมกันหลาย ๆ รายการ (concurrent connections) และการจัดการข้อผิดพลาด
 
 คุณสามารถดูโค้ดต้นฉบับทั้งหมดได้ที่: https://github.com/bouroo/rs-wsProxy
 
@@ -50,7 +50,7 @@ rs-wsProxy/
 
 เราจะสร้างไฟล์เหล่านี้ทีละไฟล์พร้อมคำอธิบายอย่างละเอียดในภาษาไทย
 
-## Cargo.toml — Dependencies
+## Cargo.toml Dependencies
 
 มาเริ่มกันที่ไฟล์ `Cargo.toml` ซึ่งเป็นไฟล์กำหนดค่าของ Cargo ที่ระบุชื่อโครงการ เวอร์ชัน เอดิชัน และที่สำคัญที่สุดคือ dependencies ที่เราจะใช้ในโปรเจกต์นี้
 
@@ -677,7 +677,7 @@ pub fn create_app(state: AppState) -> Router {
 6. ผูกเซิร์ฟเวอร์กับที่อยู่และพอร์ตที่ระบุ
 7. จัดการสัญญาณเพื่อปิดเซิร์ฟเวอร์อย่างนุ่มนวลเมื่อได้รับ SIGINT หรือ SIGTERM
 
-## main.rs — Entry Point
+## main.rs Entry Point
 
 ```rust
 use std::net::SocketAddr;
@@ -926,12 +926,12 @@ ws://localhost:5999/ws/google.com:443
 
 เราได้ทดสอบการทำงานเบื้องต้นโดยการรันเซิร์ฟเวอร์และทดสอบการเชื่อมต่อด้วย `curl` และ `websocat` ซึ่งแสดงให้เห็นว่าระบบพื้นฐานของเราทำงานได้ตามที่คาดหวัง
 
-ในบทความถัดไป (Part 2) เราจะเจาะลึกเข้าไปในส่วนของ proxy core — กลไกการเชื่อมต่อ TCP และการส่งต่อข้อมูลระหว่าง WebSocket และ TCP socket ซึ่งเราได้วางโครงสร้างคร่ ๆ ไว้ในฟังก์ชัน `handle_socket` ใน `src/server.rs` แต่เราจะปรับปรุงให้มีความแข็งแรงมากขึ้น จัดการกับข้อผิดพลาดได้ดียิ่งขึ้น และเพิ่มฟีเจอร์ต่าง ๆ เช่น การจัดการความดันย้อนกลับ (backpressure) และการหมดเวลาเชื่อมต่อ (timeouts)
+ในบทความถัดไป (Part 2) เราจะเจาะลึกเข้าไปในส่วนของ proxy core กลไกการเชื่อมต่อ TCP และการส่งต่อข้อมูลระหว่าง WebSocket และ TCP socket ซึ่งเราได้วางโครงสร้างคร่ ๆ ไว้ในฟังก์ชัน `handle_socket` ใน `src/server.rs` แต่เราจะปรับปรุงให้มีความแข็งแรงมากขึ้น จัดการกับข้อผิดพลาดได้ดียิ่งขึ้น และเพิ่มฟีเจอร์ต่าง ๆ เช่น การจัดการความดันย้อนกลับ (backpressure) และการหมดเวลาเชื่อมต่อ (timeouts)
 
 อย่าลืมติดตามตอนต่อไปนะครับ!
 
 ### ลิงก์ที่เกี่ยวข้อง
 
 - บทความก่อนหน้า: [Async Rust กับ Tokio](/posts/rust/rust-async-tokio/)
-- บทความถัดไป: [สร้าง wsProxy — Proxy Core และ Deployment](/posts/rust/rust-wsproxy-proxy-deploy/)
+- บทความถัดไป: [สร้าง wsProxy Proxy Core และ Deployment](/posts/rust/rust-wsproxy-proxy-deploy/)
 - ซอร์สโค้ด: https://github.com/bouroo/rs-wsProxy

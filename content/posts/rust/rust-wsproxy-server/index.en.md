@@ -1,12 +1,12 @@
 ---
-title: "Building wsProxy — CLI, Config & Server"
+title: "Building wsProxy CLI, Config & Server"
 subtitle: ""
 date: 2026-07-13T09:00:00+07:00
 lastmod: 2026-07-13T09:00:00+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: "Build a WebSocket-to-TCP proxy with clap, axum, and tokio — CLI args, config, logging, and the HTTP/WS server"
+description: "Build a WebSocket-to-TCP proxy with clap, axum, and tokio CLI args, config, logging, and the HTTP/WS server"
 license: ""
 images: []
 tags: ["Rust", "Tutorial", "WebSocket", "Axum", "Tokio"]
@@ -18,7 +18,7 @@ lightgallery: true
 
 <!--more-->
 
-Time to build the real project! After seeing that Facebook post from [rayrag.com](https://rayrag.com/) showing RO playable in a browser via WebSocket, I wanted to build my own proxy. Now, after 6 parts of learning Rust fundamentals, we finally put it all together. wsProxy is a WebSocket-to-TCP proxy for [roBrowser](https://github.com/vthibault/roBrowser) — it bridges browser WebSocket clients to plain TCP game servers. Source code is available at [https://github.com/bouroo/rs-wsProxy](https://github.com/bouroo/rs-wsProxy).
+Time to build the real project! After seeing that Facebook post from [rayrag.com](https://rayrag.com/) showing RO playable in a browser via WebSocket, I wanted to build my own proxy. Now, after 6 parts of learning Rust fundamentals, we finally put it all together. wsProxy is a WebSocket-to-TCP proxy for [roBrowser](https://github.com/vthibault/roBrowser) it bridges browser WebSocket clients to plain TCP game servers. Source code is available at [https://github.com/bouroo/rs-wsProxy](https://github.com/bouroo/rs-wsProxy).
 
 ## Project Structure
 
@@ -49,7 +49,7 @@ Each module has a clear responsibility:
 - `server.rs`: Axum HTTP server and WebSocket handlers
 - `tests/`: Integration tests
 
-## Cargo.toml — Dependencies
+## Cargo.toml Dependencies
 
 Here's our `Cargo.toml` with explanations for each dependency:
 
@@ -171,7 +171,7 @@ fn parse_redirect_pair(src: &str) -> Result<(String, String), String> {
 - `Option<Vec<String>>` for `allow`: `None` = allow all, `Some(vec![])` = deny all, `Some(vec![...])` = allow list
 - Custom parser for redirect pairs ensures `from=to` format
 
-## AppState — Shared State
+## AppState Shared State
 
 Our application state is shared across all routes via Axum's extractor pattern:
 
@@ -425,7 +425,7 @@ pub fn verify(state: &super::AppState, target: &str) -> Result<String, String> {
    - `Some([])` (empty explicit list): Deny all targets
    - `Some([hosts])`: Only allow listed hosts
 
-## main.rs — Entry Point
+## main.rs Entry Point
 
 Application entry point with graceful shutdown:
 
@@ -560,5 +560,5 @@ We've built a functional WebSocket-to-TCP proxy with:
 
 **Links:**
 ← Previous: [Async Rust with Tokio](/posts/rust/rust-async-tokio/)
-Next: [Building wsProxy — Proxy Core & Deployment](/posts/rust/rust-wsproxy-proxy-deploy/)
+Next: [Building wsProxy Proxy Core & Deployment](/posts/rust/rust-wsproxy-proxy-deploy/)
 Source: https://github.com/bouroo/rs-wsProxy

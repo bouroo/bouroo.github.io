@@ -209,7 +209,7 @@ flowchart LR
 
 ### What I don't like as much
 
-* Core NATS has no built-in message persistence, but JetStream — now built directly into nats-server — adds persistence, message replay, acknowledgments, deduplication, a Key-Value store, and an Object store. (The older NATS Streaming/STAN is deprecated; use JetStream for any durability needs.)
+* Core NATS has no built-in message persistence, but JetStream now built directly into nats-server adds persistence, message replay, acknowledgments, deduplication, a Key-Value store, and an Object store. (The older NATS Streaming/STAN is deprecated; use JetStream for any durability needs.)
 * Routing features are not as sophisticated as RabbitMQ.
 * Not designed for long-term message storage like Kafka.
 

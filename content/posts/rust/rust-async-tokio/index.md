@@ -678,4 +678,4 @@ async fn run_server(config: Config) -> Result<(), Box<dyn std::error::Error>> {
 ### ลิงก์ที่เกี่ยวข้อง
 
 - ก่อนหน้า: [Traits และ Generics](/posts/rust/rust-traits-generics/)
-- ถัดไป: [สร้าง wsProxy — CLI, Config และ Server](/posts/rust/rust-wsproxy-server/)
+- ถัดไป: [สร้าง wsProxy CLI, Config และ Server](/posts/rust/rust-wsproxy-server/)

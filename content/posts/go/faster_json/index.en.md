@@ -128,9 +128,9 @@ Test results for reading a large 26MB file.
 
 The JSON library landscape has kept moving since this benchmark was written:
 
-- **[bytedance/sonic](https://github.com/bytedance/sonic)** — now generally the fastest option for large payloads. It uses SIMD instructions (inspired by simdjson) and is a drop-in replacement for `encoding/json`.
-- **[goccy/go-json](https://github.com/goccy/go-json)** — still a solid, easy drop-in; the benchmarks above remain representative.
-- **[encoding/json/v2](https://github.com/golang/go/issues/71707)** — Go's own rewrite. It shipped as an **experimental** preview in Go 1.25 (enable with `GOEXPERIMENT=jsonv2`) and is still not stable in Go 1.26. Once finalized it will narrow the gap with the third-party libraries from inside the standard library.
+- **[bytedance/sonic](https://github.com/bytedance/sonic)** now generally the fastest option for large payloads. It uses SIMD instructions (inspired by simdjson) and is a drop-in replacement for `encoding/json`.
+- **[goccy/go-json](https://github.com/goccy/go-json)** still a solid, easy drop-in; the benchmarks above remain representative.
+- **[encoding/json/v2](https://github.com/golang/go/issues/71707)** Go's own rewrite. It shipped as an **experimental** preview in Go 1.25 (enable with `GOEXPERIMENT=jsonv2`) and is still not stable in Go 1.26. Once finalized it will narrow the gap with the third-party libraries from inside the standard library.
 
 Pick by workload: `sonic` for the absolute fastest large-payload path, `goccy/go-json` for a zero-config speedup, and keep an eye on `encoding/json/v2` so you can drop the dependency entirely once it stabilizes.
 
