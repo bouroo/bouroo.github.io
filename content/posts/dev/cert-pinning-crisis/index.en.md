@@ -1,18 +1,18 @@
 ---
-title: "Navigating BOT Cert Pinning: Handling Shorter SSL Lifespans Without Breaking Your Mobile App"
+title: "Navigating BOT Cert Pinning: Handling Short SSL Lifespans Without Breaking Your Mobile App"
 date: 2026-10-05T17:50:00+07:00
 draft: false
 tags: ["Security", "Mobile App", "DevOps", "Bank of Thailand", "SSL Pinning", "TLS", "Android", "iOS"]
 categories: ["Engineering", "Security"]
-description: "How to architect resilient Certificate Pinning for mobile banking apps to comply with Bank of Thailand (BOT) mandates while adapting to 90-day SSL certificate lifespans."
+description: "How to architect resilient Certificate Pinning for mobile banking apps to comply with Bank of Thailand (BOT) mandates while adapting to shorter SSL certificate lifespans."
 ---
 
 Over the past few years, mobile development and security engineering teams in Thailand—especially in FinTech and banking—have faced a major operational paradox:
 
 1. **Bank of Thailand (BOT) Regulatory Mandate:** Mobile banking and financial apps are required to enforce **Certificate Pinning** (or equivalent security controls) to mitigate Man-in-the-Middle (MITM) attacks.
-2. **Evolving WebPKI Standards (CA/Browser Forum, Apple, Google):** Industry-wide policy shifts have squeezed SSL/TLS certificate lifespans down from 398 days to **90 days** (with trends moving toward even shorter validity periods).
+2. **Evolving WebPKI Standards (CA/Browser Forum, Apple, Google):** Industry-wide policy shifts have squeezed SSL/TLS certificate lifespans down from years to increasingly shorter validity periods.
 
-If an engineering team relies on traditional **Static Leaf Certificate Pinning**—hardcoding the `.crt` file or fingerprint directly into the client app—the result is predictable: **outages every 90 days** for users who haven't enabled auto-updates on the App Store or Google Play Store.
+If an engineering team relies on traditional **Static Leaf Certificate Pinning**—hardcoding the `.crt` file or fingerprint directly into the client app—the result is predictable: **frequent outages** for users who haven't enabled auto-updates on the App Store or Google Play Store.
 
 This article outlines how to design a resilient Certificate Pinning architecture that complies with BOT standards without sacrificing system availability or user experience.
 
@@ -32,7 +32,7 @@ Certificate Pinning can target three different levels of the Certificate Chain:
 
 The most common anti-pattern occurs when developers hardcode the **SHA-256 Fingerprint of the Leaf Certificate** into the application binary.
 
-When certificates expire every 90 days and are renewed:
+As certificates expire on shorter lifespans and rotate more frequently:
 - The Certificate Signature or Serial Number changes.
 - Unupdated mobile app clients reject the new certificate during the **TLS Handshake**.
 - A **Severity 1 Outage** occurs, locking active users out of the application.
@@ -106,7 +106,7 @@ Technical controls on the mobile client must be supported by automated backend i
 
 | Area | Recommended Practice |
 | :--- | :--- |
-| **Cert Renewal Policy** | Configure ACME clients (`cert-manager`, Let's Encrypt, AWS ACM) to enforce a **Key Reuse Strategy** during automated 90-day renewals. |
+| **Cert Renewal Policy** | Configure ACME clients (`cert-manager`, Let's Encrypt, AWS ACM) to enforce a **Key Reuse Strategy** during automated certificate renewals. |
 | **Key Rotation Schedule** | Synchronize Public Key rotations with planned **App Release Cycles** (e.g., bundle new backup pins 6–12 months before activating the corresponding backend key). |
 | **Monitoring & Alerting** | Implement automated monitoring 30 days prior to certificate expiration to verify that the active server public key matches the deployed mobile pin sets. |
 
