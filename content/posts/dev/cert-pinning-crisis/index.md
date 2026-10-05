@@ -4,15 +4,15 @@ date: 2026-10-05T17:45:00+07:00
 draft: false
 tags: ["Security", "Mobile App", "DevOps", "Bank of Thailand", "SSL Pinning", "TLS", "Android", "iOS"]
 categories: ["Engineering", "Security"]
-description: "แนวทางการวางสถาปัตยกรรม Certificate Pinning สำหรับ Mobile Banking ให้สอดคล้องตามข้อบังคับ ธปท. (BOT) โดยไม่เกิดปัญหาแอปพัง เมื่อ SSL Certificate สั้นลงเหลือ 90 วัน"
+description: "แนวทางการวางสถาปัตยกรรม Certificate Pinning สำหรับ Mobile Banking ให้สอดคล้องตามข้อบังคับ ธปท. (BOT) โดยไม่เกิดปัญหาแอปพัง เมื่อ SSL Certificate มีอายุสั้นลงเรื่อย ๆ"
 ---
 
 ช่วงไม่กี่ปีที่ผ่านมา ทีมพัฒนา Mobile App และ Security Engineer ในไทย โดยเฉพาะสาย FinTech และ ธนาคาร ต้องเผชิญกับ **ความย้อนแย้งครั้งใหญ่** 2 ด้านที่วิ่งสวนทางกันอย่างชัดเจน:
 
 1. **ข้อบังคับจาก ธนาคารแห่งประเทศไทย (ธปท. / BOT):** กำหนดให้แอปพลิเคชัน Mobile Banking / Financial Services ต้องใช้ช่องทางสื่อสารที่ปลอดภัยและทำการ **Certificate Pinning** (หรือวิธีอื่นที่เทียบเท่า) เพื่อป้องกันการโจมตีแบบ Man-in-the-Middle (MITM)
-2. **มาตรฐานอุตสาหกรรม SSL/TLS (CA/Browser Forum, Apple, Google):** มีนโยบายบีบให้อายุของ SSL/TLS Certificate สั้นลงเรื่อย ๆ จากเดิม 398 วัน ปัจจุบันขยับลงมาเหลือ **90 วัน** (และมีแนวโน้มจะสั้นลงอีกในอนาคต)
+2. **มาตรฐานอุตสาหกรรม SSL/TLS (CA/Browser Forum, Apple, Google):** มีนโยบายบีบให้อายุของ SSL/TLS Certificate สั้นลงเรื่อย ๆ จากเดิมที่เคยใช้อย่างยาวนานหลายปี ปัจจุบันถูกลดลงเหลือเพียงไม่กี่เดือน (และมีแนวโน้มจะสั้นลงอีกในอนาคต)
 
-หากทีมพัฒนาเลือกใช้วิธี **Static Leaf Certificate Pinning** แบบฮาร์ดโค้ดไฟล์ `.crt` หรือ Cert Fingerprint ลงในแอป ผลลัพธ์คือ **"แอปพังทุก 3 เดือน"** ผู้ใช้ที่ไม่ยอมกดอัปเดตแอปผ่าน App Store / Play Store จะเข้าใช้งานไม่ได้ทันที
+หากทีมพัฒนาเลือกใช้วิธี **Static Leaf Certificate Pinning** แบบฮาร์ดโค้ดไฟล์ `.crt` หรือ Cert Fingerprint ลงในแอป ผลลัพธ์คือ **"แอปพังบ่อยครั้งตามรอบการหมดอายุของ Certificate"** ผู้ใช้ที่ไม่ยอมกดอัปเดตแอปผ่าน App Store / Play Store จะเข้าใช้งานไม่ได้ทันที
 
 บทความนี้จะสรุปแนวทางการออกแบบสถาปัตยกรรม Certificate Pinning ให้ปลอดภัยตามเกณฑ์ ธปท. และมีความยืดหยุ่นสูง (Resilient) ไม่สะดุดเมื่อ Cert หมดอายุ
 
@@ -32,7 +32,7 @@ description: "แนวทางการวางสถาปัตยกรร
 
 ปัญหาที่พบบ่อยคือ Developer มักนำ **SHA-256 Fingerprint ของ Leaf Certificate** ไปฮาร์ดโค้ดไว้ในแอป
 
-เมื่อ SSL Certificate มีอายุเพียง 90 วัน และต้องต่ออายุ (Rotate) ใหม่:
+เมื่อ SSL Certificate มีอายุสั้นลง และต้องทำการหมุนเวียน (Rotate) บ่อยขึ้น:
 - หาก Certificate เปลี่ยนแปลง Signature หรือ Serial Number
 - แอปเวอร์ชันเดิมบนเครื่องผู้ใช้จะไม่รู้จัก Certificate ใหม่ทันที
 - เกิดปัญหา **TLS Handshake Failure** ส่งผลกระทบระดับ P0 Outage ที่ผู้ใช้เข้าใช้งานแอปไม่ได้
@@ -75,7 +75,7 @@ description: "แนวทางการวางสถาปัตยกรร
 1. **Active Pin:** SHA-256 ของ Public Key ปัจจุบันที่ใช้งานอยู่
 2. **Backup Pin (At least 1-2 Pins):** SHA-256 ของ Public Key สำรองที่เตรียมไว้ในสภาพแวดล้อมที่ปลอดภัย (เช่น ออกแบบ CSR ทิ้งไว้แบบ Offline หรือเก็บไว้ใน Key Management Service)
 
-หากเกิดเหตุฉุกเฉิน เช่น Private Key ปัจจุบันหลุด (Compromised) หรือต้องการสลับไปใช้ Certificate สำรอง ระบบฝั่ง Server สามารถสลับไปใช้ Key สำรองที่แอปถือสำรองไว้อยู่แล้วได้ทันที โดยไม่ต้องรอให้ผู้ใช้อัปเดตแอป
+หากเกิดเหตุฉุกเฉิน เช่น Private Key ปัจจุบันหลุด (Compromised) หรือต้องการสลับไปใช้ Certificate สำรอง ระบบฝั่ง Server สามารถสลับไปใช้ Key สำรองที่แอปถือสำรองไว้อยู่แล้วได้ทันที โดยไม่ต้องรอให้ผู้ใชัปเดตแอป
 
 ---
 
@@ -107,7 +107,7 @@ description: "แนวทางการวางสถาปัตยกรร
 
 | กระบวนการ | แนวทางปฏิบัติที่แนะนำ |
 | :--- | :--- |
-| **Cert Renewal Policy** | กำหนดในระบบอัตโนมัติ (เช่น Let's Encrypt / Cert-Manager / AWS ACM) ให้ใช้ **Key Reuse Strategy** (คงใช้ Key Pair เดิมในการหมุนเวียนใบรับรองทุก 90 วัน) |
+| **Cert Renewal Policy** | กำหนดในระบบอัตโนมัติ (เช่น Let's Encrypt / Cert-Manager / AWS ACM) ให้ใช้ **Key Reuse Strategy** (คงใช้ Key Pair เดิมในการหมุนเวียนใบรับรองอัตโนมัติ) |
 | **Key Rotation Schedule** | หากต้องการ Rotate Public Key ตามนโยบายความปลอดภัย ให้ทำตามรอบ **App Release Cycle** เช่น แปะ Backup Pin ใหม่ลงในแอปตั้งแต่วันนี้ และเปิดใช้งาน Key นั้นจริงในอีก 6-12 เดือนข้างหน้า |
 | **Monitoring & Alerting** | ตั้งระบบเตือนล่วงหน้า 30 วันก่อน Cert หมดอายุ เพื่อตรวจสอบว่า Key Pair ปัจจุบันตรงกับ Pin ในแอปเวอร์ชันล่าสุดหรือไม่ |
 
