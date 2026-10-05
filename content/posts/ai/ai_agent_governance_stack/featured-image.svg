@@ -1,70 +1,61 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f172a"/>
-      <stop offset="100%" stop-color="#1e293b"/>
+    <linearGradient id="vbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#17102e"/>
+      <stop offset="100%" stop-color="#3b1d6e"/>
     </linearGradient>
 
-    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#38bdf8"/>
-      <stop offset="100%" stop-color="#34d399"/>
-    </linearGradient>
+    <marker id="flowArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c4b5fd"/>
+    </marker>
 
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="8" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="70"/>
+    </filter>
+
+    <filter id="verdictGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feComposite in="SourceGraphic" in2="b" operator="over"/>
     </filter>
   </defs>
 
-  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#vbg)"/>
 
-  <g opacity="0.05" stroke="#ffffff" stroke-width="1">
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40"/>
-    </pattern>
-    <rect width="1200" height="630" fill="url(#grid)"/>
-  </g>
+  <circle cx="180" cy="520" r="240" fill="#e879f9" opacity="0.12" filter="url(#softBlur)"/>
+  <circle cx="1040" cy="150" r="280" fill="#7c3aed" opacity="0.15" filter="url(#softBlur)"/>
+  <circle cx="640" cy="560" r="200" fill="#a855f7" opacity="0.10" filter="url(#softBlur)"/>
 
-  <g transform="translate(100, 220)">
-    <rect x="0" y="0" width="210" height="36" rx="18" fill="#38bdf8" fill-opacity="0.1" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="105" y="23" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#38bdf8" text-anchor="middle" letter-spacing="1">AI AGENT GOVERNANCE</text>
+  <polygon points="1200,0 760,0 1200,360" fill="#e879f9" opacity="0.05"/>
+  <polygon points="0,630 0,360 380,630" fill="#4ade80" opacity="0.05"/>
+  <polygon points="0,0 0,150 220,0" fill="#fbbf24" opacity="0.06"/>
 
-    <text x="0" y="95" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="800" fill="#ffffff">Governance Stack</text>
-    <text x="0" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="38" font-weight="700" fill="url(#accent)">for AI Coding Agents</text>
+  <text x="85" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="4" fill="#fbbf24">AI CODING AGENT GOVERNANCE</text>
+  <text x="82" y="170" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="54" font-weight="800" fill="#ffffff">Governance Stack</text>
+  <text x="85" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" fill="#4ade80">Speed without losing reviewability</text>
 
-    <text x="0" y="215" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" fill="#94a3b8">Intent / Process / Runtime: SPDD, Fable, Harness</text>
-  </g>
+  <line x1="285" y1="355" x2="348" y2="355" stroke="#c4b5fd" stroke-width="2.5" marker-end="url(#flowArrow)"/>
+  <line x1="585" y1="355" x2="648" y2="355" stroke="#c4b5fd" stroke-width="2.5" marker-end="url(#flowArrow)"/>
+  <line x1="855" y1="355" x2="918" y2="355" stroke="#c4b5fd" stroke-width="2.5" marker-end="url(#flowArrow)"/>
 
-  <g transform="translate(100, 545)">
-    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="600" fill="#64748b">Judge pass: VERIFIED / VERIFIED WITH CAVEATS / REFUTED</text>
-    <text x="0" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" fill="#64748b">Kirby effect: every harness component has an expiry date</text>
-  </g>
+  <rect x="85" y="300" width="200" height="110" rx="16" fill="#221545" stroke="#e879f9" stroke-width="2.5"/>
+  <text x="185" y="352" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="2" fill="#ffffff" text-anchor="middle">CANVAS</text>
+  <text x="185" y="384" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="1" fill="#e879f9" text-anchor="middle">SPDD</text>
 
-  <g transform="translate(820, 315)">
-    <circle r="160" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="8 8" opacity="0.4"/>
-    <circle r="130" fill="#1e293b" stroke="#34d399" stroke-width="3" filter="url(#glow)"/>
+  <rect x="355" y="290" width="230" height="130" rx="18" fill="#231748" stroke="#fbbf24" stroke-width="3"/>
+  <text x="470" y="350" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="2" fill="#ffffff" text-anchor="middle">GATES</text>
+  <text x="470" y="384" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" letter-spacing="1" fill="#fbbf24" text-anchor="middle">INTENT / AUTH</text>
 
-    <rect x="-90" y="-63" width="180" height="32" rx="8" fill="#38bdf8" fill-opacity="0.12" stroke="#38bdf8" stroke-width="2"/>
-    <text x="0" y="-43" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#38bdf8" text-anchor="middle" letter-spacing="1">INTENT</text>
+  <rect x="408" y="436" width="124" height="30" rx="15" fill="#fbbf24" fill-opacity="0.15" stroke="#fbbf24" stroke-width="1.2"/>
+  <text x="470" y="456" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="0.5" fill="#fbbf24" text-anchor="middle">PENDING stop</text>
 
-    <path d="M -6 -27 L 0 -21 L 6 -27" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="655" y="300" width="200" height="110" rx="16" fill="#221545" stroke="#4ade80" stroke-width="2.5"/>
+  <text x="755" y="352" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="2" fill="#ffffff" text-anchor="middle">HARNESS</text>
+  <text x="755" y="384" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="1" fill="#4ade80" text-anchor="middle">runtime</text>
 
-    <rect x="-90" y="-16" width="180" height="32" rx="8" fill="#34d399" fill-opacity="0.12" stroke="#34d399" stroke-width="2"/>
-    <text x="0" y="4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#34d399" text-anchor="middle" letter-spacing="1">GATES</text>
+  <rect x="925" y="305" width="190" height="100" rx="16" fill="#4ade80" stroke="#a7f3d0" stroke-width="2" filter="url(#verdictGlow)"/>
+  <path d="M 946 356 l 8 9 l 15 -19" fill="none" stroke="#17102e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1035" y="362" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="1" fill="#17102e" text-anchor="middle">VERIFIED</text>
 
-    <path d="M -6 20 L 0 26 L 6 20" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-
-    <rect x="-90" y="31" width="180" height="32" rx="8" fill="#94a3b8" fill-opacity="0.12" stroke="#94a3b8" stroke-width="2"/>
-    <text x="0" y="51" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#94a3b8" text-anchor="middle" letter-spacing="1">HARNESS</text>
-
-    <g transform="translate(118, -96)">
-      <rect x="-58" y="-16" width="116" height="32" rx="8" fill="#059669" filter="url(#glow)"/>
-      <text x="0" y="6" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">VERIFIED</text>
-    </g>
-
-    <g transform="translate(-112, 100)">
-      <rect x="-56" y="-16" width="112" height="32" rx="8" fill="#d97706" filter="url(#glow)"/>
-      <text x="0" y="6" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">PENDING</text>
-    </g>
-  </g>
+  <line x1="85" y1="556" x2="1115" y2="556" stroke="#3b2a63" stroke-width="1"/>
+  <text x="85" y="590" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#a99bc9">&gt; judge pass: VERIFIED / VERIFIED WITH CAVEATS / REFUTED</text>
 </svg>
