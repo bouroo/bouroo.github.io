@@ -5,6 +5,9 @@ draft: false
 tags: ["Security", "Mobile App", "DevOps", "Bank of Thailand", "SSL Pinning", "TLS", "Android", "iOS"]
 categories: ["Engineering", "Security"]
 description: "How to architect resilient Certificate Pinning for mobile banking apps to comply with Bank of Thailand (BOT) mandates while adapting to shorter SSL certificate lifespans."
+
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 ---
 
 Over the past few years, mobile development and security engineering teams in Thailand—especially in FinTech and banking—have faced a major operational paradox:
