@@ -11,8 +11,8 @@ license: ""
 images: []
 tags: ["Rust", "Tutorial"]
 categories: ["Rust"]
-featuredImage: "featured-image.jpeg"
-featuredImagePreview: "featured-image.jpeg"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 lightgallery: true
 ---
 Ownership คือหัวใจของ Rust ที่ทำให้ปลอดภัยด้านหน่วยความจำโดยไม่ต้องมี Garbage Collector เชื่อมจากภาค 1 (`/posts/rust/rust-getting-started/`)

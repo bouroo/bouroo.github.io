@@ -9,8 +9,8 @@ authorLink: "https://kawin.dev"
 description: "เปรียบเทียบกลยุทธ์การทำ pagination ใน SQL ทั้ง Offset/Limit, keyset cursor และ deferred joins พร้อมอธิบายว่าแต่ละแบบเหมาะกับสถานการณ์ใด"
 license: ""
 images: []
-featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image.webp"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 tags: ["Database", "SQL", "Pagination"]
 categories: ["SQL"]

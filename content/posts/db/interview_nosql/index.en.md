@@ -9,8 +9,8 @@ authorLink: "https://kawin.dev"
 description: "What is NoSQL? What types are there? And what are they suitable for?"
 license: ""
 images: []
-featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image.webp"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 tags: ["Database", "NoSQL"]
 categories: ["NoSQL"]

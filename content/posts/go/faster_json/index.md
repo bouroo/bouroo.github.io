@@ -9,8 +9,8 @@ authorLink: "https://kawin.dev"
 description: "ทำ benchmark เทียบ goccy/go-json กับ encoding/json ของ standard library พบว่าเร็วขึ้นราว 10 เท่า พร้อมอัปเดตสถานการณ์ 2025-2026 ของ bytedance/sonic และ encoding/json/v2 ที่ยังเป็น experimental"
 license: ""
 images: []
-featuredImage: "/img/featured-image.webp"
-featuredImagePreview: "/img/featured-image.webp"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 tags: ["Go", "JSON"]
 categories: ["Go"]

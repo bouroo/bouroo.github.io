@@ -1,0 +1,89 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <radialGradient id="burst" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f6821f" stop-opacity="0.32"/>
+      <stop offset="55%" stop-color="#f6821f" stop-opacity="0.09"/>
+      <stop offset="100%" stop-color="#f6821f" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="diag" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="22" stroke="#ffffff" stroke-width="1" opacity="0.03"/>
+    </pattern>
+    <linearGradient id="hexFill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b1d1f"/>
+      <stop offset="100%" stop-color="#0b0c0d"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#111213"/>
+  <rect width="1200" height="630" fill="url(#diag)"/>
+
+  <circle cx="950" cy="300" r="305" fill="url(#burst)"/>
+
+  <g stroke="#f6821f" stroke-width="2" stroke-linecap="round">
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.55" transform="rotate(0 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.30" transform="rotate(10 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.55" transform="rotate(20 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.30" transform="rotate(30 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.55" transform="rotate(40 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.30" transform="rotate(50 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.55" transform="rotate(60 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.30" transform="rotate(70 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.55" transform="rotate(80 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.30" transform="rotate(90 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.55" transform="rotate(100 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.30" transform="rotate(110 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.55" transform="rotate(120 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.30" transform="rotate(130 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.55" transform="rotate(140 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.30" transform="rotate(150 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.55" transform="rotate(160 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.30" transform="rotate(170 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.55" transform="rotate(180 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.30" transform="rotate(190 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.55" transform="rotate(200 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.30" transform="rotate(210 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.55" transform="rotate(220 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.30" transform="rotate(230 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.55" transform="rotate(240 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.30" transform="rotate(250 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.55" transform="rotate(260 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.30" transform="rotate(270 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.55" transform="rotate(280 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.30" transform="rotate(290 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.55" transform="rotate(300 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.30" transform="rotate(310 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.55" transform="rotate(320 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.30" transform="rotate(330 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.55" transform="rotate(340 950 300)"/>
+    <line x1="950" y1="210" x2="950" y2="50" opacity="0.30" transform="rotate(350 950 300)"/>
+  </g>
+  <g stroke="#ffd9b0" stroke-width="2" stroke-linecap="round" opacity="0.35">
+    <line x1="950" y1="205" x2="950" y2="50" transform="rotate(0 950 300)"/>
+    <line x1="950" y1="205" x2="950" y2="50" transform="rotate(45 950 300)"/>
+    <line x1="950" y1="205" x2="950" y2="50" transform="rotate(90 950 300)"/>
+    <line x1="950" y1="205" x2="950" y2="50" transform="rotate(135 950 300)"/>
+    <line x1="950" y1="205" x2="950" y2="50" transform="rotate(180 950 300)"/>
+    <line x1="950" y1="205" x2="950" y2="50" transform="rotate(225 950 300)"/>
+    <line x1="950" y1="205" x2="950" y2="50" transform="rotate(270 950 300)"/>
+    <line x1="950" y1="205" x2="950" y2="50" transform="rotate(315 950 300)"/>
+  </g>
+
+  <polygon points="1070,300 1010,196 890,196 830,300 890,404 1010,404" fill="url(#hexFill)" stroke="#f6821f" stroke-width="3"/>
+
+  <rect x="878" y="228" width="144" height="148" rx="12" fill="#0b0c0d" stroke="#ffd9b0" stroke-width="2" opacity="0.55"/>
+  <rect x="892" y="242" width="116" height="34" rx="6" fill="#f6821f" fill-opacity="0.10" stroke="#f6821f" stroke-width="1.5" stroke-opacity="0.55"/>
+  <rect x="892" y="284" width="116" height="34" rx="6" fill="#f6821f" fill-opacity="0.10" stroke="#f6821f" stroke-width="1.5" stroke-opacity="0.55"/>
+  <rect x="892" y="326" width="116" height="34" rx="6" fill="#f6821f" fill-opacity="0.10" stroke="#f6821f" stroke-width="1.5" stroke-opacity="0.55"/>
+  <line x1="902" y1="259" x2="956" y2="259" stroke="#ffd9b0" stroke-width="1.5" opacity="0.30"/>
+  <line x1="902" y1="301" x2="956" y2="301" stroke="#ffd9b0" stroke-width="1.5" opacity="0.30"/>
+  <line x1="902" y1="343" x2="956" y2="343" stroke="#ffd9b0" stroke-width="1.5" opacity="0.30"/>
+  <circle cx="992" cy="259" r="5" fill="#ffd9b0"/>
+  <circle cx="992" cy="301" r="5" fill="#ffd9b0"/>
+  <circle cx="992" cy="343" r="5" fill="#ffd9b0"/>
+
+  <line x1="90" y1="392" x2="190" y2="392" stroke="#f6821f" stroke-width="4"/>
+  <text x="90" y="420" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="5" fill="#f6821f">SECURE ORIGIN</text>
+  <text x="88" y="480" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="52" font-weight="800" fill="#ffffff">Hiding Web Services</text>
+  <text x="88" y="538" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="52" font-weight="800" fill="#ffffff">Behind Cloudflare</text>
+  <text x="90" y="588" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" fill="#ffd9b0">Lock down your origin server</text>
+</svg>

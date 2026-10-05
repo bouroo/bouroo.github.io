@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#34d399"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="630" fill="#232830"/>
+
+  <text x="90" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="4" fill="#34d399">LOCK-FREE GO</text>
+  <text x="90" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="48" font-weight="800" fill="#ffffff">No Exclusive Locks</text>
+  <text x="90" y="216" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" fill="#c7d0dd">shared state without the mutex</text>
+
+  <rect x="90" y="260" width="1020" height="120" rx="20" fill="#2b313b" stroke="#3a4150" stroke-width="1.5"/>
+  <text x="120" y="330" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="26" font-weight="800" fill="#ef4444">MUTEX</text>
+  <g fill="#5b6472">
+    <circle cx="250" cy="320" r="18"/>
+    <circle cx="330" cy="320" r="18"/>
+    <circle cx="410" cy="320" r="18"/>
+    <circle cx="490" cy="320" r="18"/>
+  </g>
+  <circle cx="530" cy="320" r="18" fill="#9aa4b2"/>
+  <rect x="560" y="272" width="30" height="96" rx="8" fill="#ef4444"/>
+  <text x="612" y="328" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#ef4444">blocked</text>
+
+  <rect x="90" y="420" width="1020" height="120" rx="20" fill="#2b313b" stroke="#34d399" stroke-width="1.5"/>
+  <text x="120" y="490" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="26" font-weight="800" fill="#34d399">CHANNELS</text>
+  <g fill="#34d399">
+    <circle cx="260" cy="480" r="18"/>
+    <circle cx="360" cy="480" r="18"/>
+    <circle cx="460" cy="480" r="18"/>
+    <circle cx="560" cy="480" r="18"/>
+    <circle cx="660" cy="480" r="18"/>
+    <circle cx="760" cy="480" r="18"/>
+    <circle cx="860" cy="480" r="18"/>
+    <circle cx="960" cy="480" r="18"/>
+  </g>
+  <line x1="990" y1="480" x2="1070" y2="480" stroke="#34d399" stroke-width="3" marker-end="url(#fl)"/>
+</svg>

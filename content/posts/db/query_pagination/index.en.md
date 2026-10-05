@@ -9,8 +9,8 @@ authorLink: "https://kawin.dev"
 description: "Compares SQL pagination strategies including Offset/Limit, keyset cursor, and deferred joins, and explains when each one is efficient."
 license: ""
 images: []
-featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image.webp"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 tags: ["Database", "SQL", "Pagination"]
 categories: ["SQL"]

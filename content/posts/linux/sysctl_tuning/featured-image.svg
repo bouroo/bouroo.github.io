@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0.5" x2="4" y2="0.5" stroke="#33ff66" stroke-width="1"/>
+    </pattern>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feComposite in="SourceGraphic" in2="b" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="#050505"/>
+  <rect width="1200" height="630" fill="url(#scan)" opacity="0.05"/>
+
+  <text x="80" y="78" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="18" font-weight="700" letter-spacing="6" fill="#1a7a3a">SYSCTL TUNING</text>
+  <text x="78" y="150" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="52" font-weight="800" fill="#e8ffe8">Linux Sysctl Tuning</text>
+
+  <rect x="80" y="200" width="1040" height="360" rx="12" fill="#070b07" stroke="#33ff66" stroke-width="2.5" filter="url(#glow)"/>
+  <line x1="80" y1="248" x2="1120" y2="248" stroke="#1a7a3a" stroke-width="1.5"/>
+  <circle cx="110" cy="224" r="7" fill="#1a7a3a"/>
+  <circle cx="136" cy="224" r="7" fill="#1a7a3a"/>
+  <circle cx="162" cy="224" r="7" fill="#33ff66"/>
+  <text x="192" y="231" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="17" fill="#1a7a3a">root@kernel:~# sysctl</text>
+
+  <text x="120" y="310" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="26" fill="#33ff66">$</text>
+  <text x="150" y="310" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="26" fill="#e8ffe8">net.core.somaxconn = 65535</text>
+
+  <text x="120" y="375" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="26" fill="#33ff66">$</text>
+  <text x="150" y="375" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="26" fill="#e8ffe8">vm.swappiness = 10</text>
+  <line x1="640" y1="366" x2="960" y2="366" stroke="#1a7a3a" stroke-width="6" stroke-linecap="round"/>
+  <line x1="640" y1="366" x2="672" y2="366" stroke="#33ff66" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="672" cy="366" r="14" fill="#050505" stroke="#33ff66" stroke-width="4" filter="url(#glow)"/>
+  <text x="980" y="374" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="18" fill="#1a7a3a">LOW</text>
+
+  <text x="120" y="440" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="26" fill="#33ff66">$</text>
+  <text x="150" y="440" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="26" fill="#e8ffe8">net.ipv4.tcp_syncookies = 1</text>
+
+  <text x="120" y="505" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="26" fill="#33ff66">$</text>
+  <text x="150" y="505" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="26" fill="#e8ffe8">fs.file-max = 2097152</text>
+  <rect x="490" y="485" width="16" height="26" fill="#33ff66" opacity="0.85"/>
+</svg>

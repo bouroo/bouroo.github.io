@@ -11,8 +11,8 @@ aliases:
 - /posts/go_value_or_pointer/
 license: ""
 images: []
-featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image.webp"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 tags: ["Go", "Computer Architecture", "Data Structure", "Programing"]
 categories: ["Go"]

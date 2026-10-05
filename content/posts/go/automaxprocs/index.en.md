@@ -9,8 +9,8 @@ authorLink: "https://kawin.dev"
 description: "Let's configure GOMAXPROCS to match the environment."
 license: ""
 images: []
-featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image.webp"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 tags: ["Go", "Programing", "DevOps"]
 categories: ["Go"]

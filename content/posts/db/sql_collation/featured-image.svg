@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <rect width="1200" height="630" fill="#f2f4f8"/>
+
+  <text x="80" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="5" fill="#8b5cf6">SQL COLLATION</text>
+  <text x="78" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="58" font-weight="800" fill="#3730a3">COLLATE in Databases</text>
+
+  <rect x="70" y="418" width="1060" height="76" fill="#ede9fe"/>
+  <rect x="70" y="418" width="10" height="76" fill="#8b5cf6"/>
+
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" fill="#3730a3">
+    <text x="96" y="308" font-size="46" font-weight="400">A</text>
+    <text x="220" y="308" font-size="46" font-weight="400" fill="#8b5cf6">a</text>
+
+    <text x="96" y="386" font-size="56" font-weight="700">B</text>
+    <text x="220" y="386" font-size="56" font-weight="700" fill="#8b5cf6">b</text>
+
+    <text x="96" y="468" font-size="52" font-weight="800">Ä</text>
+    <text x="220" y="468" font-size="52" font-weight="800" fill="#8b5cf6">ä</text>
+
+    <text x="96" y="556" font-size="44" font-weight="500">C</text>
+    <text x="220" y="556" font-size="44" font-weight="500" fill="#8b5cf6">c</text>
+
+    <text x="520" y="308" font-size="44" font-weight="600">D</text>
+    <text x="644" y="308" font-size="44" font-weight="600" fill="#8b5cf6">d</text>
+
+    <text x="520" y="386" font-size="38" font-weight="400">E</text>
+    <text x="644" y="386" font-size="38" font-weight="400" fill="#8b5cf6">e</text>
+
+    <text x="520" y="468" font-size="50" font-weight="800">A</text>
+    <text x="644" y="468" font-size="50" font-weight="800" fill="#8b5cf6">a</text>
+
+    <text x="520" y="556" font-size="42" font-weight="500">Z</text>
+    <text x="644" y="556" font-size="42" font-weight="500" fill="#8b5cf6">z</text>
+  </g>
+
+  <line x1="96" y1="330" x2="1130" y2="330" stroke="#3730a3" stroke-width="1" opacity="0.2"/>
+  <line x1="96" y1="408" x2="1130" y2="408" stroke="#3730a3" stroke-width="1" opacity="0.2"/>
+  <line x1="96" y1="566" x2="1130" y2="566" stroke="#3730a3" stroke-width="1" opacity="0.2"/>
+
+  <text x="900" y="468" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#3730a3">accent sensitive</text>
+  <text x="900" y="308" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#3730a3">case sensitive</text>
+  <text x="900" y="556" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#3730a3">binary order</text>
+</svg>

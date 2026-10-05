@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <style>.t{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;}</style>
+  </defs>
+  <rect width="1200" height="630" fill="#0d0d0d"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#f74c00"/>
+
+  <rect x="140" y="110" width="440" height="360" rx="18" fill="#101010" stroke="#67e8f9" stroke-width="3"/>
+  <rect x="170" y="135" width="380" height="70" rx="8" fill="#1a1a1a" stroke="#3a3a3a" stroke-width="1.5"/>
+  <circle cx="200" cy="170" r="7" fill="#67e8f9"/>
+  <text class="t" x="230" y="180" font-size="26" fill="#ffffff">CLI</text>
+  <rect x="170" y="215" width="380" height="70" rx="8" fill="#1a1a1a" stroke="#3a3a3a" stroke-width="1.5"/>
+  <circle cx="200" cy="250" r="7" fill="#67e8f9"/>
+  <text class="t" x="230" y="260" font-size="26" fill="#ffffff">config</text>
+  <rect x="170" y="295" width="380" height="70" rx="8" fill="#1a1a1a" stroke="#3a3a3a" stroke-width="1.5"/>
+  <circle cx="200" cy="330" r="7" fill="#67e8f9"/>
+  <text class="t" x="230" y="340" font-size="26" fill="#ffffff">server</text>
+  <rect x="170" y="375" width="380" height="70" rx="8" fill="#1a1a1a" stroke="#3a3a3a" stroke-width="1.5"/>
+  <circle cx="200" cy="410" r="7" fill="#67e8f9"/>
+  <text class="t" x="230" y="420" font-size="26" fill="#ffffff">ws</text>
+
+  <rect x="740" y="170" width="340" height="230" rx="14" fill="#101010" stroke="#67e8f9" stroke-width="3"/>
+  <path d="M 830 330 A 90 90 0 0 1 990 330" fill="none" stroke="#67e8f9" stroke-width="6"/>
+  <path d="M 860 330 A 62 62 0 0 1 960 330" fill="none" stroke="#f74c00" stroke-width="5"/>
+  <polygon points="700,410 1120,410 1060,460 760,460" fill="#161616" stroke="#67e8f9" stroke-width="3"/>
+
+  <text class="t" x="80" y="540" font-size="15" font-weight="700" letter-spacing="4" fill="#67e8f9">WSPROXY SERVER</text>
+  <text class="t" x="78" y="610" font-size="50" font-weight="800" fill="#ffffff">Building wsProxy Server</text>
+</svg>

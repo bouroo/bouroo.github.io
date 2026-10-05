@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <marker id="cy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#22d3ee"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="630" fill="#0c2b2f"/>
+
+  <text x="90" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="4" fill="#22d3ee">READALL VS IO.COPY</text>
+  <text x="90" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="48" font-weight="800" fill="#ffffff">ReadAll vs io.Copy</text>
+  <text x="90" y="216" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" fill="#a5f3fc">streaming without the slurp</text>
+
+  <circle cx="300" cy="360" r="120" fill="#22d3ee" fill-opacity="0.22" stroke="#22d3ee" stroke-width="3"/>
+  <text x="300" y="372" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="32" font-weight="800" fill="#ffffff" text-anchor="middle">ReadAll</text>
+  <text x="300" y="508" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18" fill="#a5f3fc" text-anchor="middle">loads it all</text>
+
+  <path d="M 120 545 C 200 505 280 585 360 545 S 520 505 600 545 S 760 585 840 545" fill="none" stroke="#22d3ee" stroke-width="5" stroke-linecap="round" stroke-dasharray="34 16"/>
+  <text x="470" y="606" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#22d3ee" text-anchor="middle">io.Copy</text>
+
+  <path d="M 420 360 C 600 360 760 342 872 332" fill="none" stroke="#22d3ee" stroke-width="2" marker-end="url(#cy)"/>
+  <path d="M 840 545 C 900 545 970 500 1004 478" fill="none" stroke="#22d3ee" stroke-width="2" marker-end="url(#cy)"/>
+
+  <rect x="880" y="210" width="90" height="300" rx="10" fill="#0a2326" stroke="#22d3ee" stroke-width="2"/>
+  <rect x="886" y="254" width="78" height="250" rx="6" fill="#22d3ee" fill-opacity="0.5"/>
+  <line x1="880" y1="254" x2="970" y2="254" stroke="#ffffff" stroke-width="3"/>
+  <text x="925" y="192" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18" fill="#ffffff" text-anchor="middle">ReadAll</text>
+
+  <rect x="1010" y="210" width="90" height="300" rx="10" fill="#0a2326" stroke="#22d3ee" stroke-width="2"/>
+  <rect x="1016" y="414" width="78" height="90" rx="6" fill="#22d3ee"/>
+  <line x1="1010" y1="414" x2="1100" y2="414" stroke="#ffffff" stroke-width="3"/>
+  <text x="1055" y="192" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18" fill="#ffffff" text-anchor="middle">io.Copy</text>
+</svg>

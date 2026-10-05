@@ -9,8 +9,8 @@ authorLink: "https://kawin.dev"
 description: "แชร์เทคนิคการออกแบบ query และ table เพื่อรักษาประสิทธิภาพของ RDBMS ให้ไม่ช้าลงเมื่อข้อมูลเติบโตขึ้น"
 license: ""
 images: []
-featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image.webp"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 tags: ["Database", "SQL"]
 categories: ["SQL"]

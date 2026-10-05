@@ -9,8 +9,8 @@ description: "This article will guide you on how to securely hide your website b
 aliases:
 - /posts/go_solid/
 images: []
-featuredImage: "featured-image.jpg"
-featuredImagePreview: "featured-image.jpg"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 tags: ["Cloudflare", "DevOps", "DevOpsSec"]
 categories: ["DevOps"]

@@ -15,8 +15,8 @@ images: []
 tags: ["DevOps", "Unix Socket", "TCP/IP", "DBA"]
 categories: ["DevOps", "Network"]
 
-featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image.webp"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 lightgallery: true
 ---

@@ -9,8 +9,8 @@ description: "บทความนี้จะแนะนำวิธีกา
 aliases:
 - /posts/go_solid/
 images: []
-featuredImage: "featured-image.jpg"
-featuredImagePreview: "featured-image.jpg"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 tags: ["Cloudflare", "DevOps", "DevOpsSec"]
 categories: ["DevOps"]

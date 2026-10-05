@@ -9,8 +9,8 @@ authorLink: "https://kawin.dev"
 description: "Benchmarking DragonflyDB against Redis 7 using memtier_benchmark over TCP and Unix sockets, with notes on the 2024-2025 licensing landscape."
 license: ""
 images: []
-featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image.webp"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 tags: ["DevOps", "Database", "DragonflyDB", "Redis"]
 categories: ["DevOps"]

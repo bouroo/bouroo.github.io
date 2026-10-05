@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <marker id="carw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#67e8f9"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="630" fill="#0a2540"/>
+
+  <circle cx="420" cy="315" r="235" fill="none" stroke="#67e8f9" stroke-width="2" opacity="0.3"/>
+  <circle cx="420" cy="315" r="170" fill="none" stroke="#67e8f9" stroke-width="2.5" opacity="0.55"/>
+  <circle cx="420" cy="315" r="105" fill="none" stroke="#67e8f9" stroke-width="3" opacity="0.85"/>
+
+  <g fill="#67e8f9">
+    <circle cx="590" cy="315" r="9"/>
+    <circle cx="420" cy="485" r="9"/>
+    <circle cx="250" cy="315" r="9"/>
+    <circle cx="420" cy="145" r="9"/>
+  </g>
+  <g fill="#a5f3fc" opacity="0.9">
+    <circle cx="525" cy="315" r="7"/>
+    <circle cx="315" cy="315" r="7"/>
+    <circle cx="420" cy="210" r="7"/>
+  </g>
+
+  <path d="M 242 212 A 205 205 0 0 1 598 212" fill="none" stroke="#67e8f9" stroke-width="3" marker-end="url(#carw)"/>
+  <path d="M 598 418 A 205 205 0 0 1 242 418" fill="none" stroke="#67e8f9" stroke-width="3" marker-end="url(#carw)"/>
+  <text x="500" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#67e8f9">Get</text>
+  <text x="420" y="560" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#67e8f9">Put</text>
+
+  <path d="M 655 170 q 26 30 0 60 q -26 30 0 60 q 26 30 0 60 q -26 30 0 60" fill="none" stroke="#a5f3fc" stroke-width="3" opacity="0.8"/>
+  <text x="690" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#a5f3fc">GC</text>
+
+  <text x="760" y="230" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="3" fill="#67e8f9">SYNC.POOL</text>
+  <text x="760" y="325" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="44" font-weight="800" fill="#ffffff">Reusing Memory</text>
+  <text x="760" y="377" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#67e8f9">with sync.Pool</text>
+  <text x="760" y="425" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18" fill="#cbd5e1">get, use, put it back</text>
+</svg>

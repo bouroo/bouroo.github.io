@@ -9,8 +9,8 @@ authorLink: "https://kawin.dev"
 description: "Benchmarks goccy/go-json against Go's standard encoding/json and shows roughly 10x speedups, with a 2025-2026 update on bytedance/sonic and the experimental encoding/json/v2."
 license: ""
 images: []
-featuredImage: "/img/featured-image.webp"
-featuredImagePreview: "/img/featured-image.webp"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 tags: ["Go", "JSON"]
 categories: ["Go"]

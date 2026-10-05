@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <rect width="1200" height="630" fill="#101826"/>
+
+  <path d="M 170 290 A 170 170 0 0 1 510 290" fill="none" stroke="#eab308" stroke-width="24" stroke-linecap="round"/>
+  <path d="M 690 290 A 170 170 0 0 1 1030 290" fill="none" stroke="#94a3b8" stroke-width="24" stroke-linecap="round"/>
+
+  <line x1="340" y1="290" x2="186" y2="218" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+  <line x1="860" y1="290" x2="1020" y2="232" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="340" cy="290" r="12" fill="#ffffff"/>
+  <circle cx="860" cy="290" r="12" fill="#ffffff"/>
+
+  <text x="340" y="250" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#ffffff" text-anchor="middle">500m</text>
+  <text x="860" y="250" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#ffffff" text-anchor="middle">512Mi</text>
+  <text x="340" y="332" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="28" font-weight="800" fill="#eab308" text-anchor="middle">REQUESTS</text>
+  <text x="860" y="332" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="28" font-weight="800" fill="#94a3b8" text-anchor="middle">LIMITS</text>
+
+  <rect x="240" y="380" width="200" height="90" rx="12" fill="#17202f" stroke="#eab308" stroke-width="2"/>
+  <text x="340" y="434" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" fill="#ffffff" text-anchor="middle">go app</text>
+  <rect x="760" y="380" width="200" height="90" rx="12" fill="#17202f" stroke="#94a3b8" stroke-width="2"/>
+  <text x="860" y="434" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" fill="#ffffff" text-anchor="middle">container</text>
+
+  <text x="90" y="520" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="3" fill="#eab308">K8S RESOURCE LIMITS FOR GO</text>
+  <text x="90" y="580" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="40" font-weight="800" fill="#ffffff">GOMAXPROCS &amp; GOMEMLIMIT</text>
+</svg>

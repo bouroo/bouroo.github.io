@@ -13,8 +13,8 @@ images: []
 tags: ["Database", "SQL", "PostgreSQL"]
 categories: ["SQL"]
 
-featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image.webp"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 lightgallery: true
 ---

@@ -13,8 +13,8 @@ images: []
 tags: []
 categories: []
 
-featuredImage: "featured-image.jpg"
-featuredImagePreview: "featured-image.jpg"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 lightgallery: true
 ---

@@ -9,8 +9,8 @@ authorLink: "https://kawin.dev"
 description: "Shares practical query and table design techniques to keep RDBMS performance from degrading as data grows."
 license: ""
 images: []
-featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image.webp"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 tags: ["Database", "SQL"]
 categories: ["SQL"]

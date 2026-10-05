@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <rect width="1200" height="630" fill="#fef3c7"/>
+  <polygon points="0,0 560,0 640,630 0,630" fill="#ccfbf1"/>
+  <line x1="600" y1="0" x2="600" y2="630" stroke="#0f172a" stroke-width="3" opacity="0.85"/>
+
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+    <text x="600" y="76" font-size="16" font-weight="700" letter-spacing="4" fill="#0f172a" text-anchor="middle" opacity="0.65">MICROSERVICES DATA PATTERNS</text>
+    <text x="600" y="150" font-size="46" font-weight="800" fill="#0f172a" text-anchor="middle">DB Patterns for Microservices</text>
+
+    <text x="300" y="252" font-size="30" font-weight="800" fill="#0f172a" text-anchor="middle">DATABASE PER SERVICE</text>
+    <g stroke="#0f172a" stroke-width="3" fill="#0f172a">
+      <rect x="160" y="300" width="46" height="34" rx="6"/>
+      <rect x="277" y="300" width="46" height="34" rx="6"/>
+      <rect x="394" y="300" width="46" height="34" rx="6"/>
+    </g>
+    <g fill="none" stroke="#0f172a" stroke-width="3">
+      <path d="M 150 360 q 0 -26 33 -26 h 60 q 33 0 33 26 v 90 q 0 26 -33 26 h -60 q -33 0 -33 -26 z"/>
+      <path d="M 267 360 q 0 -26 33 -26 h 60 q 33 0 33 26 v 90 q 0 26 -33 26 h -60 q -33 0 -33 -26 z"/>
+      <path d="M 384 360 q 0 -26 33 -26 h 60 q 33 0 33 26 v 90 q 0 26 -33 26 h -60 q -33 0 -33 -26 z"/>
+    </g>
+    <g fill="#0f172a" opacity="0.35">
+      <rect x="166" y="368" width="86" height="8" rx="4"/>
+      <rect x="166" y="388" width="60" height="8" rx="4"/>
+      <rect x="283" y="368" width="86" height="8" rx="4"/>
+      <rect x="400" y="368" width="86" height="8" rx="4"/>
+    </g>
+
+    <text x="900" y="252" font-size="30" font-weight="800" fill="#0f172a" text-anchor="middle">SHARED DATABASE</text>
+    <g stroke="#0f172a" stroke-width="3" fill="#0f172a">
+      <rect x="760" y="300" width="46" height="34" rx="6"/>
+      <rect x="877" y="300" width="46" height="34" rx="6"/>
+      <rect x="994" y="300" width="46" height="34" rx="6"/>
+    </g>
+    <g stroke="#0f172a" stroke-width="3" fill="none">
+      <line x1="783" y1="334" x2="900" y2="410"/>
+      <line x1="900" y1="334" x2="900" y2="410"/>
+      <line x1="1017" y1="334" x2="900" y2="410"/>
+    </g>
+    <path d="M 780 420 q 0 -30 40 -30 h 160 q 40 0 40 30 v 100 q 0 30 -40 30 h -160 q -40 0 -40 -30 z" fill="none" stroke="#0f172a" stroke-width="3.5"/>
+    <g fill="#0f172a" opacity="0.35">
+      <rect x="812" y="428" width="176" height="8" rx="4"/>
+      <rect x="812" y="450" width="130" height="8" rx="4"/>
+      <rect x="812" y="472" width="150" height="8" rx="4"/>
+    </g>
+  </g>
+</svg>

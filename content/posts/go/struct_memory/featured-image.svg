@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#ef4444" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#191d33"/>
+
+  <text x="80" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="50" font-weight="800" fill="#ffffff">Go Struct Memory</text>
+  <text x="82" y="150" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="3" fill="#60a5fa">STRUCT FIELD ALIGNMENT</text>
+
+  <text x="80" y="222" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="2" fill="#93c5fd">BEFORE</text>
+  <text x="1120" y="222" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" fill="#f87171">padding gaps</text>
+
+  <rect x="80" y="240" width="1040" height="64" fill="none" stroke="#60a5fa" stroke-width="2"/>
+  <rect x="80" y="240" width="120" height="64" fill="#60a5fa"/>
+  <text x="140" y="279" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#0b1020">a bool</text>
+  <rect x="200" y="240" width="70" height="64" fill="url(#hatch)" stroke="#ef4444" stroke-width="1"/>
+  <rect x="270" y="240" width="240" height="64" fill="#60a5fa"/>
+  <text x="390" y="279" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#0b1020">b int64</text>
+  <rect x="510" y="240" width="70" height="64" fill="url(#hatch)" stroke="#ef4444" stroke-width="1"/>
+  <rect x="580" y="240" width="120" height="64" fill="#60a5fa"/>
+  <text x="640" y="279" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#0b1020">c bool</text>
+  <rect x="700" y="240" width="70" height="64" fill="url(#hatch)" stroke="#ef4444" stroke-width="1"/>
+  <rect x="770" y="240" width="160" height="64" fill="#60a5fa"/>
+  <text x="850" y="279" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#0b1020">d int32</text>
+  <rect x="930" y="240" width="70" height="64" fill="url(#hatch)" stroke="#ef4444" stroke-width="1"/>
+  <rect x="1000" y="240" width="120" height="64" fill="#60a5fa"/>
+  <text x="1060" y="279" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#0b1020">e int64</text>
+
+  <text x="80" y="392" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="2" fill="#93c5fd">AFTER</text>
+  <text x="1120" y="392" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" fill="#4ade80">packed tight</text>
+
+  <rect x="80" y="405" width="1040" height="64" fill="none" stroke="#60a5fa" stroke-width="2"/>
+  <rect x="80" y="405" width="280" height="64" fill="#60a5fa"/>
+  <text x="220" y="444" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#0b1020">b int64</text>
+  <rect x="360" y="405" width="280" height="64" fill="#60a5fa"/>
+  <text x="500" y="444" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#0b1020">e int64</text>
+  <rect x="640" y="405" width="180" height="64" fill="#60a5fa"/>
+  <text x="730" y="444" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#0b1020">d int32</text>
+  <rect x="820" y="405" width="150" height="64" fill="#60a5fa"/>
+  <text x="895" y="444" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#0b1020">a bool</text>
+  <rect x="970" y="405" width="150" height="64" fill="#60a5fa"/>
+  <text x="1045" y="444" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#0b1020">c bool</text>
+
+  <line x1="80" y1="510" x2="1120" y2="510" stroke="#64748b" stroke-width="2"/>
+  <g stroke="#64748b" stroke-width="2">
+    <line x1="80" y1="501" x2="80" y2="519"/>
+    <line x1="210" y1="501" x2="210" y2="519"/>
+    <line x1="340" y1="501" x2="340" y2="519"/>
+    <line x1="470" y1="501" x2="470" y2="519"/>
+    <line x1="600" y1="501" x2="600" y2="519"/>
+    <line x1="730" y1="501" x2="730" y2="519"/>
+    <line x1="860" y1="501" x2="860" y2="519"/>
+    <line x1="990" y1="501" x2="990" y2="519"/>
+    <line x1="1120" y1="501" x2="1120" y2="519"/>
+  </g>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">
+    <text x="80" y="544">0</text>
+    <text x="210" y="544">16</text>
+    <text x="340" y="544">32</text>
+    <text x="470" y="544">48</text>
+    <text x="600" y="544">64</text>
+    <text x="730" y="544">80</text>
+    <text x="860" y="544">96</text>
+    <text x="990" y="544">112</text>
+    <text x="1120" y="544">128</text>
+  </g>
+</svg>

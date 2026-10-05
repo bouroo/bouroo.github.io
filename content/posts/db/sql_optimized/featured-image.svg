@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <rect width="1200" height="630" fill="#1c1210"/>
+
+  <text x="80" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="5" fill="#f59e0b">SQL OPTIMIZATION</text>
+
+  <g stroke="#f59e0b" stroke-width="3" fill="none" opacity="0.75">
+    <line x1="600" y1="160" x2="340" y2="240"/>
+    <line x1="600" y1="160" x2="600" y2="240"/>
+    <line x1="600" y1="160" x2="860" y2="240"/>
+    <line x1="600" y1="300" x2="500" y2="382"/>
+    <line x1="600" y1="300" x2="720" y2="382"/>
+  </g>
+
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" text-anchor="middle">
+    <circle cx="600" cy="115" r="48" fill="none" stroke="#f59e0b" stroke-width="3.5"/>
+    <text x="600" y="124" font-size="20" font-weight="800" fill="#ffffff">PLAN</text>
+
+    <circle cx="340" cy="270" r="42" fill="#1c1210" stroke="#f59e0b" stroke-width="3"/>
+    <text x="340" y="277" font-size="16" font-weight="700" fill="#ffffff">SCAN</text>
+
+    <circle cx="600" cy="270" r="42" fill="#1c1210" stroke="#f59e0b" stroke-width="3"/>
+    <text x="600" y="277" font-size="16" font-weight="700" fill="#ffffff">JOIN</text>
+
+    <circle cx="860" cy="270" r="42" fill="#1c1210" stroke="#f59e0b" stroke-width="3"/>
+    <text x="860" y="277" font-size="16" font-weight="700" fill="#ffffff">SORT</text>
+
+    <circle cx="500" cy="415" r="40" fill="#1c1210" stroke="#f59e0b" stroke-width="3"/>
+    <text x="500" y="421" font-size="15" font-weight="700" fill="#ffffff">SCAN</text>
+
+    <circle cx="720" cy="415" r="46" fill="#f97316" stroke="#f59e0b" stroke-width="4"/>
+    <text x="720" y="422" font-size="17" font-weight="800" fill="#1c1210">INDEX</text>
+  </g>
+
+  <polygon points="700,30 748,150 716,150 762,262 690,196 724,196 664,86" fill="#f59e0b" opacity="0.95"/>
+  <polygon points="700,30 748,150 716,150 762,262 690,196 724,196 664,86" fill="#f97316" opacity="0.5"/>
+
+  <text x="78" y="556" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="54" font-weight="800" fill="#ffffff">Living with SQL</text>
+  <text x="80" y="596" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18" fill="#f59e0b">Indexes, plans and healthy RDBMS as data grows</text>
+</svg>

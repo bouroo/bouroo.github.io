@@ -13,13 +13,13 @@ license: ""
 images: []
 resources:
 - name: "featured-image"
-  src: "featured-image.jpg"
+  src: "featured-image.svg"
 
 tags: ["Linux", "DevOps", "PVE", "K3S", "K8S"]
 categories: ["Linux", "DevOps"]
 
-featuredImage: "featured-image.jpg"
-featuredImagePreview: "featured-image"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 ---
 
 We can adjust sysctl settings to make Linux servers run smoothly under increased load. Normally, each Linux distribution has a default sysctl configuration. For example, RHEL might be optimized for server use, while DEB might be balanced for general performance. In this article, I will introduce the settings I use in production for each type of workload:

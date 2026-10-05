@@ -9,8 +9,8 @@ authorLink: "https://kawin.dev"
 description: "อธิบายว่า COLLATE ในฐานข้อมูลคืออะไร และส่งผลต่อการเรียงลำดับและการเปรียบเทียบ string อย่างไร รวมถึงเรื่อง case และอักษรพิเศษ"
 license: ""
 images: []
-featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image.webp"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 tags: ["Database", "SQL"]
 categories: ["SQL"]

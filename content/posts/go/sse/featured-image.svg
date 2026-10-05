@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="630" fill="#101418"/>
+
+  <rect x="90" y="235" width="180" height="140" rx="10" fill="#1b222b" stroke="#64748b" stroke-width="2"/>
+  <text x="180" y="312" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" fill="#ffffff">SERVER</text>
+  <text x="180" y="340" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" fill="#94a3b8">Go</text>
+
+  <rect x="930" y="235" width="180" height="140" rx="10" fill="#1b222b" stroke="#64748b" stroke-width="2"/>
+  <text x="1020" y="312" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="800" fill="#ffffff">CLIENT</text>
+  <text x="1020" y="340" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" fill="#94a3b8">Svelte</text>
+
+  <line x1="270" y1="305" x2="930" y2="305" stroke="#64748b" stroke-width="4"/>
+
+  <rect x="305" y="285" width="90" height="40" rx="20" fill="#12261a" stroke="#4ade80" stroke-width="2"/>
+  <text x="350" y="311" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#4ade80">id</text>
+
+  <rect x="425" y="285" width="90" height="40" rx="20" fill="#12261a" stroke="#4ade80" stroke-width="2"/>
+  <text x="470" y="311" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#4ade80">data</text>
+
+  <rect x="545" y="285" width="90" height="40" rx="20" fill="#12261a" stroke="#4ade80" stroke-width="2"/>
+  <text x="590" y="311" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#4ade80">event</text>
+
+  <rect x="665" y="285" width="90" height="40" rx="20" fill="#12261a" stroke="#4ade80" stroke-width="2"/>
+  <text x="710" y="311" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#4ade80">data</text>
+
+  <rect x="785" y="285" width="90" height="40" rx="20" fill="#12261a" stroke="#4ade80" stroke-width="2"/>
+  <text x="830" y="311" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#4ade80">id</text>
+
+  <line x1="397" y1="305" x2="423" y2="305" stroke="#64748b" stroke-width="2" marker-end="url(#arw)"/>
+  <line x1="517" y1="305" x2="543" y2="305" stroke="#64748b" stroke-width="2" marker-end="url(#arw)"/>
+  <line x1="637" y1="305" x2="663" y2="305" stroke="#64748b" stroke-width="2" marker-end="url(#arw)"/>
+  <line x1="757" y1="305" x2="783" y2="305" stroke="#64748b" stroke-width="2" marker-end="url(#arw)"/>
+  <line x1="877" y1="305" x2="928" y2="305" stroke="#64748b" stroke-width="2" marker-end="url(#arw)"/>
+
+  <text x="92" y="515" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="3" fill="#4ade80">SERVER-SENT EVENTS IN GO</text>
+  <text x="90" y="565" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="46" font-weight="800" fill="#ffffff">Voting with SSE</text>
+</svg>

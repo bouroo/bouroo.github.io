@@ -9,8 +9,8 @@ authorLink: "https://kawin.dev"
 description: "Explains what COLLATE is in a database and how it controls string sorting and comparison, including case and accent sensitivity."
 license: ""
 images: []
-featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image.webp"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 tags: ["Database", "SQL"]
 categories: ["SQL"]

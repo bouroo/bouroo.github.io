@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <rect width="1200" height="630" fill="#141414"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="26" fill="#8a857c">
+    <text x="130" y="175">func totalPrice(items []Item) float64 {</text>
+    <text x="170" y="221">var sum float64</text>
+    <text x="170" y="267">for _, it := range items {</text>
+    <text x="210" y="313">sum += it.Price * float64(it.Qty)</text>
+    <text x="170" y="359">}</text>
+    <text x="170" y="451">}</text>
+    <text x="130" y="497" fill="#565049">// TODO: handle discounts</text>
+    <text x="130" y="543" fill="#565049">// keep it simple, friend</text>
+  </g>
+
+  <g transform="rotate(-0.6 170 391)">
+    <rect x="150" y="377" width="205" height="38" rx="5" fill="#fde047" fill-opacity="0.9"/>
+  </g>
+  <text x="170" y="405" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="26" font-weight="700" fill="#141414">return sum</text>
+
+  <polyline points="88,398 100,412 124,382" fill="none" stroke="#fde047" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+    <text x="130" y="70" font-size="46" font-weight="800" fill="#f5f0e8">Simple Tricks for Readable Code</text>
+    <text x="132" y="108" font-size="20" font-weight="700" letter-spacing="3" fill="#fde047">READABLE CODE</text>
+  </g>
+</svg>

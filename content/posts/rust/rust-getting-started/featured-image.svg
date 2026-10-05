@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <style>.t{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;}</style>
+  </defs>
+  <rect width="1200" height="630" fill="#0d0d0d"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#f74c00"/>
+
+  <g>
+    <rect x="810" y="140" width="40" height="56" rx="6" fill="#f74c00" transform="rotate(0 830 330)"/>
+    <rect x="810" y="140" width="40" height="56" rx="6" fill="#f74c00" transform="rotate(30 830 330)"/>
+    <rect x="810" y="140" width="40" height="56" rx="6" fill="#f74c00" transform="rotate(60 830 330)"/>
+    <rect x="810" y="140" width="40" height="56" rx="6" fill="#f74c00" transform="rotate(90 830 330)"/>
+    <rect x="810" y="140" width="40" height="56" rx="6" fill="#f74c00" transform="rotate(120 830 330)"/>
+    <rect x="810" y="140" width="40" height="56" rx="6" fill="#f74c00" transform="rotate(150 830 330)"/>
+    <rect x="810" y="140" width="40" height="56" rx="6" fill="#f74c00" transform="rotate(180 830 330)"/>
+    <rect x="810" y="140" width="40" height="56" rx="6" fill="#f74c00" transform="rotate(210 830 330)"/>
+    <rect x="810" y="140" width="40" height="56" rx="6" fill="#f74c00" transform="rotate(240 830 330)"/>
+    <rect x="810" y="140" width="40" height="56" rx="6" fill="#f74c00" transform="rotate(270 830 330)"/>
+    <rect x="810" y="140" width="40" height="56" rx="6" fill="#f74c00" transform="rotate(300 830 330)"/>
+    <rect x="810" y="140" width="40" height="56" rx="6" fill="#f74c00" transform="rotate(330 830 330)"/>
+    <circle cx="830" cy="330" r="170" fill="#141414" stroke="#f74c00" stroke-width="8"/>
+    <rect x="812" y="225" width="36" height="250" fill="#ffffff"/>
+    <polygon points="830,148 786,234 874,234" fill="#ffffff"/>
+    <circle cx="830" cy="330" r="72" fill="none" stroke="#f74c00" stroke-width="6"/>
+  </g>
+
+  <text class="t" x="80" y="90" font-size="15" font-weight="700" letter-spacing="4" fill="#f74c00">RUST: GETTING STARTED</text>
+  <text class="t" x="78" y="172" font-size="54" font-weight="800" fill="#ffffff">Getting Started</text>
+  <text class="t" x="80" y="232" font-size="30" font-weight="600" fill="#f74c00">with Rust</text>
+
+  <rect x="80" y="300" width="196" height="58" rx="29" fill="#1b1b1b" stroke="#f74c00" stroke-width="2"/>
+  <text class="t" x="178" y="337" font-size="20" fill="#ffffff" text-anchor="middle">cargo new</text>
+  <rect x="298" y="300" width="180" height="58" rx="29" fill="#1b1b1b" stroke="#f74c00" stroke-width="2"/>
+  <text class="t" x="388" y="337" font-size="20" fill="#ffffff" text-anchor="middle">cargo run</text>
+</svg>

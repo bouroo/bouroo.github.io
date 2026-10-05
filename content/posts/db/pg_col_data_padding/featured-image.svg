@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <rect width="1200" height="630" fill="#312e81"/>
+
+  <text x="80" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="5" fill="#f472b6">POSTGRESQL COLUMN ORDER</text>
+  <text x="78" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="56" font-weight="800" fill="#ffffff">Column Ordering Matters</text>
+
+  <text x="60" y="330" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#f472b6">PADDED</text>
+
+  <g fill="#a5b4fc">
+    <rect x="180" y="286" width="90" height="60" rx="4"/>
+    <rect x="300" y="296" width="60" height="60" rx="4"/>
+    <rect x="390" y="284" width="120" height="60" rx="4"/>
+    <rect x="540" y="298" width="50" height="60" rx="4"/>
+    <rect x="620" y="288" width="100" height="60" rx="4"/>
+    <rect x="750" y="296" width="70" height="60" rx="4"/>
+    <rect x="850" y="286" width="110" height="60" rx="4"/>
+    <rect x="990" y="298" width="60" height="60" rx="4"/>
+  </g>
+
+  <g stroke="#f472b6" stroke-width="2" opacity="0.9">
+    <line x1="276" y1="288" x2="298" y2="344"/><line x1="286" y1="288" x2="308" y2="344"/>
+    <line x1="366" y1="288" x2="388" y2="344"/><line x1="376" y1="288" x2="398" y2="344"/>
+    <line x1="516" y1="288" x2="538" y2="344"/><line x1="526" y1="288" x2="548" y2="344"/>
+    <line x1="596" y1="288" x2="618" y2="344"/><line x1="606" y1="288" x2="628" y2="344"/>
+    <line x1="726" y1="288" x2="748" y2="344"/><line x1="736" y1="288" x2="758" y2="344"/>
+    <line x1="826" y1="288" x2="848" y2="344"/><line x1="836" y1="288" x2="858" y2="344"/>
+    <line x1="966" y1="288" x2="988" y2="344"/><line x1="976" y1="288" x2="998" y2="344"/>
+  </g>
+
+  <text x="60" y="486" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#a5b4fc">ALIGNED</text>
+
+  <g fill="#c7d2fe">
+    <rect x="180" y="430" width="110" height="60" rx="4"/>
+    <rect x="290" y="430" width="90" height="60" rx="4"/>
+    <rect x="380" y="430" width="140" height="60" rx="4"/>
+    <rect x="520" y="430" width="120" height="60" rx="4"/>
+    <rect x="640" y="430" width="90" height="60" rx="4"/>
+    <rect x="730" y="430" width="130" height="60" rx="4"/>
+    <rect x="860" y="430" width="110" height="60" rx="4"/>
+    <rect x="970" y="430" width="80" height="60" rx="4"/>
+  </g>
+
+  <text x="180" y="530" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" fill="#c7d2fe" opacity="0.8">gaps = wasted padding bytes</text>
+  <text x="180" y="560" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" fill="#c7d2fe" opacity="0.8">packed = no padding, smaller tuples</text>
+</svg>

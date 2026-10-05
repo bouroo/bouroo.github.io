@@ -1,0 +1,62 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <linearGradient id="scrim" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#052e33" stop-opacity="0.94"/>
+      <stop offset="70%" stop-color="#052e33" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#052e33" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#99f6e4" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#14b8a6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#052e33"/>
+  <circle cx="940" cy="400" r="300" fill="url(#core)"/>
+
+  <g fill="none" stroke-linecap="round">
+    <path d="M 637 -295 A 740 740 0 0 0 637 1095" stroke="#14b8a6" stroke-width="3" opacity="0.80"/>
+    <path d="M 692 -145 A 580 580 0 0 0 692 945" stroke="#99f6e4" stroke-width="3" opacity="0.58"/>
+    <path d="M 743 -4 A 430 430 0 0 0 743 804" stroke="#14b8a6" stroke-width="2.5" opacity="0.40"/>
+    <path d="M 791 127 A 290 290 0 0 0 791 673" stroke="#99f6e4" stroke-width="2.5" opacity="0.28"/>
+    <path d="M 835 250 A 160 160 0 0 0 835 550" stroke="#14b8a6" stroke-width="2" opacity="0.18"/>
+  </g>
+
+  <g stroke="#99f6e4" stroke-width="2" opacity="0.32">
+    <line x1="146" y1="371" x2="188" y2="371"/>
+    <line x1="322" y1="435" x2="368" y2="435"/>
+    <line x1="486" y1="356" x2="536" y2="356"/>
+    <line x1="636" y1="432" x2="690" y2="432"/>
+    <line x1="760" y1="384" x2="806" y2="384"/>
+  </g>
+  <g stroke="#99f6e4" stroke-width="2">
+    <rect x="150" y="362" width="18" height="18" rx="4" fill="#14b8a6" fill-opacity="0.30"/>
+    <rect x="330" y="424" width="22" height="22" rx="4" fill="#14b8a6" fill-opacity="0.28"/>
+    <rect x="498" y="344" width="24" height="24" rx="5" fill="#14b8a6" fill-opacity="0.30"/>
+    <rect x="650" y="418" width="28" height="28" rx="5" fill="#14b8a6" fill-opacity="0.32"/>
+    <rect x="772" y="372" width="26" height="26" rx="5" fill="#14b8a6" fill-opacity="0.34"/>
+  </g>
+
+  <g transform="translate(890,400)">
+    <polygon points="0,-90 70.4,-56.1 87.7,20.0 39.0,81.1 -39.0,81.1 -87.7,20.0 -70.4,-56.1" fill="#0a3b41" stroke="#14b8a6" stroke-width="3"/>
+    <g stroke="#99f6e4" stroke-width="2" opacity="0.85">
+      <line x1="0" y1="0" x2="0" y2="-90"/>
+      <line x1="0" y1="0" x2="70.4" y2="-56.1"/>
+      <line x1="0" y1="0" x2="87.7" y2="20.0"/>
+      <line x1="0" y1="0" x2="39.0" y2="81.1"/>
+      <line x1="0" y1="0" x2="-39.0" y2="81.1"/>
+      <line x1="0" y1="0" x2="-87.7" y2="20.0"/>
+      <line x1="0" y1="0" x2="-70.4" y2="-56.1"/>
+    </g>
+    <circle r="26" fill="#052e33" stroke="#99f6e4" stroke-width="2.5"/>
+    <circle r="9" fill="#99f6e4"/>
+  </g>
+
+  <rect width="640" height="630" fill="url(#scrim)"/>
+
+  <text x="85" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="5" fill="#99f6e4">CLOUDFLARE TUNNEL + K3S</text>
+  <text x="85" y="176" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="50" font-weight="800" fill="#ffffff">Exposing Web Services</text>
+  <text x="85" y="236" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="50" font-weight="800" fill="#ffffff">with K3S + Cloudflare</text>
+  <text x="85" y="296" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="50" font-weight="800" fill="#14b8a6">Tunnel</text>
+  <text x="85" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="21" fill="#99f6e4">Reach the world with no public IP</text>
+</svg>

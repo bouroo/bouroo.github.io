@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <rect width="1200" height="630" fill="#2a1030"/>
+
+  <circle cx="600" cy="235" r="150" fill="#fb7185" fill-opacity="0.16" stroke="#fb7185" stroke-width="5"/>
+  <circle cx="490" cy="375" r="150" fill="#38bdf8" fill-opacity="0.16" stroke="#38bdf8" stroke-width="5"/>
+  <circle cx="710" cy="375" r="150" fill="#fbbf24" fill-opacity="0.16" stroke="#fbbf24" stroke-width="5"/>
+
+  <circle cx="600" cy="328" r="10" fill="#ffffff"/>
+
+  <g font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" text-anchor="middle">
+    <text x="600" y="178" font-size="46" font-weight="800" fill="#ffffff">DDD</text>
+    <text x="600" y="214" font-size="19" font-weight="700" letter-spacing="3" fill="#fb7185">DESIGN</text>
+
+    <text x="450" y="438" font-size="46" font-weight="800" fill="#ffffff">TDD</text>
+    <text x="450" y="474" font-size="19" font-weight="700" letter-spacing="3" fill="#38bdf8">TEST</text>
+
+    <text x="750" y="438" font-size="46" font-weight="800" fill="#ffffff">BDD</text>
+    <text x="750" y="474" font-size="19" font-weight="700" letter-spacing="3" fill="#fbbf24">BEHAVIOR</text>
+
+    <text x="600" y="568" font-size="20" font-weight="700" letter-spacing="3" fill="#fb7185">DOMAIN, TEST, BEHAVIOR</text>
+    <text x="600" y="612" font-size="52" font-weight="800" fill="#ffffff">DDD, TDD, BDD</text>
+  </g>
+</svg>

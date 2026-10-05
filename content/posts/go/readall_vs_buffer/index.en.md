@@ -9,8 +9,8 @@ authorLink: "https://kawin.dev"
 description: "Compares io.ReadAll and io.Copy in Go, with benchmarks across small, medium, and large JSON files showing io.Copy is roughly 40% faster on average."
 license: ""
 images: []
-featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image.webp"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 tags: ["Go", "Buffer"]
 categories: ["Go"]

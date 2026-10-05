@@ -11,8 +11,8 @@ license: ""
 images: []
 tags: ["Rust", "Tutorial", "WebSocket", "Tokio", "Docker"]
 categories: ["Rust"]
-featuredImage: "featured-image.jpeg"
-featuredImagePreview: "featured-image.jpeg"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 lightgallery: true
 ---
 

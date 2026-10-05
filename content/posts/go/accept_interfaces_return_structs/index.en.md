@@ -15,8 +15,8 @@ images: []
 tags: ["Go", "Interfaces", "Structs", "Design Patterns"]
 categories: ["Go"]
 
-featuredImage: "featured-image.png"
-featuredImagePreview: "featured-image.png"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 lightgallery: true
 ---

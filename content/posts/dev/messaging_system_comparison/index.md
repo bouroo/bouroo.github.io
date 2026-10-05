@@ -8,9 +8,9 @@ tags: ["messaging", "kafka", "valkey", "redis", "rabbitmq", "nats"]
 categories: ["devops", "programming"]
 resources:
 - name: "featured-image"
-  src: "featured-image.jpg"
-featuredImage: "featured-image.jpg"
-featuredImagePreview: "featured-image"
+  src: "featured-image.svg"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 ---
 
 เวลาจะทำระบบที่มันคุยกันเยอะๆ (distributed systems) เนี่ย เรื่องปวดหัวอย่างนึงคือจะเลือกระบบ Messaging ตัวไหนดี มันมีให้เลือกเยอะซะเหลือเกิน ทั้ง Kafka, Valkey (ที่เกิดใหม่จาก Redis), RabbitMQ, แล้วก็ NATS อีก แต่ละตัวก็มีดีมีเสียต่างกันไป งั้นโพสต์นี้ขอมาจดโน้ตเทียบให้ตัวเองดูหน่อยละกัน ว่าตัวไหนมันเหมาะกับงานแบบไหน

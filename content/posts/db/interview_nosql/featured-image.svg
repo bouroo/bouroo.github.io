@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <rect width="1200" height="630" fill="#f6efe3"/>
+
+  <text x="80" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="5" fill="#1c1917" opacity="0.6">NOSQL IN INTERVIEWS</text>
+  <text x="78" y="176" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="58" font-weight="800" fill="#1c1917">NoSQL Database Types</text>
+
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+    <rect x="80" y="230" width="330" height="150" rx="18" fill="#1c1917"/>
+    <text x="108" y="286" font-size="26" font-weight="800" fill="#f6efe3">KEY-VALUE</text>
+    <g fill="#f6efe3">
+      <rect x="108" y="316" width="52" height="22" rx="11"/>
+      <rect x="172" y="316" width="120" height="22" rx="11" opacity="0.5"/>
+      <rect x="108" y="348" width="52" height="22" rx="11"/>
+      <rect x="172" y="348" width="80" height="22" rx="11" opacity="0.5"/>
+    </g>
+
+    <rect x="430" y="230" width="310" height="150" rx="18" fill="#efe4d0" stroke="#1c1917" stroke-width="2"/>
+    <text x="458" y="286" font-size="26" font-weight="800" fill="#1c1917">DOCUMENT</text>
+    <g fill="none" stroke="#1c1917" stroke-width="2.5" opacity="0.85">
+      <rect x="458" y="312" width="90" height="52" rx="4"/>
+      <rect x="474" y="304" width="90" height="52" rx="4"/>
+      <path d="M 486 330 h 66 M 486 346 h 46" stroke-width="2"/>
+    </g>
+
+    <rect x="760" y="230" width="360" height="150" rx="18" fill="#efe4d0" stroke="#1c1917" stroke-width="2"/>
+    <text x="788" y="286" font-size="26" font-weight="800" fill="#1c1917">WIDE-COLUMN</text>
+    <g fill="#1c1917" opacity="0.8">
+      <rect x="788" y="308" width="24" height="24"/><rect x="820" y="308" width="24" height="24"/><rect x="852" y="308" width="24" height="24"/><rect x="884" y="308" width="24" height="24"/>
+      <rect x="788" y="340" width="24" height="24"/><rect x="820" y="340" width="24" height="24"/><rect x="852" y="340" width="24" height="24"/><rect x="884" y="340" width="24" height="24"/>
+    </g>
+
+    <rect x="80" y="410" width="1040" height="150" rx="18" fill="#efe4d0" stroke="#1c1917" stroke-width="2"/>
+    <text x="108" y="466" font-size="26" font-weight="800" fill="#1c1917">GRAPH</text>
+    <g stroke="#1c1917" stroke-width="3" fill="none">
+      <line x1="300" y1="490" x2="430" y2="450"/>
+      <line x1="300" y1="490" x2="430" y2="530"/>
+      <line x1="430" y1="450" x2="560" y2="490"/>
+      <line x1="430" y1="530" x2="560" y2="490"/>
+    </g>
+    <g fill="#1c1917">
+      <circle cx="300" cy="490" r="16" fill="#f6efe3" stroke="#1c1917" stroke-width="3"/>
+      <circle cx="430" cy="450" r="16"/>
+      <circle cx="430" cy="530" r="16"/>
+      <circle cx="560" cy="490" r="16" fill="#f6efe3" stroke="#1c1917" stroke-width="3"/>
+    </g>
+  </g>
+</svg>

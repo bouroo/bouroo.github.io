@@ -9,8 +9,8 @@ authorLink: "https://kawin.dev"
 description: "เปรียบเทียบประสิทธิภาพระหว่าง DragonflyDB และ Redis 7 ด้วย memtier_benchmark ผ่าน TCP และ Unix socket พร้อมข้อมูลลิขสิทธิ์ 2024-2025"
 license: ""
 images: []
-featuredImage: "featured-image.webp"
-featuredImagePreview: "featured-image.webp"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 
 tags: ["DevOps", "Database", "DragonflyDB", "Redis"]
 categories: ["DevOps"]

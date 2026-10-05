@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <rect width="1200" height="630" fill="#16100e"/>
+
+  <rect x="150" y="80" width="440" height="440" rx="20" fill="#1f1714" stroke="#ff6b57" stroke-width="3"/>
+
+  <g fill="#3a2b26">
+    <rect x="170" y="100" width="92" height="92" rx="8"/>
+    <rect x="270" y="100" width="92" height="92" rx="8"/>
+    <rect x="370" y="100" width="92" height="92" rx="8"/>
+    <rect x="470" y="100" width="92" height="92" rx="8"/>
+    <rect x="170" y="200" width="92" height="92" rx="8"/>
+    <rect x="270" y="200" width="92" height="92" rx="8"/>
+    <rect x="370" y="200" width="92" height="92" rx="8"/>
+    <rect x="470" y="200" width="92" height="92" rx="8"/>
+    <rect x="170" y="300" width="92" height="92" rx="8"/>
+    <rect x="270" y="300" width="92" height="92" rx="8"/>
+    <rect x="370" y="300" width="92" height="92" rx="8"/>
+    <rect x="470" y="300" width="92" height="92" rx="8"/>
+    <rect x="170" y="400" width="92" height="92" rx="8"/>
+    <rect x="270" y="400" width="92" height="92" rx="8"/>
+    <rect x="370" y="400" width="92" height="92" rx="8"/>
+    <rect x="470" y="400" width="92" height="92" rx="8"/>
+  </g>
+
+  <g fill="#ff6b57">
+    <rect x="170" y="100" width="92" height="92" rx="8"/>
+    <rect x="470" y="100" width="92" height="92" rx="8"/>
+    <rect x="270" y="200" width="92" height="92" rx="8"/>
+    <rect x="370" y="300" width="92" height="92" rx="8"/>
+    <rect x="170" y="400" width="92" height="92" rx="8"/>
+    <rect x="470" y="400" width="92" height="92" rx="8"/>
+  </g>
+
+  <text x="150" y="540" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="2" fill="#ff6b57">CONTAINER LIMIT</text>
+  <rect x="150" y="560" width="440" height="40" rx="10" fill="#2a1f1a" stroke="#3a2b26" stroke-width="1.5"/>
+  <rect x="150" y="560" width="165" height="40" rx="10" fill="#ff6b57"/>
+  <line x1="315" y1="548" x2="315" y2="612" stroke="#ffffff" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="620" y="590" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" fill="#ffffff">2 of 8 CPUs</text>
+
+  <text x="1150" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="3" fill="#ff6b57" text-anchor="end">GOMAXPROCS IN CONTAINERS</text>
+  <text x="1150" y="198" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="58" font-weight="800" fill="#ffffff" text-anchor="end">GOMAXPROCS</text>
+  <text x="1150" y="252" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="30" fill="#e7d3ce" text-anchor="end">a good friend of DevOps</text>
+
+  <rect x="760" y="340" width="30" height="30" rx="6" fill="#ff6b57"/>
+  <text x="806" y="364" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" fill="#ffffff">quota cores</text>
+  <rect x="760" y="396" width="30" height="30" rx="6" fill="#3a2b26"/>
+  <text x="806" y="420" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="22" fill="#cfc3bf">reserved cores</text>
+</svg>

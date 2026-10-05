@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1200 630" width="100%" height="100%">
+  <rect width="1200" height="630" fill="#0b0b0b"/>
+
+  <text x="850" y="505" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="500" font-weight="800" fill="none" stroke="#22ff88" stroke-width="6">0</text>
+  <rect x="742" y="318" width="216" height="48" rx="8" fill="#0b0b0b" stroke="#22ff88" stroke-width="2"/>
+  <text x="850" y="349" text-anchor="middle" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="28" font-weight="700" fill="#22ff88">0 allocs/op</text>
+
+  <text x="90" y="150" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="3" fill="#22ff88">ZERO ALLOCATION GO</text>
+  <text x="90" y="215" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="50" font-weight="800" fill="#ffffff">Zero Allocations</text>
+
+  <rect x="90" y="270" width="360" height="54" rx="10" fill="none" stroke="#9ca3af" stroke-width="2"/>
+  <text x="110" y="304" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="20" fill="#e5e7eb">strings.Builder</text>
+  <rect x="90" y="340" width="360" height="54" rx="10" fill="none" stroke="#9ca3af" stroke-width="2"/>
+  <text x="110" y="374" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="20" fill="#e5e7eb">sync.Pool</text>
+  <rect x="90" y="410" width="360" height="54" rx="10" fill="none" stroke="#9ca3af" stroke-width="2"/>
+  <text x="110" y="444" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="20" fill="#e5e7eb">preallocate</text>
+</svg>
