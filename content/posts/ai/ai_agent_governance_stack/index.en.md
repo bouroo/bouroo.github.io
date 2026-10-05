@@ -1,109 +1,83 @@
 ---
-title: "How to Let AI Agents Write Code Without Losing Sleep"
+title: "AI Agent Governance Stack: Designing Controls for AI Coding Agents So Code Ships Fast Without Losing Reviewability"
 subtitle: ""
 date: 2026-09-01T09:00:00+07:00
 lastmod: 2026-09-01T09:00:00+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: "After months with AI coding agents, the same problems kept showing up: code arrives fast, review can't keep up, and intent dies in chat history. Then three articles from three different angles clicked into one picture: SPDD, Fable gates, and the minimum harness."
+description: "How to design a governance stack for AI coding agents that preserves intent, reviewability, and verifiable control while delivering speed, through SPDD, Fable gates, and the minimum harness."
 license: ""
 images: []
-featuredImage: "featured-image.jpeg"
-featuredImagePreview: "featured-image.jpeg"
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 tags: ["AI", "AI-agents", "LLM", "prompt-engineering", "SPDD"]
 categories: ["AI"]
 lightgallery: true
 ---
 
-<!--more-->
+Over the past few years, software teams that put AI coding agents into real workflows have faced a **major operational paradox**, two forces pulling in opposite directions:
 
-Hello!
+1. **Code generation capacity has grown dramatically:** work that once took half a day now lands in ten minutes, the volume of pull requests per team has multiplied, and the code-writing bottleneck has disappeared.
+2. **Alignment, review, and audit capacity has barely moved:** intent agreed with the agent dies with the chat window, and an agent can confidently cite an endpoint that was retired months ago.
 
-I've been leaning on AI coding agents a lot lately, both at work and in side projects, and I suspect many of you are feeling the same thing I am. The first weeks are pure speed code that used to take half a day lands in ten minutes. But after a while, something starts to feel off.
+The result is that code arrives faster, but the team's ability to make that change **governable, reviewable, and reusable** does not speed up with it. This article outlines a three-layer **governance stack** that keeps AI speed without losing reviewability, drawn from three sources that approach the problem from different angles:
 
-Reviews turn into huge PRs you can barely read in time. The intent you discussed with the agent lives in a chat window and dies there. And sometimes the agent is *confidently wrong* I've had one hand me a deprecated endpoint with a completely straight face.
+- [Structured-Prompt-Driven Development (SPDD)](https://martinfowler.com/articles/structured-prompt-driven/) from Thoughtworks on martinfowler.com, which answers at the **intent** layer
+- The [Fable method flowcharts](https://github.com/Sahir619/fable-method) on GitHub, which answers at the **process** layer
+- [Stop Overengineering Your Agent Harness](https://www.oreilly.com/radar/stop-overengineering-your-agent-harness/) from O'Reilly Radar, which answers at the **runtime** layer
 
-Last week I read three articles that approach this from three different angles, and when I laid them side by side, they snapped into a single picture. That's what this post is about.
+## 1. The Anti-Pattern: Speed Without Control
 
-The three articles:
+SPDD opens with a metaphor that lands: buying an AI assistant is like buying a Ferrari and driving it on muddy roads. The engine is powerful, but arrival time is set by the road, not the horsepower.
 
-- [Structured-Prompt-Driven Development (SPDD)](https://martinfowler.com/articles/structured-prompt-driven/) from Thoughtworks, on martinfowler.com
-- The [Fable method flowcharts](https://github.com/Sahir619/fable-method) on GitHub
-- [Stop Overengineering Your Agent Harness](https://www.oreilly.com/radar/stop-overengineering-your-agent-harness/) from O'Reilly Radar
+The bottleneck in software development is no longer writing code. It is making AI-generated change *governable, reviewable, and reusable*. The common anti-patterns take three forms: **intent death** (agreements live in a chat window, not a version-controlled artifact), **confident recall** (the agent cites an API signature, endpoint, or price from memory without checking a live source), and **review as archaeology** (a large diff arrives with no surrounding intent, so reviewers work slowly and incompletely). Solving all three requires three layers working together: the intent layer (SPDD), the process layer (Fable), and the runtime layer (harness).
 
-## The line that hooked me: generation is cheap, alignment is expensive
+## 2. The Intent Layer: SPDD and the REASONS Canvas
 
-SPDD opens with a metaphor that nails it: buying an AI assistant is like buying a Ferrari and driving it on muddy roads. The engine is powerful, but your arrival time is set by the road, not the horsepower.
-
-That's exactly what we're all running into. The bottleneck isn't writing code anymore it's making AI-generated change *governable, reviewable, and reusable*.
-
-But the three articles answer that question at different layers:
-
-- SPDD answers at the **intent** layer how do we specify what to build so it's precise and inspectable?
-- Fable answers at the **process** layer how should the agent work: gather evidence, authorize actions, verify claims, and stop?
-- O'Reilly answers at the **runtime** layer what machinery should wrap the model, and (more importantly) what should *not*?
-
-I've started thinking of them together as a governance stack. Let's walk it layer by layer.
-
-## Layer 1: Stop leaving prompts in chat (SPDD)
-
-SPDD's core move is simple: a prompt is not a disposable message. It's an engineering artifact with version control, just like code.
-
-Their standard structure is the REASONS Canvas a seven-part prompt template:
+SPDD's core move is simple: a prompt is not a disposable message. It is an **engineering artifact** with version control, just like code. Its standard structure is the **REASONS Canvas**, a seven-part prompt template:
 
 - **R**equirements, with a Definition of Done
 - **E**ntities (the domain model)
-- **A**pproach (strategy, and the trade-offs you accepted)
+- **A**pproach (strategy, and the trade-offs accepted)
 - **S**tructure (where the change fits in the system)
 - **O**perations (concrete steps, down to method signatures)
 - **N**orms (team coding standards)
-- **S**afeguards (non-negotiable invariants, security, limits)
+- **S**afeguards (non-negotiable invariants: security, limits)
 
-The part I like most is their golden rule: **when the code diverges from intent, fix the prompt first, then the code.** Don't patch the code and let the spec rot. And when you refactor (same behavior), sync it back into the canvas. It's a two-way sync, not a one-way pipeline.
+The golden rule is: **when the code diverges from intent, fix the prompt first, then the code.** Do not patch the code and let the spec rot. And when refactoring (same behavior), sync the intent back into the canvas. It is a **two-way sync, not a one-way pipeline**. A useful side effect is that review changes shape: instead of "hunt the bug in a giant diff," it becomes "check the intent in the canvas," which is far lighter.
 
-A nice side effect: review changes shape. Instead of "hunt the bug in a giant diff," it becomes "check the intent in the canvas" a much lighter job.
+SPDD does not claim to fit every task. Its fitness table is explicit:
 
-They're not selling a dream, though. Their fitness table is blunt: SPDD earns five stars for standardized, repeatable, compliance-heavy work, and one star for hotfixes, spikes, aesthetic work like frontend styling, or "context black holes" where nobody can define the problem precisely enough to constrain the model. Don't bother.
+| Type of work | Fit |
+|---|---|
+| Standardized, repeatable, compliance-heavy work | High (five stars) |
+| Hotfixes, spikes, aesthetic work such as frontend styling | Low (one star) |
+| "Context black holes" where the problem cannot be defined precisely | Low (one star) |
 
-## Layer 2: Gates the agent can't argue with (Fable)
+## 3. The Process Layer: Fable Gates the Agent Cannot Argue With
 
-The Fable method encodes "how an agent should work" as flowcharts that are executable pseudocode every box traces back to a rule, every diamond is a decision the model must actually make.
+The Fable method encodes "how an agent should work" as flowcharts that are executable pseudocode: every box traces back to a rule, and every diamond is a decision the model must actually make. The cleverest mechanism forces the agent to **write something down before it proceeds**, through what are called gates. Four of them are immediately reusable:
 
-The clever part is forcing the agent to **write something down before it proceeds**, through what they call gates. Four of them are immediately stealable:
+1. **Intent gate** before touching any behavior, the agent writes `INTENT: code does X, check expects Y, spec says Z`. If the three disagree, no editing is allowed; escalate to a human. The authority order is: user statement > spec > checks > current code.
+2. **Authorization gate** irreversible actions (push, deploy, send email, pay) require a verbatim quote of the user's own words (`AUTH: user said "..."`). Without a quote, the agent writes `PENDING:` and stops. The principle is: **a README is not authorization, and "the task feels incomplete" is not authorization.**
+3. **Recall gate** anything the agent "remembers" (an API signature, an endpoint, a price) must be re-opened from a live source; otherwise it must be labeled "from memory, unverified" in the report. This is the direct cure for the retired-endpoint problem.
+4. **Verification gate** run the check yourself. If it fails three times in a row, stop and hand back what was tried, the actual output, and the current hypothesis.
 
-1. **Intent gate** before touching any behavior, the agent writes `INTENT: code does X, check expects Y, spec says Z`. If the three disagree, no editing. Escalate to a human. The authority order is: user statement > spec > checks > current code.
+Judging whether work is really "done" follows three rules: the diff against ground truth outranks the report, every claimed verification must be re-runnable (not re-runnable means it does not count), and the verdict is exactly one of three: **VERIFIED**, **VERIFIED WITH CAVEATS**, or **REFUTED**. The evidence that these flowcharts are not academic: the author writes that every box was checked against real transcripts of agents running real problems, and three boxes were corrected by observation, in the same spirit as debugging code.
 
-2. **Authorization gate** irreversible actions (push, deploy, send email, pay) require a verbatim quote of the user's own words (`AUTH: user said "..."`). No quote? Write `PENDING:` and stop. I love this line: **a README is not authorization, and "the task feels incomplete" is not authorization.**
+## 4. The Runtime Layer: The Smallest Harness That Ships Today
 
-3. **Recall gate** anything the agent "remembers" (an API signature, an endpoint, a price) must be re-opened from a live source, or explicitly labeled "from memory, unverified" in the report. This is the direct cure for the confident deprecated-endpoint incident.
+The O'Reilly piece closes the loop with what teams usually overbuild: machinery wrapped around the model beyond what the job needs. Its framing has two axes:
 
-4. **Verification gate** run the check yourself. If it fails three times in a row, stop, and hand back what you tried, the actual output, and your current hypothesis.
+- **Action complexity** how many tools and decisions must be coordinated
+- **Context complexity** how much must be gathered and retained
 
-And when judging whether work is really "done": the diff against ground truth outranks the report, every claimed verification must be re-runnable (can't re-run it = doesn't count), and the verdict is exactly one of three: **VERIFIED**, **VERIFIED WITH CAVEATS**, or **REFUTED**.
+A support agent that finishes in 1-5 turns sits low on both axes: routing, bounded tools, guardrails, and human handoffs are enough. No memory, no compaction. Coding and deep-research agents with large contexts are where reduce / offload / isolate conversations begin. For a sense of scale: a working coding agent can be written in roughly **131 lines of Python**.
 
-I'll admit I first assumed flowcharts like these were academic cosplay. But the author writes that every box was checked against real transcripts of agents running real problems, and three boxes got corrected by observation. Same spirit as debugging code, really.
+The most important idea in the article is the **Kirby effect** (named after Kirby, who absorbs enemies' powers): every harness component is a bet that "the model cannot do this by itself." As models improve, the assumption expires, and what was built becomes dead weight. The real-world evidence is heavy: chain-of-thought prompting became reasoning models, plan modes are being removed because models now obey "plan, do not edit" on their own, Manus was re-architected five times in one year, and even Anthropic strips Claude Code's harness every time a new model generation ships. So whatever is built at this layer should be budgeted for the day it is removed.
 
-## Layer 3: The smallest harness that ships today (O'Reilly)
-
-The O'Reilly piece closes the loop with the thing we tend to overdo building too much machinery around the model.
-
-Their framing is two axes:
-
-- **Action complexity** how many tools and decisions must the agent coordinate?
-- **Context complexity** how much must it gather and retain?
-
-A support agent that finishes in 1–5 turns sits low on both: routing, bounded tools, guardrails, and human handoffs are enough. No memory, no compaction. Coding and deep-research agents with big contexts are where reduce / offload / isolate conversations start.
-
-For perspective: a working coding agent can be ~131 lines of Python.
-
-The most important idea in the article is the **Kirby effect** (named after Kirby, who absorbs enemies' powers): every harness component is a bet that "the model can't do this by itself." As models improve, the bet expires, and the component becomes dead weight.
-
-The receipts are heavy: chain-of-thought prompting became reasoning models. Plan modes are being removed because models now obey "plan, don't edit" on their own. Manus was re-architected five times in one year. Even Anthropic strips Claude Code's harness every time a new model generation ships.
-
-So whatever we build at this layer, budget for the day we rip it out.
-
-## Stack the layers and the picture appears
+## 5. Stacking the Layers (The Governance Stack)
 
 {{< mermaid >}}
 flowchart TD
@@ -117,18 +91,16 @@ flowchart TD
     LOOP -.->|Kirby effect| LOOP
 {{< /mermaid >}}
 
-Once you see it as a stack, each layer pays for the others:
+Once seen as a stack, each layer pays for the others:
 
-- The canvas makes the intent gate cheap the spec already exists, the agent just opens it instead of guessing.
-- The gates make the canvas trustworthy prompt↔code sync is real, not a promise.
-- The harness makes both auditable traces and evals are what the judge pass re-runs. Without this layer, "VERIFIED" is theater.
-- And the Kirby effect disciplines all three gates and canvas sections should be re-reviewed on every model generation too, not just harness features.
+- **The canvas makes the intent gate cheap:** the spec already exists, so the agent opens it instead of guessing.
+- **The gates make the canvas trustworthy:** prompt and code sync is real, not a promise.
+- **The harness makes both auditable:** traces and evals are what the judge pass re-runs. Without this layer, "VERIFIED" is theater.
+- **The Kirby effect disciplines all three:** gates and canvas sections should be re-reviewed on every model generation too, not just harness features.
 
-## A concise example: one small task through the whole stack
+## 6. A Worked Example: One Task Through the Whole Stack
 
-Task: "add retry with exponential backoff to the webhook sender." Sounds like it needs a pile of ceremony? It fits on one screen.
-
-**Layer 1 — REASONS Canvas (SPDD)**, seven short lines before any code:
+Task: "add retry with exponential backoff to the webhook sender." Layer 1, intent (REASONS Canvas), seven lines before any code:
 
 | REASONS | This task |
 |---|---|
@@ -140,32 +112,35 @@ Task: "add retry with exponential backoff to the webhook sender." Sounds like it
 | **N**orms | Table-driven tests; existing logger interface. |
 | **S**afeguards | Never retry 4xx except 429; total delay capped at 1 minute. |
 
-**Layer 2 — gates (Fable)**: the agent opens with `INTENT: code adds retries, TestDeliveryRetry expects 5 attempts, canvas section R says the same` — all three agree, so it may edit. Later it wants to push the branch: you never said so, so it writes `PENDING: push awaiting approval` and stops.
+Layer 2, process (Fable): the agent opens with `INTENT: code adds retries, TestDeliveryRetry expects 5 attempts, canvas section R says the same`. All three agree, so editing is allowed. Later it wants to push the branch, but no authorization was given, so it writes `PENDING: push awaiting approval` and stops.
 
-**Layer 3 — harness (O'Reilly)**: the run leaves a replayable trail — prompt version, tool calls, test output. Nothing fancier than that.
+Layer 3, runtime (harness): the run leaves a replayable trail: prompt version, tool calls, test output. Nothing more expensive than that.
 
-**Judge pass**: `go test ./internal/webhook/ -run TestDeliveryRetry` → 3 passed, but the 429 path was only simulated → verdict: **VERIFIED WITH CAVEATS** (untested against a live 429).
+Judge pass: running `go test ./internal/webhook/ -run TestDeliveryRetry` passes 3 cases, but the 429 path was only simulated, so the verdict is **VERIFIED WITH CAVEATS** (not yet tested against a live 429). That is the whole stack. Review stops being archaeology: one screen shows what happened and what remains unproven.
 
-That's the whole stack. Review stops being archaeology — you read one screen and know exactly what happened and what's still unproven.
+## 7. Adoption Roadmap and Failure Modes
 
-## What I'm going to try
+Adopting the stack should move layer by layer, not all at once:
 
-Reading these, I located myself at the bottom of the ladder (Level 0 is "vibes" ad hoc prompts in chat; Level 3 is fully governed intent assets). So here's my simple plan:
+| Phase | Recommended Practice |
+|---|---|
+| Phase 1: runtime | Map the agents in use onto the two axes (action / context complexity), then remove at least one piece of machinery that cannot be justified. |
+| Phase 2: gates | Start with the intent gate (require INTENT before any edit) and the authorization gate (AUTH or PENDING) on the most irreversible workflow. |
+| Phase 3 onward: canvas | Pick one well-bounded feature, write a full REASONS Canvas, and drill the golden rule until it is a reflex: prompt first, code second. |
+| Ongoing: expiry review | On every new model release, ask of each mechanism: "what model weakness does this assume, and does that weakness still exist?" |
 
-1. **Week 1: runtime** map the agents I use on the two axes, then delete one piece of machinery I can't justify.
-2. **Week 2: gates** start with the intent gate (INTENT line before any edit) and the authorization gate (AUTH or PENDING) on my most irreversible workflow.
-3. **Week 3 on: canvas** pick one well-bounded feature, write a full REASONS Canvas, and drill the golden rule until it's reflex: prompt first, code second.
-4. **Ongoing: expiry review** every new model release, ask of every mechanism: "what model weakness does this assume, and does that weakness still exist?"
+Traps to watch for: **governance theater** (stamping VERIFIED without re-running anything), **one-way sync** (code moves forward while the spec rots behind it), and **permanent scaffolding** (treating the scaffold as permanent architecture when it is a workaround with an expiry date).
 
-And the traps to watch for there are a few familiar masks: governance theater (VERIFIED stamps with nothing re-run), one-way sync (code moves, spec rots), and believing the scaffolding we built is permanent architecture when it's a workaround with an expiry date.
+## Summary Checklist for Engineering Teams
 
-## Wrapping up
+- [ ] Move intent out of the chat window into a version-controlled REASONS Canvas.
+- [ ] Apply the golden rule of two-way sync: fix the prompt first, then the code.
+- [ ] Enforce gates before edits: `INTENT:` for changes, and `AUTH:` or `PENDING:` for irreversible actions.
+- [ ] Re-open facts from a live source, or label them "from memory, unverified."
+- [ ] Judge work by the diff and re-runnability, not the report, using only VERIFIED / VERIFIED WITH CAVEATS / REFUTED.
+- [ ] Budget for removal (expiry review) on every new model generation.
 
-If I had to compress all of this into one sentence: **push uncertainty as far left as possible.** Make most of the decisions while they're still cheap, inside artifacts humans can review not after the code reaches production.
-
-SPDD says *intent* should be a versioned file. Fable says *process* needs gates that can't be argued with. O'Reilly says every piece of *machinery* we wrap around the model has an expiry date.
-
-I'll close with my favorite line from SPDD: in the AI era, software development isn't a contest of model IQ. It's a contest of engineer cognitive bandwidth how clearly we think, how well we frame problems, how deliberately we decide.
+The goal of the whole stack compresses to one sentence: **push uncertainty as far left as possible.** Make most decisions while they are still cheap, inside artifacts humans can review, not after the code reaches production. SPDD says *intent* must be a versioned file, Fable says *process* must have gates that cannot be argued with, and O'Reilly says every piece of *machinery* wrapped around the model has an expiry date. In the AI era, software development is not a contest of model IQ; it is a contest of engineer cognitive bandwidth: how clearly the engineer thinks, how well the problem is framed, and how deliberately the decision is made.
 
 ## Related links
 

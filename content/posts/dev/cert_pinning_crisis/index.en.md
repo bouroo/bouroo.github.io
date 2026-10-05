@@ -1,5 +1,5 @@
 ---
-title: "Navigating BOT Cert Pinning: Handling Short SSL Lifespans Without Breaking Your Mobile App"
+title: "Cert Pinning Crisis: Handling Short SSL Lifespans Without Breaking Your Mobile App"
 date: 2026-10-05T17:50:00+07:00
 draft: false
 tags: ["Security", "Mobile App", "DevOps", "Bank of Thailand", "SSL Pinning", "TLS", "Android", "iOS"]

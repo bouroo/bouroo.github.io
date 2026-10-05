@@ -1,5 +1,5 @@
 ---
-title: "ถอดรหัส BOT Cert Pinning: วิธีรับมือข้อบังคับ ธปท. ในยุคที่ SSL Cert มีอายุสั้นลงเรื่อย ๆ"
+title: "Cert Pinning Crisis: วิธีรับมือข้อบังคับ ธปท. ในยุคที่ SSL Cert มีอายุสั้นลงเรื่อย ๆ"
 date: 2026-10-05T17:45:00+07:00
 draft: false
 tags: ["Security", "Mobile App", "DevOps", "Bank of Thailand", "SSL Pinning", "TLS", "Android", "iOS"]
