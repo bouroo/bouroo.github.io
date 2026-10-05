@@ -5,6 +5,9 @@ draft: false
 tags: ["Security", "Mobile App", "DevOps", "Bank of Thailand", "SSL Pinning", "TLS", "Android", "iOS"]
 categories: ["Engineering", "Security"]
 description: "แนวทางการวางสถาปัตยกรรม Certificate Pinning สำหรับ Mobile Banking ให้สอดคล้องตามข้อบังคับ ธปท. (BOT) โดยไม่เกิดปัญหาแอปพัง เมื่อ SSL Certificate มีอายุสั้นลงเรื่อย ๆ"
+
+featuredImage: "featured-image.svg"
+featuredImagePreview: "featured-image.svg"
 ---
 
 ช่วงไม่กี่ปีที่ผ่านมา ทีมพัฒนา Mobile App และ Security Engineer ในไทย โดยเฉพาะสาย FinTech และ ธนาคาร ต้องเผชิญกับ **ความย้อนแย้งครั้งใหญ่** 2 ด้านที่วิ่งสวนทางกันอย่างชัดเจน:
