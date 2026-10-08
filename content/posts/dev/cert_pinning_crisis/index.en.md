@@ -128,12 +128,12 @@ flowchart LR
         MON["SPKI Drift Monitor<br/>30-day pre-expiry alert"]
     end
 
-    APP -- "1. TLS Handshake<br/>(SPKI check on every call)" --> LB
-    APP -- "2. Fetch Signed Pin List" --> PINSVC
+    APP -- "① TLS Handshake<br/>(SPKI check on every call)" --> LB
+    APP -- "② Fetch Signed Pin List" --> PINSVC
     KMS -. "signs payload" .-> PC
-    CICD -- "3. Renew Cert (same key)" --> LB
-    MON -- "4. Compare live SPKI vs app pins" --> LB
-    MON -. "5. Alert" .-> CICD
+    CICD -- "③ Renew Cert (same key)" --> LB
+    MON -- "④ Compare live SPKI vs app pins" --> LB
+    MON -. "⑤ Alert" .-> CICD
 {{< /mermaid >}}
 
 | Component | Role |

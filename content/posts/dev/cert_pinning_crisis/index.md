@@ -129,12 +129,12 @@ flowchart LR
         MON["SPKI Drift Monitor<br/>เตือนล่วงหน้า 30 วัน"]
     end
 
-    APP -- "1. TLS Handshake<br/>(ตรวจ SPKI ทุกครั้ง)" --> LB
-    APP -- "2. ดึง Signed Pin List" --> PINSVC
+    APP -- "① TLS Handshake<br/>(ตรวจ SPKI ทุกครั้ง)" --> LB
+    APP -- "② ดึง Signed Pin List" --> PINSVC
     KMS -. "เซ็น payload" .-> PC
-    CICD -- "3. ต่ออายุ Cert (Key เดิม)" --> LB
-    MON -- "4. เทียบ Live SPKI กับ Pin ในแอป" --> LB
-    MON -. "5. Alert" .-> CICD
+    CICD -- "③ ต่ออายุ Cert (Key เดิม)" --> LB
+    MON -- "④ เทียบ Live SPKI กับ Pin ในแอป" --> LB
+    MON -. "⑤ Alert" .-> CICD
 {{< /mermaid >}}
 
 | Component | บทบาทหน้าที่ |
