@@ -85,17 +85,17 @@ If an emergency key rotation is required (e.g., active key compromise or infrast
 
 For maximum agility, organizations can deploy **Dynamic Pinning**, allowing client applications to update their pin lists Over-The-Air (OTA):
 
-```text
-+------------------+       1. Request Pin List       +-------------------+
-|                  | ------------------------------> |                   |
-|  Mobile Banking  |                                 | Remote Config API |
-|       App        | <------------------------------ |                   |
-|                  |     2. Return Signed Pins       +-------------------+
-+------------------+     (Payload + Ed25519 Sig)
-         │
-         ├── 3. Verify Signature using Public Key bundled in App
-         └── 4. Update In-Memory TrustStore
-```
+{{< mermaid >}}
+sequenceDiagram
+    autonumber
+    participant App as Mobile Banking App
+    participant Pin as Pin Config API
+    Note over Pin: Pin list is pre-signed with Ed25519<br/>(Private Key kept offline in an HSM)
+    App->>Pin: GET /v2/pins
+    Pin-->>App: pins[] + Ed25519 Signature
+    Note over App: Always verify the Signature first<br/>with the Public Key bundled in the app
+    App->>App: Update In-Memory TrustStore
+{{< /mermaid >}}
 
 #### Critical Security Constraints for Dynamic Pinning:
 - **Never fetch pin lists over unauthenticated HTTP/HTTPS:** An attacker performing a MITM attack could intercept and manipulate the incoming payload.
@@ -103,7 +103,213 @@ For maximum agility, organizations can deploy **Dynamic Pinning**, allowing clie
 
 ---
 
-## 3. Aligning DevOps & Certificate Lifecycle Management
+## 3. Reference Architecture
+
+Putting all three strategies together with the surrounding backend, the full picture looks like this:
+
+{{< mermaid >}}
+flowchart LR
+    subgraph APP["Mobile Banking App"]
+        TS["In-Memory TrustStore<br/>Active SPKI Pin + Backup Pin"]
+        VK["Ed25519 Public Key<br/>(hardcoded in binary)"]
+    end
+
+    subgraph EDGE["Edge / API Gateway"]
+        LB["TLS Termination<br/>Short-lived leaf certs<br/>rotated on the same key pair"]
+    end
+
+    subgraph PINSVC["Pin Distribution Service"]
+        PC["Pin List JSON<br/>signed with Ed25519"]
+    end
+
+    subgraph OPS["Security Operations (Offline)"]
+        KMS["KMS / HSM<br/>Active Key • Backup Keys<br/>Ed25519 Signing Key"]
+        CICD["CI/CD + cert-manager<br/>Auto-renew with Key Reuse"]
+        MON["SPKI Drift Monitor<br/>30-day pre-expiry alert"]
+    end
+
+    APP -- "1. TLS Handshake<br/>(SPKI check on every call)" --> LB
+    APP -- "2. Fetch Signed Pin List" --> PINSVC
+    KMS -. "signs payload" .-> PC
+    CICD -- "3. Renew Cert (same key)" --> LB
+    MON -- "4. Compare live SPKI vs app pins" --> LB
+    MON -. "5. Alert" .-> CICD
+{{< /mermaid >}}
+
+| Component | Role |
+| :--- | :--- |
+| **In-Memory TrustStore** | Holds the Active + Backup SPKI pins and validates every TLS connection the app makes |
+| **Ed25519 Public Key** | Compiled into the app; verifies the signature of OTA-fetched pin lists |
+| **Edge / API Gateway** | Terminates TLS with frequently rotated leaf certs issued from the same key pair |
+| **Pin Distribution Service** | Serves the latest signed pin list across multiple CDN endpoints |
+| **KMS / HSM** | Stores the active key, backup keys, and signing key offline |
+| **CI/CD + cert-manager** | Auto-renews certificates with the same private key, keeping the SPKI hash stable |
+| **SPKI Drift Monitor** | Compares the live production SPKI against the pins shipped in apps and alerts before an incident |
+
+---
+
+## 4. Implementation Guide, Step by Step
+
+### Step 1 — Extract the SPKI Hashes
+
+From the live server (yields the **active pin**):
+
+```bash
+openssl s_client -connect api.yourbank.com:443 -servername api.yourbank.com </dev/null 2>/dev/null \
+  | openssl x509 -pubkey -noout \
+  | openssl pkey -pubin -outform DER \
+  | openssl dgst -sha256 -binary | base64
+```
+
+From a pre-generated offline backup key (yields the **backup pin**):
+
+```bash
+openssl pkey -in backup-2027.key -pubout -outform DER \
+  | openssl dgst -sha256 -binary | base64
+```
+
+The base64 output of these two commands is what you embed in the app — not the fingerprint of the whole certificate, which changes on every renewal.
+
+### Step 2 — Android
+
+Use `network_security_config.xml` (see Strategy 1) for the platform HTTP stack. If the app manages its own connections with OkHttp/Retrofit, pin in code as well:
+
+```kotlin
+val client = OkHttpClient.Builder()
+    .certificatePinner(
+        CertificatePinner.Builder()
+            .add("api.yourbank.com",
+                 "sha256/<active-pin-base64>",
+                 "sha256/<backup-pin-base64>")
+            .build()
+    )
+    .build()
+```
+
+To let QA debug through a proxy, open a debug-build-only escape hatch with `debug-overrides`:
+
+```xml
+<debug-overrides>
+    <trust-anchors>
+        <!-- Accept user CAs (Charles/Burp) in debug builds only -->
+        <certificates src="user" />
+    </trust-anchors>
+</debug-overrides>
+```
+
+### Step 3 — iOS
+
+Apple ships no declarative pinning config; the common approach is the **TrustKit** library:
+
+```swift
+import TrustKit
+
+TrustKit.initSharedInstance(with: [
+    kTSKSwizzleNetworkDelegates: false,
+    kTSKPinnedDomains: [
+        "api.yourbank.com": [
+            kTSKEnforcePinning: true,
+            kTSKIncludeSubdomains: true,
+            kTSKPublicKeyHashes: [
+                "<active-pin-base64>",   // SPKI SHA-256 (base64)
+                "<backup-pin-base64>"
+            ]
+        ]
+    ]
+])
+```
+
+Then call `TrustKit.sharedInstance().pinningValidator.handle(_:challenge:completionHandler:)` inside `urlSession(_:didReceive:completionHandler:)`. Without a dependency, you can also compare the SPKI hash yourself in the session delegate (`SecTrustCopyPublicKey` + `SHA256.hash`).
+
+### Step 4 — Server Side: Auto-Renew with Key Reuse (cert-manager)
+
+The crux is `rotationPolicy: Never` — every renewed certificate is issued from the same private key, so the SPKI hash never changes and every app version keeps connecting:
+
+```yaml
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: api-yourbank-tls
+spec:
+  secretName: api-yourbank-tls
+  dnsNames: ["api.yourbank.com"]
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+    rotationPolicy: Never   # reuse the same key on every renewal -> stable SPKI hash
+```
+
+ACME supports CSR reuse out of the box. Note that fully managed AWS ACM certificates rotate keys on their own schedule; on AWS, import your self-issued certificate into ACM instead of using an ACM-issued one.
+
+### Step 5 — Dynamic Pinning: Payload, Signing, and Verification
+
+The payload you distribute:
+
+```json
+{
+  "version": 42,
+  "generated_at": "2026-10-01T00:00:00Z",
+  "pins": [
+    { "domain": "api.yourbank.com", "type": "spki-sha256", "value": "<active-pin-base64>" },
+    { "domain": "api.yourbank.com", "type": "spki-sha256", "value": "<backup-pin-base64>" }
+  ]
+}
+```
+
+Sign offline, once per pin change (the signing key never touches a server):
+
+```bash
+# One-time setup; keep the private key in an HSM/offline only
+openssl genpkey -algorithm ed25519 -out pin-signing.key
+openssl pkey -in pin-signing.key -pubout   # embed this public key in the app
+
+# Every time the pins change
+openssl pkeyutl -sign -inkey pin-signing.key -rawin -in pins.json -out pins.json.sig
+base64 < pins.json.sig   # ship alongside the payload
+```
+
+Client-side verification (Kotlin):
+
+```kotlin
+fun verifyPinPayload(payload: ByteArray, signature: ByteArray): Boolean {
+    val pub = Base64.decode(ED25519_PUBLIC_KEY_B64, Base64.DEFAULT)
+    val key = KeyFactory.getInstance("Ed25519")
+        .generatePublic(X509EncodedKeySpec(pub))
+    return java.security.Signature.getInstance("Ed25519").run {
+        initVerify(key)
+        update(payload)
+        verify(signature)
+    }
+}
+```
+
+(`Ed25519` in `java.security` requires Android API 33+ / Java 15+; use Tink or BouncyCastle to support older versions.)
+
+The most commonly missed point: serve this endpoint over plain CA-validated HTTPS — do **not** pin this channel — so the app can fetch fresh pins even when the old pins are stale. The payload's trust comes from the signature, not the channel.
+
+### Step 6 — SPKI Drift Monitoring
+
+An hourly cron comparing the live production SPKI against the current pin set:
+
+```bash
+LIVE=$(openssl s_client -connect api.yourbank.com:443 -servername api.yourbank.com </dev/null 2>/dev/null \
+  | openssl x509 -pubkey -noout | openssl pkey -pubin -outform DER \
+  | openssl dgst -sha256 -binary | base64)
+
+grep -q "$LIVE" pins.json \
+  || curl -fsS -X POST "$ALERT_WEBHOOK" \
+       -H 'Content-Type: application/json' \
+       -d "{\"text\":\"P0: SPKI drift — live server key matches no pin in the app\"}"
+```
+
+Wire it into CI as well: if a new app build is about to ship and the live server SPKI matches neither the active nor the backup pin, fail the pipeline immediately.
+
+---
+
+## 5. Aligning DevOps & Certificate Lifecycle Management
 
 Technical controls on the mobile client must be supported by automated backend infrastructure workflows:
 
@@ -121,6 +327,7 @@ Technical controls on the mobile client must be supported by automated backend i
 - [ ] Enforce **Active + Backup Pins** across all mobile configurations.
 - [ ] Automate certificate renewals in DevOps pipelines using **Private Key Reuse**.
 - [ ] Maintain an emergency **Key Rotation Playbook**.
+- [ ] Run **SPKI Drift Monitoring** in Cron/CI, comparing the live server key against the app pin set.
 - [ ] (Optional) Deploy **Signed Dynamic Pinning** for OTA pin updates.
 
 Complying with Bank of Thailand security regulations does not have to result in operational disruption. By implementing SPKI pinning and proper key lifecycle management, engineering teams can maintain high security standards while seamlessly accommodating shorter certificate lifespans.
