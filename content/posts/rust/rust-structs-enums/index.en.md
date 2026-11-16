@@ -551,11 +551,11 @@ fn main() {
 }
 ```
 
-In the next part, we'll dive deeper into `Result<T, E>`, combinators like `map` and `and_then`, and the `?` operator for error propagation.
+The next part covers `Result<T, E>` in more depth: combinators like `map` and `and_then`, and the `?` operator for error propagation.
 
 ## Connection to rs-wsProxy
 
-Let's see how these concepts are used in the rs-wsProxy project. The `Args` struct holds command-line configuration, and the `VerifyResult` enum represents the outcome of verifying a connection request.
+In rs-wsProxy, the `Args` struct holds command-line configuration, and the `VerifyResult` enum represents the outcome of verifying a connection request.
 
 ```rust
 pub struct Args {
