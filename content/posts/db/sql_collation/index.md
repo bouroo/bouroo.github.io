@@ -85,7 +85,7 @@ WHERE
   LOWER(users.first_name) = 'kawin';
 ```
 
-จะพบว่า query เราอ่านไปทั้งหมด 1000 rows ในการค้นหาเลย
+query เราอ่านไปทั้งหมด 1000 rows ในการค้นหาเลย
 
 ```json
 {

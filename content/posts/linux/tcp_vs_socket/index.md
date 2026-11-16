@@ -125,5 +125,5 @@ sysbench oltp_read_write --db-driver=mysql --mysql-socket=tmp/run/mysqld.sock --
 | MariaDB TCP        | 75,432           | 21,540            | 29.76                |
 | MariaDB UnixSocket | 212,688          | 60,731            | 10.54                |
 
-จะเห็นได้ว่าหากเราลด overhead ของ TCP ออกด้วยการใช้ Unix socket แทน จะทำให้เราไม่ต้องไป up scale ทรัพยากรของเราให้ใหญ่โต ก็สามารถรับโหลดได้เพิ่มมาขึ้นอีกเยอะเลย หรือในงานบน K8S ที่มีการทำ sidecar ก็สามารถใช้ Unix socket สื่อสารระหว่างกันแทน TCP/IP ได้นะครับ
+หากเราลด overhead ของ TCP ออกด้วยการใช้ Unix socket แทน จะทำให้เราไม่ต้องไป up scale ทรัพยากรของเราให้ใหญ่โต ก็สามารถรับโหลดได้เพิ่มมาขึ้นอีกเยอะเลย หรือในงานบน K8S ที่มีการทำ sidecar ก็สามารถใช้ Unix socket สื่อสารระหว่างกันแทน TCP/IP ได้นะครับ
 > ปล. ใช้ได้ใน node ที่ใช้งาน volume ร่วมกันนะจร๊ะ

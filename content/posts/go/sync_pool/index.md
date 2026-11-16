@@ -131,7 +131,7 @@ func DoSomethingWithPoolDefer() {
 ```
 เปรียบเทียบผลงาน ผ่านการใช้ `(*testing.B).RunParallel` เพื่อทดสอบแบบเป็น Parallel
 ![Basic sync.Pool{}](img/basic_pool.webp "Basic sync.Pool{}")
-จะเห็นได้ว่า เวลาที่ใช้ต่อ operation และหน่วยความจำที่ใช้ต่อ operation รวมถึงการ allocate ต่อ operation ก็ต่างกัน ครึ่ง ๆ เลย ส่วนท่าขี้เกียจ play safe ด้วย defer จะใช้เวลามากกว่า แบบ put เองเล็กน้อยเพราะว่าต้องรอจบ function ก่อนถึงจะ reset กับ put buffer คืน pool
+เวลาที่ใช้ต่อ operation และหน่วยความจำที่ใช้ต่อ operation รวมถึงการ allocate ต่อ operation ก็ต่างกัน ครึ่ง ๆ เลย ส่วนท่าขี้เกียจ play safe ด้วย defer จะใช้เวลามากกว่า แบบ put เองเล็กน้อยเพราะว่าต้องรอจบ function ก่อนถึงจะ reset กับ put buffer คืน pool
 
 ## ข้อดี
 - concurrent safe ทำให้สามารถใช้งานใน goroutine ได้แบบพร้อม ๆ กัน

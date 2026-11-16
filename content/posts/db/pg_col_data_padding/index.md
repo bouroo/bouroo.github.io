@@ -43,7 +43,7 @@ Interpreting the actual data can only be done with information obtained from oth
 {{< /admonition >}}
 ที่มา [Table Row Layout](https://www.postgresql.org/docs/current/storage-page-layout.html#STORAGE-TUPLE-LAYOUT)
 
-จากข้อความที่เน้นไว้จะพบว่าการเรียง column ให้ดี ตอนที่สร้างตารางไม่ได้มีผลแค่ storage เท่านั้นยังมีผลต่อ memory กับ cpu ที่ใช้งานตารางนั้นด้วย
+จากข้อความที่เน้นไว้ การเรียง column ให้ดีตอนที่สร้างตารางไม่ได้มีผลแค่ storage เท่านั้นยังมีผลต่อ memory กับ cpu ที่ใช้งานตารางนั้นด้วย
 
 ## ว่าด้วยเรื่อง Padding
 หลังจากอ่าน Docs แล้วยัง งง กันอยู่เรามาลองดูว่าพอใช้งานจริง ๆ มันจะเป็นยังไงนะ

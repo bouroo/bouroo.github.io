@@ -65,7 +65,7 @@ func PassByPointer(s *SomeStruct) {
 ```
 benchmark ดูหน่อย
 ![benchmark_pass_to_func](img/benchmark_pass_to_func.webp "benchmark_pass_to_func")
-จะเห็นได้ว่า pass by value จะใช้เวลามากกว่า ก็เพราะว่าจะต้อง copy value ไปใช้ใน function ปลายทางแต่ pointer ไม่ต้องมีการ copy data ก็เลยไวกว่า
+pass by value ใช้เวลามากกว่า เพราะต้อง copy value ไปใช้ใน function ปลายทาง ส่วน pointer ไม่ต้อง copy data จึงไวกว่า
 
 ### return from function
 ทีนี้การส่งค่าออกจาก function ก็สามารถส่งออกมาได้ทั้งสองแบบ
