@@ -6,7 +6,7 @@ lastmod: 2026-10-06T19:00:40+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: "ทำ benchmark เทียบ goccy/go-json กับ encoding/json ของ standard library พบว่าเร็วขึ้นราว 10 เท่า พร้อมอัปเดตสถานการณ์ 2025-2026 ของ bytedance/sonic และ encoding/json/v2 ที่ยังเป็น experimental"
+description: "ทำ benchmark เทียบ goccy/go-json กับ encoding/json ของ standard library บนไฟล์ 10KB, 2.9MB, 26MB พร้อมอัปเดตสถานการณ์ 2025-2026 ของ bytedance/sonic และ encoding/json/v2 ที่ยังเป็น experimental"
 license: ""
 images: []
 featuredImage: "featured-image.svg"
@@ -124,6 +124,8 @@ func BenchmarkGoCcyDecoder(b *testing.B) {
 |BenchmarkGoSTDDecoder-8|               16|          63935862 ns/op|        67107820 B/op|         33 allocs/op|
 |BenchmarkGoCcyDecoder-8|          1200399|               877.8 ns/op|           863 B/op|          9 allocs/op|
 
+แถว `BenchmarkGo*Decoder-8` เอาไปเทียบไม่ได้ เพราะใช้ `defer file.Close()` ในลูป `RunParallel` ตัวเลขต่ำกว่า 1µs บนไฟล์ MB จึงเป็น artifact ของ file descriptor leak การรันปี 2026 ด้านล่างแก้จุดนี้แล้ว ให้ใช้ตัวเลขชุดนั้น
+
 ## สถานการณ์ปัจจุบัน (2025-2026)
 
 วงการ JSON library เคลื่อนไหวต่อเนื่องตั้งแต่ที่เขียน benchmark นี้:
@@ -217,4 +219,4 @@ func BenchmarkSonicDecoder(b *testing.B) {
 
 สรุปจากตัวเลข: บน arm64 นี้ sonic วิ่งบน compatibility/optdec path (ไม่ใช่ JIT) จึงทำได้แค่ระดับเดียวกับ goccy — ชนะเล็กน้อยใน payload เล็ก-กลาง แต่พอไฟล์ระดับ 26MB กลับเสมอกันหรือช้ากว่า ส่วนความได้เปรียบแบบขาดลอยใน README มาจาก JIT/SIMD ที่มีเฉพาะ amd64 เท่านั้น ถ้า deploy บน server amd64 จึงจะได้ประโยชน์เต็ม
 
-จะพบว่า `goccy/go-json` จะประสิทธิภาพดีกว่า `encoding/json` เฉลี่ยที่ 10X++ เลยทีเดียว โดยเฉพาะการใช้ `Encoder/Decoder` แทนการใช้ `Marshal/Unmarshal` ที่สามารถเรียกได้ว่าเทียบกันกันไม่ติดเลย
+บนเครื่องเดียวกัน `goccy/go-json` เร็วกว่า `encoding/json` ประมาณ 1.2 เท่าบนไฟล์ 10KB, 2.1 เท่าบนไฟล์ 2.9MB และ 2.2 เท่าบนไฟล์ 26MB โดย allocate น้อยกว่าประมาณ 6 เท่า ส่วน decoder อยู่ที่ 63,769 ns/op เทียบกับ 66,874 บนไฟล์ 10KB และ 1,395,477 เทียบกับ 3,132,189 บนไฟล์ 2.9MB

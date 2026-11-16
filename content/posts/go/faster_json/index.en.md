@@ -124,6 +124,8 @@ Test results for reading a large 26MB file.
 |BenchmarkGoSTDDecoder-8|               16|          63935862 ns/op|        67107820 B/op|         33 allocs/op|
 |BenchmarkGoCcyDecoder-8|          1200399|               877.8 ns/op|           863 B/op|          9 allocs/op|
 
+The `BenchmarkGo*Decoder-8` rows are not comparable with the 2026 numbers below: they used `defer file.Close()` inside the `RunParallel` loop, so the sub-1µs MB-sized results are a descriptor-leak artifact.
+
 ## The library landscape since 2025
 
 The JSON library options have changed since this benchmark was written:
