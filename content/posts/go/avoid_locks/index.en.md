@@ -155,7 +155,7 @@ func main() {
 
 ### 4. Use a Read/Write Mutex
 
-If you want to allow multiple goroutines to read data but only one goroutine to write data, and you need to use a mutex, you can use `sync.RWMutex`, which allows for concurrent reads without waiting for writes.
+If you want to allow multiple goroutines to read data but only one goroutine to write data, use `sync.RWMutex`, whose `RLock` does not wait for other readers.
 
 {{< admonition example >}}
 ```go
@@ -217,7 +217,7 @@ func main() {
 
 ## Conclusion
 
-Avoiding the use of Mutex locks in Go can be done in several ways, such as using channels, lock-free data structures, atomic operations, and read/write mutexes. Choosing the right method will help improve performance and reduce the complexity of your program, making it run smoothly and safely from concurrent data access (race conditions).
+Mutexes cost a context switch when contended and add state you have to reason about. The four samples above replace one with a narrower mechanism: a channel, `sync.Map`, `atomic.AddInt64`, and `sync.RWMutex`.
 
 {{< admonition type=quote title="Andrew Gerrand" >}}
 Do not communicate by sharing memory; instead, share memory by communicating.

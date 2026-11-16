@@ -20,7 +20,7 @@ featuredImagePreview: "featured-image.svg"
 
 lightgallery: true
 ---
-Normally, when using a database for small-scale tasks in a container, we usually connect via TCP/IP, right? But did you know that you can easily improve performance by removing the TCP overhead by using Unix sockets instead? Let's see what the results are.
+A database running in a container is usually reached over TCP/IP. Switching that connection to a Unix socket removes the TCP handling from the path; the tables below compare the two.
 
 <!--more-->
 
@@ -125,5 +125,5 @@ Results:
 | MariaDB TCP        | 75,432           | 21,540            | 29.76                |
 | MariaDB UnixSocket | 212,688          | 60,731            | 10.54                |
 
-As you can see, by reducing the overhead of TCP and using Unix sockets instead, we can handle a much higher load without having to significantly scale up our resources. Or, in Kubernetes workloads with sidecars, you can use Unix sockets for inter-process communication instead of TCP/IP.
+Reducing the TCP overhead by switching to Unix sockets raises the sustainable load without scaling the hardware. The same trick applies inside a Kubernetes pod, where sidecars can talk over a Unix socket instead of TCP/IP.
 > Note: This only works on nodes that share the same volume.

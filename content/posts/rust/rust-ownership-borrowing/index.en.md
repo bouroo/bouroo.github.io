@@ -16,13 +16,13 @@ featuredImagePreview: "featured-image.svg"
 lightgallery: true
 ---
 
-Ownership is Rust's most distinctive feature, enabling memory safety guarantees without needing a garbage collector. This system enforces strict rules about how data is accessed and modified, preventing entire classes of bugs at compile time. Understanding ownership is essential for writing safe and efficient Rust code. This tutorial builds upon the concepts introduced in [Getting Started with Rust](/posts/rust/rust-getting-started/).
+Ownership is Rust's most distinctive feature: it gives memory safety without a garbage collector. The rules below govern how data is accessed and modified, and the compiler rejects violations at compile time. This tutorial builds upon the concepts introduced in [Getting Started with Rust](/posts/rust/rust-getting-started/).
 
 <!--more-->
 
 ## The Stack and the Heap
 
-Memory in Rust is managed through two primary regions: the stack and the heap. The stack stores data with a fixed, known size at compile time and operates in a last-in, first-out manner, making it extremely fast. The heap stores data of unknown or changing size, requiring dynamic allocation and deallocation, which is slower but more flexible. Ownership rules govern how data moves between these regions, ensuring heap data is properly cleaned up when no longer needed.
+Memory in Rust is managed through two primary regions: the stack and the heap. The stack stores data with a fixed, known size at compile time and operates in a last-in, first-out manner, making it fast. The heap stores data of unknown or changing size, requiring dynamic allocation and deallocation, which is slower but more flexible. Ownership rules govern how data moves between these regions; when the owner of a heap value goes out of scope, Rust calls `drop` and the allocation is freed.
 
 Consider a string literal stored on the stack versus a `String` on the heap:
 
@@ -32,7 +32,7 @@ let mut s2 = String::from("hello"); // String: heap allocation
 s2.push_str(", world"); // Modifiable heap data
 ```
 
-Here, `s1` is a string literal stored in the program's read-only memory, accessible via a stack-based reference. `s2` points to heap-allocated memory that can grow. When `s2` goes out of scope, its heap memory is automatically freed. This distinction is crucial: stack data is copied by value, while heap data requires explicit ownership transfers to prevent double-free errors.
+Here, `s1` is a string literal stored in the program's read-only memory, accessible via a stack-based reference. `s2` points to heap-allocated memory that can grow. When `s2` goes out of scope, its heap memory is automatically freed. The difference matters: stack data is copied by value, while heap data moves ownership to prevent double-free errors.
 
 ## Ownership Rules
 
@@ -231,7 +231,7 @@ This pattern ensures `AppState` remains valid as long as at least one task holds
 
 Ownership, borrowing, and lifetimes form Rust's guarantee of memory safety without garbage collection. Ownership ensures each value has a single owner responsible for cleanup. Borrowing allows temporary access via references, governed by strict rules preventing data races. Slices provide efficient views into data without ownership transfer. Lifetimes ensure references remain valid for their intended use. Together, these concepts enable fearless concurrency and predictable resource management.
 
-Understanding these concepts is crucial for effective Rust programming, as evidenced in real-world projects like `rs-wsProxy` where they enable safe, high-performance networking code. Mastering ownership transforms how you think about memory and data relationships, leading to more robust and efficient systems.
+In `rs-wsProxy`, these rules show up as `connect_tcp(addr: &str)`, which borrows the config string instead of copying it, and `Arc<AppState>` shared across the per-connection tasks. The compiler rejects a concurrent `&mut` to the same state, so the sharing pattern in that project needs no lock.
 
 ← Previous: [Getting Started with Rust](/posts/rust/rust-getting-started/)
 Next: [Structs, Enums & Pattern Matching](/posts/rust/rust-structs-enums/)

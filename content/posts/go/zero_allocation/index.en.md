@@ -105,8 +105,8 @@ func main() {
 ```
 {{< /admonition >}}
 #### Benefits:
-- Significantly reduces the number of memory allocations based on the frequency of creation.
-- The buffer is reused, which can greatly reduce the GC's workload.
+- Cuts the number of allocations when the same buffer shape is needed repeatedly.
+- Reusing the buffer gives the GC less to collect.
 
 ### 3. Manage slice capacity
 Slices in Go are very useful, but their ability to grow dynamically often results in repeated memory allocations and moves to accommodate the slice's size at runtime. By managing the slice's capacity to avoid unnecessary resizing, we can keep slices on the stack instead of the heap.
@@ -232,7 +232,7 @@ func main() {
 - We declare the `sum` variable in advance and use it within the loop without having to declare a new variable every time the loop iterates, which helps save on additional memory allocations.
 
 ## Conclusion
-Zero allocation is an important technique for writing efficient Go programs. Avoiding frequent new memory allocations helps reduce the garbage collector's workload and makes programs run faster. However, the choice of techniques depends on the context of the problem and the system's constraints.
+Allocating less memory gives the garbage collector less to trace and fewer objects to sweep. That matters when a service has a latency target to hold; the techniques above are only worth it when a benchmark on that code path shows the allocation is the cost.
 
 **Note**: The use of zero allocation should also consider the complexity and readability of the code. Using overly complex techniques can make the code difficult to read and a burden for future generations.
 

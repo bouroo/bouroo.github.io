@@ -84,14 +84,14 @@ tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 ```
 
 **Why these dependencies?**
-- **Axum**: Provides ergonomic routing and extraction built on Tower and Tokio
-- **Axum-server**: Enables HTTPS/WSS support via rustls
+- **Axum**: HTTP routing and request extraction built on Tower and Tokio
+- **Axum-server**: HTTPS/WSS support via rustls
 - **Tokio**: The async runtime that powers everything
-- **Rustls**: Modern TLS implementation (safer than OpenSSL)
-- **Clap**: Derive-based CLI argument parser with excellent ergonomics
-- **Tracing**: Structured, contextual logging with EnvFilter support
-- **Bytes**: Efficient byte buffer handling for proxying data
-- **Futures-util**: Essential async utilities like `StreamExt` and `SinkExt`
+- **Rustls**: TLS implemented in Rust, with no OpenSSL dependency
+- **Clap**: Derive-based CLI argument parser
+- **Tracing**: Logging with `EnvFilter` support
+- **Bytes**: Byte buffers for proxying data
+- **Futures-util**: Provides `StreamExt` and `SinkExt`
 
 ## CLI with clap (config.rs)
 

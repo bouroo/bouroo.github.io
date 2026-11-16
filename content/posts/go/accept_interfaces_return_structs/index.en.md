@@ -6,7 +6,7 @@ lastmod: 2025-11-08T12:00:00+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: "Exploring the benefits of designing Go functions with interfaces for input and structs for output. This approach enhances testability, promotes loose coupling, and makes your code more adaptable to change."
+description: "How accepting an interface as a function input and returning a struct as output lets new document types plug into one handler and new result fields ship without changing a function signature."
 aliases:
 - /posts/go_interface_struct/
 license: ""
@@ -21,7 +21,7 @@ featuredImagePreview: "featured-image.svg"
 lightgallery: true
 ---
 
-In the world of Go programming, designing flexible and maintainable functions is key to building robust applications. One powerful pattern involves using interfaces as function inputs and structs as function outputs. This approach enhances testability, promotes loose coupling, and makes your code more adaptable to change.
+A function that accepts an interface works on every type that implements it; a function that returns a struct hands back named fields instead of a tuple. In the example below, `HandleDocument` takes `PDFDocument` and `WordDocument` through one signature, and adding a field to `ProcessResult` does not change that signature.
 
 <!--more-->
 
@@ -192,5 +192,5 @@ This makes the return value self-describing and easy to extend if more informati
 ## Conclusion
 
 {{< admonition summary "Key Takeaway" >}}
-Combining interfaces for function inputs and structs for function outputs is a highly effective design pattern in Go. It promotes a modular, testable, and maintainable codebase, allowing your applications to evolve gracefully as requirements change. By focusing on contracts (interfaces) for what a function needs and structured data (structs) for what it provides, you can write Go code that is both powerful and elegant.
+Accepting an interface means `HandleDocument` runs for any type that implements `DocumentProcessor`, so a new document type needs no edit to the handler. Returning `ProcessResult` means callers read `Status` and `Message` by name, and a new field goes in without touching the function signature.
 {{< /admonition >}}

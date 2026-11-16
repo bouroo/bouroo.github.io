@@ -25,7 +25,7 @@ If you've written goroutines, you've probably come across `sync.WaitGroup` for w
 <!--more-->
 
 ## How sync.Pool{} works
-Let's look at how `sync.Pool{}` works. The pool has two baskets: the Pool and the Victim, for caching before being cleared by the garbage collector (GC).
+The pool has two baskets: the Pool and the Victim, the latter caching objects before the garbage collector (GC) clears them.
 
 ### basic
 
@@ -131,7 +131,7 @@ func DoSomethingWithPoolDefer() {
 ```
 Comparing the results using `(*testing.B).RunParallel` to test in parallel.
 ![Basic sync.Pool{}](img/basic_pool.webp "Basic sync.Pool{}")
-As you can see, the time per operation, memory per operation, and allocations per operation are all about half. The lazy, play-it-safe way with defer takes slightly longer than putting it back manually because it has to wait for the function to finish before resetting and putting the buffer back in the pool.
+Time per operation, memory per operation, and allocations per operation are all about half. The `defer` version takes slightly longer than putting the buffer back by hand, because it waits for the function to return before the buffer reaches the pool.
 
 ## Advantages
 - Concurrently safe, so it can be used in goroutines at the same time.

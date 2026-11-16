@@ -22,7 +22,7 @@ featuredImage: "featured-image.svg"
 featuredImagePreview: "featured-image.svg"
 ---
 
-We can adjust sysctl settings to make Linux servers run smoothly under increased load. Normally, each Linux distribution has a default sysctl configuration. For example, RHEL might be optimized for server use, while DEB might be balanced for general performance. In this article, I will introduce the settings I use in production for each type of workload:
+sysctl settings control kernel limits on connections, memory, and filesystem buffers, and the values that ship with a distribution target a general machine. These are the settings I use in production, split into three files by workload: general servers, Proxmox VE, and K3S/K8S with IPVS.
 
 <!--more-->
 

@@ -36,7 +36,7 @@ First, let's look at the documentation to see what's related to data types in th
 {{< /admonition >}}
 Source: [pg_type](https://www.postgresql.org/docs/current/catalog-pg-type.html)
 
-As you can see, each data type uses a different amount of space, and the actual storage size depends on the order of the columns.
+Each data type uses a different amount of space, and the actual storage size depends on the order of the columns.
 
 {{< admonition note "Note" >}}
 Interpreting the actual data can only be done with information obtained from other tables, mostly `pg_attribute`. **<ins>The key values needed to identify field locations are `attlen` and `attalign`</ins>**. There is no way to directly get a particular `attribute`, except when there are only fixed width fields and no null values. All this trickery is wrapped up in the functions `heap_getattr`, `fastgetattr` and `heap_getsysattr`.
@@ -84,12 +84,12 @@ WHERE c.relname = 'tb_continuous' AND a.attnum >= 0;
 (4 rows)
 ```
 
-As you can see:
+From the output:
 - `BIGINT` uses 8 bytes
 - `INT` uses 4 bytes
 - `SMALLINT` uses 2 bytes
 
-We calculate that both tables should use 22 bytes per row, but let's look at the reality.
+Both tables should use 22 bytes per row by that arithmetic. The sizes below say otherwise.
 
 ```sql
 select pg_column_size(tb_fragment.*) - 24 as row_size from tb_fragment limit 1;
@@ -121,7 +121,7 @@ SELECT t_data FROM heap_page_items(get_raw_page('tb_continuous','main',0))gx
 t_data | xffffffffffffff7fffffffffffffff7fffffff7fff7f
 ```
 
-As you can see, in the `tb_fragment` table, when data is retrieved, there will be zero padding until it reaches 8 bytes, and then it moves to the next column because **col_1 (2 bytes) + col_2 (8 bytes) exceeds 8 bytes, causing them to be separated**. This is different from `tb_continuous`, where **col_3 (4 bytes) + col_4 (2 bytes) does not exceed 8 bytes, allowing them to be combined into the same word**.
+In `tb_fragment`, reads zero-pad to 8 bytes and then move to the next column, because **col_1 (2 bytes) + col_2 (8 bytes) exceeds 8 bytes, so the two are separated**. In `tb_continuous`, **col_3 (4 bytes) + col_4 (2 bytes) does not exceed 8 bytes, so they share a word**.
 
 ## Conclusion
 Planning and designing the structure by considering low-level aspects not only helps us avoid wasting storage but also improves memory and CPU usage. This is because we don't have to waste time loading unnecessary data. However, this comes at the cost of column order readability. So, we might leave PKEYs or other indexes that make the table easier to read in the first columns, as is commonly done, without forcing an order just for performance.

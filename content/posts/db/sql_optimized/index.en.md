@@ -35,7 +35,7 @@ Use appropriate data types and sizes for the data being used. For example, a goo
 Only access/query the data you need. Don't sweep the entire table when you only use a few dozen fields.
 
 ## Searchable Arguments (SARGable Queries)
-Always use Searchable Arguments (SARGable) in your queries. What is SARGable? Simply put, they are operators that can use indexes, which will make your queries faster (because they don't have to scan the entire table to check). Operations that effectively utilize B+Tree indexes include:
+Always use Searchable Arguments (SARGable) in your queries. What is SARGable? Simply put, they are operators that can use indexes, which will make your queries faster (because they don't have to scan the entire table to check). Operations that can use a B+Tree index:
   - Equals, IN (=): For example, `WHERE indexed_column = value`
   - Inequality operators (<, <=, >, >=): Comparison operators like `WHERE indexed_column > value`. This does not include `<>` or `!=`.
   - BETWEEN: Compares a range, for example, `WHERE indexed_column BETWEEN low_value AND high_value`

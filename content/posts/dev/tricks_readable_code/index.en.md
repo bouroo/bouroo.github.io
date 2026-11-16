@@ -18,7 +18,7 @@ featuredImagePreview: "featured-image.svg"
 
 lightgallery: true
 ---
-When writing code as a team, a common headache is **"Who wrote this code?!"** To minimize friction, it's essential to have shared principles or team agreements on how to write code. Here are some simple tips that can make our lives better; please consider them.
+In shared code, a common complaint is **"Who wrote this code?!"**. The tips below reduce the reading time: flatten nested `if`s, extract long logic into named functions, remove duplication, and use names the customer and the team both understand.
 <!--more-->
 ## The Problematic Code
 Let's start with the problematic code that resulted from a patchwork, "it works" approach.
@@ -242,4 +242,4 @@ func SumProductPrice(orderProducts []Product, tax float64) total float64 {
 ```
 
 ## Conclusion
-I hope these tips help you write better code and reduce the number of times people complain about it when they have to work on it. Happy coding!
+These tips cut the time it takes to read a function you did not write.

@@ -26,7 +26,7 @@ Welcome to the first part of our 8-part series "Learning Rust Building a WebSock
 
 ## Why Rust?
 
-Rust offers a unique combination of performance, safety, and concurrency without garbage collection. It gives you control over low-level details while preventing entire classes of bugs at compile time. This makes it perfect for building network applications like our WebSocket-to-TCP proxy where performance and reliability are critical.
+Rust compiles to native code, has no garbage collector, and its borrow checker rejects data races and use-after-free at compile time. Those are the properties this proxy needs: it holds a WebSocket and a TCP socket per client and copies bytes between them.
 
 ## Installing Rust
 
@@ -483,8 +483,7 @@ In this first part of our Rust series, we've covered:
 - Control flow with if/else, loops, and for loops with ranges
 - Different types of comments including documentation comments
 
-You now have enough knowledge to write basic Rust programs and understand the syntax. In the next part, we'll dive into Rust's ownership system, which is what makes Rust unique in providing memory safety without garbage collection.
+You now have enough knowledge to write basic Rust programs and understand the syntax. In the next part, we'll cover Rust's ownership system, which is what provides memory safety without garbage collection.
 
 **Next: [Ownership, Borrowing & Lifetimes](/posts/rust/rust-ownership-borrowing/)**
 
-Continue your Rust journey by learning about ownership, the cornerstone of Rust's safety guarantees.

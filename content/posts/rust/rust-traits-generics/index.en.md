@@ -16,7 +16,7 @@ featuredImagePreview: "featured-image.svg"
 lightgallery: true
 ---
 
-Traits and generics are Rust's primary mechanisms for abstraction and code reuse. Traits define shared behavior, similar to interfaces in other languages, while generics allow code to work with multiple types. Together, they enable powerful abstractions without runtime cost. This tutorial builds on [Part 4: Collections, Iterators & Error Handling](/posts/rust/rust-collections-errors/) and prepares you for [Async Rust with Tokio](/posts/rust/rust-async-tokio/).
+Traits and generics are Rust's two mechanisms for abstraction and code reuse. A trait declares methods a type must provide, similar to an interface in other languages, and a generic function accepts any type that meets its bounds. This tutorial builds on [Part 4: Collections, Iterators & Error Handling](/posts/rust/rust-collections-errors/) and prepares you for [Async Rust with Tokio](/posts/rust/rust-async-tokio/).
 
 <!--more-->
 
@@ -103,7 +103,7 @@ impl Summary for Tweet {
 }
 ```
 
-In this example, `NewsArticle` overrides the default method while `Tweet` uses it. This provides flexibility - common behavior can be defined once in the trait, while specific types can customize when needed.
+In this example, `NewsArticle` overrides the default method while `Tweet` uses it: the trait defines the common behavior once, and a type that needs different behavior writes its own `impl`.
 
 Default methods can also call other methods in the same trait, even if those methods don't have default implementations:
 
@@ -123,7 +123,7 @@ Now any type implementing `Summary` only needs to implement `summarize_author` t
 
 There are two ways to use traits as parameters in Rust: `impl Trait` syntax and trait bound syntax.
 
-First, the `impl Trait` syntax - useful for simple cases:
+First, the `impl Trait` syntax for simple cases:
 
 ```rust
 pub fn notify(item: &impl Summary) {
@@ -238,14 +238,14 @@ These are fundamental to Rust's standard library.
 
 ### Monomorphization
 
-When Rust compiles generic code, it performs monomorphization - generating specialized versions of the code for each concrete type used. For example, if we call `largest` with both `i32` and `f64`, the compiler generates two specialized functions:
+When Rust compiles generic code, it performs monomorphization: it generates a specialized version of the code for each concrete type used. For example, if we call `largest` with both `i32` and `f64`, the compiler generates two specialized functions:
 
 ```rust
 fn largest_i32(list: &[i32]) -> i32 { /* ... */ }
 fn largest_f64(list: &[f64]) -> f64 { /* ... */ }
 ```
 
-This means generics have zero runtime cost - they're as fast as if you'd written the type-specific versions yourself. However, it does increase compile time and binary size.
+Generics therefore cost nothing at runtime; they are as fast as type-specific versions you wrote yourself. The cost moves to compile time and binary size.
 
 ## Trait Bounds
 
@@ -283,7 +283,7 @@ The `where` clause is particularly useful when trait bounds become complex or wh
 
 ## Trait Objects
 
-So far we've discussed static dispatch - where the compiler knows exactly which method implementation to call at compile time. Rust also supports dynamic dispatch through trait objects.
+So far we've discussed static dispatch, where the compiler knows exactly which method implementation to call at compile time. Rust also supports dynamic dispatch through trait objects.
 
 A trait object is a pointer to an implementation of a trait, allowing for polymorphic behavior. We create trait objects using `dyn Trait`:
 
@@ -335,7 +335,7 @@ fn main() {
 }
 ```
 
-Notice we had to box our items to create trait objects. This is because trait objects have unknown size at compile time - we need indirection via a pointer.
+Notice we had to box our items to create trait objects. Trait object size is unknown at compile time, so the `Box` supplies the indirection.
 
 ### Static vs Dynamic Dispatch
 
@@ -568,12 +568,10 @@ Traits and generics are fundamental to Rust's approach to abstraction:
 - Generics enable type-agnostic code
 - Trait bounds constrain generic types to those implementing specific traits
 - Trait objects enable dynamic dispatch when needed
-- The standard library provides essential traits like `Display`, `Debug`, `Clone`, `Copy`, `From`/`Into`, and `Default`
+- The standard library ships common traits: `Display`, `Debug`, `Clone`, `Copy`, `From`/`Into`, and `Default`
 - Derive macros reduce boilerplate for common traits
-- Real-world frameworks like Axum and clap leverage these concepts extensively
+- Axum handlers and clap parsers are built from these traits and generics
 
-Understanding these concepts is crucial for writing idiomatic, efficient Rust code. They enable the zero-cost abstractions that make Rust powerful while maintaining safety and performance.
+These are the tools that keep generic code from costing anything at runtime: monomorphization produces one concrete copy per type, and trait bounds are checked at compile time.
 
 Next, we'll explore asynchronous programming with Tokio in [Async Rust with Tokio](/posts/rust/rust-async-tokio/). Previously, we covered [Collections, Iterators & Error Handling](/posts/rust/rust-collections-errors/).
-
-Continue your Rust journey by exploring how these abstractions enable powerful asynchronous patterns in the next tutorial.

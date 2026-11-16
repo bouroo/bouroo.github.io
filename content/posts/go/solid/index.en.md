@@ -6,7 +6,7 @@ lastmod: 2023-07-29T09:16:31+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: "Let's see how we can write Go code following the SOLID principles."
+description: "Writing Go code that follows SOLID principles, with a before-and-after for each of the five."
 aliases:
 - /posts/go_solid/
 license: ""
@@ -21,9 +21,9 @@ featuredImagePreview: "featured-image.svg"
 lightgallery: true
 ---
 
-In modern software development, focusing on getting things done quickly for initial use and then going back to clean up the details later (which is often never fully completed) usually results in difficulties when trying to add new features. This is because the code might be too tightly coupled, or if the demand for use increases, the system might not be able to scale as needed due to a lack of clear planning or structure in the software development process.
+Writing something quickly for the first version and cleaning it up later, which rarely happens, makes the next feature harder. The code ends up tightly coupled, and without a clear structure it stops scaling when the demand grows.
 
-Today, we will introduce a set of guidelines for software development that helps create high-quality, easy-to-maintain, and scalable code. A popular and easy-to-understand set of guidelines is SOLID. In today's examples, we will be using the Go language (because Go is my strongest language).
+The SOLID guidelines are the set I use for this. The examples below are in Go, the language I know best.
 
 <!--more-->
 
@@ -52,7 +52,7 @@ func (k Payment) SendBill() {
 }
 ```
 
-As you can see, `Payment` is responsible for making payments (`Payment`), creating invoices (`Invoice`), and sending bills (`Bill`). According to SRP, we should separate these responsibilities into their own structures as follows:
+`Payment` is responsible for making payments (`Payment`), creating invoices (`Invoice`), and sending bills (`Bill`). SRP says to separate these responsibilities into their own structures:
 
 ```go
 type PaymentInfo struct {}
@@ -75,7 +75,7 @@ func (k Billing) SendBill() {
 }
 ```
 
-Separating the structures like this ensures that the code doesn't mix unrelated responsibilities. A clear example of this can also be seen in the `Go standard library`, such as `hash/crc64` and `hash/crc32`, which are separated into different packages instead of being combined in `hash/crc`.
+A `hash/crc64` package that also held `crc32` would mix two checksum algorithms in one package. The Go standard library keeps `hash/crc64` and `hash/crc32` separate instead of one `hash/crc`.
 
 ### **O**pen-Closed Principle (OCP)
 This principle means that code should be extensible without modifying the original code. This helps make the code flexible and adaptable to changing requirements without breaking existing code.
@@ -131,10 +131,10 @@ func main() {
 }
 ```
 
-As you can see, we can use `Process()` with both `KkuPayment` and `CreditCard`, as well as any future payment channels, without modifying the existing code.
+Both `KkuPayment` and `CreditCard` work through `Process()`, as would any future payment channel, without modifying the existing code.
 
 ### **L**iskov Substitution Principle (LSP)
-This principle means that objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program. This helps ensure that the relationship between classes is clear and that the original structure can be maintained.
+Code written against a `Coffee` should work on anything that substitutes for it, as long as the substitute returns the same `Taste()`.
 
 Example: We have a bitter-tasting coffee:
 ```go
@@ -172,7 +172,7 @@ TasteOf(coffee) // Bitter
 TasteOf(late)   // Sweet
 ```
 
-As you can see, the `TasteOf` function, which acts as an intermediary, can accept a parameter of type `CoffeeTaste`. This allows `Coffee` and other subclasses that extend `Coffee` to work in the same function because they all have the `Taste()` function, and it ensures that any variable passed to this function will always have a `Taste()` function.
+`TasteOf` accepts a `CoffeeTaste`, so it runs for `Coffee` and for `Late`. Both satisfy the interface with their own `Taste()`; the caller sees `Bitter` and `Sweet`.
 
 ### **I**nterface Segregation Principle (ISP)
 This principle means that interfaces should be designed to be as small and specific as possible. This helps make the code flexible and avoids unnecessary relationships between classes.
@@ -188,7 +188,7 @@ type Order interface {
 }
 ```
 
-As you can see, there are various tasks in the same interface. According to the ISP, we should split it into:
+This interface mixes several tasks. ISP says to split it:
 ```go
 type Order interface {
   GetOrder()
@@ -218,7 +218,7 @@ type Menu struct {
 }
 ```
 
-As you can see, `Menu` depends directly on the `Tea` and `Coffee` structures. When a new type is added or `Tea` or `Coffee` is modified, the `Menu` structure will also change. According to the DIP, we can change this by using a common interface, `Drink`:
+`Menu` depends directly on the `Tea` and `Coffee` structures. Adding a new type, or changing either one, forces a change to `Menu`. DIP replaces that with a common interface, `Drink`:
 ```go
 type Menu struct {
   Drinks []Drink
@@ -268,8 +268,8 @@ func (t Tea) GetPrice() float64 {
 }
 ```
 
-As you can see, with this approach, no matter how the internal structure of `Tea` or `Coffee` differs or changes, they can still be stored in the `Menu` without affecting each other because they are both still `Drink`s.
+Now the internal structure of `Tea` or `Coffee` can differ or change, and both still fit in `Menu` because both are `Drink`s.
 
 ## Conclusion
 
-SOLID is one of the guidelines for software development to prevent us from getting lost in the cycle of technical debt. There are also other widely used guidelines. If you are interested, you can follow the next article. Thank you.
+SOLID is one set of guidelines that keeps a codebase out of the technical-debt cycle. Other widely used guidelines exist and are worth reading next.

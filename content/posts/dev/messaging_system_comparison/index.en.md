@@ -122,7 +122,7 @@ flowchart LR
 
 ### What is it?
 
-RabbitMQ is a mature and robust message broker, primarily using the AMQP protocol. It's known for its comprehensive messaging capabilities, flexible routing, and reliability.
+RabbitMQ is a message broker that speaks AMQP. A producer publishes to an exchange, and the exchange routes each message to queues by binding rules, so routing lives in broker configuration rather than in consumer code. The `fanout`, `direct`, and `topic` exchange types cover broadcast, exact-key, and pattern routing.
 
 {{< mermaid >}}
 flowchart LR

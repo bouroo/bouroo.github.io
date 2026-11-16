@@ -53,7 +53,7 @@ type Customer struct {
 }
 ```
 
-The total size of all the types in the struct is 64 bytes. Let's see how much memory the entire struct takes up.
+The fields add up to 64 bytes. `unsafe.Sizeof` on the struct reports more, because padding fills the gaps.
 
 ```go
 cusA = Customer{}
@@ -100,7 +100,7 @@ custB := CustomerOptimized{}
 fmt.Printf("custB size: %d bytes\n", unsafe.Sizeof(custB))
 ```
 
-Let's see the results before and after.
+Size after reordering:
 
 ![optimized_struct](img/optimized_struct.webp "optimized_struct")
 
@@ -124,7 +124,7 @@ We saved 3 words!
 
 ## benchmark
 
-Let's see how much of a difference it makes.
+The benchmark compares both layouts on the same workload:
 
 ![benchmark](img/benchmark.webp "benchmark")
 

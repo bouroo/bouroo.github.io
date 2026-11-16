@@ -6,7 +6,7 @@ lastmod: 2023-07-31T21:33:40+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: "When writing Go, a question that always comes up is whether to use a value or a pointer for a function. Let's look at the difference."
+description: "Benchmarking whether a Go function should take a value or a pointer: what the copy costs, and when each signature fits."
 aliases:
 - /posts/go_value_or_pointer/
 license: ""
@@ -21,7 +21,7 @@ lightgallery: true
 
 ---
 
-When writing Go, a question that always comes up is whether to use a value or a pointer for a function. Let's look at the difference.
+The question is whether to pass a value or a pointer to a Go function. The benchmark below shows what the copy costs.
 
 <!--more-->
 
@@ -65,7 +65,7 @@ func PassByPointer(s *SomeStruct) {
 ```
 Let's benchmark it.
 ![benchmark_pass_to_func](img/benchmark_pass_to_func.webp "benchmark_pass_to_func")
-As you can see, pass-by-value takes more time because it has to copy the value to the destination function, while a pointer doesn't need to copy data, so it's faster.
+Pass-by-value copies `SomeStruct` into the callee, so it takes more time; the pointer case copies only the address.
 
 ### return from function
 Now, returning a value from a function can also be done in both ways.

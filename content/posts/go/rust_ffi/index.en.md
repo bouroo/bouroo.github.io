@@ -19,12 +19,12 @@ featuredImagePreview: "featured-image.svg"
 lightgallery: true
 ---
 
-We often encounter the question of whether to use Go or Rust. After trying both Go and Rust for a while, I found that we can use cgo + Rust FFI. Since both have different advantages, we can just use both!
+Whether to use Go or Rust is not a choice you have to make: cgo calls a Rust library compiled as a shared object, so a Go program can run a hot function in Rust.
 
 <!--more-->
 
 # What is Rust FFI?
-Rust FFI (Foreign Function Interface) is a tool that allows us to call functions and code in Rust from other languages such as C, C++, and Go smoothly and safely.
+Rust FFI (Foreign Function Interface) is the compiler support that lets code in other languages, such as C, C++, and Go, call Rust functions.
 
 # Let's try it out
 - Prerequisites

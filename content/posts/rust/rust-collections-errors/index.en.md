@@ -16,7 +16,7 @@ featuredImagePreview: "featured-image.svg"
 lightgallery: true
 ---
 
-Collections store multiple values, iterators process them, and error handling keeps code safe. These three concepts form the backbone of practical Rust programming. In Part 3 of our Rust series, we covered structs, enums, and pattern matching. Now we'll build on that foundation to explore how to work with collections of data, process them efficiently with iterators, and handle errors gracefully using Rust's `Result` type and the `?` operator. These concepts are used extensively in real-world Rust code, including in our `rs-wsProxy` project where we see patterns like iterator chains for building allowlists, HashMaps for redirect maps, and `Result` types for network operations.
+Collections store multiple values, iterators process them, and error handling keeps code safe. These three concepts form the backbone of practical Rust programming. In Part 3 of our Rust series, we covered structs, enums, and pattern matching. Now we'll build on that foundation: how to work with collections of data, process them with iterators, and propagate errors with Rust's `Result` type and the `?` operator. These concepts are used extensively in real-world Rust code, including in our `rs-wsProxy` project where we see patterns like iterator chains for building allowlists, HashMaps for redirect maps, and `Result` types for network operations.
 
 <!--more-->
 
@@ -458,10 +458,10 @@ Each call to `std::fs::metadata` returns a `Result<Metadata, io::Error>`. The `?
 
 ## Summary
 
-We've covered Rust's core collection types (`Vec<T>`, `HashMap<K, V>`), string types (`String` vs `&str`), the powerful iterator system with its zero-cost abstractions, and Rust's approach to error handling with `Result<T, E>` and the `?` operator.
+We've covered Rust's core collection types (`Vec<T>`, `HashMap<K, V>`), string types (`String` vs `&str`), the iterator system with its zero-cost abstractions, and Rust's approach to error handling with `Result<T, E>` and the `?` operator.
 
 These concepts work together to enable safe, efficient, and expressive code. In `rs-wsProxy`, we see them applied in practical ways: processing configuration with iterators, building lookup tables with hash maps, and handling I/O and parsing errors with `Result`.
 
-Continue your Rust journey with the next topic: [Traits & Generics](/posts/rust/rust-traits-generics/). There you'll learn how to write generic code that works with multiple types and how to define shared behavior with traits.
+Continue your Rust journey with the next topic: [Traits & Generics](/posts/rust/rust-traits-generics/), which covers generic code that works with multiple types and shared behavior defined with traits.
 
 ← Previous: [Structs, Enums & Pattern Matching](/posts/rust/rust-structs-enums/)

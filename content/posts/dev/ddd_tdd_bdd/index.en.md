@@ -40,7 +40,7 @@ DDD relies on building domain models as entities, value objects, aggregates, and
 - Explore and review to find subdomains. For example, in the payment domain, there might be subdomains like debit, credit, and reconcile that share payment responsibilities but have different operational responsibilities.
 
 ### Use Cases
-DDD is most beneficial for complex business domains that require intricate logic. DDD provides a clear structure for separating domain complexity.
+DDD pays off most in business domains whose rules are genuinely complicated. DDD provides a clear structure for separating domain complexity.
 
 #### DDD is suitable for:
 - Financial systems

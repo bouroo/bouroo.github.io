@@ -72,7 +72,7 @@ The Fiber app will spawn itself and its children into 16 processes.
 Now let's try it through a Container with a CPU quota set.
 ![docker_from_start](img/docker_from_start.webp "Running on a Container with a CPU quota")
 
-What the... it still has 16 processes. It turns out that it still spawns processes beyond the given quota.
+What the... it still has 16 processes. Setting a CPU quota on the container did not change that count.
 
 ## What's the problem?
 So what's the problem? It doesn't seem like a big deal, just a lot of processes. But imagine this: you have 2 workers, but you give them a task for 16 people to do at the same time. What will happen? That's right, latency. Because when there's more work than the workforce can handle, something called `CPU throttling` occurs, which slows everything down. The graph below shows an example of when the CPU is throttled after working beyond its quota, being pushed down far below the limit.

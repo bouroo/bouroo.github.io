@@ -20,7 +20,7 @@ categories: ["DevOps"]
 lightgallery: true
 ---
 
-If you have a home lab or a service in K3S/K8S that you want to expose to the world, but you don't have a public IP, what can you do? Especially in today's world where ISPs often provide Carrier-grade NAT, or what's commonly known as large-scale NAT (LSN), making it difficult to update IPs with DDNS. This is where the hero of this article comes in.
+If you have a home lab or a service in K3S/K8S that you want to expose to the world, but you don't have a public IP, what can you do? Especially in today's world where ISPs often provide Carrier-grade NAT, or what's commonly known as large-scale NAT (LSN), making it difficult to update IPs with DDNS. Cloudflare Tunnel is the way around both.
 
 <!--more-->
 

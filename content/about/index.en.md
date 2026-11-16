@@ -24,7 +24,7 @@ lightgallery: true
 
 ## Professional Experience
 
-Senior Backend Engineer possessing over a decade of experience in architecting and deploying distributed systems, Go microservices, and cloud-native infrastructure. Demonstrates proven expertise in integrating development and operations (DevOps) to ensure the delivery of scalable, fault-tolerant platforms within the Fintech and E-commerce sectors. Experienced in technical team leadership and mentoring engineers on principles of clean architecture and implementation of best practices.
+Backend engineer with 10+ years architecting and deploying distributed systems, Go microservices, and cloud-native infrastructure in fintech and e-commerce. Ran DevOps alongside application work: CI/CD, monitoring, and logging. Led backend teams and mentored engineers on Go, microservices patterns, and Clean Architecture.
 
 Open to permanent remote opportunities from Khon Kaen or hybrid arrangements in Bangkok
 
@@ -64,7 +64,7 @@ Jun 2025 - Nov 2025
 ### Assistant Manager (Backend Lead)
 October 2023 - May 2025
 - Led Go/JS backend teams delivering scalable fintech microservices for insurance and loan systems.
-- Architected and deployed K8s cloud infrastructure, improving reliability and storage durability.
+- Architected and deployed the K8s infrastructure the insurance and loan services run on.
 - Optimized CI/CD, monitoring, and logging to reduce latency.
 
 ## Tomato Ideas Co., Ltd.
@@ -90,8 +90,8 @@ November 2019 - present
 ### Computer Engineer
 February 2014 - July 2020
 - Managed server and network infrastructure across 22 regional branches.
-- Led a Windows-to-Linux migration project, saving significantly on licensing and maintenance costs.
-- Designed robust network architectures to minimize unplanned downtime.
+- Led a Windows-to-Linux migration project, cutting licensing and maintenance costs.
+- Designed the network architecture to minimize unplanned downtime.
 
 ## Zercle Technology Co., Ltd.
 ### Technical Co-Founder

@@ -20,19 +20,19 @@ lightgallery: true
 
 # Async Rust with Tokio
 
-Asynchronous programming is essential for building high-performance network applications that can handle many concurrent connections without the overhead of spawning a thread for each connection. In this tutorial, we'll explore async/await syntax, the Tokio runtime, spawning tasks, channels for communication between tasks, asynchronous I/O for network programming, using `tokio::select!` for handling multiple futures, graceful shutdown mechanisms, and how these concepts apply to a real-world WebSocket proxy project (rs-wsProxy).
+Asynchronous programming lets one thread hold many concurrent network connections without spawning a thread per connection. In this tutorial, we'll cover async/await syntax, the Tokio runtime, spawning tasks, channels for communication between tasks, asynchronous I/O for network programming, using `tokio::select!` for handling multiple futures, graceful shutdown mechanisms, and how these concepts apply to a real-world WebSocket proxy project (rs-wsProxy).
 
 ## Why Async?
 
-Traditional network servers often use a thread-per-connection model, where each incoming connection gets its own thread. While simple to understand and implement, this approach doesn't scale well to thousands of concurrent connections because each thread consumes significant memory (typically 1-2MB stack space) and involves expensive context switching costs imposed by the operating system.
+Traditional network servers often use a thread-per-connection model, where each incoming connection gets its own thread. This approach stops scaling at a few thousand concurrent connections because each thread reserves stack space (typically 1-2MB) and switching between threads costs the operating system work.
 
 Asynchronous programming offers a more efficient alternative. Instead of blocking an entire thread while waiting for I/O operations (like reading from a socket), async code allows the runtime to suspend the current task and switch to another task that is ready to make progress. This enables a single thread to manage thousands of concurrent connections with minimal overhead.
 
-However, Rust's async/await syntax alone doesn't provide a runtime to execute asynchronous code. Unlike languages with built-in runtimes (like Go or Node.js), Rust's async/await is a low-level feature that requires an external runtime to drive the asynchronous tasks to completion. This is where Tokio comes in – it provides a mature, feature-rich runtime for writing asynchronous applications in Rust.
+However, Rust's async/await syntax alone doesn't provide a runtime to execute asynchronous code. Unlike languages with built-in runtimes (like Go or Node.js), Rust's async/await is a low-level feature that requires an external runtime to drive the asynchronous tasks to completion. This is where Tokio comes in: it provides the runtime that polls futures and schedules the tasks.
 
 ## async/await
 
-The `async` and `await` keywords are the foundation of asynchronous programming in Rust. When you mark a function with `async`, it returns a `Future` – a value that represents a computation that may not have completed yet. The `.await` keyword is used to wait for a future to complete, yielding control back to the runtime so other tasks can run while waiting.
+The `async` and `await` keywords are the foundation of asynchronous programming in Rust. When you mark a function with `async`, it returns a `Future`: a value that represents a computation that may not have completed yet. The `.await` keyword is used to wait for a future to complete, yielding control back to the runtime so other tasks can run while waiting.
 
 Here's a basic example:
 
@@ -67,7 +67,7 @@ async fn main() {
 }
 ```
 
-Futures are lazy – they don't do anything until you `.await` them. This allows you to combine multiple futures and execute them concurrently.
+Futures are lazy: they don't do anything until you `.await` them. This allows you to combine multiple futures and execute them concurrently.
 
 ## Tokio Runtime
 
@@ -334,7 +334,7 @@ async fn main() {
 }
 ```
 
-In network applications like proxies, it's crucial to handle shutdown signals gracefully to avoid dropping connections abruptly. Tokio provides utilities for handling Unix signals like SIGINT (Ctrl+C) and SIGTERM.
+In network applications like proxies, shutdown has to stop accepting new connections without cutting off transfers already in flight. Tokio provides utilities for handling Unix signals like SIGINT (Ctrl+C) and SIGTERM.
 
 Here's an example of graceful shutdown handling:
 

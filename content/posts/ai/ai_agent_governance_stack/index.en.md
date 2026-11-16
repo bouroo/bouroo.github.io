@@ -18,7 +18,7 @@ lightgallery: true
 
 Over the past few years, software teams that put AI coding agents into real workflows have faced a **major operational paradox**, two forces pulling in opposite directions:
 
-1. **Code generation capacity has grown dramatically:** work that once took half a day now lands in ten minutes, the volume of pull requests per team has multiplied, and the code-writing bottleneck has disappeared.
+1. **Code generation capacity has grown:** work that once took half a day now lands in ten minutes, the volume of pull requests per team has multiplied, and the code-writing bottleneck has disappeared.
 2. **Alignment, review, and audit capacity has barely moved:** intent agreed with the agent dies with the chat window, and an agent can confidently cite an endpoint that was retired months ago.
 
 The result is that code arrives faster, but the team's ability to make that change **governable, reviewable, and reusable** does not speed up with it. This article outlines a three-layer **governance stack** that keeps AI speed without losing reviewability, drawn from three sources that approach the problem from different angles:

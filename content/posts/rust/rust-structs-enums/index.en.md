@@ -183,7 +183,7 @@ This is equivalent to having all methods in a single `impl` block.
 
 ### Example: Rectangle
 
-Let's look at a more comprehensive example with a `Rectangle` struct that has methods for calculating area and scaling.
+Here is a longer `Rectangle` example, with methods for calculating area and scaling.
 
 ```rust
 struct Rectangle {
@@ -248,7 +248,7 @@ let east = Direction::Right;
 
 ### Enums with Data
 
-Enums become much more powerful when variants can hold data. This is similar to unions or variant types in other languages, but with Rust's safety guarantees.
+Enums hold different data in each variant. This is similar to unions or variant types in other languages, but the compiler checks which variant a value is before any field is read.
 
 Consider an enum for IP addresses, which can be either IPv4 or IPv6:
 
@@ -302,7 +302,7 @@ Here:
 
 This ability to model data with precise variation is why enums are so useful in Rust.
 
-### Why Enums Are Powerful
+### Enums as Algebraic Data Types
 
 Enums in Rust are algebraic data types, meaning they can represent data that is one of several variants, each with its own data. This is in contrast to structs, which represent data that is a combination of all fields. Enums let you express ideas like "this value is either A with some data, or B with other data, or C with no data" in a type-safe way.
 
@@ -607,13 +607,13 @@ fn handle_verify(result: VerifyResult) {
 }
 ```
 
-This match is exhaustive: we must handle both `Accepted` and `Rejected` variants, ensuring we don't miss any possible outcome.
+This match is exhaustive: both `Accepted` and `Rejected` have an arm, so a third variant added later fails to compile until it gets one.
 
 ## Summary
 
-In this tutorial, we've explored how to define and use structs and enums to create custom data types in Rust. We've seen how to attach methods to structs with `impl` blocks, and how enums like `Option<T>` and `Result<T, E>` provide powerful ways to handle absence and error cases safely. Pattern matching with `match`, `if let`, and `while let` allows us to handle each variant of an enum clearly and exhaustively.
+In this tutorial, we've defined structs and enums to create custom data types. We've attached methods to structs with `impl` blocks, and used enums like `Option<T>` and `Result<T, E>` to represent a missing value and an error without a separate null check. Pattern matching with `match`, `if let`, and `while let` handles each variant of an enum in one place.
 
-These concepts are foundational for writing idiomatic Rust code and are heavily used in real-world projects like rs-wsProxy. By modeling data with structs and enums, and handling all cases with pattern matching, you can write code that is both expressive and robust.
+These concepts are foundational for writing idiomatic Rust code and are heavily used in real-world projects like rs-wsProxy. By modeling data with structs and enums, and handling all cases with pattern matching, you spend your effort on the states the domain actually has.
 
 ### Navigation
 

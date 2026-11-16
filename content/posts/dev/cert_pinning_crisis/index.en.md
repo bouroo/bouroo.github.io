@@ -10,14 +10,14 @@ featuredImage: "featured-image.svg"
 featuredImagePreview: "featured-image.svg"
 ---
 
-Over the past few years, mobile development and security engineering teams in Thailand—especially in FinTech and banking—have faced a major operational paradox:
+Over the past few years, mobile development and security engineering teams in Thailand, especially in FinTech and banking, have faced a major operational paradox:
 
 1. **Bank of Thailand (BOT) Regulatory Mandate:** Mobile banking and financial apps are required to enforce **Certificate Pinning** (or equivalent security controls) to mitigate Man-in-the-Middle (MITM) attacks.
 2. **Evolving WebPKI Standards (CA/Browser Forum, Apple, Google):** Industry-wide policy shifts have squeezed SSL/TLS certificate lifespans down from years to increasingly shorter validity periods.
 
-If an engineering team relies on traditional **Static Leaf Certificate Pinning**—hardcoding the `.crt` file or fingerprint directly into the client app—the result is predictable: **frequent outages** for users who haven't enabled auto-updates on the App Store or Google Play Store.
+If an engineering team relies on traditional **Static Leaf Certificate Pinning**, hardcoding the `.crt` file or fingerprint directly into the client app, the result is predictable: **frequent outages** for users who haven't enabled auto-updates on the App Store or Google Play Store.
 
-This article outlines how to design a resilient Certificate Pinning architecture that complies with BOT standards without sacrificing system availability or user experience.
+This article covers three pinning designs, starting with pinning the SPKI hash instead of the leaf certificate, reusing the private key at renewal, and monitoring the live key so a renewal does not break installed apps.
 
 ---
 
@@ -50,7 +50,7 @@ Instead of pinning the entire certificate, pin the **SubjectPublicKeyInfo (SPKI)
 
 > **Key Concept:** When renewing an SSL/TLS certificate, you do not need to generate a new Key Pair. You can issue a new certificate using the **existing Private Key**.
 
-By reusing the Private Key during renewal, the **Public Key Hash (SHA-256)** remains identical, allowing legacy client apps to establish secure TLS connections seamlessly even after the certificate itself has been renewed.
+By reusing the Private Key during renewal, the **Public Key Hash (SHA-256)** stays identical, so legacy client apps establish TLS connections against the new certificate without an app update.
 
 #### Android Example (`res/xml/network_security_config.xml`)
 
@@ -288,7 +288,7 @@ fun verifyPinPayload(payload: ByteArray, signature: ByteArray): Boolean {
 
 (`Ed25519` in `java.security` requires Android API 33+ / Java 15+; use Tink or BouncyCastle to support older versions.)
 
-The most commonly missed point: serve this endpoint over plain CA-validated HTTPS — do **not** pin this channel — so the app can fetch fresh pins even when the old pins are stale. The payload's trust comes from the signature, not the channel.
+The most commonly missed point: serve this endpoint over plain CA-validated HTTPS, and do **not** pin this channel, so the app can fetch fresh pins even when the old pins are stale. The payload's trust comes from the signature, not the channel.
 
 ### Step 6 — SPKI Drift Monitoring
 
@@ -316,7 +316,7 @@ Technical controls on the mobile client must be supported by automated backend i
 | Area | Recommended Practice |
 | :--- | :--- |
 | **Cert Renewal Policy** | Configure ACME clients (`cert-manager`, Let's Encrypt, AWS ACM) to enforce a **Key Reuse Strategy** during automated certificate renewals. |
-| **Key Rotation Schedule** | Synchronize Public Key rotations with planned **App Release Cycles** (e.g., bundle new backup pins 6–12 months before activating the corresponding backend key). |
+| **Key Rotation Schedule** | Synchronize Public Key rotations with planned **App Release Cycles** (e.g., bundle new backup pins 6 to 12 months before activating the corresponding backend key). |
 | **Monitoring & Alerting** | Implement automated monitoring 30 days prior to certificate expiration to verify that the active server public key matches the deployed mobile pin sets. |
 
 ---
@@ -330,4 +330,4 @@ Technical controls on the mobile client must be supported by automated backend i
 - [ ] Run **SPKI Drift Monitoring** in Cron/CI, comparing the live server key against the app pin set.
 - [ ] (Optional) Deploy **Signed Dynamic Pinning** for OTA pin updates.
 
-Complying with Bank of Thailand security regulations does not have to result in operational disruption. By implementing SPKI pinning and proper key lifecycle management, engineering teams can maintain high security standards while seamlessly accommodating shorter certificate lifespans.
+Complying with Bank of Thailand security regulations does not have to result in operational disruption. With SPKI pinning and key reuse at renewal, engineering teams keep high security standards while certificates renew on shorter lifespans.

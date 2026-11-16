@@ -78,9 +78,9 @@ pub async fn connect_tcp(addr: &str) -> Result<TcpStream, String> {
 
 **DNS Resolution and IPv4 Filtering**: We use `tokio::net::lookup_host` to perform asynchronous DNS resolution. This returns all IP addresses (both IPv4 and IPv6) associated with the hostname. Since our target environments primarily use IPv4 and to avoid potential compatibility issues, we filter for IPv4 addresses only using `matches!(a, IpAddr::V4(_))`. If no IPv4 addresses are found, we return a clear error.
 
-**Connection Attempt Loop**: We iterate through each resolved IP address, attempting to establish a TCP connection. This provides resilience against partial DNS failures - if one IP address is unreachable, we try the next. The loop continues until either a connection succeeds or we exhaust all addresses.
+**Connection Attempt Loop**: We iterate through each resolved IP address, attempting to establish a TCP connection. If one address is unreachable, the loop tries the next, so one failing DNS answer does not fail the request. The loop stops when a connection succeeds or the address list runs out.
 
-**TCP_NODELAY Optimization**: After establishing a connection, we set the TCP_NODELAY socket option to disable Nagle's algorithm. This is crucial for proxy applications where low latency is important - we want small packets to be sent immediately rather than being buffered for potential aggregation. Without this setting, interactive protocols (like the roBrowser protocol wsProxy serves) would experience noticeable delays.
+**TCP_NODELAY**: After connecting, we set TCP_NODELAY to disable Nagle's algorithm. Nagle holds small writes until it has enough data to fill a segment; the roBrowser client sends small binary frames and waits for a reply, so that wait would show up as lag. With the option set, each `write_all` reaches the wire immediately.
 
 **Error Propagation**: Throughout the function, we convert low-level IO errors into descriptive String errors that include context about what operation failed and the target address. This makes debugging connection issues much simpler in production environments.
 
@@ -91,9 +91,9 @@ With a TCP connection established, we need to move data bidirectionally between 
 1. **WebSocket → TCP**: Messages received from the WebSocket client must be forwarded to the TCP backend
 2. **TCP → WebSocket**: Data received from the TCP backend must be sent to the WebSocket client
 
-These operations are independent and can occur concurrently - the WebSocket might receive a message while we're still sending previous TCP data, and vice versa. Using sequential blocking operations would create head-of-line blocking where one direction stalls the other.
+These operations are independent and can occur concurrently: the WebSocket might receive a message while we're still sending previous TCP data, and vice versa. Sequential blocking operations would create head-of-line blocking where one direction stalls the other.
 
-Tokio's `select!` macro provides the perfect solution: it allows us to run multiple asynchronous operations concurrently and proceed as soon as any one completes. We'll create two asynchronous tasks - one for each direction - and use `select!` to wait for either to complete (indicating the connection should close).
+Tokio's `select!` macro runs multiple asynchronous operations concurrently and proceeds as soon as any one completes. We'll create two asynchronous tasks, one for each direction, and use `select!` to wait for either to complete (indicating the connection should close).
 
 ## WS → TCP Direction
 
@@ -138,9 +138,9 @@ async fn ws_to_tcp(
 
 **Binary Frame Filtering**: We explicitly handle only `Message::Binary` variants because the roBrowser protocol encodes all data as binary frames. Text frames, ping/pong, and other WebSocket control frames are ignored for data forwarding (though we handle Close frames specially).
 
-**Immediate Flushing**: After writing data to the TCP stream, we call `flush()` to ensure bytes are sent immediately rather than buffered. This minimizes latency for interactive applications.
+**Immediate Flushing**: `write_all` returns once the bytes are queued in `tcp_write`; `flush()` pushes them out. The loop calls both, so each WebSocket frame reaches the backend before the next one is read.
 
-**Close Frame Handling**: When we receive a WebSocket Close frame, we initiate a TCP shutdown (sending FIN packet) before breaking the loop. This allows the TCP backend to gracefully detect connection termination.
+**Close Frame Handling**: On `Message::Close`, the loop calls `tcp_write.shutdown()` (sends FIN) and breaks, so the backend sees end-of-stream instead of waiting for data that will never arrive.
 
 **Error Propagation**: Any error in receiving WebSocket messages or writing to TCP immediately terminates the forwarding loop and returns an error.
 
@@ -196,9 +196,9 @@ async fn tcp_to_ws(
 
 ### TCP → WS Buffer Management
 
-**BytesMut for Efficient Buffering**: We use `bytes::BytesMut` which provides mutable byte buffer with efficient resizing and zero-copy operations. Starting with 64KB capacity balances memory usage with reducing reallocation frequency.
+**BytesMut for Efficient Buffering**: `bytes::BytesMut` is a mutable byte buffer that can grow, and its filled part transfers to another owner without a copy.
 
-**Dynamic Capacity Management**: Before each read operation, we ensure the buffer has at least 4KB free space. If not, we reserve additional capacity, we reserve another 64KB. This prevents frequent small reallocations while bounding memory growth.
+**Capacity Check**: Before each `read_buf`, the loop checks `buf.capacity() < 4096` and reserves back to 64KB, so a read never starts with less than 4KB of spare room.
 
 **Zero-Copy Data Extraction**: The `split()` method extracts all buffered data as a new `BytesMut` instance without copying, and `freeze()` converts it to an immutable `Bytes` that's cheap to clone. This avoids data duplication when sending to the WebSocket sender.
 
@@ -207,7 +207,6 @@ async fn tcp_to_ws(
 - For positive byte counts, we extract and forward all buffered data
 - Any I/O error breaks the loop and propagates upward
 
-This design ensures efficient memory usage while maintaining low-latency data forwarding - critical for proxy performance.
 
 ## Stream Splitting
 
@@ -300,7 +299,7 @@ This allows the same handler code to work for both plain HTTP and HTTPS connecti
 
 ## Graceful Shutdown
 
-Production services must handle shutdown signals gracefully to prevent data loss and allow active connections to complete. Here's our signal handling implementation:
+Shutdown has to stop accepting connections while in-flight requests finish. The handler waits on SIGINT and SIGTERM, then `server.close()` stops the listener and `wait_for_rest()` drains the open connections with a timeout.
 
 ```rust
 use tokio::signal;
@@ -354,11 +353,11 @@ async fn graceful_shutdown(
 1. **Stop accepting new connections**: Call `server.close()` on the underlying TCP listener
 2. **Drain existing connections**: Wait for active connections to complete using `server.wait_for_rest()` with a configurable timeout
 
-This approach ensures we don't abruptly terminate active proxy sessions while still enforcing a maximum shutdown duration to prevent hanging processes.
+`wait_for_rest()` returns `Ok` when the last connection closes and `Err` when `shutdown_timeout` expires; the `Err` arm logs a warning and the process exits, so a long-lived connection cannot hold a deploy open forever.
 
 ## Testing
 
-Comprehensive testing validates both individual components and end-to-end behavior. Let's look at our test strategy:
+The tests below cover the connect helper and the end-to-end forwarding path.
 
 ### Unit Tests
 
@@ -519,7 +518,7 @@ services:
     restart: unless-stopped
 ```
 
-The multi-stage build separates compilation dependencies from the runtime image, resulting in a minimal ~50MB final container. We run as a non-root user for security and expose both HTTP (8080) and HTTPS (8443) ports.
+The build has two stages, so the runtime image carries the binary and `ca-certificates` instead of the Rust toolchain; the final image runs as uid 1000. It exposes HTTP on 8080 and HTTPS on 8443.
 
 ## Kubernetes Deployment
 
@@ -733,11 +732,11 @@ jobs:
         kubectl rollout status deployment/wsproxy
 ```
 
-The CI pipeline ensures code quality through formatting checks, linting, and testing. The CD pipeline builds Docker images, pushes to a registry, and performs rolling updates to Kubernetes clusters.
+CI runs `cargo fmt --check`, `cargo clippy -- -D warnings`, and `cargo test -- --test-threads=1` on every pull request, then builds a release binary. CD builds the Docker image, pushes it, and runs `kubectl set image` followed by `kubectl rollout status`, so a failed rollout shows up in the workflow log.
 
 ## Series Conclusion
 
-Over eight articles, we've journeyed from Rust fundamentals to a production-ready WebSocket proxy:
+The series went from Rust fundamentals to a production WebSocket proxy:
 
 1. **[Part 1: Getting Started with Rust](/posts/rust/rust-getting-started/)** Installation, Cargo, variables, data types, functions, control flow
 2. **[Part 2: Ownership, Borrowing & Lifetimes](/posts/rust/rust-ownership-borrowing/)** The ownership model, references, slices, lifetimes
@@ -748,18 +747,16 @@ Over eight articles, we've journeyed from Rust fundamentals to a production-read
 7. **[Part 7: Building wsProxy CLI, Config & Server](/posts/rust/rust-wsproxy-server/)** clap, axum router, WebSocket upgrade, verify pipeline
 8. **Part 8: Proxy Core & Deployment (This Article)** TCP connection, bidirectional pump, TLS, testing, Docker/K8s
 
-We've covered the complete stack:
-- **Networking**: TCP/UDP, DNS resolution, TLS encryption
-- **Asynchronous Rust**: Tokio runtime, futures, streams, and buffers
-- **WebSocket Protocol**: Frame handling, binary data transfer, connection lifecycle
-- **HTTP Server**: Routing, middleware, and integration with WebSockets
-- **Production Concerns**: Testing strategies, containerization, orchestration, and observability
+The series covered the pieces the proxy needs:
+- **Networking**: TCP, DNS resolution across the resolved address list, TLS via rustls
+- **Asynchronous Rust**: Tokio runtime, futures, streams, and `BytesMut` buffers
+- **WebSocket Protocol**: Binary frame forwarding and Close handling
+- **HTTP Server**: axum routes that upgrade to WebSockets
+- **Run concerns**: unit tests, a two-stage Dockerfile, and Kubernetes manifests for deployment
 
-The wsProxy project demonstrates how Rust's zero-cost abstractions, memory safety, and excellent async ecosystem enable building high-performance network services that rival C/C++ implementations while providing superior developer productivity and safety.
+It started with a Facebook post from [rayrag.com](https://rayrag.com/) showing RO running in a browser, and ended with a proxy that forwards those WebSocket clients to a TCP server.
 
-Looking back, it all started with a simple Facebook post from [rayrag.com](https://rayrag.com/) showing RO running in a browser. That single moment of curiosity led to revisiting Rust and building a production-ready proxy. That's the beauty of programming curiosity leads to learning, and learning leads to creation.
-
-The complete source code is available at [https://github.com/bouroo/rs-wsProxy](https://github.com/bouroo/rs-wsProxy). Thank you for following along this journey happy coding!
+The complete source code is available at [https://github.com/bouroo/rs-wsProxy](https://github.com/bouroo/rs-wsProxy).
 
 [← Previous: Building wsProxy CLI, Config & Server](/posts/rust/rust-wsproxy-server/)
 Source: https://github.com/bouroo/rs-wsProxy

@@ -6,7 +6,7 @@ lastmod: 2026-10-06T19:00:40+07:00
 draft: false
 author: "Kawin Viriyaprasopsook"
 authorLink: "https://kawin.dev"
-description: "Benchmarks goccy/go-json against Go's standard encoding/json and shows roughly 10x speedups, with a 2025-2026 update on bytedance/sonic and the experimental encoding/json/v2."
+description: "Benchmarks goccy/go-json against Go's standard encoding/json on 10KB, 2.9MB, and 26MB payloads, with a 2025-2026 update on bytedance/sonic and the experimental encoding/json/v2."
 license: ""
 images: []
 featuredImage: "featured-image.svg"
@@ -124,12 +124,12 @@ Test results for reading a large 26MB file.
 |BenchmarkGoSTDDecoder-8|               16|          63935862 ns/op|        67107820 B/op|         33 allocs/op|
 |BenchmarkGoCcyDecoder-8|          1200399|               877.8 ns/op|           863 B/op|          9 allocs/op|
 
-## Current landscape (2025-2026)
+## The library landscape since 2025
 
-The JSON library landscape has kept moving since this benchmark was written:
+The JSON library options have changed since this benchmark was written:
 
 - **[bytedance/sonic](https://github.com/bytedance/sonic)** the fastest option for large payloads on **amd64**, thanks to its SIMD/JIT path (inspired by simdjson); it is a drop-in replacement for `encoding/json`, but on arm64 it falls back to a compatibility implementation (see the 2026 re-test below).
-- **[goccy/go-json](https://github.com/goccy/go-json)** still a solid, easy drop-in; the benchmarks above remain representative.
+- **[goccy/go-json](https://github.com/goccy/go-json)** remains a drop-in replacement, and the benchmarks above still describe it.
 - **[encoding/json/v2](https://github.com/golang/go/issues/71707)** Go's own rewrite. It shipped as an **experimental** preview in Go 1.25 (enable with `GOEXPERIMENT=jsonv2`) and is still not stable in Go 1.26. Once finalized it will narrow the gap with the third-party libraries from inside the standard library.
 
 Pick by workload: `sonic` for the absolute fastest large-payload path, `goccy/go-json` for a zero-config speedup, and keep an eye on `encoding/json/v2` so you can drop the dependency entirely once it stabilizes.
@@ -217,4 +217,4 @@ Actual results for the large 26MB file.
 
 What the numbers say: on this arm64 machine sonic runs the compatibility/optdec path, not the JIT, so it lands at roughly goccy level — a small win on small-to-medium payloads, but on the 26MB file it ties or loses. The large README lead comes from the JIT/SIMD path that only exists on amd64; deploy on amd64 servers to get the full benefit.
 
-You will find that `goccy/go-json` is on average 10X++ more performant than `encoding/json`, especially when using `Encoder/Decoder` instead of `Marshal/Unmarshal`, which is not even comparable.
+On the same machine `goccy/go-json` ran about 1.2x faster than `encoding/json` on the 10KB file, 2.1x on the 2.9MB file, and 2.2x on the 26MB file, with roughly 6x fewer allocations. The decoder comparison: 63,769 ns/op against 66,874 on the 10KB file and 1,395,477 against 3,132,189 on the 2.9MB file.
